@@ -24,13 +24,13 @@ format:
       - brand
     css: styles.css
     toc: true
-  pdf:
-    pdf-engine: pdflatex
-    toc: true
-    keep-tex: true
+  #pdf:
+    #pdf-engine: pdflatex
+    #toc: true
+    #keep-tex: true
 
 execute:
-  freeze: true
+  freeze: auto
 
 bibliography: references.bib
 link-citations: true

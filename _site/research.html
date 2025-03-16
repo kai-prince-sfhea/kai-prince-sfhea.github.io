@@ -88,6 +88,20 @@ ul.task-list li input[type="checkbox"] {
 
 window.MathJax = {
 
+    menuOptions: {
+
+        annotationTypes: {
+
+            TeX: ['TeX', 'LaTeX', 'application/x-tex'],
+
+            ContentMathML: ['MathML-Content', 'application/mathml-content+xml'],
+
+            OpenMath: ['OpenMath']
+
+        }
+
+    },
+
     loader: {load: ['[tex]/texhtml','[tex]/html']},
 
     tex: {
@@ -100,7 +114,13 @@ window.MathJax = {
 
             R: '{\\mathbb{R}}',
 
-            bor: ['{\\style{mathvariant:Borel sigma algebra}{\\text{Bor}}(#1)}',1]
+            bor: ['{\\style{mathvariant:Borel sigma algebra}{\\text{Bor}}(#1)}',1],
+
+            Group: '{\\Gamma}',
+
+            GroupElement: '{\\gamma}',
+
+            Folner: '{\\href{folner.html}{\\Phi}}'
 
         }
 
@@ -154,9 +174,9 @@ window.MathJax = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="research.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="research.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
