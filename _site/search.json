@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Website",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.(Knuth 1984)\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner_N|}\\sum_{\\GroupElement\\in\\Folner}T^\\GroupElement x \\]\n\n\n\n\nReferences\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "folner.html",
+    "href": "folner.html",
+    "title": "Kai Prince",
+    "section": "",
+    "text": "Følner sequence\n\n\nWe define a right-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner=(\\Folner_N)_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|(\\Folner_N\\cdot \\GroupElement^{-1})\\cap\\Folner_N|}{|\\Folner_N|}=1\\]for all \\(\\GroupElement\\in\\Group\\).\nSimilarly, we define a left-Følner sequence} in \\(\\Group\\) as a sequence \\(\\Folner=(\\Folner_N)_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|(\\GroupElement^{-1}\\cdot\\Folner_N)\\cap\\Folner_N|}{|\\Folner_N|}=1 \\]for all \\(\\GroupElement\\in\\Group\\).\nWe call a sequence a Følner sequence if it is both a left and right Følner sequence."
+  }
+]

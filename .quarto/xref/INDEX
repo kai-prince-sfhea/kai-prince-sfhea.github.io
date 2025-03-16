@@ -1,0 +1,17 @@
+{
+  "default.qmd": {
+    "default.html": "8900c8ce"
+  },
+  "about.qmd": {
+    "about.html": "f343437f"
+  },
+  "index.qmd": {
+    "index.html": "cef11634"
+  },
+  "research.qmd": {
+    "research.html": "1e8b8c5f"
+  },
+  "folner.qmd": {
+    "folner.html": "af5eed75"
+  }
+}

@@ -1,0 +1,36 @@
+project:
+  title: "My Website"
+  type: website
+
+website:
+  title: "Kai Prince"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - research.qmd
+      - about.qmd
+
+format:
+  html:
+    comments:
+      hypothesis: true
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.7/tex-mml-chtml.js"
+    include-in-header: mathjax.html
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+  pdf:
+    pdf-engine: pdflatex
+    toc: true
+    keep-tex: true
+
+execute:
+  freeze: true
+
+bibliography: references.bib
+link-citations: true

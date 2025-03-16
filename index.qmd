@@ -1,0 +1,14 @@
+---
+title: "My Website"
+authors:
+  - name: Kai Prince
+    affiliation: The University of Manchester
+---
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.[@knuth84]
+
+$$\sum_{i=1}^N\frac{1}{2^n}=1.$$
+
+$$\frac{1}{|\Folner_N|}\sum_{\GroupElement\in\Folner}T^\GroupElement x $$
