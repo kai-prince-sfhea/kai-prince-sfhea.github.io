@@ -25,6 +25,6 @@
     "href": "index.html",
     "title": "My Website",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.(Knuth 1984)\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner_N|}\\sum_{\\GroupElement\\in\\Folner}T^\\GroupElement x \\]\n\n\n\n\nReferences\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.(Knuth, 1984)\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner_N|}\\sum_{\\GroupElement\\in\\Folner}T^\\GroupElement x \\]\n\n\n\n\nReferences\n\nKnuth, D. E. (1984). 'Literate programming', Comput. J., 27 (2), pp. 97–111. https://doi.org/10.1093/comjnl/27.2.97."
   }
 ]

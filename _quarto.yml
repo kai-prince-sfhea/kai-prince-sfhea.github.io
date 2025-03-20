@@ -28,9 +28,11 @@ format:
     #pdf-engine: pdflatex
     #toc: true
     #keep-tex: true
+    #cite-method: citeproc
 
 execute:
   freeze: auto
 
 bibliography: references.bib
+csl: harvard-manchester.csl
 link-citations: true
