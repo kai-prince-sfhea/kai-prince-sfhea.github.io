@@ -2,18 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kai-prince-sfhea.github.io/research.html</loc>
-    <lastmod>2025-03-21T09:17:38.111Z</lastmod>
+    <lastmod>2025-03-24T13:13:32.904Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kai-prince-sfhea.github.io/teaching.html</loc>
+    <lastmod>2025-03-24T13:13:32.909Z</lastmod>
   </url>
   <url>
     <loc>https://kai-prince-sfhea.github.io/about.html</loc>
-    <lastmod>2025-03-21T09:17:38.110Z</lastmod>
+    <lastmod>2025-03-24T13:13:32.903Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kai-prince-sfhea.github.io/automations.html</loc>
+    <lastmod>2025-03-24T13:13:32.903Z</lastmod>
   </url>
   <url>
     <loc>https://kai-prince-sfhea.github.io/index.html</loc>
-    <lastmod>2025-03-21T09:17:38.111Z</lastmod>
+    <lastmod>2025-03-24T13:13:32.904Z</lastmod>
   </url>
   <url>
-    <loc>https://kai-prince-sfhea.github.io/folner.html</loc>
-    <lastmod>2025-03-21T09:17:38.110Z</lastmod>
+    <loc>https://kai-prince-sfhea.github.io/maths_notes/folner.html</loc>
+    <lastmod>2025-03-24T13:13:32.904Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kai-prince-sfhea.github.io/papers/ErdosConjecture.html</loc>
+    <lastmod>2025-03-24T13:13:32.904Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kai-prince-sfhea.github.io/advocacy.html</loc>
+    <lastmod>2025-03-24T13:13:32.903Z</lastmod>
   </url>
 </urlset>

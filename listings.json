@@ -1,0 +1,20 @@
+[
+  {
+    "listing": "/research.html",
+    "items": [
+      "/papers/ErdosConjecture.html"
+    ]
+  },
+  {
+    "listing": "/teaching.html",
+    "items": []
+  },
+  {
+    "listing": "/automations.html",
+    "items": []
+  },
+  {
+    "listing": "/advocacy.html",
+    "items": []
+  }
+]
