@@ -1,0 +1,8 @@
+---
+title: "Advocacy"
+listing:
+    contents:
+        - advocacy
+    type: table
+    sort: "date"
+---

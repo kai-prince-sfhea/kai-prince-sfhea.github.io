@@ -7,8 +7,16 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - research.qmd
+        text: "Home"
+      - href: research.qmd
+        text: "Research Output"
+      - href: teaching.qmd
+        text: "Teaching Activities"
+      - href: advocacy.qmd
+        text: "Advocacy Work"
+      - href: automations.qmd
+        text: "Automations"
+    right:
       - about.qmd
 
 format:
@@ -23,12 +31,6 @@ format:
       - cosmo
       - brand
     css: styles.css
-    toc: true
-  #pdf:
-    #pdf-engine: pdflatex
-    #toc: true
-    #keep-tex: true
-    #cite-method: citeproc
 
 execute:
   freeze: auto

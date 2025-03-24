@@ -14,5 +14,21 @@
   "folner.qmd": {
     "folner.html": "af5eed75",
     "folner.tex": "e9e8ec1e"
+  },
+  "maths_notes/folner.qmd": {
+    "folner.html": "1200086f"
+  },
+  "papers/ErdosConjecture.qmd": {
+    "ErdosConjecture.html": "9186bc81",
+    "ErdosConjecture.tex": "8611370d"
+  },
+  "teaching.qmd": {
+    "teaching.html": "55d96cf3"
+  },
+  "automations.qmd": {
+    "automations.html": "391585ae"
+  },
+  "advocacy.qmd": {
+    "advocacy.html": "a66e6cdb"
   }
 }

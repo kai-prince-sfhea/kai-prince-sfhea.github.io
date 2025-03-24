@@ -1,5 +1,12 @@
 ---
 title: "Research"
----
+listing:
+    contents:
+        - papers/*.qmd
+    type: table
+    sort: "date"
 
-About this site
+website:
+    sidebar: 
+        contents: papers/*.qmd
+---

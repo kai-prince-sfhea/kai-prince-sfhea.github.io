@@ -7,7 +7,7 @@ authors:
 
 This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.[@knuth84]
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.Test Citation: [@Moreira_2019]
 
 $$\sum_{i=1}^N\frac{1}{2^n}=1.$$
 
