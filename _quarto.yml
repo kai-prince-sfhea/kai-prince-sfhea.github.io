@@ -1,6 +1,8 @@
 project:
   title: "My Website"
   type: website
+  resources:
+    - CNAME
 
 website:
   title: "Kai Prince"
