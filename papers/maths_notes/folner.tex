@@ -139,7 +139,6 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups},
   pdfauthor={Kai Prince},
   colorlinks=true,
   linkcolor={blue},
@@ -149,13 +148,10 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{A Short Proof of a Generalised Conjecture of Erdős in Amenable
-Groups}
 \author{Kai Prince}
 \date{}
 
 \begin{document}
-\maketitle
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -164,14 +160,23 @@ Groups}
 \tableofcontents
 }
 
-\section{Abstract}\label{abstract}
+\phantomsection\label{FolnerSequence}
+Følner sequence
 
-\section{Introduction}\label{introduction}
+We define a \emph{right-Følner sequence} in \(\Group\) as a sequence
+\(\Folner=(\Folner_N)_{N\in\mathbb{N}}\) of finite subsets of \(\Gamma\)
+satisfying
+\[\lim_{N\rightarrow\infty}\frac{|(\Folner_N\cdot \GroupElement^{-1})\cap\Folner_N|}{|\Folner_N|}=1\]for
+all \(\GroupElement\in\Group\).
 
-\section{Preliminaries}\label{preliminaries}
+Similarly, we define a \emph{left-Følner sequence\}} in \(\Group\) as a
+sequence \(\Folner=(\Folner_N)_{N\in\mathbb{N}}\) of finite subsets of
+\(\Gamma\) satisfying
+\[\lim_{N\rightarrow\infty}\frac{|(\GroupElement^{-1}\cdot\Folner_N)\cap\Folner_N|}{|\Folner_N|}=1 \]for
+all \(\GroupElement\in\Group\).
 
-\subsection{Amenable Groups and
-Actions}\label{amenable-groups-and-actions}
+We call a sequence a \emph{Følner sequence} if it is both a left and
+right Følner sequence.
 
 
 

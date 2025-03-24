@@ -19,10 +19,11 @@ window.MathJax = {
         packages: {'[+]': ['texhtml','html']},
         macros: {
             R: '{\\mathbb{R}}',
+            N: '{\\mathbb{N}}',
             bor: ['{\\style{mathvariant:Borel sigma algebra}{\\text{Bor}}(#1)}',1],
             Group: '{\\Gamma}',
             GroupElement: '{\\gamma}',
-            Folner: '{\\href{folner.html}{\\Phi}}'
+            Folner: ['{\\href{/papers/maths_notes/folner.html}{\\Phi}}_{#1}',1,'']
         }
     }
 };

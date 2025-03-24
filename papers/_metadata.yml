@@ -14,3 +14,8 @@ format:
     pdf-engine: pdflatex
     toc: true
     keep-tex: true
+
+author:
+    - name: Kai Prince
+      affiliation: The University of Manchester
+      corresponding: true
