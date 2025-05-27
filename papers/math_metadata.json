@@ -1,0 +1,46 @@
+[
+    {
+        "type": "definition",
+        "title": "Left-Følner sequence",
+        "aliases": [
+            "left-Følner sequences",
+            "left-Følner subsequence",
+            "left-Følner subsequences"
+        ],
+        "dependencies": [
+            "Group"
+        ],
+        "description": "We define a *left-Følner sequence* in $\\Group$ as a sequence $\\Folner=(\\Folner_N)_{N\\in\\mathbb{N}}$ of finite subsets of $\\Gamma$ satisfying $$\\lim_{N\\rightarrow\\infty}\frac{|(\\GroupElement^{-1}\\cdot\\Folner_N)\\cap\\Folner_N|}{|\\Folner_N|}=1 $$for all $\\GroupElement\\in\\Group$."
+    },
+    {
+        "type": "definition",
+        "title": "Right-Følner sequence",
+        "aliases": [
+            "right-Følner sequences",
+            "right-Følner subsequence",
+            "right-Følner subsequences"
+        ],
+        "dependencies": [
+            "Group"
+        ],
+        "description": "We define a *right-Følner sequence* in $\\Group$ as a sequence $\\Folner=(\\Folner_N)_{N\\in\\mathbb{N}}$ of finite subsets of $\\Gamma$ satisfying $$\\lim_{N\\rightarrow\\infty}\\frac{|(\\Folner_N\\cdot\\GroupElement^{-1})\\cap\\Folner_N|}{|\\Folner_N|}=1 $$for all $\\GroupElement\\in\\Group$."
+    },
+    {
+        "type": "definition",
+        "title": "Følner sequence",
+        "macro-command": "Folner",
+        "macro": "['{\\href{/papers/maths_notes/folner.html}{\\Phi}}_{#1}',1,'']",
+        "aliases": [
+            "Følner sequences",
+            "Følner subsequence",
+            "Følner subsequences"
+        ],
+        "dependencies": [
+            "Group",
+            "Left-Følner sequence",
+            "Right-Følner sequence"
+        ],
+        "description": "We call a sequence a *Følner sequence* if it is both a left and right Følner sequence.",
+        "properties": []
+    }
+]

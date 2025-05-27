@@ -6,15 +6,6 @@ website:
     sidebar: 
         contents: auto
 
-format:
-  html:
-    toc: true
-  pdf:
-    documentclass: article
-    pdf-engine: pdflatex
-    toc: true
-    keep-tex: true
-
 author:
     - name: Kai Prince
       affiliation: The University of Manchester

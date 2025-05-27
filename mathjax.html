@@ -4,27 +4,4 @@
     <xs:include schemaLocation="mathml4/mathml4-presentation.xsd"/></xs:include>
     <xs:include schemaLocation="mathml4/mathml4-common.xsd"/></xs:include>
 </xs:schema>
-<script>
-window.MathJax = {
-    menuOptions: {
-        annotationTypes: {
-            TeX: ['TeX', 'LaTeX', 'application/x-tex'],
-            ContentMathML: ['MathML-Content', 'application/mathml-content+xml'],
-            OpenMath: ['OpenMath']
-        }
-    },
-    loader: {load: ['[tex]/texhtml','[tex]/html']},
-    tex: {
-        allowTexHTML: true,
-        packages: {'[+]': ['texhtml','html']},
-        macros: {
-            R: '{\\mathbb{R}}',
-            N: '{\\mathbb{N}}',
-            bor: ['{\\style{mathvariant:Borel sigma algebra}{\\text{Bor}}(#1)}',1],
-            Group: '{\\Gamma}',
-            GroupElement: '{\\gamma}',
-            Folner: ['{\\href{/papers/maths_notes/folner.html}{\\Phi}}_{#1}',1,'']
-        }
-    }
-};
-</script>
+<script src="mathjax-config.js"></script>

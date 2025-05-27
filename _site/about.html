@@ -84,53 +84,7 @@ ul.task-list li input[type="checkbox"] {
 
 </xs:schema>
 
-<script>
-
-window.MathJax = {
-
-    menuOptions: {
-
-        annotationTypes: {
-
-            TeX: ['TeX', 'LaTeX', 'application/x-tex'],
-
-            ContentMathML: ['MathML-Content', 'application/mathml-content+xml'],
-
-            OpenMath: ['OpenMath']
-
-        }
-
-    },
-
-    loader: {load: ['[tex]/texhtml','[tex]/html']},
-
-    tex: {
-
-        allowTexHTML: true,
-
-        packages: {'[+]': ['texhtml','html']},
-
-        macros: {
-
-            R: '{\\mathbb{R}}',
-
-            N: '{\\mathbb{N}}',
-
-            bor: ['{\\style{mathvariant:Borel sigma algebra}{\\text{Bor}}(#1)}',1],
-
-            Group: '{\\Gamma}',
-
-            GroupElement: '{\\gamma}',
-
-            Folner: ['{\\href{/papers/maths_notes/folner.html}{\\Phi}}_{#1}',1,'']
-
-        }
-
-    }
-
-};
-
-</script>
+<script src="mathjax-config.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">

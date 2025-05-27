@@ -3,7 +3,3 @@ project:
   type: website
   resources:
     - CNAME
-
-format:
-  html:
-    toc: false

@@ -1,5 +1,14 @@
 ---
 title: "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups"
+
+format:
+  html:
+    toc: true
+  pdf:
+    documentclass: article
+    pdf-engine: pdflatex
+    toc: true
+    keep-tex: true
 ---
 # Abstract
 
@@ -8,7 +17,9 @@ title: "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups"
 # Preliminaries
 
 ## Amenable Groups and Actions
-{{< include /maths_notes/folner.qmd >>}}
+
+{{< include maths_notes/folner.qmd >}}
+
 ## Topological Dynamics of Group Actions
 
 ## Recurrence Results & Ergodic Theorems

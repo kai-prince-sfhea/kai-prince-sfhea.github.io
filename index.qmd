@@ -11,4 +11,4 @@ To learn more about Quarto websites visit <https://quarto.org/docs/websites>.Tes
 
 $$\sum_{i=1}^N\frac{1}{2^n}=1.$$
 
-$$\frac{1}{|\Folner_N|}\sum_{\GroupElement\in\Folner}T^\GroupElement x $$
+$$\frac{1}{|\Folner{N}|}\sum_{\GroupElement\in\Folner}T^\GroupElement x $$

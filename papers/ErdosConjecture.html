@@ -10,7 +10,7 @@
 
 <meta name="author" content="Kai Prince" />
 
-<title>folner – Kai Prince</title>
+<title>A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups – Kai Prince</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,30 +65,7 @@ ul.task-list li input[type="checkbox"] {
     <xs:include schemaLocation="mathml4/mathml4-presentation.xsd"/></xs:include>
     <xs:include schemaLocation="mathml4/mathml4-common.xsd"/></xs:include>
 </xs:schema>
-<script>
-window.MathJax = {
-    menuOptions: {
-        annotationTypes: {
-            TeX: ['TeX', 'LaTeX', 'application/x-tex'],
-            ContentMathML: ['MathML-Content', 'application/mathml-content+xml'],
-            OpenMath: ['OpenMath']
-        }
-    },
-    loader: {load: ['[tex]/texhtml','[tex]/html']},
-    tex: {
-        allowTexHTML: true,
-        packages: {'[+]': ['texhtml','html']},
-        macros: {
-            R: '{\\mathbb{R}}',
-            N: '{\\mathbb{N}}',
-            bor: ['{\\style{mathvariant:Borel sigma algebra}{\\text{Bor}}(#1)}',1],
-            Group: '{\\Gamma}',
-            GroupElement: '{\\gamma}',
-            Folner: ['{\\href{/papers/maths_notes/folner.html}{\\Phi}}_{#1}',1,'']
-        }
-    }
-};
-</script>
+<script src="mathjax-config.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.7/tex-mml-chtml.js" type="text/javascript"></script>
@@ -120,7 +97,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css" />
+<link rel="stylesheet" href="../styles.css" />
 </head>
 
 <body>
@@ -180,12 +157,14 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <div id="quarto-toc-target"></div>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<h1 class="title">A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups</h1>
 </div>
 
 
@@ -214,23 +193,104 @@ window.Quarto = {
 
 </header>
 
-
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+  <li><a href="#preliminaries" id="toc-preliminaries">Preliminaries</a>
+  <ul>
+  <li><a href="#amenable-groups-and-actions" id="toc-amenable-groups-and-actions">Amenable Groups and Actions</a></li>
+  <li><a href="#topological-dynamics-of-group-actions" id="toc-topological-dynamics-of-group-actions">Topological Dynamics of Group Actions</a></li>
+  <li><a href="#recurrence-results-ergodic-theorems" id="toc-recurrence-results-ergodic-theorems">Recurrence Results &amp; Ergodic Theorems</a></li>
+  <li><a href="#erdős-cubes-cubic-measures" id="toc-erdős-cubes-cubic-measures">Erdős Cubes &amp; Cubic Measures</a></li>
+  <li><a href="#factor-maps" id="toc-factor-maps">Factor Maps</a></li>
+  <li><a href="#key-dynamical-results" id="toc-key-dynamical-results">Key Dynamical Results</a></li>
+  </ul></li>
+  <li><a href="#proof-of-theorem-ref" id="toc-proof-of-theorem-ref">Proof of Theorem (ref)</a>
+  <ul>
+  <li><a href="#furstenbergs-correspondence-princple" id="toc-furstenbergs-correspondence-princple">Furstenberg’s Correspondence Princple</a></li>
+  <li><a href="#kronecker-factor" id="toc-kronecker-factor">Kronecker Factor</a></li>
+  <li><a href="#choosing-a-point-x_1" id="toc-choosing-a-point-x_1">Choosing a point <span class="math inline">\(x_1\)</span></a></li>
+  <li><a href="#the-joining-nu" id="toc-the-joining-nu">The joining <span class="math inline">\(\nu\)</span></a></li>
+  <li><a href="#proof-conclusion" id="toc-proof-conclusion">Proof Conclusion</a></li>
+  </ul></li>
+  <li><a href="#proof-of-corollary-ref" id="toc-proof-of-corollary-ref">Proof of Corollary (ref)</a></li>
+  <li><a href="#proof-of-theorem-ref-1" id="toc-proof-of-theorem-ref-1">Proof of Theorem (ref)</a></li>
+  <li><a href="#discussion" id="toc-discussion">Discussion</a></li>
+  </ul>
+</nav>
+<section id="abstract" class="level1">
+<h1>Abstract</h1>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+</section>
+<section id="preliminaries" class="level1">
+<h1>Preliminaries</h1>
+<section id="amenable-groups-and-actions" class="level2">
+<h2>Amenable Groups and Actions</h2>
 <div id="FolnerSequence" class="definition">
 <div class="title">
 <p>Følner sequence</p>
 </div>
 <div class="content">
 <p>We define a <em>right-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner=(\Folner_N)_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Gamma\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{|(\Folner_N\cdot \GroupElement^{-1})\cap\Folner_N|}{|\Folner_N|}=1\]</span>for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
-<p>Similarly, we define a <em>left-Følner sequence}</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner=(\Folner_N)_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Gamma\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{|(\GroupElement^{-1}\cdot\Folner_N)\cap\Folner_N|}{|\Folner_N|}=1 \]</span>for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
+<p>Similarly, we define a <em>left-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner=(\Folner_N)_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Gamma\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{|(\GroupElement^{-1}\cdot\Folner_N)\cap\Folner_N|}{|\Folner_N|}=1 \]</span>for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
 <p>We call a sequence a <em>Følner sequence</em> if it is both a left and right Følner sequence.</p>
 </div>
 </div>
+</section>
+<section id="topological-dynamics-of-group-actions" class="level2">
+<h2>Topological Dynamics of Group Actions</h2>
+</section>
+<section id="recurrence-results-ergodic-theorems" class="level2">
+<h2>Recurrence Results &amp; Ergodic Theorems</h2>
+</section>
+<section id="erdős-cubes-cubic-measures" class="level2">
+<h2>Erdős Cubes &amp; Cubic Measures</h2>
+</section>
+<section id="factor-maps" class="level2">
+<h2>Factor Maps</h2>
+</section>
+<section id="key-dynamical-results" class="level2">
+<h2>Key Dynamical Results</h2>
+</section>
+</section>
+<section id="proof-of-theorem-ref" class="level1">
+<h1>Proof of Theorem (ref)</h1>
+<section id="furstenbergs-correspondence-princple" class="level2">
+<h2>Furstenberg’s Correspondence Princple</h2>
+</section>
+<section id="kronecker-factor" class="level2">
+<h2>Kronecker Factor</h2>
+</section>
+<section id="choosing-a-point-x_1" class="level2">
+<h2>Choosing a point <span class="math inline">\(x_1\)</span></h2>
+</section>
+<section id="the-joining-nu" class="level2">
+<h2>The joining <span class="math inline">\(\nu\)</span></h2>
+</section>
+<section id="proof-conclusion" class="level2">
+<h2>Proof Conclusion</h2>
+</section>
+</section>
+<section id="proof-of-corollary-ref" class="level1">
+<h1>Proof of Corollary (ref)</h1>
+</section>
+<section id="proof-of-theorem-ref-1" class="level1">
+<h1>Proof of Theorem (ref)</h1>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
 <div id="quarto-navigation-envelope" class="hidden">
 <p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6SG9tZQ==">Home</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2luZGV4Lmh0bWw=">/index.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6UmVzZWFyY2ggT3V0cHV0">Research Output</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3Jlc2VhcmNoLmh0bWw=">/research.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6VGVhY2hpbmcgQWN0aXZpdGllcw==">Teaching Activities</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3RlYWNoaW5nLmh0bWw=">/teaching.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6QWR2b2NhY3kgV29yaw==">Advocacy Work</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2Fkdm9jYWN5Lmh0bWw=">/advocacy.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6QXV0b21hdGlvbnM=">Automations</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2F1dG9tYXRpb25zLmh0bWw=">/automations.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6QWJvdXQ=">About</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2Fib3V0Lmh0bWw=">/about.html</span></p>
 </div>
 <div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups – Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups – Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups – Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Kai Prince</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id = "quarto-html-after-body" type="application/javascript">
