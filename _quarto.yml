@@ -3,6 +3,8 @@ project:
   type: website
   resources:
     - CNAME
+    - "*.json"
+  pre-render: math-macros.py
 
 website:
   title: "Kai Prince"
@@ -25,9 +27,11 @@ format:
   html:
     comments:
       hypothesis: true
+    respect-user-color-scheme: true
     html-math-method:
       method: mathjax
       url: "https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.7/tex-mml-chtml.js"
+    email-obfuscation: javascript
     include-in-header: mathjax.html
     theme:
       - cosmo

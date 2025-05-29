@@ -7,6 +7,7 @@ format:
   pdf:
     documentclass: article
     pdf-engine: pdflatex
+    include-in-header: LaTeXMacros.tex
     toc: true
     keep-tex: true
 ---
@@ -17,8 +18,6 @@ format:
 # Preliminaries
 
 ## Amenable Groups and Actions
-
-{{< include maths_notes/folner.qmd >}}
 
 ## Topological Dynamics of Group Actions
 

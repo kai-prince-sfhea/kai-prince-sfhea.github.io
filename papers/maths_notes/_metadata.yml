@@ -1,5 +1,3 @@
 project:
   title: "My Website"
   type: website
-  resources:
-    - CNAME
