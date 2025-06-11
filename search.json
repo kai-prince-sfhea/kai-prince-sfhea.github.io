@@ -1,8 +1,8 @@
 [
   {
-    "objectID": "advocacy.html",
-    "href": "advocacy.html",
-    "title": "Advocacy",
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
     "section": "",
     "text": "No matching items"
   },
@@ -12,6 +12,13 @@
     "title": "Kai Prince",
     "section": "",
     "text": "Følner sequence\n\n\nWe define a right-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner=(\\Folner_N)_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|(\\Folner_N\\cdot \\GroupElement^{-1})\\cap\\Folner_N|}{|\\Folner_N|}=1\\]for all \\(\\GroupElement\\in\\Group\\).\nSimilarly, we define a left-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner=(\\Folner_N)_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|(\\GroupElement^{-1}\\cdot\\Folner_N)\\cap\\Folner_N|}{|\\Folner_N|}=1 \\]for all \\(\\GroupElement\\in\\Group\\).\nWe call a sequence a Følner sequence if it is both a left and right Følner sequence."
+  },
+  {
+    "objectID": "advocacy.html",
+    "href": "advocacy.html",
+    "title": "Advocacy",
+    "section": "",
+    "text": "No matching items"
   },
   {
     "objectID": "research.html",
@@ -31,20 +38,6 @@
     "objectID": "automations.html",
     "href": "automations.html",
     "title": "Automations",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "My Website",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.Test Citation: (Moreira, Richter and Robertson, 2019)\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner{N}|}\\sum_{\\gamma\\in\\Folner}T^\\gamma x \\]\nUPDATE3\n\n\n\n\nReferences\n\nMoreira, J., Richter, F. and Robertson, D. (2019). 'A proof of a sumset conjecture of erdős', Annals of Mathematics, 189 (2), https://doi.org/10.4007/annals.2019.189.2.4."
-  },
-  {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
     "section": "",
     "text": "No matching items"
   },
@@ -124,5 +117,12 @@
     "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "Proof Conclusion",
     "text": "Proof Conclusion"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Website",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.Test Citation: (Moreira, Richter and Robertson, 2019)\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner{N}|}\\sum_{\\gamma\\in\\Folner}T^\\gamma x \\]\nUPDATE3\n\n\n\n\nReferences\n\nMoreira, J., Richter, F. and Robertson, D. (2019). 'A proof of a sumset conjecture of erdős', Annals of Mathematics, 189 (2), https://doi.org/10.4007/annals.2019.189.2.4."
   }
 ]

@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/teaching.html",
+    "items": []
+  },
+  {
     "listing": "/advocacy.html",
     "items": []
   },
@@ -11,10 +15,6 @@
   },
   {
     "listing": "/automations.html",
-    "items": []
-  },
-  {
-    "listing": "/teaching.html",
     "items": []
   }
 ]
