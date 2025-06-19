@@ -1,6 +1,6 @@
 project:
   title: "My Website"
-  type: website
+  type: schema
   resources:
     - CNAME
     - "*.json"
