@@ -1,6 +1,6 @@
-[submodule "papers/GeneralisedErdosConjecture"]
-	path = papers/GeneralisedErdosConjecture
+[submodule "maths/GeneralisedErdosConjecture"]
+	path = maths/GeneralisedErdosConjecture
 	url = git@github.com:/kai-prince-sfhea/GeneralisedErdosConjecture.git
-[submodule "papers/MathsNotes"]
-	path = papers/MathsNotes
+[submodule "maths/MathsNotes"]
+	path = maths/MathsNotes
 	url = git@github.com:/kai-prince-sfhea/MathsResearchNotes.git

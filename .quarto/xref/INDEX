@@ -3,10 +3,12 @@
     "default.html": "8900c8ce"
   },
   "about.qmd": {
-    "about.html": "f343437f"
+    "about.html": "f343437f",
+    "about.tex": "f62d874a"
   },
   "index.qmd": {
-    "index.html": "cef11634"
+    "index.html": "cef11634",
+    "index.tex": "b797fc97"
   },
   "research.qmd": {
     "research.html": "1e8b8c5f"
@@ -34,5 +36,24 @@
   "papers/maths_notes/folner.qmd": {
     "folner.html": "c4d3ef0f",
     "folner.tex": "1739cfb6"
+  },
+  "papers/GeneralisedErdosConjecture/ErdosConjecture.qmd": {
+    "ErdosConjecture.html": "facda7a6",
+    "ErdosConjecture.tex": "d1bcdd01"
+  },
+  "papers/MathsNotes/folner.qmd": {
+    "folner.html": "9687fdaa",
+    "folner.tex": "81fc29cf"
+  },
+  "papers/research.qmd": {
+    "research.html": "527c93d4",
+    "research.tex": "20152b47"
+  },
+  "maths/GeneralisedErdosConjecture/ErdosConjecture.qmd": {
+    "ErdosConjecture.html": "6e3e35ab",
+    "ErdosConjecture.tex": "67524e8e"
+  },
+  "maths/research.qmd": {
+    "research.html": "540ec2b1"
   }
 }

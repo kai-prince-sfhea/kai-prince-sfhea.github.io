@@ -4,7 +4,7 @@ project:
   resources:
     - CNAME
     - "*.json"
-  pre-render: math-macros.py
+  execute-dir: project
 
 website:
   title: "Kai Prince"
@@ -12,7 +12,7 @@ website:
     left:
       - href: index.qmd
         text: "Home"
-      - href: research.qmd
+      - href: maths/research.qmd
         text: "Research Output"
       - href: teaching.qmd
         text: "Teaching Activities"
@@ -24,22 +24,19 @@ website:
       - about.qmd
 
 format:
-  html:
+  schema-html:
+    css: styles.css
     comments:
       hypothesis: true
     respect-user-color-scheme: true
-    html-math-method:
-      method: mathjax
-      url: "https://cdn.jsdelivr.net/npm/mathjax@4.0.0-beta.7/tex-mml-chtml.js"
     email-obfuscation: javascript
-    include-in-header: mathjax.html
     theme:
       - cosmo
       - brand
-    css: styles.css
 
 execute:
   freeze: auto
+  cache: true
 
 bibliography: references.bib
 csl: harvard-manchester.csl

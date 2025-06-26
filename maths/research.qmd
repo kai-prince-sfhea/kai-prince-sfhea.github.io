@@ -1,0 +1,13 @@
+---
+title: "Research"
+listing:
+    contents:
+        - GeneralisedErdosConjecture/ErdosConjecture.qmd
+    type: table
+    sort: "date"
+
+website:
+    sidebar: 
+        contents:
+            - maths/GeneralisedErdosConjecture/ErdosConjecture.qmd
+---
