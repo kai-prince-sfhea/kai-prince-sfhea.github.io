@@ -9,5 +9,5 @@ listing:
 website:
     sidebar: 
         contents:
-            - maths/GeneralisedErdosConjecture/ErdosConjecture.qmd
+            - GeneralisedErdosConjecture/ErdosConjecture.qmd
 ---

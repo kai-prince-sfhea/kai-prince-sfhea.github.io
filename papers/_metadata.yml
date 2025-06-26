@@ -1,0 +1,15 @@
+website:
+    sidebar: 
+        contents: auto
+
+format:
+  schema-html:
+    toc: true
+  schema-latex: default
+  schema-pdf:
+    toc: true
+
+author:
+    - name: Kai Prince
+      affiliation: The University of Manchester
+      corresponding: true

@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Website",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.Test Citation: (Moreira, Richter and Robertson, 2019)\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner{N}|}\\sum_{\\gamma\\in\\Folner}T^\\gamma x \\]\nUPDATE3\n\n\n\n\nReferences\n\nMoreira, J., Richter, F. and Robertson, D. (2019). 'A proof of a sumset conjecture of erdős', Annals of Mathematics, 189 (2), https://doi.org/10.4007/annals.2019.189.2.4."
+  },
+  {
+    "objectID": "advocacy.html",
+    "href": "advocacy.html",
+    "title": "Advocacy",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "automations.html",
+    "href": "automations.html",
+    "title": "Automations",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "3.1 Amenable Groups and Actions",
+    "text": "3.1 Amenable Groups and Actions"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "3.2 Topological Dynamics of Group Actions",
+    "text": "3.2 Topological Dynamics of Group Actions"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "3.3 Recurrence Results & Ergodic Theorems",
+    "text": "3.3 Recurrence Results & Ergodic Theorems"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#erdős-cubes-cubic-measures",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#erdős-cubes-cubic-measures",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "3.4 Erdős Cubes & Cubic Measures",
+    "text": "3.4 Erdős Cubes & Cubic Measures"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#factor-maps",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#factor-maps",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "3.5 Factor Maps",
+    "text": "3.5 Factor Maps"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#key-dynamical-results",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#key-dynamical-results",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "3.6 Key Dynamical Results",
+    "text": "3.6 Key Dynamical Results"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "4.1 Furstenberg’s Correspondence Princple",
+    "text": "4.1 Furstenberg’s Correspondence Princple"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "4.2 Kronecker Factor",
+    "text": "4.2 Kronecker Factor"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#choosing-a-point-x_1",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#choosing-a-point-x_1",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "4.3 Choosing a point \\(x_1\\)",
+    "text": "4.3 Choosing a point \\(x_1\\)"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#the-joining-nu",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#the-joining-nu",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "4.4 The joining \\(\\nu\\)",
+    "text": "4.4 The joining \\(\\nu\\)"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#proof-conclusion",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#proof-conclusion",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
+    "section": "4.5 Proof Conclusion",
+    "text": "4.5 Proof Conclusion"
+  },
+  {
+    "objectID": "papers/research.html",
+    "href": "papers/research.html",
+    "title": "Research",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nA Short Proof of a Generalised Conjecture of Erdős in Amenable Groups\n\n\nKai Prince\n\n\n\n\n\n\nNo matching items"
+  }
+]

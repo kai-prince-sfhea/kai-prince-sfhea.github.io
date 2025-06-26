@@ -4,7 +4,6 @@ project:
   resources:
     - CNAME
     - "*.json"
-  execute-dir: project
 
 website:
   title: "Kai Prince"
@@ -12,7 +11,7 @@ website:
     left:
       - href: index.qmd
         text: "Home"
-      - href: maths/research.qmd
+      - href: papers/research.qmd
         text: "Research Output"
       - href: teaching.qmd
         text: "Teaching Activities"
