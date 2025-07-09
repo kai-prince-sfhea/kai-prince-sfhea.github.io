@@ -1,31 +1,10 @@
 [
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
+    "objectID": "automations.html",
+    "href": "automations.html",
+    "title": "Automations",
     "section": "",
     "text": "No matching items"
-  },
-  {
-    "objectID": "papers/maths_notes/folner.html",
-    "href": "papers/maths_notes/folner.html",
-    "title": "Kai Prince",
-    "section": "",
-    "text": "Følner sequence\n\n\nWe define a right-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner=(\\Folner_N)_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|(\\Folner_N\\cdot \\GroupElement^{-1})\\cap\\Folner_N|}{|\\Folner_N|}=1\\]for all \\(\\GroupElement\\in\\Group\\).\nSimilarly, we define a left-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner=(\\Folner_N)_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|(\\GroupElement^{-1}\\cdot\\Folner_N)\\cap\\Folner_N|}{|\\Folner_N|}=1 \\]for all \\(\\GroupElement\\in\\Group\\).\nWe call a sequence a Følner sequence if it is both a left and right Følner sequence."
-  },
-  {
-    "objectID": "advocacy.html",
-    "href": "advocacy.html",
-    "title": "Advocacy",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
-    "objectID": "research.html",
-    "href": "research.html",
-    "title": "Research",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nA Short Proof of a Generalised Conjecture of Erdős in Amenable Groups\n\n\nKai Prince\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -35,88 +14,18 @@
     "text": "About this site"
   },
   {
-    "objectID": "automations.html",
-    "href": "automations.html",
-    "title": "Automations",
+    "objectID": "papers/research.html",
+    "href": "papers/research.html",
+    "title": "Research",
     "section": "",
     "text": "No matching items"
   },
   {
-    "objectID": "papers/ErdosConjecture.html#amenable-groups-and-actions",
-    "href": "papers/ErdosConjecture.html#amenable-groups-and-actions",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Amenable Groups and Actions",
-    "text": "Amenable Groups and Actions"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#topological-dynamics-of-group-actions",
-    "href": "papers/ErdosConjecture.html#topological-dynamics-of-group-actions",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Topological Dynamics of Group Actions",
-    "text": "Topological Dynamics of Group Actions"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#recurrence-results-ergodic-theorems",
-    "href": "papers/ErdosConjecture.html#recurrence-results-ergodic-theorems",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Recurrence Results & Ergodic Theorems",
-    "text": "Recurrence Results & Ergodic Theorems"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#erdős-cubes-cubic-measures",
-    "href": "papers/ErdosConjecture.html#erdős-cubes-cubic-measures",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Erdős Cubes & Cubic Measures",
-    "text": "Erdős Cubes & Cubic Measures"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#factor-maps",
-    "href": "papers/ErdosConjecture.html#factor-maps",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Factor Maps",
-    "text": "Factor Maps"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#key-dynamical-results",
-    "href": "papers/ErdosConjecture.html#key-dynamical-results",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Key Dynamical Results",
-    "text": "Key Dynamical Results"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#furstenbergs-correspondence-princple",
-    "href": "papers/ErdosConjecture.html#furstenbergs-correspondence-princple",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Furstenberg’s Correspondence Princple",
-    "text": "Furstenberg’s Correspondence Princple"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#kronecker-factor",
-    "href": "papers/ErdosConjecture.html#kronecker-factor",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Kronecker Factor",
-    "text": "Kronecker Factor"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#choosing-a-point-x_1",
-    "href": "papers/ErdosConjecture.html#choosing-a-point-x_1",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Choosing a point \\(x_1\\)",
-    "text": "Choosing a point \\(x_1\\)"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#the-joining-nu",
-    "href": "papers/ErdosConjecture.html#the-joining-nu",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "The joining \\(\\nu\\)",
-    "text": "The joining \\(\\nu\\)"
-  },
-  {
-    "objectID": "papers/ErdosConjecture.html#proof-conclusion",
-    "href": "papers/ErdosConjecture.html#proof-conclusion",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "Proof Conclusion",
-    "text": "Proof Conclusion"
+    "objectID": "advocacy.html",
+    "href": "advocacy.html",
+    "title": "Advocacy",
+    "section": "",
+    "text": "No matching items"
   },
   {
     "objectID": "index.html",
@@ -124,5 +33,12 @@
     "title": "My Website",
     "section": "",
     "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.Test Citation: (Moreira, Richter and Robertson, 2019)\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner{N}|}\\sum_{\\gamma\\in\\Folner}T^\\gamma x \\]\nUPDATE3\n\n\n\n\nReferences\n\nMoreira, J., Richter, F. and Robertson, D. (2019). 'A proof of a sumset conjecture of erdős', Annals of Mathematics, 189 (2), https://doi.org/10.4007/annals.2019.189.2.4."
+  },
+  {
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
+    "section": "",
+    "text": "No matching items"
   }
 ]

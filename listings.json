@@ -1,6 +1,10 @@
 [
   {
-    "listing": "/teaching.html",
+    "listing": "/automations.html",
+    "items": []
+  },
+  {
+    "listing": "/papers/research.html",
     "items": []
   },
   {
@@ -8,13 +12,7 @@
     "items": []
   },
   {
-    "listing": "/research.html",
-    "items": [
-      "/papers/ErdosConjecture.html"
-    ]
-  },
-  {
-    "listing": "/automations.html",
+    "listing": "/teaching.html",
     "items": []
   }
 ]
