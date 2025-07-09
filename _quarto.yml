@@ -3,7 +3,6 @@ project:
   type: schema
   resources:
     - CNAME
-    - "*.json"
 
 website:
   title: "Kai Prince"

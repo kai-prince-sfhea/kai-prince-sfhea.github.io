@@ -55,5 +55,13 @@
   },
   "maths/research.qmd": {
     "research.html": "540ec2b1"
+  },
+  "papers/MathsNotes/axioms.qmd": {
+    "axioms.html": "a38eafc0",
+    "axioms.tex": "ca049da8"
+  },
+  "papers/MathsNotes/group.qmd": {
+    "group.html": "870c4798",
+    "group.tex": "0a8c5cd3"
   }
 }
