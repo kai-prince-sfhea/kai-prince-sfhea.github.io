@@ -7,30 +7,121 @@
     "text": "No matching items"
   },
   {
-    "objectID": "papers/MathsNotes/group.html",
-    "href": "papers/MathsNotes/group.html",
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/actions.html",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/actions.html",
+    "title": "Actions",
+    "section": "",
+    "text": "Definition 1 (Bekka and Mayer (2000) Section 2) An action of a group, \\(\\Group\\), on a measurable space \\((X,\\mathscr{B})\\) is a measurable mapping \\[\\Group\\times X\\rightarrow X,\\ (\\GroupElement,x)\\mapsto \\GroupAction{\\GroupElement}{x} \\] with the following properties:\n\nAssociativity: For all \\(\\GroupElement,\\GroupElement'\\in \\Group,x\\in X\\), then \\(\\GroupElement.(\\GroupElement'.x)=\\GroupAction{(\\GroupOperation{\\GroupElement}{\\GroupElement'})}{x}\\)\nIdentity: There exists an identity element \\(\\GroupIdentity\\in\\Group\\) such that \\(\\GroupAction{\\GroupIdentity}{x}=x\\) for all \\(x\\in X\\).\nQuasi-Invariance: For any \\(B\\in\\mathscr{B}\\) and for all \\(\\GroupElement\\in\\Group\\), we have \\(\\mu(\\GroupAction{\\GroupElement}{B})=0\\) if and only if \\(\\mu(B)=0\\).\n\nThe action of \\(\\Group\\) is also ergodic if it satisfies the additional property:\n\nIf \\(B\\in\\mathscr{B}\\) and \\(\\mu(B)=\\mu(\\GroupAction{\\GroupElement}{B})\\) for any \\(\\GroupElement\\in\\Group\\), then \\(\\mu(B)=0\\) or \\(\\mu(X\\setminus B)=0\\).\n\n\n\n\n\n\n\n\n\nReferences\n\nBekka, M. B. and Mayer, M. (2000). Ergodic theory and topological dynamics of group actions on homogeneous spaces. Cambridge University Press. https://doi.org/10.1017/cbo9780511758898."
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/density.html",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/density.html",
+    "title": "Density",
+    "section": "",
+    "text": "Definition 1 For \\(A\\subseteq G\\) and Følner sequence \\(\\Phi=(\\Phi_N)_{n=1}^\\infty\\), we write \\[\\begin{align*}\n    \\overline{d}_\\Phi(A)&=\\limsup_{N\\rightarrow\\infty}\\frac{|A\\cap\\Phi_N|}{|\\Phi_N|}\n    \\\\\\underline{d}_\\Phi(A)&=\\liminf_{N\\rightarrow\\infty}\\frac{|A\\cap\\Phi_N|}{|\\Phi_N|}\n\\end{align*}\\] to be the upper and lower densities of \\(A\\) with respect to \\(\\Phi\\), respectively. If these agree, then we can write \\[\nd_\\Phi(A)=\\lim_{N\\rightarrow\\infty}\\frac{|A\\cap\\Phi_N|}{|\\Phi_N|}\n\\] to be the density of \\(A\\) with respect to \\(\\Phi\\). We also define the upper Banach density of \\(A\\) by \\[\n\\overline{d}(A)=\\sup\\{d_\\Phi(A):\\text{for Følner sequences }\\Phi\\text{ where }d_\\Phi(A)\\text{ exists}\\}.\n\\]"
+  },
+  {
+    "objectID": "papers/MathsNotes/0_Fundamental/group.html",
+    "href": "papers/MathsNotes/0_Fundamental/group.html",
     "title": "Group",
     "section": "",
-    "text": "1 Introduction\n\nDefinition 1 A group is a non-empty set \\(\\Group\\) together with a binary operation on \\(\\Group\\), denoted “\\(\\GroupOperation{}{}\\)”, that combines any two elements \\(\\GroupElement\\) and \\(\\GroupElement'\\) of \\(\\Group\\) to form an element of \\(\\Group\\), denoted \\(\\GroupOperation{\\GroupElement}{\\GroupElement'}\\), such that the following three requirements, known as group axioms, are satisfied:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n2 More Information\nYou can learn more about controlling the appearance of HTML output here: https://quarto.org/docs/output-formats/html-basics.html"
+    "text": "Definition 1 A group is a non-empty set \\(\\Group\\) together with a binary operation on \\(\\Group\\), denoted “\\(\\GroupOperation{}{}\\)”, that combines any two elements \\(\\GroupElement\\) and \\(\\GroupElement'\\) of \\(\\Group\\) to form an element of \\(\\Group\\), denoted \\(\\GroupOperation{\\GroupElement}{\\GroupElement'}\\), such that the following three requirements, known as group axioms, are satisfied:"
   },
   {
-    "objectID": "papers/MathsNotes/axioms.html",
-    "href": "papers/MathsNotes/axioms.html",
-    "title": "Axioms",
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html",
+    "title": "Abstract",
     "section": "",
-    "text": "1 Introduction\n\nDefinition 1 (associativity) For all \\({a},{b},{c}\\) in \\(\\Set\\), one has \\(\\Operation{(\\Operation{a}{b})}{c}=\\Operation{a}{(\\Operation{b}{c})}\\).\n\n\nDefinition 2 (identity) There exists an element \\(\\Identity\\) in \\(\\Set\\) such that, for every \\({a}\\) in \\(\\Set\\), one has \\(\\Operation{\\Identity}{a}={a}\\) and \\(\\Operation{a}{\\Identity}={a}\\). Such an element is unique and is called the identity element.\n\n\nDefinition 4  \n\nDefinition 3 (inverse) For each \\({a}\\) in \\(\\Set\\), there exists an element \\({b}\\) in \\(\\Set\\) such that \\(\\Operation{a}{b}=\\Identity\\) and \\(\\Operation{b}{a}=\\Identity\\), where \\(\\Identity\\) is the identity element.\n\nFor each \\({a}\\), the element \\({b}\\) is unique and is called the inverse of \\({b}\\) and is denoted \\(\\Inverse{a}\\).\n\nTest Definition 1\n\n\n2 More Information\nYou can learn more about controlling the appearance of HTML output here: https://quarto.org/docs/output-formats/html-basics.html"
+    "text": "We follow steps provided by the paper published by (Host, 2019), ‘A Short Proof of a Conjecture of Erdős Proved by Moreira, Richter and Robertson’, as well as using the results provided by (Kra et al., 2022), to generalise the proof of Erdős’s conjecture for amenable groups. The main result that we aim to prove is: ‘every positively dense subset of an amenable group contains the group sumset of \\(k\\) infinite sets for every natural number \\(k\\)’."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "My Website",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.Test Citation: (Moreira, Richter and Robertson, 2019)\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner{N}|}\\sum_{\\gamma\\in\\Folner}T^\\gamma x \\]\nUPDATE3\n\n\n\n\nReferences\n\nMoreira, J., Richter, F. and Robertson, D. (2019). 'A proof of a sumset conjecture of erdős', Annals of Mathematics, 189 (2), https://doi.org/10.4007/annals.2019.189.2.4."
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
+    "title": "Abstract",
+    "section": "2.1 Amenable Groups and Actions",
+    "text": "2.1 Amenable Groups and Actions\nThroughout this paper, unless otherwise specified, we will let \\((G,\\cdot)\\) be a second countable discrete group. This also means that the Haar measure of \\(G\\) is the counting measure.\n\n\n\n\n\n\n\nDefinition 1 [Embed definition from folner.qmd]\n\n\n\n\nFor simplicity of this paper, we will use the alternative and equivalent definition that a group, \\(\\AmenableGroup\\), is amenable (and second countable) if and only if it has a Følner sequence.\n\n\n\n\n\n\n\nDefinition 2 [Embed definition from folner.qmd]\n\n\n\n\n\n\n\n\n\n\n\nDefinition 3 [Embed definition from density.qmd]"
   },
   {
-    "objectID": "advocacy.html",
-    "href": "advocacy.html",
-    "title": "Advocacy",
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
+    "title": "Abstract",
+    "section": "2.2 Topological Dynamics of Group Actions",
+    "text": "2.2 Topological Dynamics of Group Actions\n\n\n\n\n\n\n\nDefinition 4 [Embed definition from actions.qmd]\n\n\n\n\nA topological dynamical system under the action of \\(\\Group\\), denoted \\((X,\\Group)\\), is a compact metric space \\(X\\) that has continuous surjective maps, \\((\\GroupElement,x)\\mapsto \\GroupAction{\\GroupElement}{x}\\), for all \\(\\GroupElement\\in\\Group\\).\nLet \\(x\\in X\\), \\(\\Folner=(\\Folner[N])_{N\\in\\mathbb{N}}\\) be a Følner sequence in \\(\\Gamma\\) and \\(\\mu\\) a probability measure on \\(X\\). Where \\(\\delta_x\\) is the Dirac mass at \\(x\\), if \\[\\frac{1}{|\\Folner[N]|}\\sum_{\\GroupElement\\in\\Folner[N]}\\delta_{\\GroupAction{\\GroupElement}{x}}\\underset{\\text{weakly*}}{\\longrightarrow} \\mu \\text{ as }N\\rightarrow\\infty, \\] then we say \\(x\\) is generic for \\(\\mu\\) with respect to \\(\\Folner\\) and we denote this with \\(x\\in\\text{gen}(\\mu,\\Phi)\\).1"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
+    "title": "Abstract",
+    "section": "2.3 Recurrence Results & Ergodic Theorems",
+    "text": "2.3 Recurrence Results & Ergodic Theorems"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#erdős-cubes-cubic-measures",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#erdős-cubes-cubic-measures",
+    "title": "Abstract",
+    "section": "2.4 Erdős Cubes & Cubic Measures",
+    "text": "2.4 Erdős Cubes & Cubic Measures"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#factor-maps",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#factor-maps",
+    "title": "Abstract",
+    "section": "2.5 Factor Maps",
+    "text": "2.5 Factor Maps"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#key-dynamical-results",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#key-dynamical-results",
+    "title": "Abstract",
+    "section": "2.6 Key Dynamical Results",
+    "text": "2.6 Key Dynamical Results"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
+    "title": "Abstract",
+    "section": "3.1 Furstenberg’s Correspondence Princple",
+    "text": "3.1 Furstenberg’s Correspondence Princple"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
+    "title": "Abstract",
+    "section": "3.2 Kronecker Factor",
+    "text": "3.2 Kronecker Factor"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#choosing-a-point-x_1",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#choosing-a-point-x_1",
+    "title": "Abstract",
+    "section": "3.3 Choosing a point \\(x_1\\)",
+    "text": "3.3 Choosing a point \\(x_1\\)"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#the-joining-nu",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#the-joining-nu",
+    "title": "Abstract",
+    "section": "3.4 The joining \\(\\nu\\)",
+    "text": "3.4 The joining \\(\\nu\\)"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#proof-conclusion",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#proof-conclusion",
+    "title": "Abstract",
+    "section": "3.5 Proof Conclusion",
+    "text": "3.5 Proof Conclusion"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#footnotes",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#footnotes",
+    "title": "Abstract",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nconsider tempered separately as the FCP construction only depends on sequential compactness↩︎"
+  },
+  {
+    "objectID": "automations.html",
+    "href": "automations.html",
+    "title": "Automations",
     "section": "",
     "text": "No matching items"
   },
@@ -42,101 +133,45 @@
     "text": "About this site"
   },
   {
-    "objectID": "automations.html",
-    "href": "automations.html",
-    "title": "Automations",
+    "objectID": "advocacy.html",
+    "href": "advocacy.html",
+    "title": "Advocacy",
     "section": "",
     "text": "No matching items"
   },
   {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "3.1 Amenable Groups and Actions",
-    "text": "3.1 Amenable Groups and Actions"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Website",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.Test Citation: [@Moreira_2019]\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner{N}|}\\sum_{\\gamma\\in\\Folner}T^\\gamma x \\]\nUPDATE3"
   },
   {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "3.2 Topological Dynamics of Group Actions",
-    "text": "3.2 Topological Dynamics of Group Actions"
+    "objectID": "papers/MathsNotes/0_Fundamental/axioms.html",
+    "href": "papers/MathsNotes/0_Fundamental/axioms.html",
+    "title": "Axioms",
+    "section": "",
+    "text": "Definition 1 (associativity) For all \\({a},{b},{c}\\) in \\(\\Set\\), one has \\(\\Operation{(\\Operation{a}{b})}{c}=\\Operation{a}{(\\Operation{b}{c})}\\).\n\n\n\n\n\n\n\n\n\n\n\nDefinition 2 (identity) There exists an element \\(\\Identity\\) in \\(\\Set\\) such that, for every \\({a}\\) in \\(\\Set\\), one has \\(\\Operation{\\Identity}{a}={a}\\) and \\(\\Operation{a}{\\Identity}={a}\\). Such an element is unique and is called the identity element.\n\n\n\n\n\n\n\n\n\n\n\nDefinition 4  \n\n\n\n\n\n\n\nDefinition 3 (inverse) For each \\({a}\\) in \\(\\Set\\), there exists an element \\({b}\\) in \\(\\Set\\) such that \\(\\Operation{a}{b}=\\Identity\\) and \\(\\Operation{b}{a}=\\Identity\\), where \\(\\Identity\\) is the identity element.\n\n\n\n\nFor each \\({a}\\), the element \\({b}\\) is unique and is called the inverse of \\({b}\\) and is denoted \\(\\Inverse{a}\\)."
   },
   {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "3.3 Recurrence Results & Ergodic Theorems",
-    "text": "3.3 Recurrence Results & Ergodic Theorems"
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/amenable.html",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/amenable.html",
+    "title": "Amenable",
+    "section": "",
+    "text": "Definition 1 For simplicity, we will use the alternative and equivalent definition that a group is amenable (and second countable) if and only if it has a Følner sequence."
   },
   {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#erdős-cubes-cubic-measures",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#erdős-cubes-cubic-measures",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "3.4 Erdős Cubes & Cubic Measures",
-    "text": "3.4 Erdős Cubes & Cubic Measures"
-  },
-  {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#factor-maps",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#factor-maps",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "3.5 Factor Maps",
-    "text": "3.5 Factor Maps"
-  },
-  {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#key-dynamical-results",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#key-dynamical-results",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "3.6 Key Dynamical Results",
-    "text": "3.6 Key Dynamical Results"
-  },
-  {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "4.1 Furstenberg’s Correspondence Princple",
-    "text": "4.1 Furstenberg’s Correspondence Princple"
-  },
-  {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "4.2 Kronecker Factor",
-    "text": "4.2 Kronecker Factor"
-  },
-  {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#choosing-a-point-x_1",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#choosing-a-point-x_1",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "4.3 Choosing a point \\(x_1\\)",
-    "text": "4.3 Choosing a point \\(x_1\\)"
-  },
-  {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#the-joining-nu",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#the-joining-nu",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "4.4 The joining \\(\\nu\\)",
-    "text": "4.4 The joining \\(\\nu\\)"
-  },
-  {
-    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#proof-conclusion",
-    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#proof-conclusion",
-    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
-    "section": "4.5 Proof Conclusion",
-    "text": "4.5 Proof Conclusion"
-  },
-  {
-    "objectID": "papers/MathsNotes/folner.html",
-    "href": "papers/MathsNotes/folner.html",
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html",
     "title": "Følner sequence",
     "section": "",
-    "text": "1 Introduction\n\nDefinition 1 We define a right-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|\\GroupOperation{(\\GroupOperation{\\Folner[N]}{\\Inverse{\\GroupElement}})}{\\Folner[N]}|}{|\\Folner[N]|}=1\\]for all \\(\\GroupElement\\in\\Group\\).\n\n\nDefinition 2 Similarly, we define a left-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|(\\Inverse{\\GroupElement}\\cdot\\Folner[N])\\cap\\Folner[N]|}{|\\Folner[N]|}=1 \\]for all \\(\\GroupElement\\in\\Group\\).\n\n\nDefinition 3 We call a sequence a Følner sequence if it is both a left and right Følner sequence.\n\n\n\n2 Results\n\nTheorem 1 (The Test Theorem) This is a Theorem.\n\n\n\n\n\n\n\nTip\n\n\n\nThis is a test tip.\n\n\n\n\n3 More Information\nYou can learn more about controlling the appearance of HTML output here: https://quarto.org/docs/output-formats/html-basics.html"
+    "text": "1 Følner Sequences\n\n\n\n\n\n\n\nDefinition 1 We define a right-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|\\GroupOperation{(\\GroupOperation{\\Folner[N]}{\\Inverse{\\GroupElement}})}{\\Folner[N]}|}{|\\Folner[N]|}=1\\]for all \\(\\GroupElement\\in\\Group\\).\n\n\n\n\n\n\n\n\n\n\n\nDefinition 2 Similarly, we define a left-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Gamma\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{|(\\Inverse{\\GroupElement}\\cdot\\Folner[N])\\cap\\Folner[N]|}{|\\Folner[N]|}=1 \\]for all \\(\\GroupElement\\in\\Group\\).\n\n\n\n\n\n\n\n\n\n\n\nDefinition 3 We call a sequence a Følner sequence if it is both a left and right Følner sequence.\n\n\n\n\n\n\n2 Tempered Følner Sequences\n\n\n\n\n\n\n\nDefinition 4 (Lindenstrauss (2001), Definition 1.1) A sequence of sets \\(\\Phi=(\\Phi_N)_{N\\in\\mathbb{N}}\\) will be said to be tempered if, for some \\(b&gt;0\\) and all \\(n\\in\\mathbb{N}\\),\n\\[\n\\left|\\bigcup_{1\\leq k&lt;n}\\Phi_k^{-1}\\Phi_n \\right|\\leq b|\\Phi_N|.\n\\tag{1}\\]\nis referred to as the Shulman condition.\n\n\n\n\n\n\n\n\n\n\n\nProposition 1 (Lindenstrauss (2001), Proposition 1.4)  \n\nEvery Følner sequence \\(\\Phi=(\\Phi_N)_{N\\in\\mathbb{N}}\\) has a tempered subsequence.\nEvery amenable group has a tempered Følner sequence.\n\n\n\n\n\n\n\n\n\n\nReferences\n\nLindenstrauss, E. (2001). 'Pointwise theorems for amenable groups', Inventiones mathematicae, 146 (2), pp. 259–295. https://doi.org/10.1007/s002220100162."
   },
   {
     "objectID": "papers/research.html",
     "href": "papers/research.html",
     "title": "Research",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nA Short Proof of a Generalised Conjecture of Erdős in Amenable Groups\n\n\nKai Prince\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n23 Jul 2025\n\n\nAbstract\n\n\nKai Prince SFHEA, Kai Prince\n\n\n\n\n\n\nNo matching items"
   }
 ]

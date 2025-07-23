@@ -1,7 +1,3 @@
-website:
-    sidebar: 
-        contents: auto
-
 format:
   schema-html:
     toc: true
@@ -10,6 +6,10 @@ format:
     toc: true
 
 author:
-    - name: Kai Prince
+    - name: Kai Prince SFHEA
       affiliation: The University of Manchester
       corresponding: true
+
+date: last-modified
+
+bibliography: references.bib

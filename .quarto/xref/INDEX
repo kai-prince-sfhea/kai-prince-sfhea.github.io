@@ -63,5 +63,38 @@
   "papers/MathsNotes/group.qmd": {
     "group.html": "870c4798",
     "group.tex": "0a8c5cd3"
+  },
+  "papers/MathsNotes/0_Fundamental/axioms.qmd": {
+    "axioms.html": "095f5a87",
+    "axioms.tex": "3e041bbb"
+  },
+  "papers/MathsNotes/0_Fundamental/group.qmd": {
+    "group.html": "7b83f208",
+    "group.tex": "a83a57a8"
+  },
+  "papers/MathsNotes/1_Amenable&Density/folner.qmd": {
+    "folner.html": "d9d5b4ae",
+    "folner.tex": "d4a87b31",
+    "folner.embed.ipynb": "fa1822c4"
+  },
+  "papers/MathsNotes/1_Amenable&Density/density.qmd": {
+    "density.html": "458b57dd",
+    "density.tex": "fc33c4d5"
+  },
+  "papers/MathsNotes/1_Amenable_and_Density/density.qmd": {
+    "density.html": "b67ce301",
+    "density.tex": "127710a4"
+  },
+  "papers/MathsNotes/1_Amenable_and_Density/folner.qmd": {
+    "folner.html": "36eb7405",
+    "folner.tex": "66fdfc8f"
+  },
+  "papers/MathsNotes/2_Topological_Dynamics/actions.qmd": {
+    "actions.html": "10b8a35c",
+    "actions.tex": "d7705dbf"
+  },
+  "papers/MathsNotes/1_Amenable_and_Density/amenable.qmd": {
+    "amenable.html": "a502925e",
+    "amenable.tex": "abb4b2ef"
   }
 }
