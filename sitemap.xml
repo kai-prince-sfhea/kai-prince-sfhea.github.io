@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kaiprince.co.uk/automations.html</loc>
-    <lastmod>2025-07-09T10:09:50.268Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kaiprince.co.uk/about.html</loc>
-    <lastmod>2025-07-09T10:09:50.268Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kaiprince.co.uk/papers/research.html</loc>
-    <lastmod>2025-07-09T10:09:50.268Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kaiprince.co.uk/advocacy.html</loc>
-    <lastmod>2025-07-09T10:09:50.268Z</lastmod>
+    <loc>https://kaiprince.co.uk/teaching.html</loc>
+    <lastmod>2025-07-23T11:02:06.672Z</lastmod>
   </url>
   <url>
     <loc>https://kaiprince.co.uk/index.html</loc>
-    <lastmod>2025-07-09T10:09:50.268Z</lastmod>
+    <lastmod>2025-07-23T11:02:06.667Z</lastmod>
   </url>
   <url>
-    <loc>https://kaiprince.co.uk/teaching.html</loc>
-    <lastmod>2025-07-09T10:09:50.273Z</lastmod>
+    <loc>https://kaiprince.co.uk/about.html</loc>
+    <lastmod>2025-07-23T11:02:06.667Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/advocacy.html</loc>
+    <lastmod>2025-07-23T11:02:06.667Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/research.html</loc>
+    <lastmod>2025-07-23T11:02:06.667Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/automations.html</loc>
+    <lastmod>2025-07-23T11:02:06.667Z</lastmod>
   </url>
 </urlset>

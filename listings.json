@@ -1,10 +1,6 @@
 [
   {
-    "listing": "/automations.html",
-    "items": []
-  },
-  {
-    "listing": "/papers/research.html",
+    "listing": "/teaching.html",
     "items": []
   },
   {
@@ -12,7 +8,11 @@
     "items": []
   },
   {
-    "listing": "/teaching.html",
+    "listing": "/papers/research.html",
+    "items": []
+  },
+  {
+    "listing": "/automations.html",
     "items": []
   }
 ]

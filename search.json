@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "automations.html",
-    "href": "automations.html",
-    "title": "Automations",
+    "objectID": "teaching.html",
+    "href": "teaching.html",
+    "title": "Teaching",
     "section": "",
     "text": "No matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Website",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.Test Citation: [@Moreira_2019]\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner{N}|}\\sum_{\\gamma\\in\\Folner}T^\\gamma x \\]\nUPDATE3"
   },
   {
     "objectID": "about.html",
@@ -14,13 +21,6 @@
     "text": "About this site"
   },
   {
-    "objectID": "papers/research.html",
-    "href": "papers/research.html",
-    "title": "Research",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
     "objectID": "advocacy.html",
     "href": "advocacy.html",
     "title": "Advocacy",
@@ -28,16 +28,16 @@
     "text": "No matching items"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "My Website",
+    "objectID": "papers/research.html",
+    "href": "papers/research.html",
+    "title": "Research",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.Test Citation: (Moreira, Richter and Robertson, 2019)\n\\[\\sum_{i=1}^N\\frac{1}{2^n}=1.\\]\n\\[\\frac{1}{|\\Folner{N}|}\\sum_{\\gamma\\in\\Folner}T^\\gamma x \\]\nUPDATE3\n\n\n\n\nReferences\n\nMoreira, J., Richter, F. and Robertson, D. (2019). 'A proof of a sumset conjecture of erdős', Annals of Mathematics, 189 (2), https://doi.org/10.4007/annals.2019.189.2.4."
+    "text": "No matching items"
   },
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
+    "objectID": "automations.html",
+    "href": "automations.html",
+    "title": "Automations",
     "section": "",
     "text": "No matching items"
   }

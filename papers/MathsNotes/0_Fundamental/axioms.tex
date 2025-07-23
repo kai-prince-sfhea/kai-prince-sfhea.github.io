@@ -158,6 +158,15 @@
 \@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Proof}}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem{refremark}{Remark}[section]
+\newtheorem{refsolution}{Solution}[section]
 \makeatother
 \makeatletter
 \makeatother
@@ -182,7 +191,7 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Research},
+  pdftitle={Axioms},
   pdfauthor={Kai Prince SFHEA},
   pdflang={en-GB},
   colorlinks=true,
@@ -193,9 +202,9 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Research}
+\title{Axioms}
 \author{Kai Prince SFHEA}
-\date{2025-07-23}
+\date{2025-07-09}
 \begin{document}
 \maketitle
 
@@ -206,7 +215,39 @@
 \tableofcontents
 }
 
+\begin{definition}[associativity]\protect\hypertarget{def-associativity}{}\label{def-associativity}
 
+For all \({a},{b},{c}\) in \(\Set\), one has
+\(\Operation{(\Operation{a}{b})}{c}=\Operation{a}{(\Operation{b}{c})}\).
+
+\end{definition}
+
+\begin{definition}[identity]\protect\hypertarget{def-identity}{}\label{def-identity}
+
+There exists an element \(\Identity\) in \(\Set\) such that, for every
+\({a}\) in \(\Set\), one has \(\Operation{\Identity}{a}={a}\) and
+\(\Operation{a}{\Identity}={a}\). Such an element is unique and is
+called the \textbf{identity element}.
+
+\end{definition}
+
+\begin{definition}[]\protect\hypertarget{def-uniqueInverse}{}\label{def-uniqueInverse}
+
+~
+
+\begin{definition}[inverse]\protect\hypertarget{def-inverse}{}\label{def-inverse}
+
+For each \({a}\) in \(\Set\), there exists an element \({b}\) in
+\(\Set\) such that \(\Operation{a}{b}=\Identity\) and
+\(\Operation{b}{a}=\Identity\), where \(\Identity\) is the identity
+element.
+
+\end{definition}
+
+For each \({a}\), the element \({b}\) is unique and is called the
+\textbf{inverse} of \({b}\) and is denoted \(\Inverse{a}\).
+
+\end{definition}
 
 
 

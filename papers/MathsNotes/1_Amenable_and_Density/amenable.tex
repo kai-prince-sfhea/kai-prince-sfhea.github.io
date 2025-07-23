@@ -116,6 +116,14 @@
  
 
 
+% Get Math Fonts
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont[range={\mathscr,\mathbfscr,\mathbb}]{XITSMath-Regular}
+[    Extension = .otf,
+      BoldFont = XITSMath-Bold
+]
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -166,21 +174,24 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Inverse}[1]{{#1}^{-1}}
-\newcommand{\Set}{{S}}
-\newcommand{\Operation}[2]{{#1}\cdot{#2}}
-\newcommand{\Identity}{{e}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
+\newcommand{\AmenableGroup}{{\Gamma}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\Group}{{\Gamma}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\GroupElement}{{g}}
 \newcommand{\GroupIdentity}{{e}}
-\newcommand{\GroupElement}{{\gamma}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\Group}{{G}}
+\newcommand{\Identity}{{e}}
+\newcommand{\Inverse}[1]{{#1}^{-1}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Operation}[2]{{#1}\cdot{#2}}
+\newcommand{\Set}{{S}}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Axioms},
+  pdftitle={Amenable},
   pdfauthor={Kai Prince SFHEA},
   pdflang={en-GB},
   colorlinks=true,
@@ -191,9 +202,9 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Axioms}
+\title{Amenable}
 \author{Kai Prince SFHEA}
-\date{2025-07-07}
+\date{2025-07-23}
 \begin{document}
 \maketitle
 
@@ -204,48 +215,13 @@
 \tableofcontents
 }
 
-\section{Introduction}\label{introduction}
+\begin{definition}[]\protect\hypertarget{def-amenable}{}\label{def-amenable}
 
-\begin{definition}[associativity]\protect\hypertarget{def-associativity}{}\label{def-associativity}
-
-For all \({a},{b},{c}\) in \(\Set\), one has
-\(\Operation{(\Operation{a}{b})}{c}=\Operation{a}{(\Operation{b}{c})}\).
-
-\end{definition}
-
-\begin{definition}[identity]\protect\hypertarget{def-identity}{}\label{def-identity}
-
-There exists an element \(\Identity\) in \(\Set\) such that, for every
-\({a}\) in \(\Set\), one has \(\Operation{\Identity}{a}={a}\) and
-\(\Operation{a}{\Identity}={a}\). Such an element is unique and is
-called the \textbf{identity element}.
+For simplicity, we will use the alternative and equivalent definition
+that a group is \emph{amenable} (and second countable) if and only if it
+has a Følner sequence.
 
 \end{definition}
-
-\begin{definition}[]\protect\hypertarget{def-uniqueInverse}{}\label{def-uniqueInverse}
-
-~
-
-\begin{definition}[inverse]\protect\hypertarget{def-inverse}{}\label{def-inverse}
-
-For each \({a}\) in \(\Set\), there exists an element \({b}\) in
-\(\Set\) such that \(\Operation{a}{b}=\Identity\) and
-\(\Operation{b}{a}=\Identity\), where \(\Identity\) is the identity
-element.
-
-\end{definition}
-
-For each \({a}\), the element \({b}\) is unique and is called the
-\textbf{inverse} of \({b}\) and is denoted \(\Inverse{a}\).
-
-\end{definition}
-
-Test Definition~\ref{def-associativity}
-
-\section{More Information}\label{more-information}
-
-You can learn more about controlling the appearance of HTML output here:
-\url{https://quarto.org/docs/output-formats/html-basics.html}
 
 
 

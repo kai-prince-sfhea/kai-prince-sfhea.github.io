@@ -92,6 +92,39 @@
 \makeatother
 
 
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
@@ -116,6 +149,14 @@
  
 
 
+% Get Math Fonts
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont[range={\mathscr,\mathbfscr,\mathbb}]{XITSMath-Regular}
+[    Extension = .otf,
+      BoldFont = XITSMath-Bold
+]
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -153,6 +194,8 @@
 \usepackage{amsthm}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -166,21 +209,24 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Inverse}[1]{{#1}^{-1}}
-\newcommand{\Set}{{S}}
-\newcommand{\Operation}[2]{{#1}\cdot{#2}}
-\newcommand{\Identity}{{e}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
+\newcommand{\AmenableGroup}{{\Gamma}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\Group}{{\Gamma}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\GroupElement}{{g}}
 \newcommand{\GroupIdentity}{{e}}
-\newcommand{\GroupElement}{{\gamma}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\Group}{{G}}
+\newcommand{\Identity}{{e}}
+\newcommand{\Inverse}[1]{{#1}^{-1}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Operation}[2]{{#1}\cdot{#2}}
+\newcommand{\Set}{{S}}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Group},
+  pdftitle={Følner sequence},
   pdfauthor={Kai Prince SFHEA},
   pdflang={en-GB},
   colorlinks=true,
@@ -191,9 +237,9 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Group}
+\title{Følner sequence}
 \author{Kai Prince SFHEA}
-\date{2025-07-07}
+\date{2025-07-23}
 \begin{document}
 \maketitle
 
@@ -204,48 +250,79 @@
 \tableofcontents
 }
 
-\section{Introduction}\label{introduction}
+\section{Følner Sequences}\label{fuxf8lner-sequences}
 
-\begin{definition}[]\protect\hypertarget{def-group}{}\label{def-group}
+\begin{definition}[]\protect\hypertarget{def-rightFolner}{}\label{def-rightFolner}
 
-A group is a non-empty set \(\Group\) together with a binary operation
-on \(\Group\), denoted ``\(\GroupOperation{}{}\)'', that combines any
-two elements \(\GroupElement\) and \(\GroupElement'\) of \(\Group\) to
-form an element of \(\Group\), denoted
-\(\GroupOperation{\GroupElement}{\GroupElement'}\), such that the
-following three requirements, known as \textbf{group axioms}, are
-satisfied:
-
-\begin{itemize}
-\tightlist
-\item
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \tightlist
-  \item
-  \end{enumerate}
-\item
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \setcounter{enumi}{1}
-  \tightlist
-  \item
-  \end{enumerate}
-\item
-  \begin{enumerate}
-  \def\labelenumi{\arabic{enumi}.}
-  \setcounter{enumi}{2}
-  \tightlist
-  \item
-  \end{enumerate}
-\end{itemize}
+We define a \emph{right-Følner sequence} in \(\Group\) as a sequence
+\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\) of finite subsets of
+\(\Gamma\) satisfying
+\[\lim_{N\rightarrow\infty}\frac{|\GroupOperation{(\GroupOperation{\Folner[N]}{\Inverse{\GroupElement}})}{\Folner[N]}|}{|\Folner[N]|}=1\]for
+all \(\GroupElement\in\Group\).
 
 \end{definition}
 
-\section{More Information}\label{more-information}
+\begin{definition}[]\protect\hypertarget{def-leftFolner}{}\label{def-leftFolner}
 
-You can learn more about controlling the appearance of HTML output here:
-\url{https://quarto.org/docs/output-formats/html-basics.html}
+Similarly, we define a \emph{left-Følner sequence} in \(\Group\) as a
+sequence \(\Folner =(\Folner[N])_{N\in\mathbb{N}}\) of finite subsets of
+\(\Gamma\) satisfying
+\[\lim_{N\rightarrow\infty}\frac{|(\Inverse{\GroupElement}\cdot\Folner[N])\cap\Folner[N]|}{|\Folner[N]|}=1 \]for
+all \(\GroupElement\in\Group\).
+
+\end{definition}
+
+\begin{definition}[]\protect\hypertarget{def-Folner}{}\label{def-Folner}
+
+We call a sequence a \emph{Følner sequence} if it is both a left and
+right Følner sequence.
+
+\end{definition}
+
+\section{Tempered Følner Sequences}\label{tempered-fuxf8lner-sequences}
+
+\begin{definition}[Lindenstrauss
+\citeproc{ref-Lindenstrauss2001PETAmenable}{(2001)}, Definition
+1.1]\protect\hypertarget{def-tempered}{}\label{def-tempered}
+
+A sequence of sets \(\Phi=(\Phi_N)_{N\in\mathbb{N}}\) will be said to be
+\emph{tempered} if, for some \(b>0\) and all \(n\in\mathbb{N}\),
+
+\begin{equation}\phantomsection\label{eq-Shulman}{
+\left|\bigcup_{1\leq k<n}\Phi_k^{-1}\Phi_n \right|\leq b|\Phi_N|.
+}\end{equation}
+
+is referred to as the \emph{Shulman condition}.
+
+\end{definition}
+
+\begin{proposition}[Lindenstrauss
+\citeproc{ref-Lindenstrauss2001PETAmenable}{(2001)}, Proposition
+1.4]\protect\hypertarget{prp-temperedFolner}{}\label{prp-temperedFolner}
+
+~
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Every Følner sequence \(\Phi=(\Phi_N)_{N\in\mathbb{N}}\) has a
+  tempered subsequence.
+\item
+  Every amenable group has a tempered Følner sequence.
+\end{enumerate}
+
+\end{proposition}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-Lindenstrauss2001PETAmenable}
+Lindenstrauss, E. (2001). \textquotesingle Pointwise theorems for
+amenable groups\textquotesingle, \emph{\emph{Inventiones mathematicae},}
+146 (2), pp. 259--295.
+\href{https://doi.org/10.1007/s002220100162}{https://doi.org/10.1007/s002220100162.}
+
+\end{CSLReferences}
 
 
 

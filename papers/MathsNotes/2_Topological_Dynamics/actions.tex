@@ -192,8 +192,6 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \theoremstyle{remark}
@@ -226,7 +224,8 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdfauthor={Kai Prince},
+  pdftitle={Actions},
+  pdfauthor={Kai Prince SFHEA},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -236,9 +235,11 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\author{Kai Prince}
+\title{Actions}
+\author{Kai Prince SFHEA}
 \date{2025-07-23}
 \begin{document}
+\maketitle
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -247,149 +248,54 @@
 \tableofcontents
 }
 
-\section*{Abstract}\label{abstract}
-\addcontentsline{toc}{section}{Abstract}
+\begin{definition}[Bekka and Mayer
+\citeproc{ref-Bekka2000GroupActionDynamics}{(2000)} Section
+2]\protect\hypertarget{def-action}{}\label{def-action}
 
-We follow steps provided by the paper published by
-\citeproc{ref-host2019short}{(Host, 2019)}, `A Short Proof of a
-Conjecture of Erdős Proved by Moreira, Richter and Robertson', as well
-as using the results provided by \citeproc{ref-kra2022infinite}{(Kra et
-al., 2022)}, to generalise the proof of Erdős's conjecture for amenable
-groups. The main result that we aim to prove is: `every positively dense
-subset of an amenable group contains the group sumset of \(k\) infinite
-sets for every natural number \(k\)'.
+An \emph{action} of a group, \(\Group\), on a measurable space
+\((X,\mathscr{B})\) is a measurable mapping
+\[\Group\times X\rightarrow X,\ (\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x} \]
+with the following properties:
 
-\section{Introduction}\label{introduction}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Associativity: For all
+  \(\GroupElement,\GroupElement'\in \Group,x\in X\), then
+  \(\GroupElement.(\GroupElement'.x)=\GroupAction{(\GroupOperation{\GroupElement}{\GroupElement'})}{x}\)
+\item
+  Identity: There exists an identity element \(\GroupIdentity\in\Group\)
+  such that \(\GroupAction{\GroupIdentity}{x}=x\) for all \(x\in X\).
+\item
+  Quasi-Invariance: For any \(B\in\mathscr{B}\) and for all
+  \(\GroupElement\in\Group\), we have
+  \(\mu(\GroupAction{\GroupElement}{B})=0\) if and only if \(\mu(B)=0\).
+\end{enumerate}
 
-\begin{theorem}[cf. \citeproc{ref-host2019short}{(Host, 2019)}, Theorem
-1]\protect\hypertarget{thm-GenErdosConjComb}{}\label{thm-GenErdosConjComb}
+The action of \(\Group\) is also ergodic if it satisfies the additional
+property:
 
-Let \((\Group,\cdot)\) be an amenable group. If \(A\subseteq G\) has
-positive density, then there exists infinite subsets \(B\) and \(C\) of
-\(G\) such that \(B\cdot C\subset A\).
-
-\end{theorem}
-
-\begin{theorem}[cf. \citeproc{ref-host2019short}{(Host, 2019)},
-Proposition
-2]\protect\hypertarget{thm-GenErdosConjRel}{}\label{thm-GenErdosConjRel}
-
-There exists a set of positive density not containing any sumset of
-positive density and an infinite set.
-
-\end{theorem}
-
-\begin{theorem}[cf. \citeproc{ref-kra2022infinite}{(Kra et al., 2022)},
-Theorem
-1.1]\protect\hypertarget{thm-GenNErdosConjComb}{}\label{thm-GenNErdosConjComb}
-
-Let \((G,\cdot)\) be an amenable group. If \(A\subseteq G\) has positive
-density then, for every \(k\in\mathbb{N}\), there are infinite subsets
-\(B_1,...,B_k\subset G\) such that \(B_1\cdot\cdots\cdot B_k\subset A\).
-
-\end{theorem}
-
-\section{Preliminaries}\label{preliminaries}
-
-We will use \(\mathbb{N}=\{1,2,3,...\}\) and \(\Identity\) to denote the
-identity of the group \(\Group\).
-
-\subsection{Amenable Groups and
-Actions}\label{amenable-groups-and-actions}
-
-Throughout this paper, unless otherwise specified, we will let
-\((G,\cdot)\) be a second countable discrete group. This also means that
-the Haar measure of \(G\) is the counting measure.
-
-\begin{definition}[]\protect\hypertarget{def-FolnerSequenceDef}{}\label{def-FolnerSequenceDef}
-
-{[}Embed definition from folner.qmd{]}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  If \(B\in\mathscr{B}\) and
+  \(\mu(B)=\mu(\GroupAction{\GroupElement}{B})\) for any
+  \(\GroupElement\in\Group\), then \(\mu(B)=0\) or
+  \(\mu(X\setminus B)=0\).
+\end{enumerate}
 
 \end{definition}
-
-For simplicity of this paper, we will use the alternative and equivalent
-definition that a group, \(\AmenableGroup\), is \emph{amenable} (and
-second countable) if and only if it has a Følner sequence.
-
-\begin{definition}[]\protect\hypertarget{def-TemperedSequenceDef}{}\label{def-TemperedSequenceDef}
-
-{[}Embed definition from folner.qmd{]}
-
-\end{definition}
-
-\begin{definition}[]\protect\hypertarget{def-DensityDef}{}\label{def-DensityDef}
-
-{[}Embed definition from density.qmd{]}
-
-\end{definition}
-
-\subsection{Topological Dynamics of Group
-Actions}\label{topological-dynamics-of-group-actions}
-
-\begin{definition}[]\protect\hypertarget{def-ActionDef}{}\label{def-ActionDef}
-
-{[}Embed definition from actions.qmd{]}
-
-\end{definition}
-
-A \emph{topological dynamical system under the action of \(\Group\)},
-denoted \((X,\Group)\), is a compact metric space \(X\) that has
-continuous surjective maps,
-\((\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x}\), for all
-\(\GroupElement\in\Group\).
-
-Let \(x\in X\), \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) be a Følner
-sequence in \(\Gamma\) and \(\mu\) a probability measure on \(X\). Where
-\(\delta_x\) is the Dirac mass at \(x\), if
-\[\frac{1}{|\Folner[N]|}\sum_{\GroupElement\in\Folner[N]}\delta_{\GroupAction{\GroupElement}{x}}\underset{\text{weakly*}}{\longrightarrow} \mu \text{ as }N\rightarrow\infty, \]
-then we say \emph{\(x\) is generic for \(\mu\) with respect to
-\(\Folner\)} and we denote this with
-\(x\in\text{gen}(\mu,\Phi)\).\footnote{consider tempered separately as
-  the FCP construction only depends on sequential compactness}
-
-\subsection{Recurrence Results \& Ergodic
-Theorems}\label{recurrence-results-ergodic-theorems}
-
-\subsection{Erdős Cubes \& Cubic
-Measures}\label{erdux151s-cubes-cubic-measures}
-
-\subsection{Factor Maps}\label{factor-maps}
-
-\subsection{Key Dynamical Results}\label{key-dynamical-results}
-
-\section{Proof of Theorem (ref)}\label{proof-of-theorem-ref}
-
-\subsection{Furstenberg's Correspondence
-Princple}\label{furstenbergs-correspondence-princple}
-
-\subsection{Kronecker Factor}\label{kronecker-factor}
-
-\subsection{\texorpdfstring{Choosing a point
-\(x_1\)}{Choosing a point x\_1}}\label{choosing-a-point-x_1}
-
-\subsection{\texorpdfstring{The joining
-\(\nu\)}{The joining \textbackslash nu}}\label{the-joining-nu}
-
-\subsection{Proof Conclusion}\label{proof-conclusion}
-
-\section{Proof of Corollary (ref)}\label{proof-of-corollary-ref}
-
-\section{Proof of Theorem (ref)}\label{proof-of-theorem-ref-1}
-
-\section*{Discussion}\label{discussion}
-\addcontentsline{toc}{section}{Discussion}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-host2019short}
-Host, B. (2019). \textquotesingle{}\emph{A short proof of a conjecture
-of erdös proved by moreira, richter and robertson}\textquotesingle,
-Available at: \url{https://arxiv.org/abs/1904.09952}.
-
-\bibitem[\citeproctext]{ref-kra2022infinite}
-Kra, B., et al. (2022). \textquotesingle{}\emph{Infinite sumsets in sets
-with positive density}\textquotesingle, Available at:
-\url{https://arxiv.org/abs/2206.01786}.
+\bibitem[\citeproctext]{ref-Bekka2000GroupActionDynamics}
+Bekka, M. B. and Mayer, M. (2000). \emph{Ergodic theory and topological
+dynamics of group actions on homogeneous spaces}. Cambridge University
+Press.
+\href{https://doi.org/10.1017/cbo9780511758898}{https://doi.org/10.1017/cbo9780511758898.}
 
 \end{CSLReferences}
 
