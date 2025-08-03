@@ -192,10 +192,12 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -209,19 +211,17 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-\newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\AmenableGroup}{{\Gamma}}
+
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
 \newcommand{\GroupAction}[2]{{#1}.{#2}}
-\newcommand{\GroupElement}{{g}}
-\newcommand{\GroupIdentity}{{e}}
 \newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\Measure}{{\mu}}
 \newcommand{\Group}{{G}}
 \newcommand{\Identity}{{e}}
-\newcommand{\Inverse}[1]{{#1}^{-1}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Operation}[2]{{#1}\cdot{#2}}
-\newcommand{\Set}{{S}}
+\newcommand{\AmenableGroup}{{\Gamma}}
+
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -237,7 +237,7 @@
 
 
 \author{Kai Prince}
-\date{2025-07-23}
+\date{2025-07-29}
 \begin{document}
 
 \renewcommand*\contentsname{Table of contents}
@@ -264,9 +264,10 @@ sets for every natural number \(k\)'.
 \begin{theorem}[cf. \citeproc{ref-host2019short}{(Host, 2019)}, Theorem
 1]\protect\hypertarget{thm-GenErdosConjComb}{}\label{thm-GenErdosConjComb}
 
-Let \((\Group,\cdot)\) be an amenable group. If \(A\subseteq G\) has
-positive density, then there exists infinite subsets \(B\) and \(C\) of
-\(G\) such that \(B\cdot C\subset A\).
+Let \((\AmenableGroup,\GroupOperation{}{})\) be an amenable group. If
+\(A\subseteq\AmenableGroup\) has positive density, then there exists
+infinite subsets \(B\) and \(C\) of \(\AmenableGroup\) such that
+\(\GroupOperation{B}{C}\subset A\).
 
 \end{theorem}
 
@@ -283,27 +284,30 @@ positive density and an infinite set.
 Theorem
 1.1]\protect\hypertarget{thm-GenNErdosConjComb}{}\label{thm-GenNErdosConjComb}
 
-Let \((G,\cdot)\) be an amenable group. If \(A\subseteq G\) has positive
-density then, for every \(k\in\mathbb{N}\), there are infinite subsets
-\(B_1,...,B_k\subset G\) such that \(B_1\cdot\cdots\cdot B_k\subset A\).
+Let \((\AmenableGroup,\GroupOperation{}{})\) be an amenable group. If
+\(A\subseteq\AmenableGroup\) has positive density then, for every
+\(k\in\mathbb{N}\), there are infinite subsets
+\(B_1,...,B_k\subset\AmenableGroup\) such that
+\(B_1\cdot\cdots\cdot B_k\subset A\).
 
 \end{theorem}
 
 \section{Preliminaries}\label{preliminaries}
 
 We will use \(\mathbb{N}=\{1,2,3,...\}\) and \(\Identity\) to denote the
-identity of the group \(\Group\).
+identity of the group \(\AmenableGroup\).
 
 \subsection{Amenable Groups and
 Actions}\label{amenable-groups-and-actions}
 
 Throughout this paper, unless otherwise specified, we will let
-\((G,\cdot)\) be a second countable discrete group. This also means that
-the Haar measure of \(G\) is the counting measure.
+\((\AmenableGroup,\GroupOperation{}{})\) be a second countable discrete
+group. This also means that the Haar measure of \(\AmenableGroup\) is
+the counting measure.
 
 \begin{definition}[]\protect\hypertarget{def-FolnerSequenceDef}{}\label{def-FolnerSequenceDef}
 
-{[}Embed definition from folner.qmd{]}
+{[}Embed \#def-tempered from folner.qmd{]}
 
 \end{definition}
 
@@ -313,13 +317,13 @@ second countable) if and only if it has a Følner sequence.
 
 \begin{definition}[]\protect\hypertarget{def-TemperedSequenceDef}{}\label{def-TemperedSequenceDef}
 
-{[}Embed definition from folner.qmd{]}
+{[}Embed \#prp-temperedFolner from folner.qmd{]}
 
 \end{definition}
 
 \begin{definition}[]\protect\hypertarget{def-DensityDef}{}\label{def-DensityDef}
 
-{[}Embed definition from density.qmd{]}
+{[}Embed \#def-density from density.qmd{]}
 
 \end{definition}
 
@@ -328,27 +332,37 @@ Actions}\label{topological-dynamics-of-group-actions}
 
 \begin{definition}[]\protect\hypertarget{def-ActionDef}{}\label{def-ActionDef}
 
-{[}Embed definition from actions.qmd{]}
+{[}Embed \#def-action from actions.qmd{]}
 
 \end{definition}
 
-A \emph{topological dynamical system under the action of \(\Group\)},
-denoted \((X,\Group)\), is a compact metric space \(X\) that has
-continuous surjective maps,
-\((\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x}\), for all
-\(\GroupElement\in\Group\).
+\begin{definition}[]\protect\hypertarget{def-TopologicalDynamicSystemsDef}{}\label{def-TopologicalDynamicSystemsDef}
 
-Let \(x\in X\), \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) be a Følner
-sequence in \(\Gamma\) and \(\mu\) a probability measure on \(X\). Where
-\(\delta_x\) is the Dirac mass at \(x\), if
-\[\frac{1}{|\Folner[N]|}\sum_{\GroupElement\in\Folner[N]}\delta_{\GroupAction{\GroupElement}{x}}\underset{\text{weakly*}}{\longrightarrow} \mu \text{ as }N\rightarrow\infty, \]
-then we say \emph{\(x\) is generic for \(\mu\) with respect to
-\(\Folner\)} and we denote this with
-\(x\in\text{gen}(\mu,\Phi)\).\footnote{consider tempered separately as
-  the FCP construction only depends on sequential compactness}
+{[}Embed \#def-topologicalDynamicalSystem from actions.qmd{]}
+
+\end{definition}
+
+\begin{definition}[]\protect\hypertarget{def-GenericDef}{}\label{def-GenericDef}
+
+{[}Embed \#def-generic from actions.qmd{]}
+
+\end{definition}
 
 \subsection{Recurrence Results \& Ergodic
 Theorems}\label{recurrence-results-ergodic-theorems}
+
+\begin{theorem}[]\protect\hypertarget{thm-BergelsonRecurrence}{}\label{thm-BergelsonRecurrence}
+
+{[}Embed \#thm-recurrence from recurrence-and-Ergodic-theorems.qmd{]}
+
+\end{theorem}
+
+\begin{theorem}[]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
+
+{[}Embed \#thm-GeneralisedPET from
+recurrence-and-Ergodic-theorems.qmd{]}
+
+\end{theorem}
 
 \subsection{Erdős Cubes \& Cubic
 Measures}\label{erdux151s-cubes-cubic-measures}
@@ -357,12 +371,75 @@ Measures}\label{erdux151s-cubes-cubic-measures}
 
 \subsection{Key Dynamical Results}\label{key-dynamical-results}
 
-\section{Proof of Theorem (ref)}\label{proof-of-theorem-ref}
+\begin{theorem}[cf. Host \citeproc{ref-host2019short}{(2019)}, Theorem
+3]\protect\hypertarget{thm-GenErdosConjDyn}{}\label{thm-GenErdosConjDyn}
+
+Let \((X,\AmenableGroup)\) be a topological dynamical system where
+\(\AmenableGroup\) is an amenable group, \(x_0\in X\), \(E\) be a clopen
+subset of \(X\) and
+\[A=\{\AmenableGroupElement\in\AmenableGroup:\GroupAction{\AmenableGroupElement}{x_0}\in E\}.\]
+Let \(X\times X\) be acted upon by
+\(\AmenableGroup\times\AmenableGroup\). Let \(x_1\in X\) and \(\nu\) be
+a measure on \(X\times X\) such that \((x_0,x_1)\) is generic along some
+Følner sequence \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\).
+
+Assume there exists \(\varepsilon>0\) and a sequence
+\((s_i)_{i\in\mathbb{N}}\) in \(\AmenableGroup\) such that
+\[\GroupAction{s_i}{x_0}\rightarrow x_1\text{ as }i\rightarrow\infty\text{ and }\nu(\GroupAction{s_i^{-1}}{E}\times E)\geq\varepsilon\text{ for all }i. \]
+Then there exist infinite subsets \(B,C\subseteq \AmenableGroup\) such
+that \(\GroupOperation{B}{C}\subset A\).
+
+\end{theorem}
+
+\begin{theorem}[cf. Kra et al. \citeproc{ref-kra2022infinite}{(2022)},
+Theorem
+3.5]\protect\hypertarget{thm-GenErdosConjCube}{}\label{thm-GenErdosConjCube}
+
+Let \((X,\Measure,\AmenableGroup)\) be an ergodic system under the
+action of \(\AmenableGroup\) and let \(E\subset X\) be an open set with
+\(\Measure(E)>0\).
+
+If \(a\in X\) is generic for \(\Measure\) with respect to some Følner
+sequence \(\Folner\) then, for every \(k\in\mathbb{N}\), there exists
+\(2\)-dimensional Erd"\{o\}s cube
+\(\underline{x}=(x_{00},x_{01},x_{10},x_{11})\in X^{[[2]]}\) with
+\(x_{00}=a\) and \(x_{11}\in E\).
+
+\end{theorem}
+
+\begin{theorem}[cf. Host \citeproc{ref-host2019short}{(2019)}, Theorem
+4.4]\protect\hypertarget{thm-GenNErdosConjCube}{}\label{thm-GenNErdosConjCube}
+
+Let \((X,\Measure,\AmenableGroup)\) be an ergodic system under the
+action of \(\AmenableGroup\) and let \(E\subset X\) be an open set with
+\(\Measure(E)>0\).
+
+If \(a\in X\) is generic for \(\Measure\) with respect to some Følner
+sequence \(\Folner\) then, for every \(k\in\mathbb{N}\), there exists
+\(k\)-dimensional Erd"\{o\}s cubes \(\underline{x}\in X^{[[k]]}\) with
+\(x_{\vec{0}}=a\) and \(x_{\vec{1}}\in E\).
+
+\end{theorem}
+
+\section{\texorpdfstring{Proof of Theorem
+Theorem~\ref{thm-GenErdosConjCube}}{Proof of Theorem Theorem~}}\label{proof-of-theorem-thm-generdosconjcube}
 
 \subsection{Furstenberg's Correspondence
 Princple}\label{furstenbergs-correspondence-princple}
 
+\begin{theorem}[]\protect\hypertarget{thm-Furstenberg}{}\label{thm-Furstenberg}
+
+{[}Embed \#thm-FCP from furstenberg-correspondence.qmd{]}
+
+\end{theorem}
+
 \subsection{Kronecker Factor}\label{kronecker-factor}
+
+\begin{proposition}[]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
+
+{[}Embed \#prp-KroneckerGeneric from factor-maps.qmd{]}
+
+\end{proposition}
 
 \subsection{\texorpdfstring{Choosing a point
 \(x_1\)}{Choosing a point x\_1}}\label{choosing-a-point-x_1}
@@ -374,7 +451,7 @@ Princple}\label{furstenbergs-correspondence-princple}
 
 \section{Proof of Corollary (ref)}\label{proof-of-corollary-ref}
 
-\section{Proof of Theorem (ref)}\label{proof-of-theorem-ref-1}
+\section{Proof of Theorem (ref)}\label{proof-of-theorem-ref}
 
 \section*{Discussion}\label{discussion}
 \addcontentsline{toc}{section}{Discussion}

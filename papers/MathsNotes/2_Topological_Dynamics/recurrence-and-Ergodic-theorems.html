@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince SFHEA">
-<meta name="dcterms.date" content="2025-08-03">
+<meta name="dcterms.date" content="2025-07-29">
 
-<title>Density – Kai Prince</title>
+<title>Recurrence and Ergodic Theorems – Kai Prince</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -164,13 +184,13 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="density.tex"><i class="bi bi-file"></i>LaTeX (schema)</a></li><li><a href="density.pdf"><i class="bi bi-file-pdf"></i>PDF (schema)</a></li></ul></div></div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="recurrence-and-Ergodic-theorems.tex"><i class="bi bi-file"></i>LaTeX (schema)</a></li><li><a href="recurrence-and-Ergodic-theorems.pdf"><i class="bi bi-file-pdf"></i>PDF (schema)</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Density</h1>
+<h1 class="title">Recurrence and Ergodic Theorems</h1>
 </div>
 
 
@@ -194,7 +214,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 August 2025</p>
+      <p class="date">29 July 2025</p>
     </div>
   </div>
   
@@ -206,29 +226,62 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout callout-style-simple callout-important no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<div id="def-density" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1</strong></span> For <span class="math inline">\(A\subseteq\Group\)</span> and <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-Folner">Følner</a> sequence <span class="math inline">\(\Folner=(\Folner[N])_{n=1}^\infty\)</span>, we write <span class="math display">\[\begin{align*}
-    \overline{d}_{\Folner}(A)&amp;=\limsup_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-    \\\underline{d}_{\Folner}(A)&amp;=\liminf_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-\end{align*}\]</span> to be the <em>upper and lower densities of <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\Folner\)</span></em>, respectively. If these agree, then we can write <span class="math display">\[
-d_{\Folner}(A)=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-\]</span> to be the <em>density of <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\Phi\)</span></em>. We also define the <em>upper Banach density of <span class="math inline">\(A\)</span></em> by <span class="math display">\[
-\overline{d}(A)=\sup\{d_{\Folner}(A):\text{for Følner sequences }\Folner\text{ where }d_{\Folner}(A)\text{ exists}\}.
-\]</span></p>
+<div id="thm-recurrence" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1 (<span class="citation" data-cites="Bergelson1985Recurrence">Bergelson <a href="#ref-Bergelson1985Recurrence" role="doc-biblioref">(1985)</a>, Theorem 1.1</span>)</strong></span> Let <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> be a probability space and suppose that <span class="math inline">\(B_n\in\SigmaAlgebra{B}\)</span> such that <span class="math inline">\(\Measure(B_n)=b&gt;0\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+<p>Then there exists a positively dense index set <span class="math inline">\(I\subset\mathbb{N}\)</span> such that, for any finite subset <span class="math inline">\(F\subseteq I\)</span>, we have <span class="math display">\[\Measure\left(\bigcap_{i\in F}B_i \right)&gt;0. \]</span></p>
 </div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="thm-GeneralisedPET" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2 (cf. <span class="citation" data-cites="Lindenstrauss2001PETAmenable">Lindenstrauss <a href="#ref-Lindenstrauss2001PETAmenable" role="doc-biblioref">(2001)</a>, Theorem 1.2</span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be a discrete <a href=".\..\..\MathsNotes\1_Amenable_and_Density\amenable.html#def-amenable">amenable</a> <a href=".\..\..\MathsNotes\0_Fundamental\group.html#def-group">group</a> acting on a measure space <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> by measure preserving transformation and let <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> be a <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-tempered">tempered</a> <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-Folner">Følner</a> sequence.</p>
+<p>Then, for any <span class="math inline">\(f\in\text{L}^1(\Measure)\)</span>, there is a <span class="math inline">\(\AmenableGroup\)</span>-invariant <span class="math inline">\(\bar{f}\in\text{L}^1(\Measure)\)</span> such that <span class="math display">\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\bar{f}(x) \]</span> for <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span>. In particular, if the <span class="math inline">\(\AmenableGroup\)</span> <a href=".\..\..\MathsNotes\2_Topological_Dynamics\actions.html#def-action">action</a> is ergodic, then <span class="math display">\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\int f(x)\ d\Measure(x) \]</span> for <span class="math inline">\(\Measure\)</span> almost every <span class="math inline">\(x\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="cor-temperedGeneric" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 1 (cf. <span class="citation" data-cites="host2019short">Host <a href="#ref-host2019short" role="doc-biblioref">(2019)</a>, Corollary 8</span>)</strong></span> Let <span class="math inline">\((X,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an amenable group, <span class="math inline">\(\Measure\)</span> an ergodic measure on <span class="math inline">\(X\)</span> and <span class="math inline">\(\Folner\)</span> a tempered Følner sequence. Then <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span> is <a href=".\..\..\MathsNotes\2_Topological_Dynamics\actions.html#def-generic">generic</a> for <span class="math inline">\(\Measure\)</span> along <span class="math inline">\(\Folner\)</span>.</p>
 </div>
 </div>
 </div>
 
 
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Bergelson1985Recurrence" class="csl-entry" role="listitem">
+Bergelson, V. (1985). 'Sets of recurrence of zm-actions and properties of sets of differences in zm', <em><em>Journal of the London Mathematical Society</em>,</em> s2-31 (2), pp. 295–304. <a href="https://doi.org/10.1112/jlms/s2-31.2.295">https://doi.org/10.1112/jlms/s2-31.2.295.</a>
+</div>
+<div id="ref-Lindenstrauss2001PETAmenable" class="csl-entry" role="listitem">
+Lindenstrauss, E. (2001). 'Pointwise theorems for amenable groups', <em><em>Inventiones mathematicae</em>,</em> 146 (2), pp. 259–295. <a href="https://doi.org/10.1007/s002220100162">https://doi.org/10.1007/s002220100162.</a>
+</div>
+<div id="ref-host2019short" class="csl-entry" role="listitem">
+Host, B. (2019). '<em>A short proof of a conjecture of erdös proved by moreira, richter and robertson</em>', Available at: <a href="https://arxiv.org/abs/1904.09952">https://arxiv.org/abs/1904.09952</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

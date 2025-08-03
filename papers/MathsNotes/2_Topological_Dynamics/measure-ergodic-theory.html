@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince SFHEA">
-<meta name="dcterms.date" content="2025-08-03">
+<meta name="dcterms.date" content="2025-07-29">
 
-<title>Density – Kai Prince</title>
+<title>Measure &amp; Ergodic Theory – Kai Prince</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -76,34 +96,6 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
-  <script src="./mathjax-config.js" async=""></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
@@ -164,13 +156,13 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="density.tex"><i class="bi bi-file"></i>LaTeX (schema)</a></li><li><a href="density.pdf"><i class="bi bi-file-pdf"></i>PDF (schema)</a></li></ul></div></div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="measure-ergodic-theory.tex"><i class="bi bi-file"></i>LaTeX (schema)</a></li><li><a href="measure-ergodic-theory.pdf"><i class="bi bi-file-pdf"></i>PDF (schema)</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Density</h1>
+<h1 class="title">Measure &amp; Ergodic Theory</h1>
 </div>
 
 
@@ -194,7 +186,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 August 2025</p>
+      <p class="date">29 July 2025</p>
     </div>
   </div>
   
@@ -206,29 +198,16 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<div id="def-density" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1</strong></span> For <span class="math inline">\(A\subseteq\Group\)</span> and <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-Folner">Følner</a> sequence <span class="math inline">\(\Folner=(\Folner[N])_{n=1}^\infty\)</span>, we write <span class="math display">\[\begin{align*}
-    \overline{d}_{\Folner}(A)&amp;=\limsup_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-    \\\underline{d}_{\Folner}(A)&amp;=\liminf_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-\end{align*}\]</span> to be the <em>upper and lower densities of <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\Folner\)</span></em>, respectively. If these agree, then we can write <span class="math display">\[
-d_{\Folner}(A)=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-\]</span> to be the <em>density of <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\Phi\)</span></em>. We also define the <em>upper Banach density of <span class="math inline">\(A\)</span></em> by <span class="math display">\[
-\overline{d}(A)=\sup\{d_{\Folner}(A):\text{for Følner sequences }\Folner\text{ where }d_{\Folner}(A)\text{ exists}\}.
-\]</span></p>
-</div>
-</div>
-</div>
-</div>
+<p>The foundational knowledge relating to Measure &amp; Ergodic Theory, that has not been covered elsewhere, was provided by <span class="citation" data-cites="Robertson2023MeasureErgodicTheory">Robertson <a href="#ref-Robertson2023MeasureErgodicTheory" role="doc-biblioref">(2023)</a></span>.</p>
 
 
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Robertson2023MeasureErgodicTheory" class="csl-entry" role="listitem">
+Robertson, D. (2023). '<em>MATH41021/61021 measure and ergodic theory</em>', Available at: <a href="https://personalpages.manchester.ac.uk/staff/donald.robertson/teaching/23-24/41021">https://personalpages.manchester.ac.uk/staff/donald.robertson/teaching/23-24/41021</a> (Accessed: 22 January 2024).
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince SFHEA">
-<meta name="dcterms.date" content="2025-07-23">
+<meta name="dcterms.date" content="2025-08-03">
 
 <title>Actions – Kai Prince</title>
 <style>
@@ -214,7 +214,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23 July 2025</p>
+      <p class="date">3 August 2025</p>
     </div>
   </div>
   
@@ -233,20 +233,45 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <div id="def-action" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1 (<span class="citation" data-cites="Bekka2000GroupActionDynamics">Bekka and Mayer <a href="#ref-Bekka2000GroupActionDynamics" role="doc-biblioref">(2000)</a> Section 2</span>)</strong></span> An <em>action</em> of a group, <span class="math inline">\(\Group\)</span>, on a measurable space <span class="math inline">\((X,\mathscr{B})\)</span> is a measurable mapping <span class="math display">\[\Group\times X\rightarrow X,\ (\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x} \]</span> with the following properties:</p>
+<p><span class="theorem-title"><strong>Definition 1 (<span class="citation" data-cites="Bekka2000GroupActionDynamics">Bekka and Mayer <a href="#ref-Bekka2000GroupActionDynamics" role="doc-biblioref">(2000)</a> Section 2</span>)</strong></span> An <em>action</em> of a group, <span class="math inline">\(\Group\)</span>, on a measurable space <span class="math inline">\((X,\SigmaAlgebra{B})\)</span> is a measurable mapping <span class="math display">\[\Group\times X\rightarrow X,\ (\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x} \]</span> with the following properties:</p>
 <ol type="1">
-<li>Associativity: For all <span class="math inline">\(\GroupElement,\GroupElement'\in \Group,x\in X\)</span>, then <span class="math inline">\(\GroupElement.(\GroupElement'.x)=\GroupAction{(\GroupOperation{\GroupElement}{\GroupElement'})}{x}\)</span></li>
-<li>Identity: There exists an identity element <span class="math inline">\(\GroupIdentity\in\Group\)</span> such that <span class="math inline">\(\GroupAction{\GroupIdentity}{x}=x\)</span> for all <span class="math inline">\(x\in X\)</span>.</li>
-<li>Quasi-Invariance: For any <span class="math inline">\(B\in\mathscr{B}\)</span> and for all <span class="math inline">\(\GroupElement\in\Group\)</span>, we have <span class="math inline">\(\mu(\GroupAction{\GroupElement}{B})=0\)</span> if and only if <span class="math inline">\(\mu(B)=0\)</span>.</li>
+<li>Associativity: For all <span class="math inline">\(\GroupElement,\GroupElement'\in \Group,x\in X\)</span>, then <span class="math inline">\(\GroupAction{\GroupElement}{(\GroupAction{\GroupElement'}{x})}=\GroupAction{(\GroupOperation{\GroupElement}{\GroupElement'})}{x}\)</span></li>
+<li>Identity: There exists an <a href=".\..\..\MathsNotes\0_Fundamental\axioms.html#def-identity">identity</a> element <span class="math inline">\(\GroupIdentity\in\Group\)</span> such that <span class="math inline">\(\GroupAction{\GroupIdentity}{x}=x\)</span> for all <span class="math inline">\(x\in X\)</span>.</li>
+<li>Quasi-Invariance: For any <span class="math inline">\(B\in\SigmaAlgebra{B}\)</span> and for all <span class="math inline">\(\GroupElement\in\Group\)</span>, we have <span class="math inline">\(\Measure(\GroupAction{\GroupElement}{B})=0\)</span> if and only if <span class="math inline">\(\Measure(B)=0\)</span>.</li>
 </ol>
 <p>The action of <span class="math inline">\(\Group\)</span> is also ergodic if it satisfies the additional property:</p>
 <ol start="4" type="1">
-<li>If <span class="math inline">\(B\in\mathscr{B}\)</span> and <span class="math inline">\(\mu(B)=\mu(\GroupAction{\GroupElement}{B})\)</span> for any <span class="math inline">\(\GroupElement\in\Group\)</span>, then <span class="math inline">\(\mu(B)=0\)</span> or <span class="math inline">\(\mu(X\setminus B)=0\)</span>.</li>
+<li>If <span class="math inline">\(B\in\SigmaAlgebra{B}\)</span> and <span class="math inline">\(\Measure(B)=\Measure(\GroupAction{\GroupElement}{B})\)</span> for any <span class="math inline">\(\GroupElement\in\Group\)</span>, then <span class="math inline">\(\Measure(B)=0\)</span> or <span class="math inline">\(\Measure(X\setminus B)=0\)</span>.</li>
 </ol>
 </div>
 </div>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-topologicalDynamicalSystem" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2</strong></span> A <em>topological dynamical system under the action of <span class="math inline">\(\Group\)</span></em>, denoted <span class="math inline">\((X,\Group)\)</span>, is a compact metric space <span class="math inline">\(X\)</span> that has continuous surjective maps, <span class="math inline">\((\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x}\)</span>, for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-generic" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3</strong></span> Let <span class="math inline">\(x\in X\)</span>, <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> be a <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-Folner">Følner</a> sequence in <span class="math inline">\(\Gamma\)</span> and <span class="math inline">\(\Measure\)</span> a probability measure on <span class="math inline">\(X\)</span>. Where <span class="math inline">\(\delta_x\)</span> is the Dirac mass at <span class="math inline">\(x\)</span>, if <span class="math display">\[\frac{1}{|\Folner[N]|}\sum_{\GroupElement\in\Folner[N]}\delta_{\GroupAction{\GroupElement}{x}}\underset{\text{weakly*}}{\longrightarrow} \Measure \text{ as }N\rightarrow\infty, \]</span> then we say <em><span class="math inline">\(x\)</span> is generic for <span class="math inline">\(\Measure\)</span> with respect to <span class="math inline">\(\Folner\)</span></em> and we denote this with <span class="math inline">\(x\in\text{gen}(\Measure,\Folner)\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</div>
+</div>
+</div>
+</div>
+
 
 
 
@@ -255,7 +280,12 @@ window.Quarto = {
 <div id="ref-Bekka2000GroupActionDynamics" class="csl-entry" role="listitem">
 Bekka, M. B. and Mayer, M. (2000). <em>Ergodic theory and topological dynamics of group actions on homogeneous spaces</em>. Cambridge University Press. <a href="https://doi.org/10.1017/cbo9780511758898">https://doi.org/10.1017/cbo9780511758898.</a>
 </div>
-</div></section></div></main> <!-- /main -->
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>consider <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-tempered">tempered</a> separately as the FCP construction only depends on sequential compactness<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

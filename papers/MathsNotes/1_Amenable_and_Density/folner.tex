@@ -209,19 +209,14 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-\newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\AmenableGroup}{{\Gamma}}
+
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
-\newcommand{\GroupElement}{{g}}
-\newcommand{\GroupIdentity}{{e}}
+\newcommand{\Inverse}[1]{{#1}^{-1}}
+\newcommand{\CountingMeasure}[1][\,\cdot\,]{{\left|#1\right|}}
 \newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 \newcommand{\Group}{{G}}
-\newcommand{\Identity}{{e}}
-\newcommand{\Inverse}[1]{{#1}^{-1}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Operation}[2]{{#1}\cdot{#2}}
-\newcommand{\Set}{{S}}
+\newcommand{\GroupElement}{{g}}
+
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -239,7 +234,7 @@
 
 \title{Følner sequence}
 \author{Kai Prince SFHEA}
-\date{2025-07-23}
+\date{2025-08-03}
 \begin{document}
 \maketitle
 
@@ -256,8 +251,8 @@
 
 We define a \emph{right-Følner sequence} in \(\Group\) as a sequence
 \(\Folner =(\Folner[N])_{N\in\mathbb{N}}\) of finite subsets of
-\(\Gamma\) satisfying
-\[\lim_{N\rightarrow\infty}\frac{|\GroupOperation{(\GroupOperation{\Folner[N]}{\Inverse{\GroupElement}})}{\Folner[N]}|}{|\Folner[N]|}=1\]for
+\(\Group\) satisfying
+\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{\GroupOperation{(\GroupOperation{\Folner[N]}{\Inverse{\GroupElement}})}{\Folner[N]}}}{\CountingMeasure{\Folner[N]}}=1\]for
 all \(\GroupElement\in\Group\).
 
 \end{definition}
@@ -266,8 +261,8 @@ all \(\GroupElement\in\Group\).
 
 Similarly, we define a \emph{left-Følner sequence} in \(\Group\) as a
 sequence \(\Folner =(\Folner[N])_{N\in\mathbb{N}}\) of finite subsets of
-\(\Gamma\) satisfying
-\[\lim_{N\rightarrow\infty}\frac{|(\Inverse{\GroupElement}\cdot\Folner[N])\cap\Folner[N]|}{|\Folner[N]|}=1 \]for
+\(\Group\) satisfying
+\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{(\Inverse{\GroupElement}\cdot\Folner[N])\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}=1 \]for
 all \(\GroupElement\in\Group\).
 
 \end{definition}
@@ -285,11 +280,12 @@ right Følner sequence.
 \citeproc{ref-Lindenstrauss2001PETAmenable}{(2001)}, Definition
 1.1]\protect\hypertarget{def-tempered}{}\label{def-tempered}
 
-A sequence of sets \(\Phi=(\Phi_N)_{N\in\mathbb{N}}\) will be said to be
-\emph{tempered} if, for some \(b>0\) and all \(n\in\mathbb{N}\),
+A sequence of sets \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) will be
+said to be \emph{tempered} if, for some \(b>0\) and all
+\(n\in\mathbb{N}\),
 
 \begin{equation}\phantomsection\label{eq-Shulman}{
-\left|\bigcup_{1\leq k<n}\Phi_k^{-1}\Phi_n \right|\leq b|\Phi_N|.
+\CountingMeasure{\bigcup_{1\leq k<N}\Folner[k]^{-1}\Folner[N]}\leq b\CountingMeasure{\Folner[N]}.
 }\end{equation}
 
 is referred to as the \emph{Shulman condition}.
@@ -306,7 +302,7 @@ is referred to as the \emph{Shulman condition}.
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Every Følner sequence \(\Phi=(\Phi_N)_{N\in\mathbb{N}}\) has a
+  Every Følner sequence \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) has a
   tempered subsequence.
 \item
   Every amenable group has a tempered Følner sequence.

@@ -9,7 +9,7 @@
 <meta name="author" content="Kai Prince SFHEA">
 <meta name="dcterms.date" content="2025-08-03">
 
-<title>Density – Kai Prince</title>
+<title>Factor Maps – Kai Prince</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -164,13 +184,13 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="density.tex"><i class="bi bi-file"></i>LaTeX (schema)</a></li><li><a href="density.pdf"><i class="bi bi-file-pdf"></i>PDF (schema)</a></li></ul></div></div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="factor-maps.tex"><i class="bi bi-file"></i>LaTeX (schema)</a></li><li><a href="factor-maps.pdf"><i class="bi bi-file-pdf"></i>PDF (schema)</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Density</h1>
+<h1 class="title">Factor Maps</h1>
 </div>
 
 
@@ -212,15 +232,11 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<div id="def-density" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1</strong></span> For <span class="math inline">\(A\subseteq\Group\)</span> and <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-Folner">Følner</a> sequence <span class="math inline">\(\Folner=(\Folner[N])_{n=1}^\infty\)</span>, we write <span class="math display">\[\begin{align*}
-    \overline{d}_{\Folner}(A)&amp;=\limsup_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-    \\\underline{d}_{\Folner}(A)&amp;=\liminf_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-\end{align*}\]</span> to be the <em>upper and lower densities of <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\Folner\)</span></em>, respectively. If these agree, then we can write <span class="math display">\[
-d_{\Folner}(A)=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-\]</span> to be the <em>density of <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\Phi\)</span></em>. We also define the <em>upper Banach density of <span class="math inline">\(A\)</span></em> by <span class="math display">\[
-\overline{d}(A)=\sup\{d_{\Folner}(A):\text{for Følner sequences }\Folner\text{ where }d_{\Folner}(A)\text{ exists}\}.
-\]</span></p>
+<div id="prp-KroneckerGeneric" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 1 (cf. <span class="citation" data-cites="host2019short">Host <a href="#ref-host2019short" role="doc-biblioref">(2019)</a>, Proposition 5</span>)</strong></span> Let <span class="math inline">\((X,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an <a href=".\..\..\MathsNotes\1_Amenable_and_Density\amenable.html#def-amenable">amenable</a> group, <span class="math inline">\(x_0\in X\)</span>, and <span class="math inline">\(\Measure\)</span> be an ergodic invariant probability measure supported on the closed orbit of <span class="math inline">\(x_0\)</span> under the <a href=".\..\..\MathsNotes\2_Topological_Dynamics\actions.html#def-action">action</a> of <span class="math inline">\(\AmenableGroup\)</span>.</p>
+<p>Let <span class="math inline">\(\KroneckerFactor\)</span> be the Kronecker factor of <span class="math inline">\((X,\Measure,\AmenableGroup)\)</span>, with factor map <span class="math inline">\(\ProjectionMap:X\rightarrow\KroneckerSpace\)</span>.</p>
+<p>Let <span class="math inline">\(X\times\KroneckerSpace\)</span> be endowed with the <a href=".\..\..\MathsNotes\0_Fundamental\group.html#def-group">group</a> action of <span class="math inline">\(\AmenableGroup\times\KroneckerAction\)</span>. Let <span class="math inline">\(\tilde\Measure\)</span> be the measure on <span class="math inline">\(X\times\KroneckerSpace\)</span> and image of <span class="math inline">\(\Measure\)</span> under the map <span class="math inline">\(X\rightarrow X\times\KroneckerSpace\)</span> where <span class="math inline">\(x\mapsto(x,\ProjectionMap(x))\)</span>.</p>
+<p>Then there exists a <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-Folner">Følner</a> sequence <span class="math inline">\(\tilde{\Folner}\)</span> and a point <span class="math inline">\(\KroneckerSpaceElement_0\in\KroneckerSpace\)</span> such that <span class="math inline">\((x_0,\KroneckerSpaceElement_0)\)</span> is <a href=".\..\..\MathsNotes\2_Topological_Dynamics\actions.html#def-generic">generic</a> for <span class="math inline">\(\tilde{\Measure}\)</span> along <span class="math inline">\(\tilde{\Folner}\)</span>.</p>
 </div>
 </div>
 </div>
@@ -228,7 +244,12 @@ d_{\Folner}(A)=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}
 
 
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-host2019short" class="csl-entry" role="listitem">
+Host, B. (2019). '<em>A short proof of a conjecture of erdös proved by moreira, richter and robertson</em>', Available at: <a href="https://arxiv.org/abs/1904.09952">https://arxiv.org/abs/1904.09952</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

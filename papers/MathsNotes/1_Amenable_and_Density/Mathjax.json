@@ -1,0 +1,23 @@
+{
+  "AmenableGroup": "{\\Gamma}",
+  "CountingMeasure": [
+    "{\\left|#1\\right|}",
+    1,
+    "\\,\\cdot\\,"
+  ],
+  "Folner": [
+    "{\\Phi}_{#1}",
+    1,
+    "\\vphantom{}"
+  ],
+  "Group": "{G}",
+  "GroupElement": "{g}",
+  "GroupOperation": [
+    "{#1}\\cdot{#2}",
+    2
+  ],
+  "Inverse": [
+    "{#1}^{-1}",
+    1
+  ]
+}

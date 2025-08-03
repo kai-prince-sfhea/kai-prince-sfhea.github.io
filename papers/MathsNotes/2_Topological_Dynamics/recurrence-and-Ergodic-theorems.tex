@@ -92,6 +92,39 @@
 \makeatother
 
 
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
 \usepackage[bidi=basic]{babel}
@@ -159,8 +192,10 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{corollary}{Corollary}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -176,14 +211,19 @@
 \makeatother
 
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
 \newcommand{\CountingMeasure}[1][\,\cdot\,]{{\left|#1\right|}}
+\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\Measure}{{\mu}}
+\newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
 \newcommand{\Group}{{G}}
+\newcommand{\AmenableGroup}{{\Gamma}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={Density},
+  pdftitle={Recurrence and Ergodic Theorems},
   pdfauthor={Kai Prince SFHEA},
   pdflang={en-GB},
   colorlinks=true,
@@ -194,9 +234,9 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Density}
+\title{Recurrence and Ergodic Theorems}
 \author{Kai Prince SFHEA}
-\date{2025-08-03}
+\date{2025-07-29}
 \begin{document}
 \maketitle
 
@@ -207,22 +247,73 @@
 \tableofcontents
 }
 
-\begin{definition}[]\protect\hypertarget{def-density}{}\label{def-density}
+\begin{theorem}[Bergelson
+\citeproc{ref-Bergelson1985Recurrence}{(1985)}, Theorem
+1.1]\protect\hypertarget{thm-recurrence}{}\label{thm-recurrence}
 
-For \(A\subseteq\Group\) and Følner sequence
-\(\Folner=(\Folner[N])_{n=1}^\infty\), we write \begin{align*}
-    \overline{d}_{\Folner}(A)&=\limsup_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-    \\\underline{d}_{\Folner}(A)&=\liminf_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-\end{align*} to be the \emph{upper and lower densities of \(A\) with
-respect to \(\Folner\)}, respectively. If these agree, then we can write
-\[
-d_{\Folner}(A)=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-\] to be the \emph{density of \(A\) with respect to \(\Phi\)}. We also
-define the \emph{upper Banach density of \(A\)} by \[
-\overline{d}(A)=\sup\{d_{\Folner}(A):\text{for Følner sequences }\Folner\text{ where }d_{\Folner}(A)\text{ exists}\}.
-\]
+Let \((X,\SigmaAlgebra{B},\Measure)\) be a probability space and suppose
+that \(B_n\in\SigmaAlgebra{B}\) such that \(\Measure(B_n)=b>0\) for all
+\(n\in\mathbb{N}\).
 
-\end{definition}
+Then there exists a positively dense index set \(I\subset\mathbb{N}\)
+such that, for any finite subset \(F\subseteq I\), we have
+\[\Measure\left(\bigcap_{i\in F}B_i \right)>0. \]
+
+\end{theorem}
+
+\begin{theorem}[cf. Lindenstrauss
+\citeproc{ref-Lindenstrauss2001PETAmenable}{(2001)}, Theorem
+1.2]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
+
+Let \(\AmenableGroup\) be a discrete amenable group acting on a measure
+space \((X,\SigmaAlgebra{B},\Measure)\) by measure preserving
+transformation and let \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) be a
+tempered Følner sequence.
+
+Then, for any \(f\in\text{L}^1(\Measure)\), there is a
+\(\AmenableGroup\)-invariant \(\bar{f}\in\text{L}^1(\Measure)\) such
+that
+\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\bar{f}(x) \]
+for \(\Measure\)-almost every \(x\in X\). In particular, if the
+\(\AmenableGroup\) action is ergodic, then
+\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\int f(x)\ d\Measure(x) \]
+for \(\Measure\) almost every \(x\).
+
+\end{theorem}
+
+\begin{corollary}[cf. Host \citeproc{ref-host2019short}{(2019)},
+Corollary
+8]\protect\hypertarget{cor-temperedGeneric}{}\label{cor-temperedGeneric}
+
+Let \((X,\AmenableGroup)\) be a topological dynamical system where
+\(\AmenableGroup\) is an amenable group, \(\Measure\) an ergodic measure
+on \(X\) and \(\Folner\) a tempered Følner sequence. Then
+\(\Measure\)-almost every \(x\in X\) is generic for \(\Measure\) along
+\(\Folner\).
+
+\end{corollary}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-Bergelson1985Recurrence}
+Bergelson, V. (1985). \textquotesingle Sets of recurrence of zm-actions
+and properties of sets of differences in zm\textquotesingle,
+\emph{\emph{Journal of the London Mathematical Society},} s2-31 (2), pp.
+295--304.
+\href{https://doi.org/10.1112/jlms/s2-31.2.295}{https://doi.org/10.1112/jlms/s2-31.2.295.}
+
+\bibitem[\citeproctext]{ref-Lindenstrauss2001PETAmenable}
+Lindenstrauss, E. (2001). \textquotesingle Pointwise theorems for
+amenable groups\textquotesingle, \emph{\emph{Inventiones mathematicae},}
+146 (2), pp. 259--295.
+\href{https://doi.org/10.1007/s002220100162}{https://doi.org/10.1007/s002220100162.}
+
+\bibitem[\citeproctext]{ref-host2019short}
+Host, B. (2019). \textquotesingle{}\emph{A short proof of a conjecture
+of erdös proved by moreira, richter and robertson}\textquotesingle,
+Available at: \url{https://arxiv.org/abs/1904.09952}.
+
+\end{CSLReferences}
 
 
 
