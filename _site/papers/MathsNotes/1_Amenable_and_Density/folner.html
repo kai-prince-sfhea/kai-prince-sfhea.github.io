@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince SFHEA">
-<meta name="dcterms.date" content="2025-07-23">
+<meta name="dcterms.date" content="2025-08-03">
 
 <title>Følner sequence – Kai Prince</title>
 <style>
@@ -221,7 +221,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23 July 2025</p>
+      <p class="date">3 August 2025</p>
     </div>
   </div>
   
@@ -242,7 +242,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <div id="def-rightFolner" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1</strong></span> We define a <em>right-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Gamma\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{|\GroupOperation{(\GroupOperation{\Folner[N]}{\Inverse{\GroupElement}})}{\Folner[N]}|}{|\Folner[N]|}=1\]</span>for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 1</strong></span> We define a <em>right-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Group\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{\GroupOperation{(\GroupOperation{\Folner[N]}{\Inverse{\GroupElement}})}{\Folner[N]}}}{\CountingMeasure{\Folner[N]}}=1\]</span>for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
 </div>
 </div>
 </div>
@@ -254,7 +254,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <div id="def-leftFolner" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2</strong></span> Similarly, we define a <em>left-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Gamma\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{|(\Inverse{\GroupElement}\cdot\Folner[N])\cap\Folner[N]|}{|\Folner[N]|}=1 \]</span>for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 2</strong></span> Similarly, we define a <em>left-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Group\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{(\Inverse{\GroupElement}\cdot\Folner[N])\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}=1 \]</span>for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
 </div>
 </div>
 </div>
@@ -281,9 +281,9 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <div id="def-tempered" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4 (<span class="citation" data-cites="Lindenstrauss2001PETAmenable">Lindenstrauss <a href="#ref-Lindenstrauss2001PETAmenable" role="doc-biblioref">(2001)</a>, Definition 1.1</span>)</strong></span> A sequence of sets <span class="math inline">\(\Phi=(\Phi_N)_{N\in\mathbb{N}}\)</span> will be said to be <em>tempered</em> if, for some <span class="math inline">\(b&gt;0\)</span> and all <span class="math inline">\(n\in\mathbb{N}\)</span>,</p>
+<p><span class="theorem-title"><strong>Definition 4 (<span class="citation" data-cites="Lindenstrauss2001PETAmenable">Lindenstrauss <a href="#ref-Lindenstrauss2001PETAmenable" role="doc-biblioref">(2001)</a>, Definition 1.1</span>)</strong></span> A sequence of sets <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> will be said to be <em>tempered</em> if, for some <span class="math inline">\(b&gt;0\)</span> and all <span class="math inline">\(n\in\mathbb{N}\)</span>,</p>
 <p><span id="eq-Shulman"><span class="math display">\[
-\left|\bigcup_{1\leq k&lt;n}\Phi_k^{-1}\Phi_n \right|\leq b|\Phi_N|.
+\CountingMeasure{\bigcup_{1\leq k&lt;N}\Folner[k]^{-1}\Folner[N]}\leq b\CountingMeasure{\Folner[N]}.
 \tag{1}\]</span></span></p>
 <p>is referred to as the <em>Shulman condition</em>.</p>
 </div>
@@ -299,8 +299,8 @@ window.Quarto = {
 <div id="prp-temperedFolner" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 1 (<span class="citation" data-cites="Lindenstrauss2001PETAmenable">Lindenstrauss <a href="#ref-Lindenstrauss2001PETAmenable" role="doc-biblioref">(2001)</a>, Proposition 1.4</span>)</strong></span> &nbsp;</p>
 <ol type="1">
-<li>Every Følner sequence <span class="math inline">\(\Phi=(\Phi_N)_{N\in\mathbb{N}}\)</span> has a tempered subsequence.</li>
-<li>Every amenable group has a tempered Følner sequence.</li>
+<li>Every Følner sequence <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> has a tempered subsequence.</li>
+<li>Every <a href=".\..\..\MathsNotes\1_Amenable_and_Density\amenable.html#def-amenable">amenable</a> <a href=".\..\..\MathsNotes\0_Fundamental\group.html#def-group">group</a> has a tempered Følner sequence.</li>
 </ol>
 </div>
 </div>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince SFHEA">
-<meta name="dcterms.date" content="2025-07-23">
+<meta name="dcterms.date" content="2025-08-03">
 
 <title>Amenable – Kai Prince</title>
 <style>
@@ -76,6 +76,34 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
+  <script src="./mathjax-config.js" async=""></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
@@ -166,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23 July 2025</p>
+      <p class="date">3 August 2025</p>
     </div>
   </div>
   
@@ -185,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-body-container">
 <div id="def-amenable" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1</strong></span> For simplicity, we will use the alternative and equivalent definition that a group is <em>amenable</em> (and second countable) if and only if it has a Følner sequence.</p>
+<p><span class="theorem-title"><strong>Definition 1</strong></span> For simplicity, we will use the alternative and equivalent definition that a group, <span class="math inline">\(\AmenableGroup\)</span>, is <em>amenable</em> (and second countable) if and only if it has a <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-Folner">Følner</a> sequence.</p>
 </div>
 </div>
 </div>

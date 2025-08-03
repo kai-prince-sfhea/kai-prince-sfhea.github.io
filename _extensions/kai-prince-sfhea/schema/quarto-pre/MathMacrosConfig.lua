@@ -1,21 +1,29 @@
+print("Creating Schema Files")
 -- Load Project Directories
 local InputDir = pandoc.system.get_working_directory() or error("Working directory not set")
-
 local MathDir = pandoc.path.join({InputDir, "_maths"})
+
+-- Find Filter Directory
+local ExtDir = pandoc.path.join({InputDir, "_extensions","kai-prince-sfhea","schema"})
+ok, err, code = os.rename(ExtDir.."/", ExtDir.."/")
+if not ok then
+    ExtDir = pandoc.path.join({InputDir, "_extensions","schema"})
+end
+
+-- Load Schema Functions
+local schema = dofile(pandoc.path.join({ExtDir, "schema.lua"}))
+
+-- Create new Math Directory if it does not exist
 ok, err, code = os.rename(MathDir.."/", MathDir.."/")
 if not ok then
     pandoc.system.make_directory(MathDir, true)
 end
 
--- Create Math Directory file
-Directories = {}
-Directories[os.getenv("QUARTO_PROJECT_OUTPUT_DIR")] = false
-io.open(pandoc.path.join({MathDir,"Render-Directories.json"}),"w"):write(pandoc.json.encode(Directories))
-
 -- Set Output File Directories
-local OutputMathJaxFile = pandoc.path.join({MathDir, "Mathjax-macros.json"})
-local OutputLaTexFile = pandoc.path.join({MathDir, "Tex-macros.tex"})
-local OutputNotationFile = pandoc.path.join({MathDir, "Notation.json"})
+local OutputMathJSONFile = pandoc.path.join({MathDir, "Math.json"})
+local OutputDependenciesFile = pandoc.path.join({MathDir, "MathDependencies.json"})
+local OutputTermsFile = pandoc.path.join({MathDir, "Terms.json"})
+local OutputDocumentContentsFile = pandoc.path.join({MathDir, "Document-contents.json"})
 
 -- Load Input Files as List
 local InputFiles = os.getenv("QUARTO_PROJECT_INPUT_FILES") or error("QUARTO_PROJECT_INPUT_FILES not set")
@@ -25,114 +33,236 @@ for file in InputFiles:gmatch("[^\r\n]+") do
 end
 
 -- Initialise Output Variables
-local MathJaxJSON = {}
-MathJaxFile = io.open(OutputMathJaxFile, "r")
-if MathJaxFile ~= nil then
-    MathJaxJSON = pandoc.json.decode(MathJaxFile:read("a"))
-end
-local notationJSON = {}
-NotationFile = io.open(OutputNotationFile, "r")
-if NotationFile ~= nil then
-    notationJSON = pandoc.json.decode(NotationFile:read("a"))
-end
-
-
-local LaTeXFile = io.open(OutputLaTexFile, "r")
-local LaTeXJSON = {}
-local LaTeXKeys = {}
-if LaTeXFile ~= nil then
-    for k, v in string.gmatch(LaTeXFile:read("a"),"(\\newcommand{\\[^}]*})([^\n]*)") do
-        LaTeXJSON[k] = v
-        LaTeXKeys[k] = k
-    end
-end
-local LaTeX = ""
-
--- Load each Input File
-for _, file in ipairs(Files) do
-    ---@type pandoc.List
-    ---@class metadata
-    ---@field macros table|nil
-    local metadata = pandoc.read(io.open(file, "r"):read("*a"), "markdown").meta
-
-    -- Pass each Math Macro
-    if type(metadata.macros) == "table" then
-        for _, value in ipairs(metadata.macros) do
-            -- Load variables
-            local cmd = pandoc.utils.stringify(value.command)
-            local macro = pandoc.utils.stringify(value.macro)
-            local TexCmd = "\\newcommand{\\" .. cmd .. "}"
-            LaTeXKeys[TexCmd] = TexCmd
-            local variables
-            local variablesDefaultString = ""
-            local variablesDefaultArray = {}
-
-            -- Map Math Macro to variables
-            if value.variables ~= nil then
-                variables = pandoc.utils.stringify(value.variables)
-                if value.variablesDefault ~= nil then
-                    if type(value.variablesDefault) == "table" and value.variablesDefault[2] ~= nil then
-                        for _, string in ipairs(value.variablesDefault) do
-                            table.insert(variablesDefaultArray, pandoc.utils.stringify(string))
-                        end
-                        MathJaxJSON[cmd] = {
-                            macro,
-                            tonumber(variables),
-                            variablesDefaultArray
-                        }
-                        LaTeXJSON[TexCmd] = "[" .. variables .. "]" .. pandoc.utils.stringify(variablesDefaultArray) .. "{" .. macro .. "}"
-                    else
-                        variablesDefaultString = pandoc.utils.stringify(value.variablesDefault)
-                        MathJaxJSON[cmd] = {
-                            macro,
-                            tonumber(variables),
-                            variablesDefaultString
-                        }
-                        LaTeXJSON[TexCmd] = "[" .. variables .. "][" .. variablesDefaultString .. "]{" .. macro .. "}"
-                    end
-                else
-                    MathJaxJSON[cmd] = {
-                        macro,
-                        tonumber(variables)
-                    }
-                    LaTeXJSON[TexCmd] = "[" .. variables .. "]{" .. macro .. "}"
-                end
-            else
-                MathJaxJSON[cmd] = macro
-                LaTeXJSON[TexCmd] = "{" .. macro .. "}"
-            end
-            if value.description ~= nil then
-                notationJSON["\\" .. cmd] = pandoc.utils.stringify(value.description)
+local MathJSON = {}
+local MathJSONCount = {}
+MathJSONFile = io.open(OutputMathJSONFile, "r")
+if MathJSONFile ~= nil then
+    MathJSON = pandoc.json.decode(MathJSONFile:read("a"))
+    for k, v in pairs(MathJSON) do
+        MathJSONCount[k] = 1  -- Initialize count for each command
+        for _, file in ipairs(Files) do
+            if v.Source == file then
+                MathJSONCount[k] = 0  -- Reset count for files being processed
+                break  -- Stop checking once the file is found
             end
         end
     end
 end
 
--- Unique Sort
-local LaTeXKeys2 = {}
-for _, key in pairs(LaTeXKeys) do
-    table.insert(LaTeXKeys2,key)
-end
-table.sort(LaTeXKeys2)
-
--- Sorted Arrays to LaTeX string
-for _, key in ipairs(LaTeXKeys2) do
-    line = key..LaTeXJSON[key]
-    LaTeX = LaTeX .. line .. "\n"
+local TermsJSON = {}
+TermsFile = io.open(OutputTermsFile, "r")
+if TermsFile ~= nil then
+    TermsJSON = pandoc.json.decode(TermsFile:read("a"))
 end
 
--- Convert MathJax Output to indented JSON + Save to File
-MathJaxJSONEncoding = pandoc.json.encode(MathJaxJSON):gsub(",",", "):gsub(":",": ")
-MathJaxJSONEncoding2 = string.gsub(string.gsub(MathJaxJSONEncoding,"\", \"","\",\n  \""),"], \"","],\n  \"")
-MathJaxJSONEncoding3 = "{\n  " .. MathJaxJSONEncoding2:match "^{(.*)}$" .. "\n}"
-io.open(OutputMathJaxFile, "w"):write(MathJaxJSONEncoding3)
-print(MathJaxJSONEncoding3)
+local DocJSON = {}
+DocFile = io.open(OutputDocumentContentsFile, "r")
+if DocFile ~= nil then
+    DocJSON = pandoc.json.decode(DocFile:read("a"))
+end
 
--- Save Tex commands to File
-io.open(OutputLaTexFile, "w"):write(LaTeX)
-print(LaTeX)
+-- MathJSON Warning function
+local MathJSONWarning = {}
+local MathJSONWarningBoolean = false
+local function mathjson_warning(cmd, file)
+    MathJSONWarningBoolean = true
+    if MathJSONWarning[cmd] == nil then
+        MathJSONWarning[cmd] = {}
+        MathJSONWarning[cmd][MathJSON[cmd].Source] = 1
+    end
+    if MathJSONWarning[cmd][file] == nil then
+        MathJSONWarning[cmd][file] = 1
+    else
+        MathJSONWarning[cmd][file] = MathJSONWarning[cmd][file] + 1
+    end
+end
 
--- Save Notation Descriptions to File
-notationJSONEncoding = pandoc.json.encode(notationJSON):gsub("\",","\",\n  "):gsub(":",": ")
-notationJSONEncoding2 = "{\n  " .. notationJSONEncoding:match "^{(.*)}$" .. "\n}"
-io.open(OutputNotationFile, "w"):write(notationJSONEncoding2)
+-- Extract Math Macro from metadata and load it into an output table
+local function extract_math_macro(value, file)
+    -- Load variables
+    local cmd = pandoc.utils.stringify(value.command)
+    if MathJSON[cmd] == nil then
+        MathJSON[cmd] = {}
+    end
+    local macro = pandoc.utils.stringify(value.macro)
+    local variables
+    local variablesDefaultString = ""
+    local variablesDefaultArray = {}
+
+    if MathJSONCount[cmd] == nil then
+        MathJSONCount[cmd] = 1
+    else
+        MathJSONCount[cmd] = MathJSONCount[cmd] + 1
+    end
+    if MathJSONCount[cmd] > 1 then
+        mathjson_warning(cmd, file)
+    end
+
+    TermsJSON["\\"..cmd] = {
+        sourceFile = file,
+        translation = false,
+        type = "math"
+    }
+
+    -- Map Math Macro to variables
+    if value.variables ~= nil then
+        variables = pandoc.utils.stringify(value.variables)
+        if value.variablesDefault ~= nil then
+            if type(value.variablesDefault) == "table" and value.variablesDefault[2] ~= nil then
+                for _, string in ipairs(value.variablesDefault) do
+                    table.insert(variablesDefaultArray, pandoc.utils.stringify(string))
+                end
+                MathJSON[cmd] = {
+                    MathJax = {
+                        macro,
+                        tonumber(variables),
+                        variablesDefaultArray
+                    },
+                    LaTeX = "[" .. variables .. "]" .. pandoc.utils.stringify(variablesDefaultArray) .. "{" .. macro .. "}"
+                }
+            else
+                variablesDefaultString = pandoc.utils.stringify(value.variablesDefault)
+                MathJSON[cmd] = {
+                    MathJax = {
+                        macro,
+                        tonumber(variables),
+                        variablesDefaultString
+                    },
+                    LaTeX = "[" .. variables .. "][" .. variablesDefaultString .. "]{" .. macro .. "}"
+                }
+            end
+        else
+            MathJSON[cmd] = {
+                MathJax = {
+                    macro,
+                    tonumber(variables)
+                },
+                LaTeX = "[" .. variables .. "]{" .. macro .. "}"
+            }
+        end
+    else
+        MathJSON[cmd] = {
+            MathJax = macro,
+            LaTeX = "{" .. macro .. "}"
+        }
+    end
+    if value.description ~= nil then
+        MathJSON[cmd].Notation = pandoc.utils.stringify(value.description)
+        TermsJSON["\\"..cmd].description = MathJSON[cmd].Notation
+    end
+    if value.id ~= nil then
+        MathJSON[cmd].Ref = pandoc.utils.stringify(value.id)
+    end
+    MathJSON[cmd].Source = file
+end
+
+-- Load and process the metadata of each Input File
+for _, file in ipairs(Files) do
+    print("-Processing file: " .. file)
+    local fileContents = io.open(file, "r"):read("*a")
+    local contents = pandoc.read(fileContents, "markdown")
+    local body = ""
+
+    if fileContents:match("^%-%-%-") then
+        body = fileContents:match("^%-%-%-.+%-%-%-%s*(.*)%s*$")  -- Extract body after YAML metadata
+    else
+        body = fileContents
+    end
+    DocJSON[file] = {
+        contents = body
+    }
+
+    ---@type pandoc.List
+    ---@class metadata
+    ---@field macros table|nil
+    ---@field dependencies table|nil
+    ---@field terms table|nil
+    local metadata = contents.meta
+
+    -- Pass each Math Macro
+    if type(metadata.macros) == "table" then
+        for _, value in ipairs(metadata.macros) do
+            extract_math_macro(value, file)
+        end
+    end
+
+    if type(metadata.terms) == "table" then
+        for _, term in ipairs(metadata.terms) do
+            local termName = pandoc.utils.stringify(term.alias)
+
+            TermsJSON[termName] = {
+                sourceFile = file,
+                type = "term"
+            }
+
+            if term.translate == false then
+                TermsJSON[termName].translation = false
+            end
+            if term.id then
+                termRef = pandoc.utils.stringify(term.id)
+                TermsJSON[termName].sourceRef = termRef
+            end
+        end
+    end
+
+    for ref in body:gmatch("{#([a-zA-Z%-]+)}") do
+        TermsJSON["@"..ref] = {
+            sourceFile = file,
+            sourceRef = ref,
+            translation = false,
+            type = ref:match("^[a-zA-Z]+")
+        }
+        -- Find the Div block with the matching identifier
+        local found_block = nil
+        for _, block in ipairs(contents.blocks) do
+            if block.identifier == ref then
+                found_block = block
+                break
+            end
+        end
+        if found_block then
+            TermsJSON["@"..ref].block = pandoc.write(pandoc.Pandoc({found_block}, contents.meta), "markdown")
+            TermsJSON["@"..ref].blockType = found_block.t
+        end
+    end
+
+    fileDependencies = {}
+    if type(metadata.dependencies) == "table" then
+        for _, dep in ipairs(metadata.dependencies) do
+            table.insert(fileDependencies, pandoc.utils.stringify(dep))
+        end
+    end
+end
+
+if MathJSONWarningBoolean then
+    print("MathJSON Potential Conflicting Definitions: " .. schema.pretty_json(pandoc.json.encode(MathJSONWarning)))
+end
+
+-- Create a dependency graph
+local dependencyGraph = {}
+for key, body in pairs(MathJSON) do
+    dependencyGraph[key] = schema.extract_dependencies(body.LaTeX, MathJSON, "\\([a-zA-Z]+)")
+end
+
+local sorted_keys = schema.topo_sort(dependencyGraph)
+
+local dependencyData = {
+    graph = dependencyGraph,
+    sorted_keys = sorted_keys
+}
+
+-- Save MathJSON Output to File
+MathJSONEncoding = schema.pretty_json(pandoc.json.encode(MathJSON))
+io.open(OutputMathJSONFile, "w"):write(MathJSONEncoding)
+
+-- Save TermsJSON Output to File
+TermsJSONEncoding = schema.pretty_json(pandoc.json.encode(TermsJSON))
+io.open(OutputTermsFile, "w"):write(TermsJSONEncoding)
+
+-- Save DocJSON Output to File
+DocJSONEncoding = schema.pretty_json(pandoc.json.encode(DocJSON))
+io.open(OutputDocumentContentsFile, "w"):write(DocJSONEncoding)
+
+-- Save Dependencies to File
+dependencyJSONEncoding = schema.pretty_json(pandoc.json.encode(dependencyData))
+io.open(OutputDependenciesFile, "w"):write(dependencyJSONEncoding)

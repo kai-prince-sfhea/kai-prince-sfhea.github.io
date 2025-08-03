@@ -1,0 +1,138 @@
+{
+  ".": {
+    "MathJax": {
+      "Folner": [
+        "{\\Phi}_{#1}",
+        1,
+        "\\vphantom{}"
+      ]
+    },
+    "RenderMathJax": true
+  },
+  "papers": {
+    "MathJax": [
+      
+    ],
+    "RenderMathJax": true
+  },
+  "papers\\GeneralisedErdosConjecture": {
+    "MathJax": {
+      "AmenableGroup": "{\\Gamma}",
+      "AmenableGroupElement": "{\\gamma}",
+      "Folner": [
+        "{\\Phi}_{#1}",
+        1,
+        "\\vphantom{}"
+      ],
+      "Group": "{G}",
+      "GroupAction": [
+        "{#1}.{#2}",
+        2
+      ],
+      "GroupOperation": [
+        "{#1}\\cdot{#2}",
+        2
+      ],
+      "Identity": "{e}",
+      "Measure": "{\\mu}",
+      "N": "\\mathbb{N}"
+    },
+    "RenderMathJax": true
+  },
+  "papers\\MathsNotes\\0_Fundamental": {
+    "MathJax": {
+      "Group": "{G}",
+      "GroupElement": "{g}",
+      "GroupOperation": [
+        "{#1}\\cdot{#2}",
+        2
+      ],
+      "Identity": "{e}",
+      "Inverse": [
+        "{#1}^{-1}",
+        1
+      ],
+      "Operation": [
+        "{#1}\\cdot{#2}",
+        2
+      ],
+      "Set": "{S}"
+    },
+    "RenderMathJax": true
+  },
+  "papers\\MathsNotes\\1_Amenable_and_Density": {
+    "MathJax": {
+      "AmenableGroup": "{\\Gamma}",
+      "CountingMeasure": [
+        "{\\left|#1\\right|}",
+        1,
+        "\\,\\cdot\\,"
+      ],
+      "Folner": [
+        "{\\Phi}_{#1}",
+        1,
+        "\\vphantom{}"
+      ],
+      "Group": "{G}",
+      "GroupElement": "{g}",
+      "GroupOperation": [
+        "{#1}\\cdot{#2}",
+        2
+      ],
+      "Inverse": [
+        "{#1}^{-1}",
+        1
+      ]
+    },
+    "RenderMathJax": true
+  },
+  "papers\\MathsNotes\\2_Topological_Dynamics": {
+    "MathJax": {
+      "AmenableGroup": "{\\Gamma}",
+      "AmenableGroupElement": "{\\gamma}",
+      "CountingMeasure": [
+        "{\\left|#1\\right|}",
+        1,
+        "\\,\\cdot\\,"
+      ],
+      "Folner": [
+        "{\\Phi}_{#1}",
+        1,
+        "\\vphantom{}"
+      ],
+      "FurstenbergFolner": [
+        "{\\Psi}_{#1}",
+        1,
+        "\\vphantom{}"
+      ],
+      "Group": "{G}",
+      "GroupAction": [
+        "{#1}.{#2}",
+        2
+      ],
+      "GroupElement": "{g}",
+      "GroupIdentity": "{e}",
+      "GroupOperation": [
+        "{#1}\\cdot{#2}",
+        2
+      ],
+      "KroneckerAction": "{H}",
+      "KroneckerFactor": "{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}",
+      "KroneckerSpace": "{Z}",
+      "KroneckerSpaceElement": "{z}",
+      "Measure": "{\\mu}",
+      "ProjectionMap": [
+        "{\\pi}_{#1}",
+        1,
+        "\\vphantom{}"
+      ],
+      "Set": "{S}",
+      "ShiftSpace": "{X}",
+      "SigmaAlgebra": [
+        "{\\mathscr{#1}}",
+        1
+      ]
+    },
+    "RenderMathJax": true
+  }
+}

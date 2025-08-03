@@ -1,0 +1,184 @@
+{
+  "AmenableGroup": {
+    "LaTeX": "{{\\Gamma}}",
+    "MathJax": "{\\Gamma}",
+    "Source": "papers\\MathsNotes\\1_Amenable_and_Density\\amenable.qmd"
+  },
+  "AmenableGroupElement": {
+    "LaTeX": "{{\\gamma}}",
+    "MathJax": "{\\gamma}",
+    "Source": "papers\\MathsNotes\\1_Amenable_and_Density\\amenable.qmd"
+  },
+  "CountingMeasure": {
+    "LaTeX": "[1][\\,\\cdot\\,]{{\\left|#1\\right|}}",
+    "MathJax": [
+      "{\\left|#1\\right|}",
+      1,
+      "\\,\\cdot\\,"
+    ],
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\measure-ergodic-theory.qmd"
+  },
+  "Folner": {
+    "LaTeX": "[1][\\vphantom{}]{{\\Phi}_{#1}}",
+    "MathJax": [
+      "{\\Phi}_{#1}",
+      1,
+      "\\vphantom{}"
+    ],
+    "Source": "papers\\MathsNotes\\1_Amenable_and_Density\\folner.qmd"
+  },
+  "FurstenbergFolner": {
+    "LaTeX": "[1][\\vphantom{}]{{\\Psi}_{#1}}",
+    "MathJax": [
+      "{\\Psi}_{#1}",
+      1,
+      "\\vphantom{}"
+    ],
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\furstenberg-correspondence.qmd"
+  },
+  "FurstenbergSystem": {
+    "LaTeX": "[3][\\AmenableGroup][\\Measure][\\ShiftSpace]{{({#3},{#2},{#1})}}",
+    "MathJax": [
+      "{({#3},{#2},{#1})}",
+      3,
+      [
+        "[\\AmenableGroup]",
+        "[\\Measure]",
+        "[\\ShiftSpace]"
+      ]
+    ],
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\furstenberg-correspondence.qmd"
+  },
+  "Generic": {
+    "LaTeX": "[2][\\Measure][\\Folner]{\\text{gen}({#1},{#2})}",
+    "MathJax": [
+      "\\text{gen}({#1},{#2})",
+      2,
+      [
+        "[\\Measure]",
+        "[\\Folner]"
+      ]
+    ],
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\actions.qmd"
+  },
+  "Group": {
+    "LaTeX": "{{G}}",
+    "MathJax": "{G}",
+    "Source": "papers\\MathsNotes\\0_Fundamental\\group.qmd"
+  },
+  "GroupAction": {
+    "LaTeX": "[2]{{#1}.{#2}}",
+    "MathJax": [
+      "{#1}.{#2}",
+      2
+    ],
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\actions.qmd"
+  },
+  "GroupElement": {
+    "LaTeX": "{{g}}",
+    "MathJax": "{g}",
+    "Source": "papers\\MathsNotes\\0_Fundamental\\group.qmd"
+  },
+  "GroupIdentity": {
+    "LaTeX": "{{e}}",
+    "MathJax": "{e}",
+    "Source": "papers\\MathsNotes\\0_Fundamental\\group.qmd"
+  },
+  "GroupOperation": {
+    "LaTeX": "[2]{{#1}\\cdot{#2}}",
+    "MathJax": [
+      "{#1}\\cdot{#2}",
+      2
+    ],
+    "Source": "papers\\MathsNotes\\0_Fundamental\\group.qmd"
+  },
+  "Identity": {
+    "LaTeX": "{{e}}",
+    "MathJax": "{e}",
+    "Source": "papers\\MathsNotes\\0_Fundamental\\axioms.qmd"
+  },
+  "Inverse": {
+    "LaTeX": "[1]{{#1}^{-1}}",
+    "MathJax": [
+      "{#1}^{-1}",
+      1
+    ],
+    "Source": "papers\\MathsNotes\\0_Fundamental\\axioms.qmd"
+  },
+  "KroneckerAction": {
+    "LaTeX": "{{H}}",
+    "MathJax": "{H}",
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\factor-maps.qmd"
+  },
+  "KroneckerFactor": {
+    "LaTeX": "{{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}}",
+    "MathJax": "{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}",
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\factor-maps.qmd"
+  },
+  "KroneckerMeasure": {
+    "LaTeX": "{{m_Z}}",
+    "MathJax": "{m_Z}",
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\factor-maps.qmd"
+  },
+  "KroneckerSpace": {
+    "LaTeX": "{{Z}}",
+    "MathJax": "{Z}",
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\factor-maps.qmd"
+  },
+  "KroneckerSpaceElement": {
+    "LaTeX": "{{z}}",
+    "MathJax": "{z}",
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\factor-maps.qmd"
+  },
+  "LebesgueMeasure": {
+    "LaTeX": "{{\\lambda}}",
+    "MathJax": "{\\lambda}",
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\measure-ergodic-theory.qmd"
+  },
+  "Measure": {
+    "LaTeX": "{{\\mu}}",
+    "MathJax": "{\\mu}",
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\measure-ergodic-theory.qmd"
+  },
+  "N": {
+    "LaTeX": "{\\mathbb{N}}",
+    "MathJax": "\\mathbb{N}",
+    "Notation": "The Natural Numbers: 1, 2, 3, ...",
+    "Source": "papers\\MathsNotes\\0_Fundamental\\axioms.qmd"
+  },
+  "Operation": {
+    "LaTeX": "[2]{{#1}\\cdot{#2}}",
+    "MathJax": [
+      "{#1}\\cdot{#2}",
+      2
+    ],
+    "Source": "papers\\MathsNotes\\0_Fundamental\\axioms.qmd"
+  },
+  "ProjectionMap": {
+    "LaTeX": "[1][\\vphantom{}]{{\\pi}_{#1}}",
+    "MathJax": [
+      "{\\pi}_{#1}",
+      1,
+      "\\vphantom{}"
+    ],
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\factor-maps.qmd"
+  },
+  "Set": {
+    "LaTeX": "{{S}}",
+    "MathJax": "{S}",
+    "Source": "papers\\MathsNotes\\0_Fundamental\\axioms.qmd"
+  },
+  "ShiftSpace": {
+    "LaTeX": "{{X}}",
+    "MathJax": "{X}",
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\furstenberg-correspondence.qmd"
+  },
+  "SigmaAlgebra": {
+    "LaTeX": "[1]{{\\mathscr{#1}}}",
+    "MathJax": [
+      "{\\mathscr{#1}}",
+      1
+    ],
+    "Source": "papers\\MathsNotes\\2_Topological_Dynamics\\measure-ergodic-theory.qmd"
+  }
+}

@@ -96,5 +96,21 @@
   "papers/MathsNotes/1_Amenable_and_Density/amenable.qmd": {
     "amenable.html": "a502925e",
     "amenable.tex": "abb4b2ef"
+  },
+  "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.qmd": {
+    "measure-ergodic-theory.html": "cf20c22d",
+    "measure-ergodic-theory.tex": "1aa01d58"
+  },
+  "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorems.qmd": {
+    "recurrence-and-Ergodic-theorems.html": "0644102e",
+    "recurrence-and-Ergodic-theorems.tex": "c6addae0"
+  },
+  "papers/MathsNotes/2_Topological_Dynamics/factor-maps.qmd": {
+    "factor-maps.html": "69f6a731",
+    "factor-maps.tex": "4af9caf8"
+  },
+  "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.qmd": {
+    "furstenberg-correspondence.html": "6157c1b5",
+    "furstenberg-correspondence.tex": "e768ac43"
   }
 }

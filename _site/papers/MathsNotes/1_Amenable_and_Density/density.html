@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince SFHEA">
-<meta name="dcterms.date" content="2025-07-23">
+<meta name="dcterms.date" content="2025-08-03">
 
 <title>Density – Kai Prince</title>
 <style>
@@ -194,7 +194,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23 July 2025</p>
+      <p class="date">3 August 2025</p>
     </div>
   </div>
   
@@ -213,13 +213,13 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <div id="def-density" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1</strong></span> For <span class="math inline">\(A\subseteq G\)</span> and Følner sequence <span class="math inline">\(\Phi=(\Phi_N)_{n=1}^\infty\)</span>, we write <span class="math display">\[\begin{align*}
-    \overline{d}_\Phi(A)&amp;=\limsup_{N\rightarrow\infty}\frac{|A\cap\Phi_N|}{|\Phi_N|}
-    \\\underline{d}_\Phi(A)&amp;=\liminf_{N\rightarrow\infty}\frac{|A\cap\Phi_N|}{|\Phi_N|}
-\end{align*}\]</span> to be the <em>upper and lower densities of <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\Phi\)</span></em>, respectively. If these agree, then we can write <span class="math display">\[
-d_\Phi(A)=\lim_{N\rightarrow\infty}\frac{|A\cap\Phi_N|}{|\Phi_N|}
+<p><span class="theorem-title"><strong>Definition 1</strong></span> For <span class="math inline">\(A\subseteq\Group\)</span> and <a href=".\..\..\MathsNotes\1_Amenable_and_Density\folner.html#def-Folner">Følner</a> sequence <span class="math inline">\(\Folner=(\Folner[N])_{n=1}^\infty\)</span>, we write <span class="math display">\[\begin{align*}
+    \overline{d}_{\Folner}(A)&amp;=\limsup_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
+    \\\underline{d}_{\Folner}(A)&amp;=\liminf_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
+\end{align*}\]</span> to be the <em>upper and lower densities of <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\Folner\)</span></em>, respectively. If these agree, then we can write <span class="math display">\[
+d_{\Folner}(A)=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
 \]</span> to be the <em>density of <span class="math inline">\(A\)</span> with respect to <span class="math inline">\(\Phi\)</span></em>. We also define the <em>upper Banach density of <span class="math inline">\(A\)</span></em> by <span class="math display">\[
-\overline{d}(A)=\sup\{d_\Phi(A):\text{for Følner sequences }\Phi\text{ where }d_\Phi(A)\text{ exists}\}.
+\overline{d}(A)=\sup\{d_{\Folner}(A):\text{for Følner sequences }\Folner\text{ where }d_{\Folner}(A)\text{ exists}\}.
 \]</span></p>
 </div>
 </div>

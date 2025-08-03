@@ -1,0 +1,119 @@
+{
+  "graph": {
+    "AmenableGroup": {
+      
+    },
+    "AmenableGroupElement": {
+      
+    },
+    "CountingMeasure": {
+      
+    },
+    "Folner": {
+      
+    },
+    "FurstenbergFolner": {
+      
+    },
+    "FurstenbergSystem": [
+      "AmenableGroup",
+      "ShiftSpace",
+      "Measure"
+    ],
+    "Generic": [
+      "Folner",
+      "Measure"
+    ],
+    "Group": {
+      
+    },
+    "GroupAction": {
+      
+    },
+    "GroupElement": {
+      
+    },
+    "GroupIdentity": {
+      
+    },
+    "GroupOperation": {
+      
+    },
+    "Identity": {
+      
+    },
+    "Inverse": {
+      
+    },
+    "KroneckerAction": {
+      
+    },
+    "KroneckerFactor": [
+      "KroneckerSpace",
+      "KroneckerMeasure",
+      "KroneckerAction"
+    ],
+    "KroneckerMeasure": {
+      
+    },
+    "KroneckerSpace": {
+      
+    },
+    "KroneckerSpaceElement": {
+      
+    },
+    "LebesgueMeasure": {
+      
+    },
+    "Measure": {
+      
+    },
+    "N": {
+      
+    },
+    "Operation": {
+      
+    },
+    "ProjectionMap": {
+      
+    },
+    "Set": {
+      
+    },
+    "ShiftSpace": {
+      
+    },
+    "SigmaAlgebra": {
+      
+    }
+  },
+  "sorted_keys": [
+    "N",
+    "Folner",
+    "AmenableGroupElement",
+    "Inverse",
+    "CountingMeasure",
+    "GroupAction",
+    "GroupOperation",
+    "KroneckerSpace",
+    "Operation",
+    "Measure",
+    "Generic",
+    "Set",
+    "SigmaAlgebra",
+    "Group",
+    "LebesgueMeasure",
+    "Identity",
+    "AmenableGroup",
+    "GroupIdentity",
+    "FurstenbergFolner",
+    "ProjectionMap",
+    "KroneckerSpaceElement",
+    "KroneckerMeasure",
+    "KroneckerAction",
+    "GroupElement",
+    "ShiftSpace",
+    "KroneckerFactor",
+    "FurstenbergSystem"
+  ]
+}

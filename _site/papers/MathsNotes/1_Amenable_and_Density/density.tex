@@ -174,19 +174,11 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-\newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\AmenableGroup}{{\Gamma}}
+
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
-\newcommand{\GroupElement}{{g}}
-\newcommand{\GroupIdentity}{{e}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\CountingMeasure}[1][\,\cdot\,]{{\left|#1\right|}}
 \newcommand{\Group}{{G}}
-\newcommand{\Identity}{{e}}
-\newcommand{\Inverse}[1]{{#1}^{-1}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Operation}[2]{{#1}\cdot{#2}}
-\newcommand{\Set}{{S}}
+
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -204,7 +196,7 @@
 
 \title{Density}
 \author{Kai Prince SFHEA}
-\date{2025-07-23}
+\date{2025-08-03}
 \begin{document}
 \maketitle
 
@@ -217,16 +209,17 @@
 
 \begin{definition}[]\protect\hypertarget{def-density}{}\label{def-density}
 
-For \(A\subseteq G\) and Følner sequence \(\Phi=(\Phi_N)_{n=1}^\infty\),
-we write \begin{align*}
-    \overline{d}_\Phi(A)&=\limsup_{N\rightarrow\infty}\frac{|A\cap\Phi_N|}{|\Phi_N|}
-    \\\underline{d}_\Phi(A)&=\liminf_{N\rightarrow\infty}\frac{|A\cap\Phi_N|}{|\Phi_N|}
+For \(A\subseteq\Group\) and Følner sequence
+\(\Folner=(\Folner[N])_{n=1}^\infty\), we write \begin{align*}
+    \overline{d}_{\Folner}(A)&=\limsup_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
+    \\\underline{d}_{\Folner}(A)&=\liminf_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
 \end{align*} to be the \emph{upper and lower densities of \(A\) with
-respect to \(\Phi\)}, respectively. If these agree, then we can write \[
-d_\Phi(A)=\lim_{N\rightarrow\infty}\frac{|A\cap\Phi_N|}{|\Phi_N|}
+respect to \(\Folner\)}, respectively. If these agree, then we can write
+\[
+d_{\Folner}(A)=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
 \] to be the \emph{density of \(A\) with respect to \(\Phi\)}. We also
 define the \emph{upper Banach density of \(A\)} by \[
-\overline{d}(A)=\sup\{d_\Phi(A):\text{for Følner sequences }\Phi\text{ where }d_\Phi(A)\text{ exists}\}.
+\overline{d}(A)=\sup\{d_{\Folner}(A):\text{for Følner sequences }\Folner\text{ where }d_{\Folner}(A)\text{ exists}\}.
 \]
 
 \end{definition}

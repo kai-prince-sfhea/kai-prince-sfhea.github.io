@@ -1,25 +1,28 @@
 % Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
+  british,
 ]{article}
-
+\usepackage{xcolor}
 \usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
-\ifPDFTeX\else  
-    % xetex/luatex font selection
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -37,9 +40,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
 \makeatletter
 \ifx\paragraph\undefined\else
@@ -65,8 +65,7 @@
 \makeatother
 
 
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -91,6 +90,8 @@
 % Set default figure placement to htbp
 \def\fps@figure{htbp}
 \makeatother
+
+
 % definitions for citeproc citations
 \NewDocumentCommand\citeproctext{}{}
 \NewDocumentCommand\citeproc{mm}{%
@@ -125,7 +126,37 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage[english]{selnolig} % disable illegal ligatures
+\fi
 
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+% Get Math Fonts
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont[range={\mathscr,\mathbfscr,\mathbb}]{XITSMath-Regular}
+[    Extension = .otf,
+      BoldFont = XITSMath-Bold
+]
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -160,6 +191,15 @@
 \@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Proof}}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem{refremark}{Remark}[section]
+\newtheorem{refsolution}{Solution}[section]
 \makeatother
 \makeatletter
 \makeatother
@@ -168,24 +208,22 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\ifLuaTeX
-\usepackage[bidi=basic]{babel}
-\else
-\usepackage[bidi=default]{babel}
-\fi
-\babelprovide[main,import]{british}
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
-\ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
-\fi
-\usepackage{bookmark}
+\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\KroneckerSpace}{{Z}}
+\newcommand{\Measure}{{\mu}}
+\newcommand{\AmenableGroup}{{\Gamma}}
+\newcommand{\ProjectionMap}[1][\vphantom{}]{{\pi}_{#1}}
+\newcommand{\KroneckerSpaceElement}{{z}}
+\newcommand{\KroneckerMeasure}{{m_Z}}
+\newcommand{\KroneckerAction}{{H}}
+\newcommand{\KroneckerFactor}{{(\KroneckerSpace,\KroneckerMeasure,\KroneckerAction)}}
 
+\usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
-  pdftitle={My Website},
+  pdftitle={Factor Maps},
+  pdfauthor={Kai Prince SFHEA},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -195,33 +233,51 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{My Website}
-\author{Kai Prince}
-\date{}
-
+\title{Factor Maps}
+\author{Kai Prince SFHEA}
+\date{2025-08-03}
 \begin{document}
 \maketitle
 
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
 
-This is a Quarto website.
+\begin{proposition}[cf. Host \citeproc{ref-host2019short}{(2019)},
+Proposition
+5]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
 
-To learn more about Quarto websites visit
-\url{https://quarto.org/docs/websites}.Test Citation:
-\citeproc{ref-Moreira_2019}{(Moreira, Richter and Robertson, 2019)}
+Let \((X,\AmenableGroup)\) be a topological dynamical system where
+\(\AmenableGroup\) is an amenable group, \(x_0\in X\), and \(\Measure\)
+be an ergodic invariant probability measure supported on the closed
+orbit of \(x_0\) under the action of \(\AmenableGroup\).
 
-\[\sum_{i=1}^N\frac{1}{2^n}=1.\]
+Let \(\KroneckerFactor\) be the Kronecker factor of
+\((X,\Measure,\AmenableGroup)\), with factor map
+\(\ProjectionMap:X\rightarrow\KroneckerSpace\).
 
-\[\frac{1}{|\Folner{N}|}\sum_{\gamma\in\Folner}T^\gamma x \]
+Let \(X\times\KroneckerSpace\) be endowed with the group action of
+\(\AmenableGroup\times\KroneckerAction\). Let \(\tilde\Measure\) be the
+measure on \(X\times\KroneckerSpace\) and image of \(\Measure\) under
+the map \(X\rightarrow X\times\KroneckerSpace\) where
+\(x\mapsto(x,\ProjectionMap(x))\).
 
-UPDATE3
+Then there exists a Følner sequence \(\tilde{\Folner}\) and a point
+\(\KroneckerSpaceElement_0\in\KroneckerSpace\) such that
+\((x_0,\KroneckerSpaceElement_0)\) is generic for \(\tilde{\Measure}\)
+along \(\tilde{\Folner}\).
+
+\end{proposition}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-Moreira_2019}
-Moreira, J., Richter, F. and Robertson, D. (2019). \textquotesingle A
-proof of a sumset conjecture of erdős\textquotesingle,
-\emph{\emph{Annals of Mathematics},} 189 (2),
-\href{https://doi.org/10.4007/annals.2019.189.2.4}{https://doi.org/10.4007/annals.2019.189.2.4.}
+\bibitem[\citeproctext]{ref-host2019short}
+Host, B. (2019). \textquotesingle{}\emph{A short proof of a conjecture
+of erdös proved by moreira, richter and robertson}\textquotesingle,
+Available at: \url{https://arxiv.org/abs/1904.09952}.
 
 \end{CSLReferences}
 
