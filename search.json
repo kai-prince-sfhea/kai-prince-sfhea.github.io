@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "My Website",
@@ -16,28 +9,14 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Kai Prince",
     "section": "",
     "text": "About this site"
   },
   {
-    "objectID": "advocacy.html",
-    "href": "advocacy.html",
-    "title": "Advocacy",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
-    "objectID": "papers/research.html",
-    "href": "papers/research.html",
-    "title": "Research",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
-    "objectID": "automations.html",
-    "href": "automations.html",
-    "title": "Automations",
+    "objectID": "activities.html",
+    "href": "activities.html",
+    "title": "Activities",
     "section": "",
     "text": "No matching items"
   }

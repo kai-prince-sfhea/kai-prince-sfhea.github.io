@@ -195,9 +195,9 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
-\theoremstyle{plain}
 \newtheorem{proposition}{Proposition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -212,20 +212,21 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\N}{\mathbb{N}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 \newcommand{\Measure}{{\mu}}
-\newcommand{\Group}{{G}}
-\newcommand{\Identity}{{e}}
+\newcommand{\GroupAction}[2]{{#1}.{#2}}
 \newcommand{\AmenableGroup}{{\Gamma}}
+\newcommand{\Group}{{G}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Identity}{{e}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
+  pdftitle={A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups},
   pdfauthor={Kai Prince},
   pdflang={en-GB},
   colorlinks=true,
@@ -236,20 +237,13 @@
   pdfcreator={LaTeX via pandoc}}
 
 
+\title{A Short Proof of a Generalised Conjecture of Erdős in Amenable
+Groups}
 \author{Kai Prince}
-\date{2025-07-29}
+\date{2025-08-05}
 \begin{document}
-
-\renewcommand*\contentsname{Table of contents}
-{
-\hypersetup{linkcolor=}
-\setcounter{tocdepth}{3}
-\tableofcontents
-}
-
-\section*{Abstract}\label{abstract}
-\addcontentsline{toc}{section}{Abstract}
-
+\maketitle
+\begin{abstract}
 We follow steps provided by the paper published by
 \citeproc{ref-host2019short}{(Host, 2019)}, `A Short Proof of a
 Conjecture of Erdős Proved by Moreira, Richter and Robertson', as well
@@ -258,6 +252,14 @@ al., 2022)}, to generalise the proof of Erdős's conjecture for amenable
 groups. The main result that we aim to prove is: `every positively dense
 subset of an amenable group contains the group sumset of \(k\) infinite
 sets for every natural number \(k\)'.
+\end{abstract}
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
 
 \section{Introduction}\label{introduction}
 
