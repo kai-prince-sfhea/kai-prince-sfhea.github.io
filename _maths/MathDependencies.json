@@ -16,13 +16,13 @@
       
     },
     "FurstenbergSystem": [
-      "ShiftSpace",
       "AmenableGroup",
+      "ShiftSpace",
       "Measure"
     ],
     "Generic": [
-      "Folner",
-      "Measure"
+      "Measure",
+      "Folner"
     ],
     "Group": {
       
@@ -92,28 +92,28 @@
     "KroneckerSpace",
     "KroneckerAction",
     "KroneckerFactor",
-    "AmenableGroup",
-    "Set",
-    "CountingMeasure",
-    "GroupOperation",
-    "GroupIdentity",
-    "Identity",
     "AmenableGroupElement",
-    "Folner",
-    "Inverse",
-    "FurstenbergFolner",
+    "GroupIdentity",
+    "ShiftSpace",
     "GroupElement",
-    "Operation",
-    "LebesgueMeasure",
     "Group",
+    "SigmaAlgebra",
+    "Operation",
+    "Inverse",
+    "AmenableGroup",
+    "GroupAction",
+    "KroneckerSpaceElement",
+    "FurstenbergFolner",
     "N",
     "Measure",
-    "Generic",
-    "GroupAction",
-    "ShiftSpace",
     "FurstenbergSystem",
-    "KroneckerSpaceElement",
-    "SigmaAlgebra",
-    "ProjectionMap"
+    "GroupOperation",
+    "ProjectionMap",
+    "CountingMeasure",
+    "Folner",
+    "Generic",
+    "Identity",
+    "LebesgueMeasure",
+    "Set"
   ]
 }

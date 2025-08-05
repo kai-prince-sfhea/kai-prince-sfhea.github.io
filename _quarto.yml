@@ -32,8 +32,8 @@ format:
     respect-user-color-scheme: true
     email-obfuscation: javascript
     theme:
-      - cosmo
-      - brand
+      light: cosmo
+      dark: darkly
 
 execute:
   freeze: auto
