@@ -19,7 +19,10 @@ website:
   reader-mode: true
   draft-mode: visible
   site-url: https://kaiprince.co.uk
-  google-analytics: G-0QRFD5NB5R
+  cookie-consent: true
+  google-analytics: 
+    tracking-id: "G-0QRFD5NB5R"
+    anonymize-ip: true
 
 format:
   schema-html:

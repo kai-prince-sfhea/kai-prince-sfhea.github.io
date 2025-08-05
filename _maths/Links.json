@@ -111,24 +111,24 @@
   },
   "papers\\GeneralisedErdosConjecture\\ErdosConjecture.qmd": {
     "FileLinks": {
-      "papers\\MathsNotes\\0_Fundamental\\axioms.qmd": {
-        
-      },
+      "papers\\MathsNotes\\0_Fundamental\\axioms.qmd": [
+        "def-identity"
+      ],
       "papers\\MathsNotes\\0_Fundamental\\group.qmd": [
         "def-group"
       ],
-      "papers\\MathsNotes\\1_Amenable_and_Density\\amenable.qmd": [
-        "def-amenable"
-      ],
+      "papers\\MathsNotes\\1_Amenable_and_Density\\amenable.qmd": {
+        
+      },
       "papers\\MathsNotes\\1_Amenable_and_Density\\density.qmd": [
         "def-density"
       ],
-      "papers\\MathsNotes\\1_Amenable_and_Density\\folner.qmd": [
-        "def-tempered"
-      ],
-      "papers\\MathsNotes\\2_Topological_Dynamics\\actions.qmd": {
+      "papers\\MathsNotes\\1_Amenable_and_Density\\folner.qmd": {
         
       },
+      "papers\\MathsNotes\\2_Topological_Dynamics\\actions.qmd": [
+        "def-generic"
+      ],
       "papers\\MathsNotes\\2_Topological_Dynamics\\factor-maps.qmd": [
         "prp-KroneckerGeneric"
       ],
@@ -143,7 +143,7 @@
         "description": "The Natural Numbers: 1, 2, 3, ..."
       }
     ],
-    "LaTeX": "\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\GroupAction}[2]{{#1}.{#2}}\n\\newcommand{\\AmenableGroup}{{\\Gamma}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\N}{\\mathbb{N}}\n\\newcommand{\\Identity}{{e}}\n\\newcommand{\\GroupOperation}[2]{{#1}\\cdot{#2}}\n\\newcommand{\\AmenableGroupElement}{{\\gamma}}\n\n",
+    "LaTeX": "\n\\newcommand{\\AmenableGroup}{{\\Gamma}}\n\\newcommand{\\GroupOperation}[2]{{#1}\\cdot{#2}}\n\\newcommand{\\Identity}{{e}}\n\\newcommand{\\AmenableGroupElement}{{\\gamma}}\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\N}{\\mathbb{N}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\GroupAction}[2]{{#1}.{#2}}\n\n",
     "RefMath": {
       "\\AmenableGroup": true,
       "\\AmenableGroupElement": true,
@@ -185,7 +185,7 @@
     "FileNotation": {
       
     },
-    "LaTeX": "\n\\newcommand{\\Inverse}[1]{{#1}^{-1}}\n\\newcommand{\\Identity}{{e}}\n\\newcommand{\\Set}{{S}}\n\\newcommand{\\Operation}[2]{{#1}\\cdot{#2}}\n\n",
+    "LaTeX": "\n\\newcommand{\\Set}{{S}}\n\\newcommand{\\Identity}{{e}}\n\\newcommand{\\Inverse}[1]{{#1}^{-1}}\n\\newcommand{\\Operation}[2]{{#1}\\cdot{#2}}\n\n",
     "RefMath": {
       
     },
@@ -199,13 +199,13 @@
   "papers\\MathsNotes\\0_Fundamental\\group.qmd": {
     "FileLinks": {
       "papers\\MathsNotes\\0_Fundamental\\axioms.qmd": [
-        "def-identity"
+        "def-associativity"
       ]
     },
     "FileNotation": {
       
     },
-    "LaTeX": "\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\GroupElement}{{g}}\n\\newcommand{\\GroupOperation}[2]{{#1}\\cdot{#2}}\n\n",
+    "LaTeX": "\n\\newcommand{\\GroupOperation}[2]{{#1}\\cdot{#2}}\n\\newcommand{\\GroupElement}{{g}}\n\\newcommand{\\Group}{{G}}\n\n",
     "RefMath": {
       
     },
@@ -260,7 +260,7 @@
     "FileNotation": {
       
     },
-    "LaTeX": "\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\CountingMeasure}[1][\\,\\cdot\\,]{{\\left|#1\\right|}}\n\n",
+    "LaTeX": "\n\\newcommand{\\CountingMeasure}[1][\\,\\cdot\\,]{{\\left|#1\\right|}}\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Group}{{G}}\n\n",
     "RefMath": {
       "\\CountingMeasure": true,
       "\\Folner": true,
@@ -278,9 +278,9 @@
   },
   "papers\\MathsNotes\\1_Amenable_and_Density\\folner.qmd": {
     "FileLinks": {
-      "papers\\MathsNotes\\0_Fundamental\\axioms.qmd": {
-        
-      },
+      "papers\\MathsNotes\\0_Fundamental\\axioms.qmd": [
+        "def-inverse"
+      ],
       "papers\\MathsNotes\\0_Fundamental\\group.qmd": [
         "def-group"
       ],
@@ -294,7 +294,7 @@
     "FileNotation": {
       
     },
-    "LaTeX": "\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Inverse}[1]{{#1}^{-1}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\CountingMeasure}[1][\\,\\cdot\\,]{{\\left|#1\\right|}}\n\\newcommand{\\GroupElement}{{g}}\n\\newcommand{\\GroupOperation}[2]{{#1}\\cdot{#2}}\n\n",
+    "LaTeX": "\n\\newcommand{\\CountingMeasure}[1][\\,\\cdot\\,]{{\\left|#1\\right|}}\n\\newcommand{\\GroupOperation}[2]{{#1}\\cdot{#2}}\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Inverse}[1]{{#1}^{-1}}\n\\newcommand{\\GroupElement}{{g}}\n\\newcommand{\\Group}{{G}}\n\n",
     "RefMath": {
       "\\CountingMeasure": true,
       "\\Group": true,
@@ -322,9 +322,9 @@
       "papers\\MathsNotes\\0_Fundamental\\group.qmd": [
         "def-group"
       ],
-      "papers\\MathsNotes\\1_Amenable_and_Density\\folner.qmd": [
-        "def-tempered"
-      ],
+      "papers\\MathsNotes\\1_Amenable_and_Density\\folner.qmd": {
+        
+      },
       "papers\\MathsNotes\\2_Topological_Dynamics\\measure-ergodic-theory.qmd": {
         
       }
@@ -332,7 +332,7 @@
     "FileNotation": {
       
     },
-    "LaTeX": "\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\GroupAction}[2]{{#1}.{#2}}\n\\newcommand{\\GroupIdentity}{{e}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\GroupElement}{{g}}\n\\newcommand{\\GroupOperation}[2]{{#1}\\cdot{#2}}\n\\newcommand{\\SigmaAlgebra}[1]{{\\mathscr{#1}}}\n\\newcommand{\\Set}{{S}}\n\n",
+    "LaTeX": "\n\\newcommand{\\Set}{{S}}\n\\newcommand{\\GroupOperation}[2]{{#1}\\cdot{#2}}\n\\newcommand{\\GroupIdentity}{{e}}\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\GroupElement}{{g}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\GroupAction}[2]{{#1}.{#2}}\n\\newcommand{\\SigmaAlgebra}[1]{{\\mathscr{#1}}}\n\n",
     "RefMath": {
       "\\Folner": true,
       "\\Group": true,
@@ -378,7 +378,7 @@
     "FileNotation": {
       
     },
-    "LaTeX": "\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\ProjectionMap}[1][\\vphantom{}]{{\\pi}_{#1}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\KroneckerSpace}{{Z}}\n\\newcommand{\\AmenableGroup}{{\\Gamma}}\n\\newcommand{\\KroneckerMeasure}{{m_Z}}\n\\newcommand{\\KroneckerAction}{{H}}\n\\newcommand{\\KroneckerFactor}{{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}}\n\\newcommand{\\KroneckerSpaceElement}{{z}}\n\n",
+    "LaTeX": "\n\\newcommand{\\KroneckerMeasure}{{m_Z}}\n\\newcommand{\\KroneckerSpace}{{Z}}\n\\newcommand{\\KroneckerAction}{{H}}\n\\newcommand{\\KroneckerFactor}{{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}}\n\\newcommand{\\AmenableGroup}{{\\Gamma}}\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\KroneckerSpaceElement}{{z}}\n\\newcommand{\\ProjectionMap}[1][\\vphantom{}]{{\\pi}_{#1}}\n\n",
     "RefMath": {
       "\\AmenableGroup": true,
       "\\Folner": true,
@@ -405,15 +405,15 @@
       "papers\\MathsNotes\\0_Fundamental\\group.qmd": [
         "def-group"
       ],
-      "papers\\MathsNotes\\1_Amenable_and_Density\\amenable.qmd": [
-        "def-amenable"
-      ],
+      "papers\\MathsNotes\\1_Amenable_and_Density\\amenable.qmd": {
+        
+      },
       "papers\\MathsNotes\\1_Amenable_and_Density\\folner.qmd": {
         
       },
-      "papers\\MathsNotes\\2_Topological_Dynamics\\actions.qmd": {
-        
-      },
+      "papers\\MathsNotes\\2_Topological_Dynamics\\actions.qmd": [
+        "def-generic"
+      ],
       "papers\\MathsNotes\\2_Topological_Dynamics\\measure-ergodic-theory.qmd": {
         
       }
@@ -421,7 +421,7 @@
     "FileNotation": {
       
     },
-    "LaTeX": "\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\GroupAction}[2]{{#1}.{#2}}\n\\newcommand{\\FurstenbergFolner}[1][\\vphantom{}]{{\\Psi}_{#1}}\n\\newcommand{\\AmenableGroup}{{\\Gamma}}\n\\newcommand{\\ShiftSpace}{{X}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\CountingMeasure}[1][\\,\\cdot\\,]{{\\left|#1\\right|}}\n\\newcommand{\\AmenableGroupElement}{{\\gamma}}\n\n",
+    "LaTeX": "\n\\newcommand{\\AmenableGroup}{{\\Gamma}}\n\\newcommand{\\CountingMeasure}[1][\\,\\cdot\\,]{{\\left|#1\\right|}}\n\\newcommand{\\AmenableGroupElement}{{\\gamma}}\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\FurstenbergFolner}[1][\\vphantom{}]{{\\Psi}_{#1}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\GroupAction}[2]{{#1}.{#2}}\n\\newcommand{\\ShiftSpace}{{X}}\n\n",
     "RefMath": {
       "\\AmenableGroup": true,
       "\\AmenableGroupElement": true,
@@ -469,15 +469,15 @@
       "papers\\MathsNotes\\0_Fundamental\\group.qmd": [
         "def-group"
       ],
-      "papers\\MathsNotes\\1_Amenable_and_Density\\amenable.qmd": [
-        "def-amenable"
-      ],
-      "papers\\MathsNotes\\1_Amenable_and_Density\\folner.qmd": [
-        "def-tempered"
-      ],
-      "papers\\MathsNotes\\2_Topological_Dynamics\\actions.qmd": {
+      "papers\\MathsNotes\\1_Amenable_and_Density\\amenable.qmd": {
         
       },
+      "papers\\MathsNotes\\1_Amenable_and_Density\\folner.qmd": {
+        
+      },
+      "papers\\MathsNotes\\2_Topological_Dynamics\\actions.qmd": [
+        "def-generic"
+      ],
       "papers\\MathsNotes\\2_Topological_Dynamics\\measure-ergodic-theory.qmd": {
         
       }
@@ -485,7 +485,7 @@
     "FileNotation": {
       
     },
-    "LaTeX": "\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\GroupAction}[2]{{#1}.{#2}}\n\\newcommand{\\AmenableGroup}{{\\Gamma}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\CountingMeasure}[1][\\,\\cdot\\,]{{\\left|#1\\right|}}\n\\newcommand{\\SigmaAlgebra}[1]{{\\mathscr{#1}}}\n\\newcommand{\\AmenableGroupElement}{{\\gamma}}\n\n",
+    "LaTeX": "\n\\newcommand{\\AmenableGroup}{{\\Gamma}}\n\\newcommand{\\CountingMeasure}[1][\\,\\cdot\\,]{{\\left|#1\\right|}}\n\\newcommand{\\AmenableGroupElement}{{\\gamma}}\n\\newcommand{\\Folner}[1][\\vphantom{}]{{\\Phi}_{#1}}\n\\newcommand{\\Group}{{G}}\n\\newcommand{\\Measure}{{\\mu}}\n\\newcommand{\\GroupAction}[2]{{#1}.{#2}}\n\\newcommand{\\SigmaAlgebra}[1]{{\\mathscr{#1}}}\n\n",
     "RefMath": {
       "\\AmenableGroup": true,
       "\\AmenableGroupElement": true,
