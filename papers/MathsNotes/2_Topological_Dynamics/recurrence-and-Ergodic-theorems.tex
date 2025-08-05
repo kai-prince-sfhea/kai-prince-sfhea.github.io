@@ -193,9 +193,9 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
-\theoremstyle{plain}
 \newtheorem{corollary}{Corollary}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -210,14 +210,14 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
+\newcommand{\AmenableGroup}{{\Gamma}}
+\newcommand{\CountingMeasure}[1][\,\cdot\,]{{\left|#1\right|}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\Group}{{G}}
 \newcommand{\Measure}{{\mu}}
 \newcommand{\GroupAction}[2]{{#1}.{#2}}
-\newcommand{\AmenableGroup}{{\Gamma}}
-\newcommand{\Group}{{G}}
-\newcommand{\CountingMeasure}[1][\,\cdot\,]{{\left|#1\right|}}
 \newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
-\newcommand{\AmenableGroupElement}{{\gamma}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
