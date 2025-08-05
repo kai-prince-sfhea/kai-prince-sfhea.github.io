@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "teaching.html",
-    "href": "teaching.html",
-    "title": "Teaching",
-    "section": "",
-    "text": "No matching items"
-  },
-  {
     "objectID": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorems.html",
     "href": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorems.html",
     "title": "Recurrence and Ergodic Theorems",
@@ -51,107 +44,100 @@
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "",
-    "text": "We follow steps provided by the paper published by (Host, 2019), ‘A Short Proof of a Conjecture of Erdős Proved by Moreira, Richter and Robertson’, as well as using the results provided by (Kra et al., 2022), to generalise the proof of Erdős’s conjecture for amenable groups. The main result that we aim to prove is: ‘every positively dense subset of an amenable group contains the group sumset of \\(k\\) infinite sets for every natural number \\(k\\)’."
+    "text": "Theorem 1 (cf. (Host, 2019), Theorem 1) Let \\((\\AmenableGroup,\\GroupOperation{}{})\\) be an amenable group. If \\(A\\subseteq\\AmenableGroup\\) has positive density, then there exists infinite subsets \\(B\\) and \\(C\\) of \\(\\AmenableGroup\\) such that \\(\\GroupOperation{B}{C}\\subset A\\).\n\n\n\n\n\n\n\n\n\n\n\nTheorem 2 (cf. (Host, 2019), Proposition 2) There exists a set of positive density not containing any sumset of positive density and an infinite set.\n\n\n\n\n\n\n\n\n\n\n\nTheorem 3 (cf. (Kra et al., 2022), Theorem 1.1) Let \\((\\AmenableGroup,\\GroupOperation{}{})\\) be an amenable group. If \\(A\\subseteq\\AmenableGroup\\) has positive density then, for every \\(k\\in\\mathbb{N}\\), there are infinite subsets \\(B_1,...,B_k\\subset\\AmenableGroup\\) such that \\(B_1\\cdot\\cdots\\cdot B_k\\subset A\\)."
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "2.1 Amenable Groups and Actions",
     "text": "2.1 Amenable Groups and Actions\nThroughout this paper, unless otherwise specified, we will let \\((\\AmenableGroup,\\GroupOperation{}{})\\) be a second countable discrete group. This also means that the Haar measure of \\(\\AmenableGroup\\) is the counting measure.\n\n\n\n\n\n\n\nDefinition 1 [Embed #def-tempered from folner.qmd]\n\n\n\n\nFor simplicity of this paper, we will use the alternative and equivalent definition that a group, \\(\\AmenableGroup\\), is amenable (and second countable) if and only if it has a Følner sequence.\n\n\n\n\n\n\n\nDefinition 2 [Embed #prp-temperedFolner from folner.qmd]\n\n\n\n\n\n\n\n\n\n\n\nDefinition 3 [Embed #def-density from density.qmd]"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "2.2 Topological Dynamics of Group Actions",
     "text": "2.2 Topological Dynamics of Group Actions\n\n\n\n\n\n\n\nDefinition 4 [Embed #def-action from actions.qmd]\n\n\n\n\n\n\n\n\n\n\n\nDefinition 5 [Embed #def-topologicalDynamicalSystem from actions.qmd]\n\n\n\n\n\n\n\n\n\n\n\nDefinition 6 [Embed #def-generic from actions.qmd]"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "2.3 Recurrence Results & Ergodic Theorems",
     "text": "2.3 Recurrence Results & Ergodic Theorems\n\n\n\n\n\n\n\nTheorem 4 [Embed #thm-recurrence from recurrence-and-Ergodic-theorems.qmd]\n\n\n\n\n\n\n\n\n\n\n\nTheorem 5 [Embed #thm-GeneralisedPET from recurrence-and-Ergodic-theorems.qmd]"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#erdős-cubes-cubic-measures",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#erdős-cubes-cubic-measures",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "2.4 Erdős Cubes & Cubic Measures",
     "text": "2.4 Erdős Cubes & Cubic Measures"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#factor-maps",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#factor-maps",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "2.5 Factor Maps",
     "text": "2.5 Factor Maps"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#key-dynamical-results",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#key-dynamical-results",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "2.6 Key Dynamical Results",
     "text": "2.6 Key Dynamical Results\n\n\n\n\n\n\n\nTheorem 6 (cf. Host (2019), Theorem 3) Let \\((X,\\AmenableGroup)\\) be a topological dynamical system where \\(\\AmenableGroup\\) is an amenable group, \\(x_0\\in X\\), \\(E\\) be a clopen subset of \\(X\\) and \\[A=\\{\\AmenableGroupElement\\in\\AmenableGroup:\\GroupAction{\\AmenableGroupElement}{x_0}\\in E\\}.\\] Let \\(X\\times X\\) be acted upon by \\(\\AmenableGroup\\times\\AmenableGroup\\). Let \\(x_1\\in X\\) and \\(\\nu\\) be a measure on \\(X\\times X\\) such that \\((x_0,x_1)\\) is generic along some Følner sequence \\(\\Folner=(\\Folner[N])_{N\\in\\mathbb{N}}\\).\nAssume there exists \\(\\varepsilon&gt;0\\) and a sequence \\((s_i)_{i\\in\\mathbb{N}}\\) in \\(\\AmenableGroup\\) such that \\[\\GroupAction{s_i}{x_0}\\rightarrow x_1\\text{ as }i\\rightarrow\\infty\\text{ and }\\nu(\\GroupAction{s_i^{-1}}{E}\\times E)\\geq\\varepsilon\\text{ for all }i. \\] Then there exist infinite subsets \\(B,C\\subseteq \\AmenableGroup\\) such that \\(\\GroupOperation{B}{C}\\subset A\\).\n\n\n\n\n\n\n\n\n\n\n\nTheorem 7 (cf. Kra et al. (2022), Theorem 3.5) Let \\((X,\\Measure,\\AmenableGroup)\\) be an ergodic system under the action of \\(\\AmenableGroup\\) and let \\(E\\subset X\\) be an open set with \\(\\Measure(E)&gt;0\\).\nIf \\(a\\in X\\) is generic for \\(\\Measure\\) with respect to some Følner sequence \\(\\Folner\\) then, for every \\(k\\in\\mathbb{N}\\), there exists \\(2\\)-dimensional Erd\"{o}s cube \\(\\underline{x}=(x_{00},x_{01},x_{10},x_{11})\\in X^{[[2]]}\\) with \\(x_{00}=a\\) and \\(x_{11}\\in E\\).\n\n\n\n\n\n\n\n\n\n\n\nTheorem 8 (cf. Host (2019), Theorem 4.4) Let \\((X,\\Measure,\\AmenableGroup)\\) be an ergodic system under the action of \\(\\AmenableGroup\\) and let \\(E\\subset X\\) be an open set with \\(\\Measure(E)&gt;0\\).\nIf \\(a\\in X\\) is generic for \\(\\Measure\\) with respect to some Følner sequence \\(\\Folner\\) then, for every \\(k\\in\\mathbb{N}\\), there exists \\(k\\)-dimensional Erd\"{o}s cubes \\(\\underline{x}\\in X^{[[k]]}\\) with \\(x_{\\vec{0}}=a\\) and \\(x_{\\vec{1}}\\in E\\)."
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "3.1 Furstenberg’s Correspondence Princple",
     "text": "3.1 Furstenberg’s Correspondence Princple\n\n\n\n\n\n\n\nTheorem 9 [Embed #thm-FCP from furstenberg-correspondence.qmd]"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "3.2 Kronecker Factor",
     "text": "3.2 Kronecker Factor\n\n\n\n\n\n\n\nProposition 1 [Embed #prp-KroneckerGeneric from factor-maps.qmd]"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#choosing-a-point-x_1",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#choosing-a-point-x_1",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "3.3 Choosing a point \\(x_1\\)",
     "text": "3.3 Choosing a point \\(x_1\\)"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#the-joining-nu",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#the-joining-nu",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "3.4 The joining \\(\\nu\\)",
     "text": "3.4 The joining \\(\\nu\\)"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#proof-conclusion",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#proof-conclusion",
-    "title": "Abstract",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups",
     "section": "3.5 Proof Conclusion",
     "text": "3.5 Proof Conclusion"
   },
   {
-    "objectID": "automations.html",
-    "href": "automations.html",
-    "title": "Automations",
+    "objectID": "activities.html",
+    "href": "activities.html",
+    "title": "Activities",
     "section": "",
-    "text": "No matching items"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n5 Aug 2025\n\n\nA Short Proof of a Generalised Conjecture of Erdős in Amenable Groups\n\n\nKai Prince SFHEA, Kai Prince\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Kai Prince",
     "section": "",
     "text": "About this site"
-  },
-  {
-    "objectID": "advocacy.html",
-    "href": "advocacy.html",
-    "title": "Advocacy",
-    "section": "",
-    "text": "No matching items"
   },
   {
     "objectID": "index.html",
@@ -194,12 +180,5 @@
     "title": "Measure & Ergodic Theory",
     "section": "",
     "text": "The foundational knowledge relating to Measure & Ergodic Theory, that has not been covered elsewhere, was provided by Robertson (2023).\n\n\n\n\nReferences\n\nRobertson, D. (2023). 'MATH41021/61021 measure and ergodic theory', Available at: https://personalpages.manchester.ac.uk/staff/donald.robertson/teaching/23-24/41021 (Accessed: 22 January 2024)."
-  },
-  {
-    "objectID": "papers/research.html",
-    "href": "papers/research.html",
-    "title": "Research",
-    "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n29 Jul 2025\n\n\nAbstract\n\n\nKai Prince SFHEA, Kai Prince\n\n\n\n\n\n\nNo matching items"
   }
 ]

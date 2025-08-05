@@ -1,18 +1,6 @@
 [
   {
-    "listing": "/teaching.html",
-    "items": []
-  },
-  {
-    "listing": "/automations.html",
-    "items": []
-  },
-  {
-    "listing": "/advocacy.html",
-    "items": []
-  },
-  {
-    "listing": "/papers/research.html",
+    "listing": "/activities.html",
     "items": [
       "/papers/GeneralisedErdosConjecture/ErdosConjecture.html"
     ]

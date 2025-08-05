@@ -112,5 +112,11 @@
   "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.qmd": {
     "furstenberg-correspondence.html": "6157c1b5",
     "furstenberg-correspondence.tex": "e768ac43"
+  },
+  "activities.qmd": {
+    "activities.html": "f26df295"
+  },
+  "404.qmd": {
+    "404.html": "42ec8060"
   }
 }

@@ -13,7 +13,7 @@
     "MathJax": [
       
     ],
-    "RenderMathJax": true
+    "RenderMathJax": false
   },
   "papers\\GeneralisedErdosConjecture": {
     "MathJax": {

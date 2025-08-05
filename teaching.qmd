@@ -1,8 +1,0 @@
----
-title: "Teaching"
-listing:
-    contents:
-        - teaching
-    type: table
-    sort: "date"
----

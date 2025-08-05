@@ -1,5 +1,16 @@
 ---
-title: "About"
+title: Kai Prince
+about:
+    template: trestles
+    image: images/kai-prince.jpg
+    image-alt: "A picture of Kai Prince"
+    links:
+        - icon: linkedin
+          text: LinkedIn
+          href: https://www.linkedin.com/in/kai-prince-cs01/
+        - icon: instagram
+          text: Instagram
+          href: https://www.instagram.com/kai_prince_sfhea/
 ---
 
 About this site
