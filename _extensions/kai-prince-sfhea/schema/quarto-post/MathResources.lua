@@ -7,10 +7,7 @@ local MathDir = pandoc.path.join({InputDir, "_maths"})
 local ExtDir = pandoc.path.join({InputDir, "_extensions","kai-prince-sfhea","schema"})
 ok, err, code = os.rename(ExtDir.."/", ExtDir.."/")
 if not ok then
-    print(ExtDir .. " not found, using default schema directory")
     ExtDir = pandoc.path.join({InputDir, "_extensions","schema"})
-else
-    print(ExtDir .. " found")
 end
 
 -- Load Schema Functions

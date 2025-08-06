@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince SFHEA">
-<meta name="dcterms.date" content="2025-08-03">
+<meta name="dcterms.date" content="2025-08-06">
 
 <title>Følner sequence – Kai Prince</title>
 <style>
@@ -352,15 +352,22 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../../activities.html"> 
-<span class="menu-text">Activities</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-mathematical-research" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Mathematical Research</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-mathematical-research">    
+        <li>
+    <a class="dropdown-item" href="../../../papers/GeneralisedErdosConjecture/ErdosConjecture.html">
+ <span class="dropdown-text">A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../../about.html"> 
-<span class="menu-text">Kai Prince</span></a>
+<span class="menu-text">About Me</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -384,10 +391,14 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#følner-sequences" id="toc-følner-sequences" class="nav-link active" data-scroll-target="#følner-sequences"><span class="header-section-number">1</span> Følner Sequences</a></li>
+  <li><a href="#følner-sequences" id="toc-følner-sequences" class="nav-link active" data-scroll-target="#følner-sequences"><span class="header-section-number">1</span> Følner Sequences</a>
+  <ul class="collapse">
+  <li><a href="#alternative-definitions-for-monoids" id="toc-alternative-definitions-for-monoids" class="nav-link" data-scroll-target="#alternative-definitions-for-monoids"><span class="header-section-number">1.1</span> Alternative definitions for Monoids</a></li>
+  <li><a href="#equivalent-definitions-using-set-differences" id="toc-equivalent-definitions-using-set-differences" class="nav-link" data-scroll-target="#equivalent-definitions-using-set-differences"><span class="header-section-number">1.2</span> Equivalent definitions using Set Differences</a></li>
+  </ul></li>
   <li><a href="#tempered-følner-sequences" id="toc-tempered-følner-sequences" class="nav-link" data-scroll-target="#tempered-følner-sequences"><span class="header-section-number">2</span> Tempered Følner Sequences</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/blob/main/papers/MathsNotes/1_Amenable_and_Density/folner.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="folner.tex"><i class="bi bi-file"></i>LaTeX (schema)</a></li><li><a href="folner.pdf"><i class="bi bi-file-pdf"></i>PDF (schema)</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/blob/main/papers/MathsNotes/1_Amenable_and_Density/folner.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="folner.tex"><i class="bi bi-file"></i>LaTeX</a></li><li><a href="folner.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -419,7 +430,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 August 2025</p>
+      <p class="date">6 August 2025</p>
     </div>
   </div>
   
@@ -440,7 +451,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <div id="def-rightFolner" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1</strong></span> We define a <em>right-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Group\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{\GroupOperation{(\GroupOperation{\Folner[N]}{\Inverse{\GroupElement}})}{\Folner[N]}}}{\CountingMeasure{\Folner[N]}}=1\]</span>for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 1</strong></span> We define a <em>right-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Group\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{\GroupOperation{(\GroupOperation{\Folner[N]}{\Inverse{\GroupElement}})}{\Folner[N]}}}{\CountingMeasure{\Folner[N]}}=1,\]</span> for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
 </div>
 </div>
 </div>
@@ -452,7 +463,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <div id="def-leftFolner" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2</strong></span> Similarly, we define a <em>left-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Group\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{(\Inverse{\GroupElement}\cdot\Folner[N])\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}=1 \]</span>for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 2</strong></span> Similarly, we define a <em>left-Følner sequence</em> in <span class="math inline">\(\Group\)</span> as a sequence <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> of finite subsets of <span class="math inline">\(\Group\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{(\Inverse{\GroupElement}\cdot\Folner[N])\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}=1,\]</span> for all <span class="math inline">\(\GroupElement\in\Group\)</span>.</p>
 </div>
 </div>
 </div>
@@ -464,11 +475,44 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <div id="def-Folner" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 3</strong></span> We call a sequence a <em>Følner sequence</em> if it is both a left and right Følner sequence.</p>
+<p><span class="theorem-title"><strong>Definition 3</strong></span> We call a sequence in <span class="math inline">\(\Group\)</span> a <em>Følner sequence</em> if it is both a left and right Følner sequence.</p>
 </div>
 </div>
 </div>
 </div>
+<section id="alternative-definitions-for-monoids" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="alternative-definitions-for-monoids"><span class="header-section-number">1.1</span> Alternative definitions for Monoids</h2>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-rightFolnerMonoid" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4</strong></span> Let <span class="math inline">\(\Monoid\)</span> be a countably-infinite left-cancellative <a href=".\..\..\MathsNotes\0_Fundamental\monoid.html">monoid</a> with discrete topology. We define a <em>left-Følner sequence</em> in <span class="math inline">\(\Monoid\)</span> as a sequence of finite subsets <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{\MonoidOperation{(\MonoidOperation{\MonoidElement}{\Folner[N]})}{\Folner[N]}}}{\CountingMeasure{\Folner[N]}}=1\]</span> for all <span class="math inline">\(g\in M\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-leftFolnerMonoid" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5</strong></span> Similarly, for a countably-infinite right-cancellative monoid with discrete topology <span class="math inline">\(\Monoid\)</span>, we define a <em>right-Følner sequence</em> in <span class="math inline">\(\Monoid\)</span> as a sequence of finite subsets <span class="math inline">\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\)</span> satisfying <span class="math display">\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{\MonoidOperation{(\MonoidOperation{\Folner[N]}{\MonoidElement})}{\Folner[N]}}}{\CountingMeasure{\Folner[N]}}=1\]</span> for all <span class="math inline">\(g\in M\)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="equivalent-definitions-using-set-differences" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="equivalent-definitions-using-set-differences"><span class="header-section-number">1.2</span> Equivalent definitions using Set Differences</h2>
+<p>Equivalent definitions can be constructed by using set differences instead of intersections.</p>
+<p>For example, the equivalent definition of a left-Følner sequence, <span class="math inline">\(\Folner\)</span>, in <span class="math inline">\(\Monoid\)</span> requires <span class="math display">\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{(\MonoidOperation{\Folner[N]}{\MonoidElement})\triangle\Folner[N]}}{\CountingMeasure{\Folner[N]}}=0, \]</span> to be satisfied for all <span class="math inline">\(\MonoidElement\in\Monoid\)</span>.</p>
+<p>This alternative definition will be useful when looking at proving some of the properties of density.</p>
+</section>
 </section>
 <section id="tempered-følner-sequences" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Tempered Følner Sequences</h1>
@@ -479,7 +523,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container">
 <div id="def-tempered" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4 (<span class="citation" data-cites="Lindenstrauss2001PETAmenable">Lindenstrauss <a href="#ref-Lindenstrauss2001PETAmenable" role="doc-biblioref">(2001)</a>, Definition 1.1</span>)</strong></span> A sequence of sets <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> will be said to be <em>tempered</em> if, for some <span class="math inline">\(b&gt;0\)</span> and all <span class="math inline">\(n\in\mathbb{N}\)</span>,</p>
+<p><span class="theorem-title"><strong>Definition 6 (<span class="citation" data-cites="Lindenstrauss2001PETAmenable">Lindenstrauss <a href="#ref-Lindenstrauss2001PETAmenable" role="doc-biblioref">(2001)</a>, Definition 1.1</span>)</strong></span> A sequence of sets <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> will be said to be <em>tempered</em> if, for some <span class="math inline">\(b&gt;0\)</span> and all <span class="math inline">\(n\in\mathbb{N}\)</span>,</p>
 <p><span id="eq-Shulman"><span class="math display">\[
 \CountingMeasure{\bigcup_{1\leq k&lt;N}\Folner[k]^{-1}\Folner[N]}\leq b\CountingMeasure{\Folner[N]}.
 \tag{1}\]</span></span></p>

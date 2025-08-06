@@ -68,6 +68,11 @@
         1,
         "\\,\\cdot\\,"
       ],
+      "Density": [
+        "d_{{#1}}({#2})",
+        2,
+        "\\Folner"
+      ],
       "Folner": [
         "{\\Phi}_{#1}",
         1,
@@ -82,6 +87,26 @@
       "Inverse": [
         "{#1}^{-1}",
         1
+      ],
+      "LowerDensity": [
+        "_{{#1}}({#2})",
+        2,
+        "\\Folner"
+      ],
+      "Monoid": "{M}",
+      "MonoidElement": "{m}",
+      "MonoidOperation": [
+        "{#1}\\cdot{#2}",
+        2
+      ],
+      "UpperBanachDensity": [
+        "({#1})",
+        1
+      ],
+      "UpperDensity": [
+        "_{{#1}}({#2})",
+        2,
+        "\\Folner"
       ]
     },
     "RenderMathJax": true
@@ -110,17 +135,32 @@
         "{#1}.{#2}",
         2
       ],
+      "GroupActionPreImage": [
+        "{#1}^{-1}.{#2}",
+        2
+      ],
       "GroupElement": "{g}",
       "GroupIdentity": "{e}",
       "GroupOperation": [
         "{#1}\\cdot{#2}",
         2
       ],
+      "KoopmanOperator": [
+        "{U}_{{#1}}{#2}",
+        2,
+        [
+          "O{{\\GroupElement}} ",
+          "O{{\\vphantom{}}} "
+        ]
+      ],
       "KroneckerAction": "{H}",
       "KroneckerFactor": "{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}",
       "KroneckerSpace": "{Z}",
       "KroneckerSpaceElement": "{z}",
       "Measure": "{\\mu}",
+      "Monoid": "{M}",
+      "MonoidElement": "{m}",
+      "N": "\\mathbb{N}",
       "ProjectionMap": [
         "{\\pi}_{#1}",
         1,
@@ -131,7 +171,14 @@
       "SigmaAlgebra": [
         "{\\mathscr{#1}}",
         1
-      ]
+      ],
+      "SigmaAlgebraGenerator": [
+        "{\\sigma({#1})}",
+        1,
+        "\\Topology"
+      ],
+      "TopologicalMeasureSpace": "{(X,,)}",
+      "Topology": "{\\tau}"
     },
     "RenderMathJax": true
   }

@@ -117,6 +117,11 @@
     "activities.html": "f26df295"
   },
   "404.qmd": {
-    "404.html": "42ec8060"
+    "404.html": "42ec8060",
+    "404.tex": "515d67e1"
+  },
+  "papers/MathsNotes/0_Fundamental/monoid.qmd": {
+    "monoid.html": "73588da5",
+    "monoid.tex": "cb274d5f"
   }
 }

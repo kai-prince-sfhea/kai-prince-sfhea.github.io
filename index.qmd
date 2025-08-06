@@ -3,15 +3,10 @@ title: "My Website"
 authors:
   - name: Kai Prince
     affiliation: The University of Manchester
+listing:
+    contents:
+        - papers/GeneralisedErdosConjecture/ErdosConjecture.qmd
+    type: table
+    sort: "date"
+    categories: true
 ---
-
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.Test Citation: [@Moreira_2019]
-
-$$\sum_{i=1}^N\frac{1}{2^n}=1.$$
-
-$$\frac{1}{|\Folner{N}|}\sum_{\gamma\in\Folner}T^\gamma x $$
-
-
-UPDATE3

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince SFHEA">
-<meta name="dcterms.date" content="2025-08-03">
+<meta name="dcterms.date" content="2025-08-06">
 
 <title>Actions – Kai Prince</title>
 <style>
@@ -352,15 +352,22 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../../activities.html"> 
-<span class="menu-text">Activities</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-mathematical-research" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Mathematical Research</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-mathematical-research">    
+        <li>
+    <a class="dropdown-item" href="../../../papers/GeneralisedErdosConjecture/ErdosConjecture.html">
+ <span class="dropdown-text">A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups</span></a>
   </li>  
+    </ul>
+  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../../about.html"> 
-<span class="menu-text">Kai Prince</span></a>
+<span class="menu-text">About Me</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -381,7 +388,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="actions.tex"><i class="bi bi-file"></i>LaTeX (schema)</a></li><li><a href="actions.pdf"><i class="bi bi-file-pdf"></i>PDF (schema)</a></li></ul></div></div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="actions.tex"><i class="bi bi-file"></i>LaTeX</a></li><li><a href="actions.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -412,7 +419,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 August 2025</p>
+      <p class="date">6 August 2025</p>
     </div>
   </div>
   
@@ -445,6 +452,24 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remark
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div id="rem-MonoidAction" class="proof remark">
+<p><span class="proof-title"><em>Remark 1</em>. </span>We don’t require invertability in order to use actions and could instead use a monoid, <span class="math inline">\(\Monoid\)</span>, defining the pre-image of <span class="math inline">\(\Monoid\)</span> on <span class="math inline">\((X,\SigmaAlgebra{B})\)</span> as a measurable mapping <span class="math display">\[\Monoid\times X\rightarrow \SigmaAlgebra{B},\ (\MonoidElement,x)\mapsto \GroupActionPreImage{\MonoidElement}{x} \]</span> such that <span class="math display">\[\GroupActionPreImage{\MonoidElement}{x}=\{x'\in X: \GroupAction{\MonoidElement}{x'}=x \}. \]</span></p>
+</div>
+</div>
+</div>
+</div>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -469,6 +494,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>We are interested in how the action of a <a href=".\..\..\MathsNotes\0_Fundamental\group.html#def-group">group</a> <span class="math inline">\(\Group\)</span> transforms functions on <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> so we must identify the associated definitions within functional analysis.</p>
+<p>We define the map <span class="math inline">\(\KoopmanOperator:\text{L}^2(X)\rightarrow\text{L}^2(X)\)</span> where <span class="math inline">\(f\mapsto f\circ \KoopmanOperator\)</span> as the <em>Koopman operator</em> induced by <span class="math inline">\(\GroupElement\in\Group\)</span>. We find that the Koopman operator induced by <span class="math inline">\(\Group\)</span> is a unitary operator and the group homomorphism <span class="math inline">\(U:\Group\rightarrow\mathscr{U}(\text{L}^2(X))\)</span> is the <em>unitary representation</em> of <span class="math inline">\(\Group\)</span> on <span class="math inline">\(\text{L}^2(X)\)</span>, where <span class="math inline">\(\mathscr{U}(\text{L}^2(X))\)</span> is the set of all unitary operators on <span class="math inline">\(\text{L}^2(X)\)</span>.</p>
 
 
 

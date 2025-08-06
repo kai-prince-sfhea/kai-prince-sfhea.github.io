@@ -1,119 +1,179 @@
 {
   "graph": {
-    "AmenableGroup": {
-      
-    },
-    "AmenableGroupElement": {
-      
-    },
-    "CountingMeasure": {
-      
-    },
-    "Folner": {
-      
-    },
-    "FurstenbergFolner": {
-      
-    },
+    "AmenableGroup": [
+      "AmenableGroup"
+    ],
+    "AmenableGroupElement": [
+      "AmenableGroupElement"
+    ],
+    "CountingMeasure": [
+      "CountingMeasure"
+    ],
+    "Density": [
+      "Folner",
+      "Density"
+    ],
+    "Folner": [
+      "Folner"
+    ],
+    "FurstenbergFolner": [
+      "FurstenbergFolner"
+    ],
     "FurstenbergSystem": [
-      "AmenableGroup",
       "ShiftSpace",
-      "Measure"
+      "FurstenbergSystem",
+      "Measure",
+      "AmenableGroup"
     ],
     "Generic": [
+      "Generic",
       "Measure",
       "Folner"
     ],
-    "Group": {
-      
-    },
-    "GroupAction": {
-      
-    },
-    "GroupElement": {
-      
-    },
-    "GroupIdentity": {
-      
-    },
-    "GroupOperation": {
-      
-    },
-    "Identity": {
-      
-    },
-    "Inverse": {
-      
-    },
-    "KroneckerAction": {
-      
-    },
-    "KroneckerFactor": [
-      "KroneckerMeasure",
-      "KroneckerSpace",
+    "Group": [
+      "Group"
+    ],
+    "GroupAction": [
+      "GroupAction"
+    ],
+    "GroupActionPreImage": [
+      "GroupActionPreImage"
+    ],
+    "GroupElement": [
+      "GroupElement"
+    ],
+    "GroupIdentity": [
+      "GroupIdentity"
+    ],
+    "GroupOperation": [
+      "GroupOperation"
+    ],
+    "Identity": [
+      "Identity"
+    ],
+    "Inverse": [
+      "Inverse"
+    ],
+    "KoopmanOperator": [
+      "KoopmanOperator",
+      "GroupElement"
+    ],
+    "KroneckerAction": [
       "KroneckerAction"
     ],
-    "KroneckerMeasure": {
+    "KroneckerFactor": [
+      "KroneckerFactor",
+      "KroneckerAction",
+      "KroneckerMeasure",
+      "KroneckerSpace"
+    ],
+    "KroneckerMeasure": [
+      "KroneckerMeasure"
+    ],
+    "KroneckerSpace": [
+      "KroneckerSpace"
+    ],
+    "KroneckerSpaceElement": [
+      "KroneckerSpaceElement"
+    ],
+    "LebesgueMeasure": [
+      "LebesgueMeasure"
+    ],
+    "LowerDensity": [
+      "Folner",
+      "LowerDensity"
+    ],
+    "Measure": [
+      "Measure"
+    ],
+    "Monoid": [
+      "Monoid"
+    ],
+    "MonoidElement": [
+      "MonoidElement"
+    ],
+    "MonoidIdentity": [
+      "MonoidIdentity"
+    ],
+    "MonoidOperation": [
+      "MonoidOperation"
+    ],
+    "N": [
+      "N"
+    ],
+    "Operation": [
+      "Operation"
+    ],
+    "ProjectionMap": [
+      "ProjectionMap"
+    ],
+    "Set": [
+      "Set"
+    ],
+    "ShiftSpace": [
+      "ShiftSpace"
+    ],
+    "SigmaAlgebra": [
+      "SigmaAlgebra"
+    ],
+    "SigmaAlgebraGenerator": [
+      "SigmaAlgebraGenerator",
+      "Topology"
+    ],
+    "TopologicalMeasureSpace": {
       
     },
-    "KroneckerSpace": {
-      
-    },
-    "KroneckerSpaceElement": {
-      
-    },
-    "LebesgueMeasure": {
-      
-    },
-    "Measure": {
-      
-    },
-    "N": {
-      
-    },
-    "Operation": {
-      
-    },
-    "ProjectionMap": {
-      
-    },
-    "Set": {
-      
-    },
-    "ShiftSpace": {
-      
-    },
-    "SigmaAlgebra": {
-      
-    }
+    "Topology": [
+      "Topology"
+    ],
+    "UpperBanachDensity": [
+      "UpperBanachDensity"
+    ],
+    "UpperDensity": [
+      "UpperDensity",
+      "Folner"
+    ]
   },
   "sorted_keys": [
-    "KroneckerMeasure",
-    "KroneckerSpace",
     "KroneckerAction",
-    "KroneckerFactor",
     "AmenableGroupElement",
-    "GroupIdentity",
-    "ShiftSpace",
-    "GroupElement",
-    "Group",
-    "SigmaAlgebra",
-    "Operation",
-    "Inverse",
-    "AmenableGroup",
-    "GroupAction",
-    "KroneckerSpaceElement",
-    "FurstenbergFolner",
-    "N",
-    "Measure",
-    "FurstenbergSystem",
-    "GroupOperation",
-    "ProjectionMap",
-    "CountingMeasure",
-    "Folner",
-    "Generic",
-    "Identity",
+    "MonoidIdentity",
     "LebesgueMeasure",
-    "Set"
+    "Set",
+    "Monoid",
+    "GroupElement",
+    "Measure",
+    "Inverse",
+    "ProjectionMap",
+    "SigmaAlgebra",
+    "UpperBanachDensity",
+    "MonoidOperation",
+    "KroneckerMeasure",
+    "Folner",
+    "LowerDensity",
+    "MonoidElement",
+    "GroupActionPreImage",
+    "Operation",
+    "GroupAction",
+    "Generic",
+    "TopologicalMeasureSpace",
+    "Density",
+    "KroneckerSpace",
+    "KoopmanOperator",
+    "FurstenbergFolner",
+    "Topology",
+    "SigmaAlgebraGenerator",
+    "ShiftSpace",
+    "AmenableGroup",
+    "FurstenbergSystem",
+    "UpperDensity",
+    "KroneckerFactor",
+    "GroupOperation",
+    "Identity",
+    "N",
+    "KroneckerSpaceElement",
+    "Group",
+    "GroupIdentity",
+    "CountingMeasure"
   ]
 }

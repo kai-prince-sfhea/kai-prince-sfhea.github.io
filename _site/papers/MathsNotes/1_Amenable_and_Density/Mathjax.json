@@ -5,6 +5,11 @@
     1,
     "\\,\\cdot\\,"
   ],
+  "Density": [
+    "d_{{#1}}({#2})",
+    2,
+    "\\Folner"
+  ],
   "Folner": [
     "{\\Phi}_{#1}",
     1,
@@ -19,5 +24,25 @@
   "Inverse": [
     "{#1}^{-1}",
     1
+  ],
+  "LowerDensity": [
+    "_{{#1}}({#2})",
+    2,
+    "\\Folner"
+  ],
+  "Monoid": "{M}",
+  "MonoidElement": "{m}",
+  "MonoidOperation": [
+    "{#1}\\cdot{#2}",
+    2
+  ],
+  "UpperBanachDensity": [
+    "({#1})",
+    1
+  ],
+  "UpperDensity": [
+    "_{{#1}}({#2})",
+    2,
+    "\\Folner"
   ]
 }

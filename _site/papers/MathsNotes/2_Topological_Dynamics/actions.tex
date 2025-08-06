@@ -208,15 +208,19 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\GroupIdentity}{{e}}
-\newcommand{\GroupElement}{{g}}
-\newcommand{\Group}{{G}}
-\newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
-\newcommand{\Measure}{{\mu}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
-\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
 \newcommand{\Set}{{S}}
+\newcommand{\Monoid}{{M}}
+\newcommand{\GroupElement}{{g}}
+\newcommand{\Measure}{{\mu}}
+\newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
+\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\MonoidElement}{{m}}
+\newcommand{\GroupActionPreImage}[2]{{#1}^{-1}.{#2}}
+\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\NewDocumentCommand{\KoopmanOperator}{O{{\GroupElement}} O{{\vphantom{}}} }{{U}_{{#1}}{#2}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\Group}{{G}}
+\newcommand{\GroupIdentity}{{e}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -235,7 +239,7 @@
 
 \title{Actions}
 \author{Kai Prince SFHEA}
-\date{2025-08-03}
+\date{2025-08-06}
 \begin{document}
 \maketitle
 
@@ -288,6 +292,18 @@ property:
 
 \end{definition}
 
+\begin{refremark}
+We don't require invertability in order to use actions and could instead
+use a monoid, \(\Monoid\), defining the pre-image of \(\Monoid\) on
+\((X,\SigmaAlgebra{B})\) as a measurable mapping
+\[\Monoid\times X\rightarrow \SigmaAlgebra{B},\ (\MonoidElement,x)\mapsto \GroupActionPreImage{\MonoidElement}{x} \]
+such that
+\[\GroupActionPreImage{\MonoidElement}{x}=\{x'\in X: \GroupAction{\MonoidElement}{x'}=x \}. \]
+
+\label{rem-MonoidAction}
+
+\end{refremark}
+
 \begin{definition}[]\protect\hypertarget{def-topologicalDynamicalSystem}{}\label{def-topologicalDynamicalSystem}
 
 A \emph{topological dynamical system under the action of \(\Group\)},
@@ -311,6 +327,20 @@ then we say \emph{\(x\) is generic for \(\Measure\) with respect to
   compactness}
 
 \end{definition}
+
+We are interested in how the action of a group \(\Group\) transforms
+functions on \((X,\SigmaAlgebra{B},\Measure)\) so we must identify the
+associated definitions within functional analysis.
+
+We define the map
+\(\KoopmanOperator:\text{L}^2(X)\rightarrow\text{L}^2(X)\) where
+\(f\mapsto f\circ \KoopmanOperator\) as the \emph{Koopman operator}
+induced by \(\GroupElement\in\Group\). We find that the Koopman operator
+induced by \(\Group\) is a unitary operator and the group homomorphism
+\(U:\Group\rightarrow\mathscr{U}(\text{L}^2(X))\) is the \emph{unitary
+representation} of \(\Group\) on \(\text{L}^2(X)\), where
+\(\mathscr{U}(\text{L}^2(X))\) is the set of all unitary operators on
+\(\text{L}^2(X)\).
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}

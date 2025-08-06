@@ -159,6 +159,10 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \theoremstyle{remark}
@@ -175,9 +179,16 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
+\newcommand{\Monoid}{{M}}
+\newcommand{\UpperBanachDensity}[1]{({#1})}
+\newcommand{\MonoidOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\LowerDensity}[2][\Folner]{_{{#1}}({#2})}
+\newcommand{\MonoidElement}{{m}}
+\newcommand{\Density}[2][\Folner]{d_{{#1}}({#2})}
+\newcommand{\UpperDensity}[2][\Folner]{_{{#1}}({#2})}
 \newcommand{\Group}{{G}}
 \newcommand{\CountingMeasure}[1][\,\cdot\,]{{\left|#1\right|}}
-\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -196,7 +207,7 @@
 
 \title{Density}
 \author{Kai Prince SFHEA}
-\date{2025-08-03}
+\date{2025-08-06}
 \begin{document}
 \maketitle
 
@@ -211,18 +222,48 @@
 
 For \(A\subseteq\Group\) and Følner sequence
 \(\Folner=(\Folner[N])_{n=1}^\infty\), we write \begin{align*}
-    \overline{d}_{\Folner}(A)&=\limsup_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-    \\\underline{d}_{\Folner}(A)&=\liminf_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
+    \UpperDensity{A}&=\limsup_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
+    \\\LowerDensity{A}&=\liminf_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
 \end{align*} to be the \emph{upper and lower densities of \(A\) with
 respect to \(\Folner\)}, respectively. If these agree, then we can write
 \[
-d_{\Folner}(A)=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
-\] to be the \emph{density of \(A\) with respect to \(\Phi\)}. We also
-define the \emph{upper Banach density of \(A\)} by \[
-\overline{d}(A)=\sup\{d_{\Folner}(A):\text{for Følner sequences }\Folner\text{ where }d_{\Folner}(A)\text{ exists}\}.
+\Density{A}=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
+\] to be the \emph{density of \(A\) with respect to \(\Folner\)}. We
+also define the \emph{upper Banach density of \(A\)} by \[
+\UpperBanachDensity{A}=\sup\{d_{\Folner}(A):\text{for Følner sequences }\Folner\text{ where }d_{\Folner}(A)\text{ exists}\}.
 \]
 
 \end{definition}
+
+\begin{proposition}[Monotonicity]\protect\hypertarget{prp-DensityMonotonicity}{}\label{prp-DensityMonotonicity}
+
+Let \(A,B\subseteq\Monoid\) be subsets. For \(A\subseteq B\), we
+have\[\UpperDensity{A}\leq\UpperDensity{B}, \]and\[\LowerDensity{A}\leq\LowerDensity{B}. \]
+
+\end{proposition}
+
+\begin{proposition}[Translation
+Invariance]\protect\hypertarget{prp-DensityTranslationInvariance}{}\label{prp-DensityTranslationInvariance}
+
+Let \(B\subseteq\Monoid\) be a subset. For all
+\(\MonoidElement\in\Monoid\), we have that
+\[\UpperDensity{B}=\UpperDensity[\MonoidOperation{\MonoidElement}{\Folner}]{B}=\UpperDensity{\MonoidOperation{\MonoidElement}{B}}\]
+and
+\[\LowerDensity{B}=\LowerDensity[\MonoidOperation{\MonoidElement}{\Folner}]{B}=\LowerDensity{\MonoidOperation{\MonoidElement}{B}}.\]
+
+\end{proposition}
+
+\begin{lemma}[Upper/Lower Density Pairwise
+Additive]\protect\hypertarget{lem-DensityPairwiseAdditivity}{}\label{lem-DensityPairwiseAdditivity}
+
+Let \(A,B\subseteq\Monoid\) be subsets such that \(\Density{A}\) and
+\(\Density{B}\) both exist, then we have \begin{align*}
+    \UpperDensity{A\cup B}+\LowerDensity{A\cap B}&=\Density{A}+\Density{B},
+    \\\LowerDensity{A\cup B}+\UpperDensity{A\cap B}&=\Density{A}+\Density{B}.
+\end{align*} Further, we have \(\Density{A\cap B}\) exists if and only
+if \(\Density{A\cup B}\) exists.
+
+\end{lemma}
 
 
 

@@ -1,6 +1,6 @@
 project:
   title: "My Website"
-  type: schema
+  type: website
   resources:
     - CNAME
 
@@ -10,10 +10,13 @@ website:
     logo: images/kai-prince.jpg
     logo-alt: "A picture of Kai Prince"
     left:
-      - href: activities.qmd
-        text: "Activities"
+      - text: "Mathematical Research"
+        menu:
+          - text: "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups"
+            href: papers/GeneralisedErdosConjecture/ErdosConjecture.qmd
     right:
-      - about.qmd
+      - text: "About Me"
+        href: about.qmd
   repo-url: https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io
   repo-actions: [source, issue]
   reader-mode: true
