@@ -194,10 +194,10 @@
 \usepackage{amsthm}
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}[section]
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -212,21 +212,21 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\Group}{{G}}
-\newcommand{\AmenableGroup}{{\Gamma}}
 \newcommand{\GroupAction}[2]{{#1}.{#2}}
-\newcommand{\N}{\mathbb{N}}
+\newcommand{\AmenableGroup}{{\Gamma}}
+\newcommand{\Folner}[1][{\vphantom{}}]{{\Phi}_{#1}}
+\newcommand{\Group}{{G}}
 \newcommand{\Measure}{{\mu}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
-\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
 \newcommand{\Identity}{{e}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={A Short Proof of a Generalised Conjecture of Erdős in Amenable Groups},
+  pdftitle={A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups},
   pdfauthor={Kai Prince},
   pdflang={en-GB},
   colorlinks=true,
@@ -237,10 +237,10 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{A Short Proof of a Generalised Conjecture of Erdős in Amenable
+\title{A Short Proof of a Generalised Conjecture of Erdős for Amenable
 Groups}
 \author{Kai Prince}
-\date{2025-08-05}
+\date{2025-08-07}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -288,7 +288,7 @@ Theorem
 
 Let \((\AmenableGroup,\GroupOperation{}{})\) be an amenable group. If
 \(A\subseteq\AmenableGroup\) has positive density then, for every
-\(k\in\mathbb{N}\), there are infinite subsets
+\(k\in\N\), there are infinite subsets
 \(B_1,...,B_k\subset\AmenableGroup\) such that
 \(B_1\cdot\cdots\cdot B_k\subset A\).
 
@@ -296,7 +296,7 @@ Let \((\AmenableGroup,\GroupOperation{}{})\) be an amenable group. If
 
 \section{Preliminaries}\label{preliminaries}
 
-We will use \(\mathbb{N}=\{1,2,3,...\}\) and \(\Identity\) to denote the
+We will use \(\N=\{1,2,3,...\}\) and \(\Identity\) to denote the
 identity of the group \(\AmenableGroup\).
 
 \subsection{Amenable Groups and
@@ -383,10 +383,10 @@ subset of \(X\) and
 Let \(X\times X\) be acted upon by
 \(\AmenableGroup\times\AmenableGroup\). Let \(x_1\in X\) and \(\nu\) be
 a measure on \(X\times X\) such that \((x_0,x_1)\) is generic along some
-Følner sequence \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\).
+Følner sequence \(\Folner=(\Folner[N])_{N\in\N}\).
 
-Assume there exists \(\varepsilon>0\) and a sequence
-\((s_i)_{i\in\mathbb{N}}\) in \(\AmenableGroup\) such that
+Assume there exists \(\varepsilon>0\) and a sequence \((s_i)_{i\in\N}\)
+in \(\AmenableGroup\) such that
 \[\GroupAction{s_i}{x_0}\rightarrow x_1\text{ as }i\rightarrow\infty\text{ and }\nu(\GroupAction{s_i^{-1}}{E}\times E)\geq\varepsilon\text{ for all }i. \]
 Then there exist infinite subsets \(B,C\subseteq \AmenableGroup\) such
 that \(\GroupOperation{B}{C}\subset A\).
@@ -402,7 +402,7 @@ action of \(\AmenableGroup\) and let \(E\subset X\) be an open set with
 \(\Measure(E)>0\).
 
 If \(a\in X\) is generic for \(\Measure\) with respect to some Følner
-sequence \(\Folner\) then, for every \(k\in\mathbb{N}\), there exists
+sequence \(\Folner\) then, for every \(k\in\N\), there exists
 \(2\)-dimensional Erd"\{o\}s cube
 \(\underline{x}=(x_{00},x_{01},x_{10},x_{11})\in X^{[[2]]}\) with
 \(x_{00}=a\) and \(x_{11}\in E\).
@@ -417,7 +417,7 @@ action of \(\AmenableGroup\) and let \(E\subset X\) be an open set with
 \(\Measure(E)>0\).
 
 If \(a\in X\) is generic for \(\Measure\) with respect to some Følner
-sequence \(\Folner\) then, for every \(k\in\mathbb{N}\), there exists
+sequence \(\Folner\) then, for every \(k\in\N\), there exists
 \(k\)-dimensional Erd"\{o\}s cubes \(\underline{x}\in X^{[[k]]}\) with
 \(x_{\vec{0}}=a\) and \(x_{\vec{1}}\in E\).
 

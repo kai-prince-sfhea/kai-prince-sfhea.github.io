@@ -1,15 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kaiprince.co.uk/index.html</loc>
-    <lastmod>2025-08-05T13:40:48.465Z</lastmod>
+    <loc>https://kaiprince.co.uk/papers/GeneralisedErdosConjecture/ErdosConjecture.html</loc>
+    <lastmod>2025-08-07T13:55:08.634Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/2_Topological_Dynamics/actions.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/1_Amenable_and_Density/amenable.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/1_Amenable_and_Density/folner.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/0_Fundamental/monoid.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
   </url>
   <url>
     <loc>https://kaiprince.co.uk/about.html</loc>
-    <lastmod>2025-08-05T13:40:48.463Z</lastmod>
+    <lastmod>2025-08-07T13:55:07.545Z</lastmod>
   </url>
   <url>
-    <loc>https://kaiprince.co.uk/activities.html</loc>
-    <lastmod>2025-08-05T13:40:48.463Z</lastmod>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/0_Fundamental/group.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/0_Fundamental/axioms.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/1_Amenable_and_Density/density.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/papers/MathsNotes/2_Topological_Dynamics/factor-maps.html</loc>
+    <lastmod>2025-08-07T13:55:08.641Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kaiprince.co.uk/index.html</loc>
+    <lastmod>2025-08-07T13:55:07.546Z</lastmod>
   </url>
 </urlset>

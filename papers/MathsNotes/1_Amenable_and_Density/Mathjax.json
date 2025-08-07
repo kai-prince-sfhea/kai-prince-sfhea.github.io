@@ -1,14 +1,15 @@
 {
   "AmenableGroup": "{\\Gamma}",
-  "CountingMeasure": [
-    "{\\left|#1\\right|}",
-    1,
-    "\\,\\cdot\\,"
+  "CountingMeasure": "{\\lambda}",
+  "Density": [
+    "d_{{#1}}({#2})",
+    2,
+    "\\Folner"
   ],
   "Folner": [
     "{\\Phi}_{#1}",
     1,
-    "\\vphantom{}"
+    "{\\vphantom{}}"
   ],
   "Group": "{G}",
   "GroupElement": "{g}",
@@ -19,5 +20,25 @@
   "Inverse": [
     "{#1}^{-1}",
     1
+  ],
+  "LowerDensity": [
+    "\\underline{d}_{{#1}}({#2})",
+    2,
+    "\\Folner"
+  ],
+  "Monoid": "{M}",
+  "MonoidElement": "{g}",
+  "MonoidOperation": [
+    "{#1}\\cdot{#2}",
+    2
+  ],
+  "UpperBanachDensity": [
+    "\\overline{d}({#1})",
+    1
+  ],
+  "UpperDensity": [
+    "\\overline{d}_{{#1}}({#2})",
+    2,
+    "\\Folner"
   ]
 }

@@ -1,20 +1,16 @@
 {
   "AmenableGroup": "{\\Gamma}",
   "AmenableGroupElement": "{\\gamma}",
-  "CountingMeasure": [
-    "{\\left|#1\\right|}",
-    1,
-    "\\,\\cdot\\,"
-  ],
+  "CountingMeasure": "{\\lambda}",
   "Folner": [
     "{\\Phi}_{#1}",
     1,
-    "\\vphantom{}"
+    "{\\vphantom{}}"
   ],
   "FurstenbergFolner": [
     "{\\Psi}_{#1}",
     1,
-    "\\vphantom{}"
+    "{\\vphantom{}}"
   ],
   "Group": "{G}",
   "GroupAction": [
@@ -27,11 +23,21 @@
     "{#1}\\cdot{#2}",
     2
   ],
+  "KoopmanOperator": [
+    "{U}_{{#1}}{#2}",
+    2,
+    [
+      "O{\\GroupElement} ",
+      "O{\\vphantom{}} "
+    ]
+  ],
   "KroneckerAction": "{H}",
   "KroneckerFactor": "{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}",
   "KroneckerSpace": "{Z}",
   "KroneckerSpaceElement": "{z}",
   "Measure": "{\\mu}",
+  "Monoid": "{M}",
+  "MonoidElement": "{g}",
   "ProjectionMap": [
     "{\\pi}_{#1}",
     1,
@@ -42,5 +48,11 @@
   "SigmaAlgebra": [
     "{\\mathscr{#1}}",
     1
-  ]
+  ],
+  "SigmaAlgebraGenerator": [
+    "{\\sigma({#1})}",
+    1,
+    "\\Topology"
+  ],
+  "Topology": "{\\tau}"
 }
