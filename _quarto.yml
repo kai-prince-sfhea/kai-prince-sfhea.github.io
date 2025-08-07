@@ -32,6 +32,8 @@ format:
     css: styles.css
     respect-user-color-scheme: true
     email-obfuscation: javascript
+    comments:
+      hypothesis: true
     theme:
       light: cosmo
       dark: darkly
