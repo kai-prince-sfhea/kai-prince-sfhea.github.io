@@ -1,0 +1,8 @@
+format:
+  schema-html:
+    comments:
+      hypothesis: true
+
+execute:
+  freeze: auto
+  cache: false

@@ -30,8 +30,6 @@ website:
 format:
   schema-html:
     css: styles.css
-    comments:
-      hypothesis: true
     respect-user-color-scheme: true
     email-obfuscation: javascript
     theme:
@@ -39,7 +37,7 @@ format:
       dark: darkly
 
 execute:
-  freeze: auto
+  freeze: true
   cache: true
 
 csl: harvard-manchester.csl

@@ -123,5 +123,8 @@
   "papers/MathsNotes/0_Fundamental/monoid.qmd": {
     "monoid.html": "73588da5",
     "monoid.tex": "cb274d5f"
+  },
+  "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.qmd": {
+    "recurrence-and-Ergodic-theorem.html": "09a4700c"
   }
 }

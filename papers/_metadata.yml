@@ -1,20 +1,6 @@
 format:
   schema-html:
     toc: true
-  latex: default
-  pdf:
-    lang: en-GB
-    filters:
-      - schema
-    number-sections: true
-    crossref:
-      ref-hyperlink: true
-    documentclass: article
-    pdf-engine: lualatex
-    include-in-header:
-      - ../_extensions/kai-prince-sfhea/schema/resources/TexHeader.tex
-    keep-tex: true
-    toc: true
 
 author:
     - name: Kai Prince SFHEA
