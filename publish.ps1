@@ -3,7 +3,10 @@
 # Request Commit Message
 $commitMsg = Read-Host "Enter commit message"
 
-# Run Quarto render first
+# Update Quarto Extension
+quarto update kai-prince-sfhea/schema
+
+# Run Quarto render
 quarto render
 
 # List of submodules

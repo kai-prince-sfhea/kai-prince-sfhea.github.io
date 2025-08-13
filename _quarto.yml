@@ -29,14 +29,9 @@ website:
 
 format:
   schema-html:
-    css: styles.css
-    respect-user-color-scheme: true
     email-obfuscation: javascript
     comments:
       hypothesis: true
-    theme:
-      light: cosmo
-      dark: darkly
 
 execute:
   freeze: true
@@ -44,6 +39,10 @@ execute:
 
 csl: harvard-manchester.csl
 link-citations: true
+
+schema:
+  backlinks: true
+  outlinks: true
 
 callouty-theorem:
   thm:

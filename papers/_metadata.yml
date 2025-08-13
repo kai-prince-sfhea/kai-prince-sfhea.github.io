@@ -15,11 +15,14 @@ format:
       - ../_extensions/kai-prince-sfhea/schema/resources/TexHeader.tex
     keep-tex: true
     toc: true
+    ton: true
 
 author:
-    - name: Kai Prince SFHEA
-      affiliation: The University of Manchester
-      corresponding: true
+  - name: Kai Prince
+    affiliation: The University of Manchester
+    corresponding: true
+    orcid: 0009-0000-5246-4227
+    email: kai.prince@manchester.ac.uk
 
 date: last-modified
 
