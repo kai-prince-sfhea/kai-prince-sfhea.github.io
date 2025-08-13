@@ -9,10 +9,10 @@
   "Folner": [
     "{\\Phi}_{#1}",
     1,
-    "{\\vphantom{}}"
+    "\\vphantom{}"
   ],
-  "Group": "{G}",
-  "GroupElement": "{g}",
+  "Group": "{\\Gamma}",
+  "GroupElement": "{\\gamma}",
   "GroupOperation": [
     "{#1}\\cdot{#2}",
     2
@@ -27,7 +27,7 @@
     "\\Folner"
   ],
   "Monoid": "{M}",
-  "MonoidElement": "{g}",
+  "MonoidElement": "{m}",
   "MonoidOperation": [
     "{#1}\\cdot{#2}",
     2

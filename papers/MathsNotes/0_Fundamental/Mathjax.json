@@ -1,6 +1,6 @@
 {
-  "Group": "{G}",
-  "GroupElement": "{g}",
+  "Group": "{\\Gamma}",
+  "GroupElement": "{\\gamma}",
   "GroupOperation": [
     "{#1}\\cdot{#2}",
     2

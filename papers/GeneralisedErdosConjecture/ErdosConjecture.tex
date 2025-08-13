@@ -195,9 +195,9 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
-\theoremstyle{plain}
 \newtheorem{proposition}{Proposition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -212,15 +212,26 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\Folner}[1][{\vphantom{}}]{{\Phi}_{#1}}
-\newcommand{\Group}{{G}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\GroupIdentity}{{e}}
 \newcommand{\AmenableGroup}{{\Gamma}}
 \newcommand{\Measure}{{\mu}}
+\newcommand{\ShiftSpace}{{X}}
+\newcommand{\GroupElement}{{\gamma}}
+\newcommand{\Inverse}[1]{{#1}^{-1}}
+\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\Density}[2][\Folner]{d_{{#1}}({#2})}
 \newcommand{\Identity}{{e}}
+\newcommand{\FurstenbergFolner}[1][{\vphantom{}}]{{\Psi}_{#1}}
 \newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
+\newcommand{\UpperBanachDensity}[1]{\overline{d}({#1})}
+\newcommand{\CountingMeasure}{{\lambda}}
+\newcommand{\Group}{{\Gamma}}
+\newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\LowerDensity}[2][\Folner]{\underline{d}_{{#1}}({#2})}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\UpperDensity}[2][\Folner]{\overline{d}_{{#1}}({#2})}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -240,7 +251,7 @@
 \title{A Short Proof of a Generalised Conjecture of Erdős for Amenable
 Groups}
 \author{Kai Prince}
-\date{2025-08-07}
+\date{2025-08-13}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -309,7 +320,20 @@ the counting measure.
 
 \begin{definition}[]\protect\hypertarget{def-FolnerSequenceDef}{}\label{def-FolnerSequenceDef}
 
-{[}Embed \#def-tempered from folner.qmd{]}
+We define a \emph{right-Følner sequence} in \(\Group\) as a sequence
+\(\Folner =(\Folner[N])_{N\in\mathbb{N}}\) of finite subsets of
+\(\Group\) satisfying
+\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{\GroupOperation{(\GroupOperation{\Folner[N]}{\Inverse{\GroupElement}})}{\Folner[N]}}}{\CountingMeasure{\Folner[N]}}=1,\]
+for all \(\GroupElement\in\Group\).
+
+Similarly, we define a \emph{left-Følner sequence} in \(\Group\) as a
+sequence \(\Folner =(\Folner[N])_{N\in\mathbb{N}}\) of finite subsets of
+\(\Group\) satisfying
+\[\lim_{N\rightarrow\infty}\frac{\CountingMeasure{(\Inverse{\GroupElement}\cdot\Folner[N])\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}=1,\]
+for all \(\GroupElement\in\Group\).
+
+We call a sequence in \(\Group\) a \emph{Følner sequence} if it is both
+a left and right Følner sequence.
 
 \end{definition}
 
@@ -317,52 +341,139 @@ For simplicity of this paper, we will use the alternative and equivalent
 definition that a group, \(\AmenableGroup\), is \emph{amenable} (and
 second countable) if and only if it has a Følner sequence.
 
-\begin{definition}[]\protect\hypertarget{def-TemperedSequenceDef}{}\label{def-TemperedSequenceDef}
+\begin{definition}[Lindenstrauss
+\citeproc{ref-Lindenstrauss2001PETAmenable}{(2001)}, Definition 1.1,
+Proposition
+1.4]\protect\hypertarget{def-TemperedSequenceDef}{}\label{def-TemperedSequenceDef}
 
-{[}Embed \#prp-temperedFolner from folner.qmd{]}
+A sequence of sets \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) will be
+said to be \emph{tempered} if, for some \(b>0\) and all
+\(n\in\mathbb{N}\),
+
+\begin{equation}\phantomsection\label{eq-ShulmanCondition}{
+\CountingMeasure{\bigcup_{1\leq k<N}\Folner[k]^{-1}\Folner[N]}\leq b\CountingMeasure{\Folner[N]}.
+}\end{equation}
+
+is referred to as the \emph{Shulman condition}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Every Følner sequence \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) has a
+  tempered subsequence.
+\item
+  Every amenable group has a tempered Følner sequence.
+\end{enumerate}
 
 \end{definition}
 
 \begin{definition}[]\protect\hypertarget{def-DensityDef}{}\label{def-DensityDef}
 
-{[}Embed \#def-density from density.qmd{]}
+For \(A\subseteq\Group\) and Følner sequence
+\(\Folner=(\Folner[N])_{n=1}^\infty\), we write
+\begin{align*}     \UpperDensity{A}&=\limsup_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}     \\\LowerDensity{A}&=\liminf_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}} \end{align*}
+to be the \emph{upper and lower densities of \(A\) with respect to
+\(\Folner\)}, respectively. If these agree, then we can write \[
+\Density{A}=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}
+\] to be the \emph{density of \(A\) with respect to \(\Folner\)}. We
+also define the \emph{upper Banach density of \(A\)} by \[
+\UpperBanachDensity{A}=\sup{d_{\Folner}(A):\text{for Følner sequences }\Folner\text{ where }d_{\Folner}(A)\text{ exists}}.
+\]
 
 \end{definition}
 
 \subsection{Topological Dynamics of Group
 Actions}\label{topological-dynamics-of-group-actions}
 
-\begin{definition}[]\protect\hypertarget{def-ActionDef}{}\label{def-ActionDef}
+\begin{definition}[Bekka and Mayer
+\citeproc{ref-Bekka2000GroupActionDynamics}{(2000)} Section
+2]\protect\hypertarget{def-ActionDef}{}\label{def-ActionDef}
 
-{[}Embed \#def-action from actions.qmd{]}
+An \emph{action} of a group, \(\Group\), on a measurable space
+\((X,\SigmaAlgebra{B})\) is a measurable mapping
+\[\Group\times X\rightarrow X,\ (\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x} \]
+with the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Associativity: For all
+  \(\GroupElement,\GroupElement'\in \Group,x\in X\), then
+  \(\GroupAction{\GroupElement}{(\GroupAction{\GroupElement'}{x})}=\GroupAction{(\GroupOperation{\GroupElement}{\GroupElement'})}{x}\)
+\item
+  Identity: There exists an identity element \(\GroupIdentity\in\Group\)
+  such that \(\GroupAction{\GroupIdentity}{x}=x\) for all \(x\in X\).
+\item
+  Quasi-Invariance: For any \(B\in\SigmaAlgebra{B}\) and for all
+  \(\GroupElement\in\Group\), we have
+  \(\Measure(\GroupAction{\GroupElement}{B})=0\) if and only if
+  \(\Measure(B)=0\).
+\end{enumerate}
+
+The action of \(\Group\) is also ergodic if it satisfies the additional
+property:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  If \(B\in\SigmaAlgebra{B}\) and
+  \(\Measure(B)=\Measure(\GroupAction{\GroupElement}{B})\) for any
+  \(\GroupElement\in\Group\), then \(\Measure(B)=0\) or
+  \(\Measure(X\setminus B)=0\).
+\end{enumerate}
 
 \end{definition}
 
 \begin{definition}[]\protect\hypertarget{def-TopologicalDynamicSystemsDef}{}\label{def-TopologicalDynamicSystemsDef}
 
-{[}Embed \#def-topologicalDynamicalSystem from actions.qmd{]}
+A \emph{topological dynamical system under the action of \(\Group\)},
+denoted \((X,\Group)\), is a compact metric space \(X\) that has
+continuous surjective maps,
+\((\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x}\), for all
+\(\GroupElement\in\Group\).
 
 \end{definition}
 
 \begin{definition}[]\protect\hypertarget{def-GenericDef}{}\label{def-GenericDef}
 
-{[}Embed \#def-generic from actions.qmd{]}
+Let \(x\in X\), \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) be a Følner
+sequence in \(\Gamma\) and \(\Measure\) a probability measure on \(X\).
+Where \(\delta_x\) is the Dirac mass at \(x\), if
+\[\frac{1}{|\Folner[N]|}\sum_{\GroupElement\in\Folner[N]}\delta_{\GroupAction{\GroupElement}{x}}\underset{\text{weakly*}}{\longrightarrow} \Measure \text{ as }N\rightarrow\infty, \]
+then we say \emph{\(x\) is generic for \(\Measure\) with respect to
+\(\Folner\)} and we denote this with
+\(x\in\text{gen}(\Measure,\Folner)\).\footnote{consider tempered
+  separately as the FCP construction only depends on sequential
+  compactness}
 
 \end{definition}
 
 \subsection{Recurrence Results \& Ergodic
 Theorems}\label{recurrence-results-ergodic-theorems}
 
-\begin{theorem}[]\protect\hypertarget{thm-BergelsonRecurrence}{}\label{thm-BergelsonRecurrence}
+\begin{theorem}[Bergelson
+\citeproc{ref-Bergelson1985Recurrence}{(1985)}, Theorem
+1.1]\protect\hypertarget{thm-BergelsonRecurrence}{}\label{thm-BergelsonRecurrence}
 
-{[}Embed \#thm-recurrence from recurrence-and-Ergodic-theorems.qmd{]}
+Let \((X,\SigmaAlgebra{B},\Measure)\) be a probability space and suppose
+that \(B_n\in\SigmaAlgebra{B}\) such that \(\Measure(B_n)=b>0\) for all
+\(n\in\mathbb{N}\).
+
+Then there exists a positively dense index set \(I\subset\mathbb{N}\)
+such that, for any finite subset \(F\subseteq I\), we have
+\[\Measure\left(\bigcap_{i\in F}B_i \right)>0. \]
 
 \end{theorem}
 
-\begin{theorem}[]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
+\begin{theorem}[\{\{\textless{} term-title ref= ``thm-GeneralisedPET''
+removeURLs=true
+\textgreater\}\}]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
 
-{[}Embed \#thm-GeneralisedPET from
-recurrence-and-Ergodic-theorems.qmd{]}
+~
 
 \end{theorem}
 
@@ -429,17 +540,33 @@ Theorem~\ref{thm-GenErdosConjCube}}{Proof of Theorem Theorem~}}\label{proof-of-t
 \subsection{Furstenberg's Correspondence
 Princple}\label{furstenbergs-correspondence-princple}
 
-\begin{theorem}[]\protect\hypertarget{thm-Furstenberg}{}\label{thm-Furstenberg}
+\begin{theorem}[cf. Kra et al. \citeproc{ref-kra2022infinite}{(2022)},
+Theorem
+2.10]\protect\hypertarget{thm-Furstenberg}{}\label{thm-Furstenberg}
 
-{[}Embed \#thm-FCP from furstenberg-correspondence.qmd{]}
+Let \(\AmenableGroup\) be an amenable group,
+\(A\subset \AmenableGroup\), and \(\Folner\) be a Følner sequence in
+\(\AmenableGroup\) such that the limit
+\[\delta=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}\]
+exists.
+
+Then there exists an ergodic system
+\((\ShiftSpace,\Measure,\AmenableGroup)\) that is acted on by
+\(\AmenableGroup\), a clopen set \(E\subset\ShiftSpace\), a Følner
+sequence \(\FurstenbergFolner\) in \(\AmenableGroup\), and a point
+\(a\in\ShiftSpace\) that is generic with \(\Measure\) with respect to
+\(\FurstenbergFolner\) such that \(\Measure(E)\geq\delta\) and
+\[A={\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E}. \]
 
 \end{theorem}
 
 \subsection{Kronecker Factor}\label{kronecker-factor}
 
-\begin{proposition}[]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
+\begin{proposition}[\{\{\textless{} term-title ref=
+``prp-KroneckerGeneric'' removeURLs=true
+\textgreater\}\}]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
 
-{[}Embed \#prp-KroneckerGeneric from factor-maps.qmd{]}
+~
 
 \end{proposition}
 
@@ -469,6 +596,25 @@ Available at: \url{https://arxiv.org/abs/1904.09952}.
 Kra, B., et al. (2022). \textquotesingle{}\emph{Infinite sumsets in sets
 with positive density}\textquotesingle, Available at:
 \url{https://arxiv.org/abs/2206.01786}.
+
+\bibitem[\citeproctext]{ref-Lindenstrauss2001PETAmenable}
+Lindenstrauss, E. (2001). \textquotesingle Pointwise theorems for
+amenable groups\textquotesingle, \emph{\emph{Inventiones mathematicae},}
+146 (2), pp. 259--295.
+\href{https://doi.org/10.1007/s002220100162}{https://doi.org/10.1007/s002220100162.}
+
+\bibitem[\citeproctext]{ref-Bekka2000GroupActionDynamics}
+Bekka, M. B. and Mayer, M. (2000). \emph{Ergodic theory and topological
+dynamics of group actions on homogeneous spaces}. Cambridge University
+Press.
+\href{https://doi.org/10.1017/cbo9780511758898}{https://doi.org/10.1017/cbo9780511758898.}
+
+\bibitem[\citeproctext]{ref-Bergelson1985Recurrence}
+Bergelson, V. (1985). \textquotesingle Sets of recurrence of zm-actions
+and properties of sets of differences in zm\textquotesingle,
+\emph{\emph{Journal of the London Mathematical Society},} s2-31 (2), pp.
+295--304.
+\href{https://doi.org/10.1112/jlms/s2-31.2.295}{https://doi.org/10.1112/jlms/s2-31.2.295.}
 
 \end{CSLReferences}
 

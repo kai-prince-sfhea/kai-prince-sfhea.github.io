@@ -1,31 +1,276 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Kai Prince",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/actions.html",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/actions.html",
+    "title": "Actions",
+    "section": "",
+    "text": "Axioms\nGroup\nMonoid\nMeasure Theory and Ergodic Theory\nFølner sequence\nWe are interested in how the action of a group \\(\\Group\\) transforms functions on \\((X,\\SigmaAlgebra{B},\\Measure)\\) so we must identify the associated definitions within functional analysis.\nWe define the map \\(\\KoopmanOperator:\\text{L}^2(X)\\rightarrow\\text{L}^2(X)\\) where \\(f\\mapsto f\\circ \\KoopmanOperator\\) as the Koopman operator induced by \\(\\GroupElement\\in\\Group\\). We find that the Koopman operator induced by \\(\\Group\\) is a unitary operator and the group homomorphism \\(U:\\Group\\rightarrow\\mathscr{U}(\\text{L}^2(X))\\) is the unitary representation of \\(\\Group\\) on \\(\\text{L}^2(X)\\), where \\(\\mathscr{U}(\\text{L}^2(X))\\) is the set of all unitary operators on \\(\\text{L}^2(X)\\)."
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/actions.html#sec-Backlinks",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/actions.html#sec-Backlinks",
+    "title": "Actions",
+    "section": "",
+    "text": "Axioms\nGroup\nMonoid\nMeasure Theory and Ergodic Theory\nFølner sequence"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/actions.html#sec-Outlinks",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/actions.html#sec-Outlinks",
+    "title": "Actions",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/actions.html#footnotes",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/actions.html#footnotes",
+    "title": "Actions",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nconsider tempered separately as the FCP construction only depends on sequential compactness↩︎"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html",
+    "title": "Recurrence and Ergodic Theorems",
+    "section": "",
+    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html#sec-Backlinks",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html#sec-Backlinks",
+    "title": "Recurrence and Ergodic Theorems",
+    "section": "",
+    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html",
+    "title": "Measure Theory and Ergodic Theory",
+    "section": "",
+    "text": "Group\nThe foundational knowledge relating to Measure & Ergodic Theory, that has not been covered elsewhere, was provided by Robertson (2023)."
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html#sec-Backlinks",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html#sec-Backlinks",
+    "title": "Measure Theory and Ergodic Theory",
+    "section": "",
+    "text": "Group"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html#sec-Outlinks",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html#sec-Outlinks",
+    "title": "Measure Theory and Ergodic Theory",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nFølner sequence\nDensity\nActions\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html",
+    "title": "Følner sequence",
+    "section": "",
+    "text": "Axioms\nGroup\nMonoid\nAmenable\nMeasure Theory and Ergodic Theory\nDensity"
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html#sec-Backlinks",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html#sec-Backlinks",
+    "title": "Følner sequence",
+    "section": "",
+    "text": "Axioms\nGroup\nMonoid\nAmenable\nMeasure Theory and Ergodic Theory\nDensity"
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html#alternative-definitions-for-monoids",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html#alternative-definitions-for-monoids",
+    "title": "Følner sequence",
+    "section": "1.1 Alternative definitions for Monoids",
+    "text": "1.1 Alternative definitions for Monoids\n\nDefinition 4 Let \\(\\Monoid\\) be a countably-infinite left-cancellative monoid with discrete topology. We define a left-Følner sequence in \\(\\Monoid\\) as a sequence of finite subsets \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{\\MonoidOperation{(\\MonoidOperation{\\MonoidElement}{\\Folner[N]})}{\\Folner[N]}}}{\\CountingMeasure{\\Folner[N]}}=1\\] for all \\(g\\in M\\).\n\n\nDefinition 5 Similarly, for a countably-infinite right-cancellative monoid with discrete topology \\(\\Monoid\\), we define a right-Følner sequence in \\(\\Monoid\\) as a sequence of finite subsets \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{\\MonoidOperation{(\\MonoidOperation{\\Folner[N]}{\\MonoidElement})}{\\Folner[N]}}}{\\CountingMeasure{\\Folner[N]}}=1\\] for all \\(g\\in M\\)."
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html#equivalent-definitions-using-set-differences",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html#equivalent-definitions-using-set-differences",
+    "title": "Følner sequence",
+    "section": "1.2 Equivalent definitions using Set Differences",
+    "text": "1.2 Equivalent definitions using Set Differences\nEquivalent definitions can be constructed by using set differences instead of intersections.\nFor example, the equivalent definition of a left-Følner sequence, \\(\\Folner\\), in \\(\\Monoid\\) requires \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{(\\MonoidOperation{\\Folner[N]}{\\MonoidElement})\\triangle\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}=0, \\] to be satisfied for all \\(\\MonoidElement\\in\\Monoid\\).\nThis alternative definition will be useful when looking at proving some of the properties of density."
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html#sec-Outlinks",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html#sec-Outlinks",
+    "title": "Følner sequence",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nAmenable\nDensity\nActions\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
+  },
+  {
+    "objectID": "papers/MathsNotes/0_Fundamental/monoid.html",
+    "href": "papers/MathsNotes/0_Fundamental/monoid.html",
+    "title": "Monoid",
+    "section": "",
+    "text": "Proposition 1 Let \\(\\Monoid\\) be a countably-infinite left-cancellative monoid with discrete topology, then its left-Haar measure is the counting measure \\(|\\cdot|\\)."
+  },
+  {
+    "objectID": "papers/MathsNotes/0_Fundamental/monoid.html#sec-Outlinks",
+    "href": "papers/MathsNotes/0_Fundamental/monoid.html#sec-Outlinks",
+    "title": "Monoid",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nFølner sequence\nDensity\nActions"
+  },
+  {
+    "objectID": "papers/MathsNotes/0_Fundamental/group.html",
+    "href": "papers/MathsNotes/0_Fundamental/group.html",
+    "title": "Group",
+    "section": "",
+    "text": "Axioms"
+  },
+  {
+    "objectID": "papers/MathsNotes/0_Fundamental/group.html#sec-Backlinks",
+    "href": "papers/MathsNotes/0_Fundamental/group.html#sec-Backlinks",
+    "title": "Group",
+    "section": "",
+    "text": "Axioms"
+  },
+  {
+    "objectID": "papers/MathsNotes/0_Fundamental/group.html#sec-Outlinks",
+    "href": "papers/MathsNotes/0_Fundamental/group.html#sec-Outlinks",
+    "title": "Group",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nDensity\nActions\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
+  },
+  {
+    "objectID": "papers/MathsNotes/0_Fundamental/axioms.html",
+    "href": "papers/MathsNotes/0_Fundamental/axioms.html",
+    "title": "Axioms",
+    "section": "",
+    "text": "Definition 1 (associativity) For all \\({a},{b},{c}\\) in \\(\\Set\\), one has \\(\\Operation{(\\Operation{a}{b})}{c}=\\Operation{a}{(\\Operation{b}{c})}\\)."
+  },
+  {
+    "objectID": "papers/MathsNotes/0_Fundamental/axioms.html#sec-Outlinks",
+    "href": "papers/MathsNotes/0_Fundamental/axioms.html#sec-Outlinks",
+    "title": "Axioms",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nGroup\nFølner sequence\nActions\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups"
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/density.html",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/density.html",
+    "title": "Density",
+    "section": "",
+    "text": "Group\nMonoid\nMeasure Theory and Ergodic Theory\nFølner sequence"
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/density.html#sec-Backlinks",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/density.html#sec-Backlinks",
+    "title": "Density",
+    "section": "",
+    "text": "Group\nMonoid\nMeasure Theory and Ergodic Theory\nFølner sequence"
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/density.html#sec-Outlinks",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/density.html#sec-Outlinks",
+    "title": "Density",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nFølner sequence\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups"
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/amenable.html",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/amenable.html",
+    "title": "Amenable",
+    "section": "",
+    "text": "Group\nFølner sequence"
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/amenable.html#sec-Backlinks",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/amenable.html#sec-Backlinks",
+    "title": "Amenable",
+    "section": "",
+    "text": "Group\nFølner sequence"
+  },
+  {
+    "objectID": "papers/MathsNotes/1_Amenable_and_Density/amenable.html#sec-Outlinks",
+    "href": "papers/MathsNotes/1_Amenable_and_Density/amenable.html#sec-Outlinks",
+    "title": "Amenable",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nFølner sequence\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html",
+    "title": "Furstenberg’s Correspondence Principle",
+    "section": "",
+    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html#sec-Backlinks",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html#sec-Backlinks",
+    "title": "Furstenberg’s Correspondence Principle",
+    "section": "",
+    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html#sec-Outlinks",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html#sec-Outlinks",
+    "title": "Furstenberg’s Correspondence Principle",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html",
+    "title": "Factor Maps",
+    "section": "",
+    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html#sec-Backlinks",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html#sec-Backlinks",
+    "title": "Factor Maps",
+    "section": "",
+    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+  },
+  {
+    "objectID": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html#sec-Outlinks",
+    "href": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html#sec-Outlinks",
+    "title": "Factor Maps",
+    "section": "Outlinks",
+    "text": "Outlinks\n\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups"
+  },
+  {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html",
     "title": "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups",
     "section": "",
-    "text": "Theorem 1 (cf. (Host, 2019), Theorem 1) Let \\((\\AmenableGroup,\\GroupOperation{}{})\\) be an amenable group. If \\(A\\subseteq\\AmenableGroup\\) has positive density, then there exists infinite subsets \\(B\\) and \\(C\\) of \\(\\AmenableGroup\\) such that \\(\\GroupOperation{B}{C}\\subset A\\).\n\n\n\n\n\n\n\n\n\n\n\nTheorem 2 (cf. (Host, 2019), Proposition 2) There exists a set of positive density not containing any sumset of positive density and an infinite set.\n\n\n\n\n\n\n\n\n\n\n\nTheorem 3 (cf. (Kra et al., 2022), Theorem 1.1) Let \\((\\AmenableGroup,\\GroupOperation{}{})\\) be an amenable group. If \\(A\\subseteq\\AmenableGroup\\) has positive density then, for every \\(k\\in\\N\\), there are infinite subsets \\(B_1,...,B_k\\subset\\AmenableGroup\\) such that \\(B_1\\cdot\\cdots\\cdot B_k\\subset A\\)."
+    "text": "Term\nDescription\n\n\n\n\n\\(\\N\\)\nThe Natural Numbers: 1, 2, 3, … (Source)"
+  },
+  {
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#sec-Notation",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#sec-Notation",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups",
+    "section": "",
+    "text": "Term\nDescription\n\n\n\n\n\\(\\N\\)\nThe Natural Numbers: 1, 2, 3, … (Source)"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#amenable-groups-and-actions",
     "title": "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups",
     "section": "2.1 Amenable Groups and Actions",
-    "text": "2.1 Amenable Groups and Actions\nThroughout this paper, unless otherwise specified, we will let \\((\\AmenableGroup,\\GroupOperation{}{})\\) be a second countable discrete group. This also means that the Haar measure of \\(\\AmenableGroup\\) is the counting measure.\n\n\n\n\n\n\n\nDefinition 1 [Embed #def-tempered from folner.qmd]\n\n\n\n\nFor simplicity of this paper, we will use the alternative and equivalent definition that a group, \\(\\AmenableGroup\\), is amenable (and second countable) if and only if it has a Følner sequence.\n\n\n\n\n\n\n\nDefinition 2 [Embed #prp-temperedFolner from folner.qmd]\n\n\n\n\n\n\n\n\n\n\n\nDefinition 3 [Embed #def-density from density.qmd]"
+    "text": "2.1 Amenable Groups and Actions\nThroughout this paper, unless otherwise specified, we will let \\((\\AmenableGroup,\\GroupOperation{}{})\\) be a second countable discrete group. This also means that the Haar measure of \\(\\AmenableGroup\\) is the counting measure.\n\nDefinition 1 We define a right-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Group\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{\\GroupOperation{(\\GroupOperation{\\Folner[N]}{\\Inverse{\\GroupElement}})}{\\Folner[N]}}}{\\CountingMeasure{\\Folner[N]}}=1,\\] for all \\(\\GroupElement\\in\\Group\\).\nSimilarly, we define a left-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Group\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{(\\Inverse{\\GroupElement}\\cdot\\Folner[N])\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}=1,\\] for all \\(\\GroupElement\\in\\Group\\).\nWe call a sequence in \\(\\Group\\) a Følner sequence if it is both a left and right Følner sequence.\n\nFor simplicity of this paper, we will use the alternative and equivalent definition that a group, \\(\\AmenableGroup\\), is amenable (and second countable) if and only if it has a Følner sequence.\n\nDefinition 2 (Lindenstrauss (2001), Definition 1.1, Proposition 1.4) A sequence of sets \\(\\Folner=(\\Folner[N])_{N\\in\\mathbb{N}}\\) will be said to be tempered if, for some \\(b&gt;0\\) and all \\(n\\in\\mathbb{N}\\),\n\\[\n\\CountingMeasure{\\bigcup_{1\\leq k&lt;N}\\Folner[k]^{-1}\\Folner[N]}\\leq b\\CountingMeasure{\\Folner[N]}.\n\\tag{1}\\]\nis referred to as the Shulman condition.\n\nEvery Følner sequence \\(\\Folner=(\\Folner[N])_{N\\in\\mathbb{N}}\\) has a tempered subsequence.\nEvery amenable group has a tempered Følner sequence.\n\n\n\nDefinition 3 For \\(A\\subseteq\\Group\\) and Følner sequence \\(\\Folner=(\\Folner[N])_{n=1}^\\infty\\), we write \\[\\begin{align*}     \\UpperDensity{A}&=\\limsup_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{A\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}     \\\\\\LowerDensity{A}&=\\liminf_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{A\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}} \\end{align*}\\] to be the upper and lower densities of \\(A\\) with respect to \\(\\Folner\\), respectively. If these agree, then we can write \\[\n\\Density{A}=\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{A\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}\n\\] to be the density of \\(A\\) with respect to \\(\\Folner\\). We also define the upper Banach density of \\(A\\) by \\[\n\\UpperBanachDensity{A}=\\sup{d_{\\Folner}(A):\\text{for Følner sequences }\\Folner\\text{ where }d_{\\Folner}(A)\\text{ exists}}.\n\\]"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#topological-dynamics-of-group-actions",
     "title": "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups",
     "section": "2.2 Topological Dynamics of Group Actions",
-    "text": "2.2 Topological Dynamics of Group Actions\n\n\n\n\n\n\n\nDefinition 4 [Embed #def-action from actions.qmd]\n\n\n\n\n\n\n\n\n\n\n\nDefinition 5 [Embed #def-topologicalDynamicalSystem from actions.qmd]\n\n\n\n\n\n\n\n\n\n\n\nDefinition 6 [Embed #def-generic from actions.qmd]"
+    "text": "2.2 Topological Dynamics of Group Actions\n\nDefinition 4 (Bekka and Mayer (2000) Section 2) An action of a group, \\(\\Group\\), on a measurable space \\((X,\\SigmaAlgebra{B})\\) is a measurable mapping \\[\\Group\\times X\\rightarrow X,\\ (\\GroupElement,x)\\mapsto \\GroupAction{\\GroupElement}{x} \\] with the following properties:\n\nAssociativity: For all \\(\\GroupElement,\\GroupElement'\\in \\Group,x\\in X\\), then \\(\\GroupAction{\\GroupElement}{(\\GroupAction{\\GroupElement'}{x})}=\\GroupAction{(\\GroupOperation{\\GroupElement}{\\GroupElement'})}{x}\\)\nIdentity: There exists an identity element \\(\\GroupIdentity\\in\\Group\\) such that \\(\\GroupAction{\\GroupIdentity}{x}=x\\) for all \\(x\\in X\\).\nQuasi-Invariance: For any \\(B\\in\\SigmaAlgebra{B}\\) and for all \\(\\GroupElement\\in\\Group\\), we have \\(\\Measure(\\GroupAction{\\GroupElement}{B})=0\\) if and only if \\(\\Measure(B)=0\\).\n\nThe action of \\(\\Group\\) is also ergodic if it satisfies the additional property:\n\nIf \\(B\\in\\SigmaAlgebra{B}\\) and \\(\\Measure(B)=\\Measure(\\GroupAction{\\GroupElement}{B})\\) for any \\(\\GroupElement\\in\\Group\\), then \\(\\Measure(B)=0\\) or \\(\\Measure(X\\setminus B)=0\\).\n\n\n\nDefinition 5 A topological dynamical system under the action of \\(\\Group\\), denoted \\((X,\\Group)\\), is a compact metric space \\(X\\) that has continuous surjective maps, \\((\\GroupElement,x)\\mapsto \\GroupAction{\\GroupElement}{x}\\), for all \\(\\GroupElement\\in\\Group\\).\n\n\nDefinition 6 Let \\(x\\in X\\), \\(\\Folner=(\\Folner[N])_{N\\in\\mathbb{N}}\\) be a Følner sequence in \\(\\Gamma\\) and \\(\\Measure\\) a probability measure on \\(X\\). Where \\(\\delta_x\\) is the Dirac mass at \\(x\\), if \\[\\frac{1}{|\\Folner[N]|}\\sum_{\\GroupElement\\in\\Folner[N]}\\delta_{\\GroupAction{\\GroupElement}{x}}\\underset{\\text{weakly*}}{\\longrightarrow} \\Measure \\text{ as }N\\rightarrow\\infty, \\] then we say \\(x\\) is generic for \\(\\Measure\\) with respect to \\(\\Folner\\) and we denote this with \\(x\\in\\text{gen}(\\Measure,\\Folner)\\).1"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#recurrence-results-ergodic-theorems",
     "title": "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups",
     "section": "2.3 Recurrence Results & Ergodic Theorems",
-    "text": "2.3 Recurrence Results & Ergodic Theorems\n\n\n\n\n\n\n\nTheorem 4 [Embed #thm-recurrence from recurrence-and-Ergodic-theorems.qmd]\n\n\n\n\n\n\n\n\n\n\n\nTheorem 5 [Embed #thm-GeneralisedPET from recurrence-and-Ergodic-theorems.qmd]"
+    "text": "2.3 Recurrence Results & Ergodic Theorems\n\nTheorem 4 (Bergelson (1985), Theorem 1.1) Let \\((X,\\SigmaAlgebra{B},\\Measure)\\) be a probability space and suppose that \\(B_n\\in\\SigmaAlgebra{B}\\) such that \\(\\Measure(B_n)=b&gt;0\\) for all \\(n\\in\\mathbb{N}\\).\nThen there exists a positively dense index set \\(I\\subset\\mathbb{N}\\) such that, for any finite subset \\(F\\subseteq I\\), we have \\[\\Measure\\left(\\bigcap_{i\\in F}B_i \\right)&gt;0. \\]\n\n\nTheorem 5 ({{&lt; term-title ref= “thm-GeneralisedPET” removeURLs=true &gt;}})"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#erdős-cubes-cubic-measures",
@@ -46,21 +291,21 @@
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#key-dynamical-results",
     "title": "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups",
     "section": "2.6 Key Dynamical Results",
-    "text": "2.6 Key Dynamical Results\n\n\n\n\n\n\n\nTheorem 6 (cf. Host (2019), Theorem 3) Let \\((X,\\AmenableGroup)\\) be a topological dynamical system where \\(\\AmenableGroup\\) is an amenable group, \\(x_0\\in X\\), \\(E\\) be a clopen subset of \\(X\\) and \\[A=\\{\\AmenableGroupElement\\in\\AmenableGroup:\\GroupAction{\\AmenableGroupElement}{x_0}\\in E\\}.\\] Let \\(X\\times X\\) be acted upon by \\(\\AmenableGroup\\times\\AmenableGroup\\). Let \\(x_1\\in X\\) and \\(\\nu\\) be a measure on \\(X\\times X\\) such that \\((x_0,x_1)\\) is generic along some Følner sequence \\(\\Folner=(\\Folner[N])_{N\\in\\N}\\).\nAssume there exists \\(\\varepsilon&gt;0\\) and a sequence \\((s_i)_{i\\in\\N}\\) in \\(\\AmenableGroup\\) such that \\[\\GroupAction{s_i}{x_0}\\rightarrow x_1\\text{ as }i\\rightarrow\\infty\\text{ and }\\nu(\\GroupAction{s_i^{-1}}{E}\\times E)\\geq\\varepsilon\\text{ for all }i. \\] Then there exist infinite subsets \\(B,C\\subseteq \\AmenableGroup\\) such that \\(\\GroupOperation{B}{C}\\subset A\\).\n\n\n\n\n\n\n\n\n\n\n\nTheorem 7 (cf. Kra et al. (2022), Theorem 3.5) Let \\((X,\\Measure,\\AmenableGroup)\\) be an ergodic system under the action of \\(\\AmenableGroup\\) and let \\(E\\subset X\\) be an open set with \\(\\Measure(E)&gt;0\\).\nIf \\(a\\in X\\) is generic for \\(\\Measure\\) with respect to some Følner sequence \\(\\Folner\\) then, for every \\(k\\in\\N\\), there exists \\(2\\)-dimensional Erd\"{o}s cube \\(\\underline{x}=(x_{00},x_{01},x_{10},x_{11})\\in X^{[[2]]}\\) with \\(x_{00}=a\\) and \\(x_{11}\\in E\\).\n\n\n\n\n\n\n\n\n\n\n\nTheorem 8 (cf. Host (2019), Theorem 4.4) Let \\((X,\\Measure,\\AmenableGroup)\\) be an ergodic system under the action of \\(\\AmenableGroup\\) and let \\(E\\subset X\\) be an open set with \\(\\Measure(E)&gt;0\\).\nIf \\(a\\in X\\) is generic for \\(\\Measure\\) with respect to some Følner sequence \\(\\Folner\\) then, for every \\(k\\in\\N\\), there exists \\(k\\)-dimensional Erd\"{o}s cubes \\(\\underline{x}\\in X^{[[k]]}\\) with \\(x_{\\vec{0}}=a\\) and \\(x_{\\vec{1}}\\in E\\)."
+    "text": "2.6 Key Dynamical Results\n\nTheorem 6 (cf. Host (2019), Theorem 3) Let \\((X,\\AmenableGroup)\\) be a topological dynamical system where \\(\\AmenableGroup\\) is an amenable group, \\(x_0\\in X\\), \\(E\\) be a clopen subset of \\(X\\) and \\[A=\\{\\AmenableGroupElement\\in\\AmenableGroup:\\GroupAction{\\AmenableGroupElement}{x_0}\\in E\\}.\\] Let \\(X\\times X\\) be acted upon by \\(\\AmenableGroup\\times\\AmenableGroup\\). Let \\(x_1\\in X\\) and \\(\\nu\\) be a measure on \\(X\\times X\\) such that \\((x_0,x_1)\\) is generic along some Følner sequence \\(\\Folner=(\\Folner[N])_{N\\in\\N}\\).\nAssume there exists \\(\\varepsilon&gt;0\\) and a sequence \\((s_i)_{i\\in\\N}\\) in \\(\\AmenableGroup\\) such that \\[\\GroupAction{s_i}{x_0}\\rightarrow x_1\\text{ as }i\\rightarrow\\infty\\text{ and }\\nu(\\GroupAction{s_i^{-1}}{E}\\times E)\\geq\\varepsilon\\text{ for all }i. \\] Then there exist infinite subsets \\(B,C\\subseteq \\AmenableGroup\\) such that \\(\\GroupOperation{B}{C}\\subset A\\).\n\n\nTheorem 7 (cf. Kra et al. (2022), Theorem 3.5) Let \\((X,\\Measure,\\AmenableGroup)\\) be an ergodic system under the action of \\(\\AmenableGroup\\) and let \\(E\\subset X\\) be an open set with \\(\\Measure(E)&gt;0\\).\nIf \\(a\\in X\\) is generic for \\(\\Measure\\) with respect to some Følner sequence \\(\\Folner\\) then, for every \\(k\\in\\N\\), there exists \\(2\\)-dimensional Erd\"{o}s cube \\(\\underline{x}=(x_{00},x_{01},x_{10},x_{11})\\in X^{[[2]]}\\) with \\(x_{00}=a\\) and \\(x_{11}\\in E\\).\n\n\nTheorem 8 (cf. Host (2019), Theorem 4.4) Let \\((X,\\Measure,\\AmenableGroup)\\) be an ergodic system under the action of \\(\\AmenableGroup\\) and let \\(E\\subset X\\) be an open set with \\(\\Measure(E)&gt;0\\).\nIf \\(a\\in X\\) is generic for \\(\\Measure\\) with respect to some Følner sequence \\(\\Folner\\) then, for every \\(k\\in\\N\\), there exists \\(k\\)-dimensional Erd\"{o}s cubes \\(\\underline{x}\\in X^{[[k]]}\\) with \\(x_{\\vec{0}}=a\\) and \\(x_{\\vec{1}}\\in E\\)."
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#furstenbergs-correspondence-princple",
     "title": "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups",
     "section": "3.1 Furstenberg’s Correspondence Princple",
-    "text": "3.1 Furstenberg’s Correspondence Princple\n\n\n\n\n\n\n\nTheorem 9 [Embed #thm-FCP from furstenberg-correspondence.qmd]"
+    "text": "3.1 Furstenberg’s Correspondence Princple\n\nTheorem 9 (cf. Kra et al. (2022), Theorem 2.10) Let \\(\\AmenableGroup\\) be an amenable group, \\(A\\subset \\AmenableGroup\\), and \\(\\Folner\\) be a Følner sequence in \\(\\AmenableGroup\\) such that the limit \\[\\delta=\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{A\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}\\] exists.\nThen there exists an ergodic system \\((\\ShiftSpace,\\Measure,\\AmenableGroup)\\) that is acted on by \\(\\AmenableGroup\\), a clopen set \\(E\\subset\\ShiftSpace\\), a Følner sequence \\(\\FurstenbergFolner\\) in \\(\\AmenableGroup\\), and a point \\(a\\in\\ShiftSpace\\) that is generic with \\(\\Measure\\) with respect to \\(\\FurstenbergFolner\\) such that \\(\\Measure(E)\\geq\\delta\\) and \\[A={\\AmenableGroupElement\\in \\AmenableGroup:\\GroupAction{\\AmenableGroupElement}{a}\\in E}. \\]"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
     "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#kronecker-factor",
     "title": "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups",
     "section": "3.2 Kronecker Factor",
-    "text": "3.2 Kronecker Factor\n\n\n\n\n\n\n\nProposition 1 [Embed #prp-KroneckerGeneric from factor-maps.qmd]"
+    "text": "3.2 Kronecker Factor\n\nProposition 1 ({{&lt; term-title ref= “prp-KroneckerGeneric” removeURLs=true &gt;}})"
   },
   {
     "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#choosing-a-point-x_1",
@@ -84,115 +329,17 @@
     "text": "3.5 Proof Conclusion"
   },
   {
-    "objectID": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html",
-    "href": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html",
-    "title": "Furstenberg’s Correspondence Principle",
-    "section": "",
-    "text": "Theorem 1 (cf. Kra et al. (2022), Theorem 2.10) Let \\(\\AmenableGroup\\) be an amenable group, \\(A\\subset \\AmenableGroup\\), and \\(\\Folner\\) be a Følner sequence in \\(\\AmenableGroup\\) such that the limit \\[\\delta=\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{A\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}\\] exists.\nThen there exists an ergodic system \\((\\ShiftSpace,\\Measure,\\AmenableGroup)\\) that is acted on by \\(\\AmenableGroup\\), a clopen set \\(E\\subset\\ShiftSpace\\), a Følner sequence \\(\\FurstenbergFolner\\) in \\(\\AmenableGroup\\), and a point \\(a\\in\\ShiftSpace\\) that is generic with \\(\\Measure\\) with respect to \\(\\FurstenbergFolner\\) such that \\(\\Measure(E)\\geq\\delta\\) and \\[A={\\AmenableGroupElement\\in \\AmenableGroup:\\GroupAction{\\AmenableGroupElement}{a}\\in E}. \\]\n\n\n\n\n\n\n\n\nReferences\n\nKra, B., et al. (2022). 'Infinite sumsets in sets with positive density', Available at: https://arxiv.org/abs/2206.01786."
-  },
-  {
-    "objectID": "papers/MathsNotes/2_Topological_Dynamics/actions.html",
-    "href": "papers/MathsNotes/2_Topological_Dynamics/actions.html",
-    "title": "Actions",
-    "section": "",
-    "text": "Definition 1 (Bekka and Mayer (2000) Section 2) An action of a group, \\(\\Group\\), on a measurable space \\((X,\\SigmaAlgebra{B})\\) is a measurable mapping \\[\\Group\\times X\\rightarrow X,\\ (\\GroupElement,x)\\mapsto \\GroupAction{\\GroupElement}{x} \\] with the following properties:\n\nAssociativity: For all \\(\\GroupElement,\\GroupElement'\\in \\Group,x\\in X\\), then \\(\\GroupAction{\\GroupElement}{(\\GroupAction{\\GroupElement'}{x})}=\\GroupAction{(\\GroupOperation{\\GroupElement}{\\GroupElement'})}{x}\\)\nIdentity: There exists an identity element \\(\\GroupIdentity\\in\\Group\\) such that \\(\\GroupAction{\\GroupIdentity}{x}=x\\) for all \\(x\\in X\\).\nQuasi-Invariance: For any \\(B\\in\\SigmaAlgebra{B}\\) and for all \\(\\GroupElement\\in\\Group\\), we have \\(\\Measure(\\GroupAction{\\GroupElement}{B})=0\\) if and only if \\(\\Measure(B)=0\\).\n\nThe action of \\(\\Group\\) is also ergodic if it satisfies the additional property:\n\nIf \\(B\\in\\SigmaAlgebra{B}\\) and \\(\\Measure(B)=\\Measure(\\GroupAction{\\GroupElement}{B})\\) for any \\(\\GroupElement\\in\\Group\\), then \\(\\Measure(B)=0\\) or \\(\\Measure(X\\setminus B)=0\\).\nWe are interested in how the action of a group \\(\\Group\\) transforms functions on \\((X,\\SigmaAlgebra{B},\\Measure)\\) so we must identify the associated definitions within functional analysis.\nWe define the map \\(\\KoopmanOperator:\\text{L}^2(X)\\rightarrow\\text{L}^2(X)\\) where \\(f\\mapsto f\\circ \\KoopmanOperator\\) as the Koopman operator induced by \\(\\GroupElement\\in\\Group\\). We find that the Koopman operator induced by \\(\\Group\\) is a unitary operator and the group homomorphism \\(U:\\Group\\rightarrow\\mathscr{U}(\\text{L}^2(X))\\) is the unitary representation of \\(\\Group\\) on \\(\\text{L}^2(X)\\), where \\(\\mathscr{U}(\\text{L}^2(X))\\) is the set of all unitary operators on \\(\\text{L}^2(X)\\)."
-  },
-  {
-    "objectID": "papers/MathsNotes/2_Topological_Dynamics/actions.html#footnotes",
-    "href": "papers/MathsNotes/2_Topological_Dynamics/actions.html#footnotes",
-    "title": "Actions",
+    "objectID": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#footnotes",
+    "href": "papers/GeneralisedErdosConjecture/ErdosConjecture.html#footnotes",
+    "title": "A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nconsider tempered separately as the FCP construction only depends on sequential compactness↩︎"
-  },
-  {
-    "objectID": "papers/MathsNotes/1_Amenable_and_Density/amenable.html",
-    "href": "papers/MathsNotes/1_Amenable_and_Density/amenable.html",
-    "title": "Amenable",
-    "section": "",
-    "text": "Definition 1 For simplicity, we will use the alternative and equivalent definition that a locally compact group, \\(\\AmenableGroup\\), is amenable (and second countable) if and only if it has a Følner sequence."
-  },
-  {
-    "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html",
-    "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html",
-    "title": "Følner sequence",
-    "section": "",
-    "text": "Definition 1 We define a right-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Group\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{\\GroupOperation{(\\GroupOperation{\\Folner[N]}{\\Inverse{\\GroupElement}})}{\\Folner[N]}}}{\\CountingMeasure{\\Folner[N]}}=1,\\] for all \\(\\GroupElement\\in\\Group\\).\n\n\n\n\n\n\n\n\n\n\n\nDefinition 2 Similarly, we define a left-Følner sequence in \\(\\Group\\) as a sequence \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) of finite subsets of \\(\\Group\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{(\\Inverse{\\GroupElement}\\cdot\\Folner[N])\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}=1,\\] for all \\(\\GroupElement\\in\\Group\\).\n\n\n\n\n\n\n\n\n\n\n\nDefinition 3 We call a sequence in \\(\\Group\\) a Følner sequence if it is both a left and right Følner sequence.\n\n\n\n\n\n\n\n\n\n\n\n\n\nDefinition 4 Let \\(\\Monoid\\) be a countably-infinite left-cancellative monoid with discrete topology. We define a left-Følner sequence in \\(\\Monoid\\) as a sequence of finite subsets \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{\\MonoidOperation{(\\MonoidOperation{\\MonoidElement}{\\Folner[N]})}{\\Folner[N]}}}{\\CountingMeasure{\\Folner[N]}}=1\\] for all \\(g\\in M\\).\n\n\n\n\n\n\n\n\n\n\n\nDefinition 5 Similarly, for a countably-infinite right-cancellative monoid with discrete topology \\(\\Monoid\\), we define a right-Følner sequence in \\(\\Monoid\\) as a sequence of finite subsets \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{\\MonoidOperation{(\\MonoidOperation{\\Folner[N]}{\\MonoidElement})}{\\Folner[N]}}}{\\CountingMeasure{\\Folner[N]}}=1\\] for all \\(g\\in M\\).\n\n\n\n\n\n\n\nEquivalent definitions can be constructed by using set differences instead of intersections.\nFor example, the equivalent definition of a left-Følner sequence, \\(\\Folner\\), in \\(\\Monoid\\) requires \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{(\\MonoidOperation{\\Folner[N]}{\\MonoidElement})\\triangle\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}=0, \\] to be satisfied for all \\(\\MonoidElement\\in\\Monoid\\).\nThis alternative definition will be useful when looking at proving some of the properties of density."
-  },
-  {
-    "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html#alternative-definitions-for-monoids",
-    "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html#alternative-definitions-for-monoids",
-    "title": "Følner sequence",
-    "section": "",
-    "text": "Definition 4 Let \\(\\Monoid\\) be a countably-infinite left-cancellative monoid with discrete topology. We define a left-Følner sequence in \\(\\Monoid\\) as a sequence of finite subsets \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{\\MonoidOperation{(\\MonoidOperation{\\MonoidElement}{\\Folner[N]})}{\\Folner[N]}}}{\\CountingMeasure{\\Folner[N]}}=1\\] for all \\(g\\in M\\).\n\n\n\n\n\n\n\n\n\n\n\nDefinition 5 Similarly, for a countably-infinite right-cancellative monoid with discrete topology \\(\\Monoid\\), we define a right-Følner sequence in \\(\\Monoid\\) as a sequence of finite subsets \\(\\Folner =(\\Folner[N])_{N\\in\\mathbb{N}}\\) satisfying \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{\\MonoidOperation{(\\MonoidOperation{\\Folner[N]}{\\MonoidElement})}{\\Folner[N]}}}{\\CountingMeasure{\\Folner[N]}}=1\\] for all \\(g\\in M\\)."
-  },
-  {
-    "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html#equivalent-definitions-using-set-differences",
-    "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html#equivalent-definitions-using-set-differences",
-    "title": "Følner sequence",
-    "section": "",
-    "text": "Equivalent definitions can be constructed by using set differences instead of intersections.\nFor example, the equivalent definition of a left-Følner sequence, \\(\\Folner\\), in \\(\\Monoid\\) requires \\[\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{(\\MonoidOperation{\\Folner[N]}{\\MonoidElement})\\triangle\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}=0, \\] to be satisfied for all \\(\\MonoidElement\\in\\Monoid\\).\nThis alternative definition will be useful when looking at proving some of the properties of density."
-  },
-  {
-    "objectID": "papers/MathsNotes/0_Fundamental/monoid.html",
-    "href": "papers/MathsNotes/0_Fundamental/monoid.html",
-    "title": "Monoid",
-    "section": "",
-    "text": "Proposition 1 Let \\(\\Monoid\\) be a countably-infinite left-cancellative monoid with discrete topology, then its left-Haar measure is the counting measure \\(|\\cdot|\\)."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Kai Prince",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "papers/MathsNotes/0_Fundamental/group.html",
-    "href": "papers/MathsNotes/0_Fundamental/group.html",
-    "title": "Group",
-    "section": "",
-    "text": "Definition 1 A group is a non-empty set \\(\\Group\\) together with a binary operation on \\(\\Group\\), denoted \"\\(\\GroupOperation{}{}\\)\", that combines any two elements \\(\\GroupElement\\) and \\(\\GroupElement'\\) of \\(\\Group\\) to form an element of \\(\\Group\\), denoted \\(\\GroupOperation{\\GroupElement}{\\GroupElement'}\\), such that the following three requirements, known as group axioms, are satisfied:"
-  },
-  {
-    "objectID": "papers/MathsNotes/0_Fundamental/axioms.html",
-    "href": "papers/MathsNotes/0_Fundamental/axioms.html",
-    "title": "Axioms",
-    "section": "",
-    "text": "Definition 1 (associativity) For all \\({a},{b},{c}\\) in \\(\\Set\\), one has \\(\\Operation{(\\Operation{a}{b})}{c}=\\Operation{a}{(\\Operation{b}{c})}\\).\n\n\n\n\n\n\n\n\n\n\n\nDefinition 2 (identity) There exists an element \\(\\Identity\\) in \\(\\Set\\) such that, for every \\({a}\\) in \\(\\Set\\), one has \\(\\Operation{\\Identity}{a}={a}\\) and \\(\\Operation{a}{\\Identity}={a}\\). Such an element is unique and is called the identity element.\n\n\n\n\n\n\n\n\n\n\n\nDefinition 3 (inverse) For each \\({a}\\) in \\(\\Set\\), there exists an element \\({b}\\) in \\(\\Set\\) such that \\(\\Operation{a}{b}=\\Identity\\) and \\(\\Operation{b}{a}=\\Identity\\), where \\(\\Identity\\) is the identity element.\nFor each \\({a}\\), the element \\({b}\\) is unique and is called the inverse of \\({b}\\) and is denoted \\(\\Inverse{a}\\)."
-  },
-  {
-    "objectID": "papers/MathsNotes/1_Amenable_and_Density/density.html",
-    "href": "papers/MathsNotes/1_Amenable_and_Density/density.html",
-    "title": "Density",
-    "section": "",
-    "text": "Definition 1 For \\(A\\subseteq\\Group\\) and Følner sequence \\(\\Folner=(\\Folner[N])_{n=1}^\\infty\\), we write \\[\\begin{align*}\n    \\UpperDensity{A}&=\\limsup_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{A\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}\n    \\\\\\LowerDensity{A}&=\\liminf_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{A\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}\n\\end{align*}\\] to be the upper and lower densities of \\(A\\) with respect to \\(\\Folner\\), respectively. If these agree, then we can write \\[\n\\Density{A}=\\lim_{N\\rightarrow\\infty}\\frac{\\CountingMeasure{A\\cap\\Folner[N]}}{\\CountingMeasure{\\Folner[N]}}\n\\] to be the density of \\(A\\) with respect to \\(\\Folner\\). We also define the upper Banach density of \\(A\\) by \\[\n\\UpperBanachDensity{A}=\\sup\\{d_{\\Folner}(A):\\text{for Følner sequences }\\Folner\\text{ where }d_{\\Folner}(A)\\text{ exists}\\}.\n\\]\n\n\n\n\n\n\n\n\n\n\n\nProposition 1 (Monotonicity) Let \\(A,B\\subseteq\\Monoid\\) be subsets. For \\(A\\subseteq B\\), we have\\[\\UpperDensity{A}\\leq\\UpperDensity{B}, \\]and\\[\\LowerDensity{A}\\leq\\LowerDensity{B}. \\]\n\n\n\n\n\n\n\n\n\n\n\nProposition 2 (Translation Invariance) Let \\(B\\subseteq\\Monoid\\) be a subset. For all \\(\\MonoidElement\\in\\Monoid\\), we have that \\[\\UpperDensity{B}=\\UpperDensity[\\MonoidOperation{\\MonoidElement}{\\Folner}]{B}=\\UpperDensity{\\MonoidOperation{\\MonoidElement}{B}}\\] and \\[\\LowerDensity{B}=\\LowerDensity[\\MonoidOperation{\\MonoidElement}{\\Folner}]{B}=\\LowerDensity{\\MonoidOperation{\\MonoidElement}{B}}.\\]\n\n\n\n\n\n\n\n\n\n\n\nLemma 1 (Upper/Lower Density Pairwise Additive) Let \\(A,B\\subseteq\\Monoid\\) be subsets such that \\(\\Density{A}\\) and \\(\\Density{B}\\) both exist, then we have \\[\\begin{align*}\n    \\UpperDensity{A\\cup B}+\\LowerDensity{A\\cap B}&=\\Density{A}+\\Density{B},\n    \\\\\\LowerDensity{A\\cup B}+\\UpperDensity{A\\cap B}&=\\Density{A}+\\Density{B}.\n\\end{align*}\\] Further, we have \\(\\Density{A\\cap B}\\) exists if and only if \\(\\Density{A\\cup B}\\) exists."
-  },
-  {
-    "objectID": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html",
-    "href": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html",
-    "title": "Recurrence and Ergodic Theorems",
-    "section": "",
-    "text": "Theorem 1 (Bergelson (1985), Theorem 1.1) Let \\((X,\\SigmaAlgebra{B},\\Measure)\\) be a probability space and suppose that \\(B_n\\in\\SigmaAlgebra{B}\\) such that \\(\\Measure(B_n)=b&gt;0\\) for all \\(n\\in\\mathbb{N}\\).\nThen there exists a positively dense index set \\(I\\subset\\mathbb{N}\\) such that, for any finite subset \\(F\\subseteq I\\), we have \\[\\Measure\\left(\\bigcap_{i\\in F}B_i \\right)&gt;0. \\]\n\n\n\n\n\n\n\n\n\n\n\nTheorem 2 (cf. Lindenstrauss (2001), Theorem 1.2) Let \\(\\AmenableGroup\\) be a discrete amenable group acting on a measure space \\((X,\\SigmaAlgebra{B},\\Measure)\\) by measure preserving transformation and let \\(\\Folner=(\\Folner[N])_{N\\in\\mathbb{N}}\\) be a tempered Følner sequence.\nThen, for any \\(f\\in\\text{L}^1(\\Measure)\\), there is a \\(\\AmenableGroup\\)-invariant \\(\\bar{f}\\in\\text{L}^1(\\Measure)\\) such that \\[\\lim_{N\\rightarrow\\infty}\\frac{1}{\\CountingMeasure{\\Folner[N]}}\\sum_{\\AmenableGroupElement\\in\\Folner[N]}f(\\GroupAction{\\AmenableGroupElement}{x})=\\bar{f}(x) \\] for \\(\\Measure\\)-almost every \\(x\\in X\\). In particular, if the \\(\\AmenableGroup\\) action is ergodic, then \\[\\lim_{N\\rightarrow\\infty}\\frac{1}{\\CountingMeasure{\\Folner[N]}}\\sum_{\\AmenableGroupElement\\in\\Folner[N]}f(\\GroupAction{\\AmenableGroupElement}{x})=\\int f(x)\\ d\\Measure(x) \\] for \\(\\Measure\\) almost every \\(x\\).\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\n\nCorollary 1 (cf. Host (2019), Corollary 8) Let \\((X,\\AmenableGroup)\\) be a topological dynamical system where \\(\\AmenableGroup\\) is an amenable group, \\(\\Measure\\) an ergodic measure on \\(X\\) and \\(\\Folner\\) a tempered Følner sequence. Then \\(\\Measure\\)-almost every \\(x\\in X\\) is generic for \\(\\Measure\\) along \\(\\Folner\\).\n\n\n\n\n\n\n\nReferences\n\nBergelson, V. (1985). 'Sets of recurrence of zm-actions and properties of sets of differences in zm', Journal of the London Mathematical Society, s2-31 (2), pp. 295–304. https://doi.org/10.1112/jlms/s2-31.2.295.\n\n\nLindenstrauss, E. (2001). 'Pointwise theorems for amenable groups', Inventiones mathematicae, 146 (2), pp. 259–295. https://doi.org/10.1007/s002220100162.\n\n\nHost, B. (2019). 'A short proof of a conjecture of erdös proved by moreira, richter and robertson', Available at: https://arxiv.org/abs/1904.09952."
-  },
-  {
-    "objectID": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html",
-    "href": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html",
-    "title": "Measure Theory and Ergodic Theory",
-    "section": "",
-    "text": "The foundational knowledge relating to Measure & Ergodic Theory, that has not been covered elsewhere, was provided by Robertson (2023).\n\n\n\n\n\n\n\nDefinition 1 (Gleason (2010)) A topological measure space \\((X,\\SigmaAlgebra{B},\\Measure)\\) is a topological space \\((X,\\Topology)\\) such that \\(\\SigmaAlgebra{B}\\) is generated by the open sets defined by the topology \\(\\Topology\\), i.e., \\(\\SigmaAlgebra{B}=\\text{Borel}(X)=\\SigmaAlgebraGenerator\\), and \\(\\Measure\\) is a measure on this space.\nA Borel measure is the measure \\(\\Measure\\) on a topological measure space \\((X,\\SigmaAlgebra{B},\\Measure)\\) where \\((X,\\Topology)\\) is Hausdorff.\nA regular (Borel) measure is a measure on a Borel measure space \\((X,\\SigmaAlgebra{B},\\Measure)\\) such that the following hold:\nA left-Haar measure [or right-Haar measure] on a topological group \\((\\Group,\\Topology)\\) is a non-zero regular Borel measure \\(\\Measure\\) on \\(\\Group\\) such that \\(\\Measure(\\GroupOperation{\\GroupElement}{B})=\\Measure(B)\\) [or \\(\\Measure(\\GroupOperation{B}{\\GroupElement})=\\Measure(B)\\)] for all \\(\\GroupElement\\in\\Group\\) and \\(B\\in\\sigma(\\Topology)\\).\n\n\n\n\n\n\n\n\nReferences\n\nRobertson, D. (2023). 'MATH41021/61021 measure and ergodic theory', Available at: https://personalpages.manchester.ac.uk/staff/donald.robertson/teaching/23-24/41021 (Accessed: 22 January 2024).\n\n\nGleason, J. (2010). 'Existence and uniqueness of haar measure',."
-  },
-  {
-    "objectID": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html",
-    "href": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html",
-    "title": "Factor Maps",
-    "section": "",
-    "text": "Definition 1 (Kra et al. (2022), Definition 2.1) For a system \\((X,\\Measure,T)\\) we say that the system \\((Y,\\\nu,S)\\) is a measurable factor of \\((X,\\Measure,T)\\) if there is a measurable map \\(\\ProjectionMap:X\\rightarrow Y\\), the measurable factor map, such that \\(\\ProjectionMap(\\Measure)=\\\nu\\) and \\((S\\circ\\ProjectionMap)(x)=(\\ProjectionMap\\circ T)(x)\\) for \\(\\Measure\\)-almost every \\(x\\in X\\).\n\n\n\n\n\n\n\n\n\n\n\nProposition 1 (cf. Host (2019), Proposition 5) Let \\((X,\\AmenableGroup)\\) be a topological dynamical system where \\(\\AmenableGroup\\) is an amenable group, \\(x_0\\in X\\), and \\(\\Measure\\) be an ergodic invariant probability measure supported on the closed orbit of \\(x_0\\) under the action of \\(\\AmenableGroup\\).\nLet \\(\\KroneckerFactor\\) be the Kronecker factor of \\((X,\\Measure,\\AmenableGroup)\\), with factor map \\(\\ProjectionMap:X\\rightarrow\\KroneckerSpace\\).\nLet \\(X\\times\\KroneckerSpace\\) be endowed with the group action of \\(\\AmenableGroup\\times\\KroneckerAction\\). Let \\(\\tilde\\Measure\\) be the measure on \\(X\\times\\KroneckerSpace\\) and image of \\(\\Measure\\) under the map \\(X\\rightarrow X\\times\\KroneckerSpace\\) where \\(x\\mapsto(x,\\ProjectionMap(x))\\).\nThen there exists a Følner sequence \\(\\tilde{\\Folner}\\) and a point \\(\\KroneckerSpaceElement_0\\in\\KroneckerSpace\\) such that \\((x_0,\\KroneckerSpaceElement_0)\\) is generic for \\(\\tilde{\\Measure}\\) along \\(\\tilde{\\Folner}\\).\n\n\n\n\n\n\n\n\nReferences\n\nKra, B., et al. (2022). 'Infinite sumsets in sets with positive density', Available at: https://arxiv.org/abs/2206.01786.\n\n\nHost, B. (2019). 'A short proof of a conjecture of erdös proved by moreira, richter and robertson', Available at: https://arxiv.org/abs/1904.09952."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "My Website",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n7 Aug 2025\n\n\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\n\n\nKai Prince SFHEA, Kai Prince\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n13 Aug 2025\n\n\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\n\n\nKai Prince\n\n\n\n\n\n\nNo matching items"
   }
 ]

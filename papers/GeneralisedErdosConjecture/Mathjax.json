@@ -1,21 +1,57 @@
 {
   "AmenableGroup": "{\\Gamma}",
   "AmenableGroupElement": "{\\gamma}",
+  "CountingMeasure": "{\\lambda}",
+  "Density": [
+    "d_{{#1}}({#2})",
+    2,
+    "\\Folner"
+  ],
   "Folner": [
     "{\\Phi}_{#1}",
     1,
+    "\\vphantom{}"
+  ],
+  "FurstenbergFolner": [
+    "{\\Psi}_{#1}",
+    1,
     "{\\vphantom{}}"
   ],
-  "Group": "{G}",
+  "Group": "{\\Gamma}",
   "GroupAction": [
     "{#1}.{#2}",
     2
   ],
+  "GroupElement": "{\\gamma}",
+  "GroupIdentity": "{e}",
   "GroupOperation": [
     "{#1}\\cdot{#2}",
     2
   ],
   "Identity": "{e}",
+  "Inverse": [
+    "{#1}^{-1}",
+    1
+  ],
+  "LowerDensity": [
+    "\\underline{d}_{{#1}}({#2})",
+    2,
+    "\\Folner"
+  ],
   "Measure": "{\\mu}",
-  "N": "\\mathbb{N}"
+  "N": "\\mathbb{N}",
+  "ShiftSpace": "{X}",
+  "SigmaAlgebra": [
+    "{\\mathscr{#1}}",
+    1
+  ],
+  "UpperBanachDensity": [
+    "\\overline{d}({#1})",
+    1
+  ],
+  "UpperDensity": [
+    "\\overline{d}_{{#1}}({#2})",
+    2,
+    "\\Folner"
+  ]
 }

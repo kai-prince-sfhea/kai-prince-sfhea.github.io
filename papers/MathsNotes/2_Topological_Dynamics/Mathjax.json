@@ -5,19 +5,23 @@
   "Folner": [
     "{\\Phi}_{#1}",
     1,
-    "{\\vphantom{}}"
+    "\\vphantom{}"
   ],
   "FurstenbergFolner": [
     "{\\Psi}_{#1}",
     1,
     "{\\vphantom{}}"
   ],
-  "Group": "{G}",
+  "Group": "{\\Gamma}",
   "GroupAction": [
     "{#1}.{#2}",
     2
   ],
-  "GroupElement": "{g}",
+  "GroupActionPreImage": [
+    "{#1}^{-1}.{#2}",
+    2
+  ],
+  "GroupElement": "{\\gamma}",
   "GroupIdentity": "{e}",
   "GroupOperation": [
     "{#1}\\cdot{#2}",
@@ -33,17 +37,17 @@
   ],
   "KroneckerAction": "{H}",
   "KroneckerFactor": "{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}",
+  "KroneckerMeasure": "{m_Z}",
   "KroneckerSpace": "{Z}",
   "KroneckerSpaceElement": "{z}",
   "Measure": "{\\mu}",
   "Monoid": "{M}",
-  "MonoidElement": "{g}",
+  "MonoidElement": "{m}",
   "ProjectionMap": [
     "{\\pi}_{#1}",
     1,
     "\\vphantom{}"
   ],
-  "Set": "{S}",
   "ShiftSpace": "{X}",
   "SigmaAlgebra": [
     "{\\mathscr{#1}}",
