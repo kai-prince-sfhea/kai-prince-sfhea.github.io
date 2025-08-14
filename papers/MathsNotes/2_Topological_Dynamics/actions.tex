@@ -208,18 +208,18 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\GroupIdentity}{{e}}
-\newcommand{\Measure}{{\mu}}
-\newcommand{\GroupElement}{{\gamma}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
-\NewDocumentCommand{\KoopmanOperator}{O{\GroupElement} O{\vphantom{}} }{{U}_{{#1}}{#2}}
-\newcommand{\Group}{{\Gamma}}
 \newcommand{\GroupActionPreImage}[2]{{#1}^{-1}.{#2}}
+\newcommand{\GroupElement}{{\gamma}}
+\NewDocumentCommand{\KoopmanOperator}{O{\GroupElement} O{\vphantom{}} }{{U}_{{#1}}{#2}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\GroupIdentity}{{e}}
+\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\Group}{{\Gamma}}
+\newcommand{\Measure}{{\mu}}
+\newcommand{\Monoid}{{M}}
 \newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
 \newcommand{\MonoidElement}{{m}}
-\newcommand{\Monoid}{{M}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -238,7 +238,7 @@
 
 \title{Actions}
 \author{Kai Prince}
-\date{2025-08-13}
+\date{2025-08-14}
 \begin{document}
 \maketitle
 
@@ -248,6 +248,23 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+
+\section*{Backlinks}\label{sec-Backlinks}
+\addcontentsline{toc}{section}{Backlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../MathsNotes/0_Fundamental/axioms.html}{Axioms}
+\item
+  \href{../../MathsNotes/0_Fundamental/group.html}{Group}
+\item
+  \href{../../MathsNotes/0_Fundamental/monoid.html}{Monoid}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html}{Measure Theory and Ergodic Theory}
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/folner.html}{Følner sequence}
+\end{itemize}
 
 \begin{definition}[Bekka and Mayer
 \citeproc{ref-Bekka2000GroupActionDynamics}{(2000)} Section
@@ -340,6 +357,21 @@ induced by \(\Group\) is a unitary operator and the group homomorphism
 representation} of \(\Group\) on \(\text{L}^2(X)\), where
 \(\mathscr{U}(\text{L}^2(X))\) is the set of all unitary operators on
 \(\text{L}^2(X)\).
+
+\section*{Outlinks}\label{sec-Outlinks}
+\addcontentsline{toc}{section}{Outlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/factor-maps.html}{Factor Maps}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html}{Furstenberg's Correspondence Principle}
+\item
+  \href{../../GeneralisedErdosConjecture/ErdosConjecture.html}{A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html}{Recurrence and Ergodic Theorems}
+\end{itemize}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}

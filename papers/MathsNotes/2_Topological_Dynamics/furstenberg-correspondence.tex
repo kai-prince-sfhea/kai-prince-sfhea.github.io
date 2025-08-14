@@ -208,15 +208,15 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\AmenableGroup}{{\Gamma}}
-\newcommand{\Measure}{{\mu}}
-\newcommand{\ShiftSpace}{{X}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\FurstenbergFolner}[1][{\vphantom{}}]{{\Psi}_{#1}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
 \newcommand{\AmenableGroupElement}{{\gamma}}
+\newcommand{\ShiftSpace}{{X}}
 \newcommand{\CountingMeasure}{{\lambda}}
+\newcommand{\AmenableGroup}{{\Gamma}}
+\newcommand{\GroupAction}[2]{{#1}.{#2}}
 \newcommand{\Group}{{\Gamma}}
+\newcommand{\Measure}{{\mu}}
+\newcommand{\FurstenbergFolner}[1][{\vphantom{}}]{{\Psi}_{#1}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -235,7 +235,7 @@
 
 \title{Furstenberg's Correspondence Principle}
 \author{Kai Prince}
-\date{2025-08-13}
+\date{2025-08-14}
 \begin{document}
 \maketitle
 
@@ -245,6 +245,23 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+
+\section*{Backlinks}\label{sec-Backlinks}
+\addcontentsline{toc}{section}{Backlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../MathsNotes/0_Fundamental/group.html}{Group}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html}{Measure Theory and Ergodic Theory}
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/folner.html}{Følner sequence}
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/amenable.html}{Amenable}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/actions.html}{Actions}
+\end{itemize}
 
 \begin{theorem}[cf. Kra et al. \citeproc{ref-kra2022infinite}{(2022)},
 Theorem 2.10]\protect\hypertarget{thm-FCP}{}\label{thm-FCP}
@@ -264,6 +281,15 @@ sequence \(\FurstenbergFolner\) in \(\AmenableGroup\), and a point
 \[A={\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E}. \]
 
 \end{theorem}
+
+\section*{Outlinks}\label{sec-Outlinks}
+\addcontentsline{toc}{section}{Outlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../GeneralisedErdosConjecture/ErdosConjecture.html}{A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups}
+\end{itemize}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}

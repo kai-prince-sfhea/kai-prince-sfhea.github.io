@@ -192,10 +192,10 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -210,15 +210,15 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\GroupElement}{{\gamma}}
-\newcommand{\Inverse}[1]{{#1}^{-1}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\MonoidOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\GroupElement}{{\gamma}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 \newcommand{\CountingMeasure}{{\lambda}}
 \newcommand{\Group}{{\Gamma}}
-\newcommand{\MonoidElement}{{m}}
 \newcommand{\Monoid}{{M}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\MonoidOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\Inverse}[1]{{#1}^{-1}}
+\newcommand{\MonoidElement}{{m}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -237,7 +237,7 @@
 
 \title{Følner sequence}
 \author{Kai Prince}
-\date{2025-08-13}
+\date{2025-08-14}
 \begin{document}
 \maketitle
 
@@ -247,6 +247,25 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+
+\subsection*{Backlinks}\label{sec-Backlinks}
+\addcontentsline{toc}{subsection}{Backlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../MathsNotes/0_Fundamental/axioms.html}{Axioms}
+\item
+  \href{../../MathsNotes/0_Fundamental/group.html}{Group}
+\item
+  \href{../../MathsNotes/0_Fundamental/monoid.html}{Monoid}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html}{Measure Theory and Ergodic Theory}
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/density.html}{Density}
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/amenable.html}{Amenable}
+\end{itemize}
 
 \section{Følner Sequences}\label{fuxf8lner-sequences}
 
@@ -351,6 +370,27 @@ is referred to as the \emph{Shulman condition}.
 \end{enumerate}
 
 \end{proposition}
+
+\subsection*{Outlinks}\label{sec-Outlinks}
+\addcontentsline{toc}{subsection}{Outlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/density.html}{Density}
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/amenable.html}{Amenable}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/actions.html}{Actions}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/factor-maps.html}{Factor Maps}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html}{Furstenberg's Correspondence Principle}
+\item
+  \href{../../GeneralisedErdosConjecture/ErdosConjecture.html}{A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html}{Recurrence and Ergodic Theorems}
+\end{itemize}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}

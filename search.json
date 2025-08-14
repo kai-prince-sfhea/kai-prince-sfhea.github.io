@@ -39,14 +39,14 @@
     "href": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html",
     "title": "Recurrence and Ergodic Theorems",
     "section": "",
-    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+    "text": "Group\nMeasure Theory and Ergodic Theory\nFølner sequence\nAmenable\nActions"
   },
   {
     "objectID": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html#sec-Backlinks",
     "href": "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html#sec-Backlinks",
     "title": "Recurrence and Ergodic Theorems",
     "section": "",
-    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+    "text": "Group\nMeasure Theory and Ergodic Theory\nFølner sequence\nAmenable\nActions"
   },
   {
     "objectID": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html",
@@ -67,21 +67,21 @@
     "href": "papers/MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html#sec-Outlinks",
     "title": "Measure Theory and Ergodic Theory",
     "section": "Outlinks",
-    "text": "Outlinks\n\nFølner sequence\nDensity\nActions\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
+    "text": "Outlinks\n\nDensity\nFølner sequence\nActions\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
   },
   {
     "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html",
     "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html",
     "title": "Følner sequence",
     "section": "",
-    "text": "Axioms\nGroup\nMonoid\nAmenable\nMeasure Theory and Ergodic Theory\nDensity"
+    "text": "Axioms\nGroup\nMonoid\nMeasure Theory and Ergodic Theory\nDensity\nAmenable"
   },
   {
     "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html#sec-Backlinks",
     "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html#sec-Backlinks",
     "title": "Følner sequence",
     "section": "",
-    "text": "Axioms\nGroup\nMonoid\nAmenable\nMeasure Theory and Ergodic Theory\nDensity"
+    "text": "Axioms\nGroup\nMonoid\nMeasure Theory and Ergodic Theory\nDensity\nAmenable"
   },
   {
     "objectID": "papers/MathsNotes/1_Amenable_and_Density/folner.html#alternative-definitions-for-monoids",
@@ -102,7 +102,7 @@
     "href": "papers/MathsNotes/1_Amenable_and_Density/folner.html#sec-Outlinks",
     "title": "Følner sequence",
     "section": "Outlinks",
-    "text": "Outlinks\n\nAmenable\nDensity\nActions\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
+    "text": "Outlinks\n\nDensity\nAmenable\nActions\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
   },
   {
     "objectID": "papers/MathsNotes/0_Fundamental/monoid.html",
@@ -116,7 +116,7 @@
     "href": "papers/MathsNotes/0_Fundamental/monoid.html#sec-Outlinks",
     "title": "Monoid",
     "section": "Outlinks",
-    "text": "Outlinks\n\nFølner sequence\nDensity\nActions"
+    "text": "Outlinks\n\nDensity\nFølner sequence\nActions"
   },
   {
     "objectID": "papers/MathsNotes/0_Fundamental/group.html",
@@ -137,7 +137,7 @@
     "href": "papers/MathsNotes/0_Fundamental/group.html#sec-Outlinks",
     "title": "Group",
     "section": "Outlinks",
-    "text": "Outlinks\n\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nDensity\nActions\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
+    "text": "Outlinks\n\nMeasure Theory and Ergodic Theory\nDensity\nFølner sequence\nAmenable\nActions\nFactor Maps\nFurstenberg’s Correspondence Principle\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\nRecurrence and Ergodic Theorems"
   },
   {
     "objectID": "papers/MathsNotes/0_Fundamental/axioms.html",
@@ -200,14 +200,14 @@
     "href": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html",
     "title": "Furstenberg’s Correspondence Principle",
     "section": "",
-    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+    "text": "Group\nMeasure Theory and Ergodic Theory\nFølner sequence\nAmenable\nActions"
   },
   {
     "objectID": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html#sec-Backlinks",
     "href": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html#sec-Backlinks",
     "title": "Furstenberg’s Correspondence Principle",
     "section": "",
-    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+    "text": "Group\nMeasure Theory and Ergodic Theory\nFølner sequence\nAmenable\nActions"
   },
   {
     "objectID": "papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html#sec-Outlinks",
@@ -221,14 +221,14 @@
     "href": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html",
     "title": "Factor Maps",
     "section": "",
-    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+    "text": "Group\nMeasure Theory and Ergodic Theory\nFølner sequence\nAmenable\nActions"
   },
   {
     "objectID": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html#sec-Backlinks",
     "href": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html#sec-Backlinks",
     "title": "Factor Maps",
     "section": "",
-    "text": "Group\nAmenable\nMeasure Theory and Ergodic Theory\nFølner sequence\nActions"
+    "text": "Group\nMeasure Theory and Ergodic Theory\nFølner sequence\nAmenable\nActions"
   },
   {
     "objectID": "papers/MathsNotes/2_Topological_Dynamics/factor-maps.html#sec-Outlinks",
@@ -340,6 +340,6 @@
     "href": "index.html",
     "title": "My Website",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n13 Aug 2025\n\n\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\n\n\nKai Prince\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\n14 Aug 2025\n\n\nA Short Proof of a Generalised Conjecture of Erdős for Amenable Groups\n\n\nKai Prince\n\n\n\n\n\n\nNo matching items"
   }
 ]

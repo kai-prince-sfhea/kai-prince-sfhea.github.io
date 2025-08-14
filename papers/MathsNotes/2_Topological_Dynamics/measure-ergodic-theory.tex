@@ -208,13 +208,13 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\Measure}{{\mu}}
 \newcommand{\GroupElement}{{\gamma}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 \newcommand{\Topology}{{\tau}}
 \newcommand{\SigmaAlgebraGenerator}[1][\Topology]{{\sigma({#1})}}
 \newcommand{\Group}{{\Gamma}}
+\newcommand{\Measure}{{\mu}}
 \newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -233,7 +233,7 @@
 
 \title{Measure Theory and Ergodic Theory}
 \author{Kai Prince}
-\date{2025-08-13}
+\date{2025-08-14}
 \begin{document}
 \maketitle
 
@@ -243,6 +243,15 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+
+\section*{Backlinks}\label{sec-Backlinks}
+\addcontentsline{toc}{section}{Backlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../MathsNotes/0_Fundamental/group.html}{Group}
+\end{itemize}
 
 The foundational knowledge relating to Measure \& Ergodic Theory, that
 has not been covered elsewhere, was provided by Robertson
@@ -280,6 +289,27 @@ measure \(\Measure\) on \(\Group\) such that
 \(\GroupElement\in\Group\) and \(B\in\sigma(\Topology)\).
 
 \end{definition}
+
+\section*{Outlinks}\label{sec-Outlinks}
+\addcontentsline{toc}{section}{Outlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/density.html}{Density}
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/folner.html}{Følner sequence}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/actions.html}{Actions}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/factor-maps.html}{Factor Maps}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html}{Furstenberg's Correspondence Principle}
+\item
+  \href{../../GeneralisedErdosConjecture/ErdosConjecture.html}{A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html}{Recurrence and Ergodic Theorems}
+\end{itemize}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}

@@ -192,10 +192,10 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -210,14 +210,14 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\AmenableGroup}{{\Gamma}}
-\newcommand{\Measure}{{\mu}}
-\newcommand{\ProjectionMap}[1][\vphantom{}]{{\pi}_{#1}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\AmenableGroup}{{\Gamma}}
+\newcommand{\ProjectionMap}[1][\vphantom{}]{{\pi}_{#1}}
 \newcommand{\KroneckerMeasure}{{m_Z}}
-\newcommand{\KroneckerAction}{{H}}
-\newcommand{\KroneckerSpaceElement}{{z}}
+\newcommand{\Measure}{{\mu}}
 \newcommand{\KroneckerSpace}{{Z}}
+\newcommand{\KroneckerSpaceElement}{{z}}
+\newcommand{\KroneckerAction}{{H}}
 \newcommand{\KroneckerFactor}{{(\KroneckerSpace,\KroneckerMeasure,\KroneckerAction)}}
 
 \usepackage{bookmark}
@@ -237,7 +237,7 @@
 
 \title{Factor Maps}
 \author{Kai Prince}
-\date{2025-08-13}
+\date{2025-08-14}
 \begin{document}
 \maketitle
 
@@ -247,6 +247,23 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
+
+\section*{Backlinks}\label{sec-Backlinks}
+\addcontentsline{toc}{section}{Backlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../MathsNotes/0_Fundamental/group.html}{Group}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html}{Measure Theory and Ergodic Theory}
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/folner.html}{Følner sequence}
+\item
+  \href{../../MathsNotes/1_Amenable_and_Density/amenable.html}{Amenable}
+\item
+  \href{../../MathsNotes/2_Topological_Dynamics/actions.html}{Actions}
+\end{itemize}
 
 \begin{definition}[Kra et al. \citeproc{ref-kra2022infinite}{(2022)},
 Definition
@@ -286,6 +303,15 @@ Then there exists a Følner sequence \(\tilde{\Folner}\) and a point
 along \(\tilde{\Folner}\).
 
 \end{proposition}
+
+\section*{Outlinks}\label{sec-Outlinks}
+\addcontentsline{toc}{section}{Outlinks}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../../GeneralisedErdosConjecture/ErdosConjecture.html}{A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups}
+\end{itemize}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
