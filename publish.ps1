@@ -1,4 +1,5 @@
 # Commit and push changes in each submodule, then update and push main repo
+# Command: .\publish.ps1
 
 # Request Commit Message
 $commitMsg = Read-Host "Enter commit message"

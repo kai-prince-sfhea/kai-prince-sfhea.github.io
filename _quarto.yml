@@ -43,6 +43,7 @@ link-citations: true
 schema:
   backlinks: true
   outlinks: true
+  force-https: true
 
 callouty-theorem:
   thm:
