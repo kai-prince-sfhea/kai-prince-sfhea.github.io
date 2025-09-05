@@ -33,6 +33,11 @@
     "{#1}^{-1}",
     1
   ],
+  "KroneckerAction": "{H}",
+  "KroneckerFactor": "{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}",
+  "KroneckerMeasure": "{m_Z}",
+  "KroneckerSpace": "{Z}",
+  "KroneckerSpaceElement": "{z}",
   "LowerDensity": [
     "\\underline{d}_{{#1}}({#2})",
     2,
@@ -40,6 +45,11 @@
   ],
   "Measure": "{\\mu}",
   "N": "\\mathbb{N}",
+  "ProjectionMap": [
+    "{\\pi}_{#1}",
+    1,
+    "\\vphantom{}"
+  ],
   "ShiftSpace": "{X}",
   "SigmaAlgebra": [
     "{\\mathscr{#1}}",

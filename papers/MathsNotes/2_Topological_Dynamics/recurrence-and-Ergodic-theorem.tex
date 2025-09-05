@@ -210,14 +210,20 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\AmenableGroup}{{\Gamma}}
 \newcommand{\AmenableGroupElement}{{\gamma}}
 \newcommand{\CountingMeasure}{{\lambda}}
-\newcommand{\AmenableGroup}{{\Gamma}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
 \newcommand{\Group}{{\Gamma}}
+\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\GroupElement}{{\gamma}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 \newcommand{\Measure}{{\mu}}
+\newcommand{\Monoid}{{M}}
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
+\newcommand{\Density}[2][\Folner]{d_{{#1}}({#2})}
+\newcommand{\UpperDensity}[2][\Folner]{\overline{d}_{{#1}}({#2})}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -236,37 +242,26 @@
 
 \title{Recurrence and Ergodic Theorems}
 \author{Kai Prince}
-\date{2025-08-14}
+\date{2025-09-05}
 \begin{document}
 \maketitle
 
-\renewcommand*\contentsname{Table of contents}
-{
-\hypersetup{linkcolor=}
-\setcounter{tocdepth}{3}
-\tableofcontents
-}
 
-\section*{Backlinks}\label{sec-Backlinks}
-\addcontentsline{toc}{section}{Backlinks}
+\section*{Notation}\label{sec-Notation}
+\addcontentsline{toc}{section}{Notation}
 
-\begin{itemize}
-\tightlist
-\item
-  \href{../../MathsNotes/0_Fundamental/group.html}{Group}
-\item
-  \href{../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html}{Measure Theory and Ergodic Theory}
-\item
-  \href{../../MathsNotes/1_Amenable_and_Density/folner.html}{Følner sequence}
-\item
-  \href{../../MathsNotes/1_Amenable_and_Density/amenable.html}{Amenable}
-\item
-  \href{../../MathsNotes/2_Topological_Dynamics/actions.html}{Actions}
-\end{itemize}
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Term & Description \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\N\) & The Natural Numbers: 1, 2, 3, \ldots{} \\
+\end{longtable}
 
-\begin{theorem}[Bergelson
-\citeproc{ref-Bergelson1985Recurrence}{(1985)}, Theorem
-1.1]\protect\hypertarget{thm-recurrence}{}\label{thm-recurrence}
+\begin{theorem}[{Bergelson, 1985, Theorem
+1.1}]\protect\hypertarget{thm-recurrence}{}\label{thm-recurrence}
 
 Let \((X,\SigmaAlgebra{B},\Measure)\) be a probability space and suppose
 that \(B_n\in\SigmaAlgebra{B}\) such that \(\Measure(B_n)=b>0\) for all
@@ -278,9 +273,34 @@ such that, for any finite subset \(F\subseteq I\), we have
 
 \end{theorem}
 
-\begin{theorem}[cf. Lindenstrauss
-\citeproc{ref-Lindenstrauss2001PETAmenable}{(2001)}, Theorem
-1.2]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
+\begin{theorem}[Poincaré Recurrence for Upper
+Density]\protect\hypertarget{thm-PoincareRecurrence}{}\label{thm-PoincareRecurrence}
+
+Let \(\Monoid\) be a countably-infinite amenable group with \(\Folner\)
+as a Følner sequence. For all \(B\in\mathcal{P}(\Group)\) such that
+\(\Density{B}>0\), there exists \(\GroupElement\in\Group\) such that
+\(\UpperDensity{B\cap \GroupOperation{\GroupElement}{B}}>0\).
+
+\end{theorem}
+
+This can be proved by using Furstenberg's Correspondence Principle with
+\(B\) as our subset and, as \(\Measure\) is measure-preserving in our
+Furstenberg system and by using
+\href{../1_Amenable_and_Density/density.qmd\#prp-DensityTranslationInvariance}{the
+invariance of density}, we can show that
+\[\Density{B}=\Measure(E)=\Measure(\GroupAction{\GroupElement}{E})=\Density(\GroupOperation{\GroupElement}{B})\]
+for all \(\GroupElement\in\Group\). By defining an infinite series
+\(E_n=\GroupAction{g_n}{E}\) and knowing that \(\Measure(E_n)>0\) for
+all \(n\in\N\), we can use Theorem~\ref{thm-recurrence} to arrive at the
+result that \(\Measure(\GroupAction{h}{B}\cap \GroupAction{h'}{B})>0\)
+for some \(h,h'\in\Group\). By using the fact that \(\Measure\) is
+measure-preserving again and using the properties of \(\Measure\) as a
+result of its construction in Furstenberg's Correspondence Principle, we
+conclude that \(\UpperDensity(B\cap\GroupOperation{g}{B})>0\) for some
+\(\GroupElement\in\Group\)
+
+\begin{theorem}[{cf. Lindenstrauss, 2001, Theorem
+1.2}]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
 
 Let \(\AmenableGroup\) be a discrete amenable group acting on a measure
 space \((X,\SigmaAlgebra{B},\Measure)\) by measure preserving
@@ -298,9 +318,8 @@ for \(\Measure\) almost every \(x\).
 
 \end{theorem}
 
-\begin{corollary}[cf. Host \citeproc{ref-host2019short}{(2019)},
-Corollary
-8]\protect\hypertarget{cor-temperedGeneric}{}\label{cor-temperedGeneric}
+\begin{corollary}[{cf. Host, 2019, Corollary
+8}]\protect\hypertarget{cor-temperedGeneric}{}\label{cor-temperedGeneric}
 
 Let \((X,\AmenableGroup)\) be a topological dynamical system where
 \(\AmenableGroup\) is an amenable group, \(\Measure\) an ergodic measure
@@ -309,6 +328,27 @@ on \(X\) and \(\Folner\) a tempered Følner sequence. Then
 \(\Folner\).
 
 \end{corollary}
+
+\begin{theorem}[{Jamneshan and Kreidler, 2025, Abstract Mean Ergodic
+Theorem}]\protect\hypertarget{thm-AbstractMeanErgodic}{}\label{thm-AbstractMeanErgodic}
+
+For every contraction semi-group \(\mathscr{S}\subseteq\mathscr{L}(H)\)
+on a Hilbert space \(H\), we have an orthogonal decomposition
+\[H=\text{fix}(\mathscr{S})\oplus\overline{\text{lin}}\bigcup_{U\in\mathscr{S}}(\text{Id}_H-U)(H).\]
+Moreover, the orthogonal projection \(P\) onto
+\(\text{fix}(\mathscr{S})\) has the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(PU=UP=P\) for every \(U\in\mathscr{S}\).
+\item
+  For every \(f\in H\), the vector \(Pf\in H\) is the unique element of
+  \(\overline{\text{co}}\{Uf\mid U\in\mathscr{S}\}\) of minimal norm.
+\end{enumerate}
+
+\end{theorem}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
@@ -329,6 +369,10 @@ amenable groups\textquotesingle, \emph{\emph{Inventiones mathematicae},}
 Host, B. (2019). \textquotesingle{}\emph{A short proof of a conjecture
 of erdös proved by moreira, richter and robertson}\textquotesingle,
 Available at: \url{https://arxiv.org/abs/1904.09952}.
+
+\bibitem[\citeproctext]{ref-ISem28}
+Jamneshan, A. and Kreidler, H. (2025). \textquotesingle{}\emph{ISem 28:
+Ergodic structure theory and applications}\textquotesingle,.
 
 \end{CSLReferences}
 

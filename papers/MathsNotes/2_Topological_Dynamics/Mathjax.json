@@ -2,6 +2,20 @@
   "AmenableGroup": "{\\Gamma}",
   "AmenableGroupElement": "{\\gamma}",
   "CountingMeasure": "{\\lambda}",
+  "Density": [
+    "d_{{#1}}({#2})",
+    2,
+    "\\Folner"
+  ],
+  "Dual": [
+    "{#1}^{*}",
+    1
+  ],
+  "Expectation": [
+    "{\\mathbb{E}}_{#1}",
+    1,
+    "\\Measure"
+  ],
   "Folner": [
     "{\\Phi}_{#1}",
     1,
@@ -27,12 +41,13 @@
     "{#1}\\cdot{#2}",
     2
   ],
+  "HilbertSpace": "{H}",
   "KoopmanOperator": [
     "{U}_{{#1}}{#2}",
     2,
     [
-      "O{\\GroupElement} ",
-      "O{\\vphantom{}} "
+      "\\GroupElement",
+      "\\vphantom{}"
     ]
   ],
   "KroneckerAction": "{H}",
@@ -43,6 +58,15 @@
   "Measure": "{\\mu}",
   "Monoid": "{M}",
   "MonoidElement": "{m}",
+  "N": "\\mathbb{N}",
+  "ProductMeasure": [
+    "{#1}",
+    2,
+    [
+      "\\Measure",
+      "\\nu"
+    ]
+  ],
   "ProjectionMap": [
     "{\\pi}_{#1}",
     1,
@@ -58,5 +82,10 @@
     1,
     "\\Topology"
   ],
-  "Topology": "{\\tau}"
+  "Topology": "{\\tau}",
+  "UpperDensity": [
+    "\\overline{d}_{{#1}}({#2})",
+    2,
+    "\\Folner"
+  ]
 }

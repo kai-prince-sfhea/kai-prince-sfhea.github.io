@@ -1,5 +1,23 @@
 [
   {
+    "listing": "/about.html",
+    "items": [
+      "/experience/phd.html",
+      "/experience/pgcert-he.html",
+      "/experience/mmath.html",
+      "/experience/library-student-team.html",
+      "/experience/GTA.html",
+      "/experience/edia-advocacy.html",
+      "/experience/mathsoc.html",
+      "/experience/ms-certs.html",
+      "/experience/autism-and-adhd-he.html",
+      "/experience/SFHEA.html",
+      "/experience/CATE.html",
+      "/experience/mdc-excellence.html",
+      "/experience/stellify.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/papers/GeneralisedErdosConjecture/ErdosConjecture.html"

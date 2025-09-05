@@ -193,9 +193,9 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
-\theoremstyle{plain}
 \newtheorem{proposition}{Proposition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 \theoremstyle{remark}
@@ -212,26 +212,32 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\UpperBanachDensity}[1]{\overline{d}({#1})}
-\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\UpperDensity}[2][\Folner]{\overline{d}_{{#1}}({#2})}
-\newcommand{\LowerDensity}[2][\Folner]{\underline{d}_{{#1}}({#2})}
-\newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\GroupElement}{{\gamma}}
-\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
-\newcommand{\ShiftSpace}{{X}}
-\newcommand{\GroupIdentity}{{e}}
-\newcommand{\CountingMeasure}{{\lambda}}
 \newcommand{\AmenableGroup}{{\Gamma}}
-\newcommand{\Density}[2][\Folner]{d_{{#1}}({#2})}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
-\newcommand{\Group}{{\Gamma}}
-\newcommand{\Measure}{{\mu}}
-\newcommand{\Identity}{{e}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
+\newcommand{\CountingMeasure}{{\lambda}}
+\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
 \newcommand{\FurstenbergFolner}[1][{\vphantom{}}]{{\Psi}_{#1}}
-\newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
+\newcommand{\Group}{{\Gamma}}
+\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\GroupElement}{{\gamma}}
+\newcommand{\GroupIdentity}{{e}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\Identity}{{e}}
 \newcommand{\Inverse}[1]{{#1}^{-1}}
+\newcommand{\KroneckerAction}{{H}}
+\newcommand{\KroneckerMeasure}{{m_Z}}
+\newcommand{\KroneckerSpace}{{Z}}
+\newcommand{\KroneckerSpaceElement}{{z}}
+\newcommand{\Measure}{{\mu}}
 \newcommand{\N}{\mathbb{N}}
+\newcommand{\ProjectionMap}[1][\vphantom{}]{{\pi}_{#1}}
+\newcommand{\ShiftSpace}{{X}}
+\newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
+\newcommand{\UpperBanachDensity}[1]{\overline{d}({#1})}
+\newcommand{\Density}[2][\Folner]{d_{{#1}}({#2})}
+\newcommand{\LowerDensity}[2][\Folner]{\underline{d}_{{#1}}({#2})}
+\newcommand{\UpperDensity}[2][\Folner]{\overline{d}_{{#1}}({#2})}
+\newcommand{\KroneckerFactor}{{(\KroneckerSpace,\KroneckerMeasure,\KroneckerAction)}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -251,7 +257,7 @@
 \title{A Short Proof of a Generalised Conjecture of Erdős for Amenable
 Groups}
 \author{Kai Prince}
-\date{2025-08-14}
+\date{2025-09-05}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -275,27 +281,20 @@ sets for every natural number \(k\)'.
 \subsection*{Notation}\label{sec-Notation}
 \addcontentsline{toc}{subsection}{Notation}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Term
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Description
-\end{minipage} \\
+Term & Description \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(\N\) & The Natural Numbers: 1, 2, 3, \ldots{}
-(\href{../MathsNotes/0_Fundamental/axioms.html}{Source}) \\
+\(\N\) & The Natural Numbers: 1, 2, 3, \ldots{} \\
 \end{longtable}
 
 \section{Introduction}\label{introduction}
 
-\begin{theorem}[cf. \citeproc{ref-host2019short}{(Host, 2019)}, Theorem
-1]\protect\hypertarget{thm-GenErdosConjComb}{}\label{thm-GenErdosConjComb}
+\begin{theorem}[{cf. Host, 2019, Theorem
+1}]\protect\hypertarget{thm-GenErdosConjComb}{}\label{thm-GenErdosConjComb}
 
 Let \((\AmenableGroup,\GroupOperation{}{})\) be an amenable group. If
 \(A\subseteq\AmenableGroup\) has positive density, then there exists
@@ -304,18 +303,16 @@ infinite subsets \(B\) and \(C\) of \(\AmenableGroup\) such that
 
 \end{theorem}
 
-\begin{theorem}[cf. \citeproc{ref-host2019short}{(Host, 2019)},
-Proposition
-2]\protect\hypertarget{thm-GenErdosConjRel}{}\label{thm-GenErdosConjRel}
+\begin{theorem}[{cf. Host, 2019, Proposition
+2}]\protect\hypertarget{thm-GenErdosConjRel}{}\label{thm-GenErdosConjRel}
 
 There exists a set of positive density not containing any sumset of
 positive density and an infinite set.
 
 \end{theorem}
 
-\begin{theorem}[cf. \citeproc{ref-kra2022infinite}{(Kra et al., 2022)},
-Theorem
-1.1]\protect\hypertarget{thm-GenNErdosConjComb}{}\label{thm-GenNErdosConjComb}
+\begin{theorem}[{cf. Kra et al., 2022, Theorem
+1.1}]\protect\hypertarget{thm-GenNErdosConjComb}{}\label{thm-GenNErdosConjComb}
 
 Let \((\AmenableGroup,\GroupOperation{}{})\) be an amenable group. If
 \(A\subseteq\AmenableGroup\) has positive density then, for every
@@ -361,10 +358,8 @@ For simplicity of this paper, we will use the alternative and equivalent
 definition that a group, \(\AmenableGroup\), is \emph{amenable} (and
 second countable) if and only if it has a Følner sequence.
 
-\begin{definition}[Lindenstrauss
-\citeproc{ref-Lindenstrauss2001PETAmenable}{(2001)}, Definition 1.1,
-Proposition
-1.4]\protect\hypertarget{def-TemperedSequenceDef}{}\label{def-TemperedSequenceDef}
+\begin{definition}[{Lindenstrauss, 2001, Definition 1.1 and Proposition
+1.4}]\protect\hypertarget{def-TemperedSequenceDef}{}\label{def-TemperedSequenceDef}
 
 A sequence of sets \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) will be
 said to be \emph{tempered} if, for some \(b>0\) and all
@@ -406,9 +401,8 @@ also define the \emph{upper Banach density of \(A\)} by \[
 \subsection{Topological Dynamics of Group
 Actions}\label{topological-dynamics-of-group-actions}
 
-\begin{definition}[Bekka and Mayer
-\citeproc{ref-Bekka2000GroupActionDynamics}{(2000)} Section
-2]\protect\hypertarget{def-ActionDef}{}\label{def-ActionDef}
+\begin{definition}[{Bekka and Mayer, 2000, Section
+2}]\protect\hypertarget{def-ActionDef}{}\label{def-ActionDef}
 
 An \emph{action} of a group, \(\Group\), on a measurable space
 \((X,\SigmaAlgebra{B})\) is a measurable mapping
@@ -475,9 +469,8 @@ then we say \emph{\(x\) is generic for \(\Measure\) with respect to
 \subsection{Recurrence Results \& Ergodic
 Theorems}\label{recurrence-results-ergodic-theorems}
 
-\begin{theorem}[Bergelson
-\citeproc{ref-Bergelson1985Recurrence}{(1985)}, Theorem
-1.1]\protect\hypertarget{thm-BergelsonRecurrence}{}\label{thm-BergelsonRecurrence}
+\begin{theorem}[{Bergelson, 1985, Theorem
+1.1}]\protect\hypertarget{thm-BergelsonRecurrence}{}\label{thm-BergelsonRecurrence}
 
 Let \((X,\SigmaAlgebra{B},\Measure)\) be a probability space and suppose
 that \(B_n\in\SigmaAlgebra{B}\) such that \(\Measure(B_n)=b>0\) for all
@@ -489,11 +482,22 @@ such that, for any finite subset \(F\subseteq I\), we have
 
 \end{theorem}
 
-\begin{theorem}[\{\{\textless{} term-title ref= ``thm-GeneralisedPET''
-removeURLs=true
-\textgreater\}\}]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
+\begin{theorem}[{cf. Lindenstrauss, 2001, Theorem
+1.2}]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
 
-~
+Let \(\AmenableGroup\) be a discrete amenable group acting on a measure
+space \((X,\SigmaAlgebra{B},\Measure)\) by measure preserving
+transformation and let \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) be a
+tempered Følner sequence.
+
+Then, for any \(f\in\text{L}^1(\Measure)\), there is a
+\(\AmenableGroup\)-invariant \(\bar{f}\in\text{L}^1(\Measure)\) such
+that
+\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\bar{f}(x) \]
+for \(\Measure\)-almost every \(x\in X\). In particular, if the
+\(\AmenableGroup\) action is ergodic, then
+\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\int f(x)\ d\Measure(x) \]
+for \(\Measure\) almost every \(x\).
 
 \end{theorem}
 
@@ -504,8 +508,8 @@ Measures}\label{erdux151s-cubes-cubic-measures}
 
 \subsection{Key Dynamical Results}\label{key-dynamical-results}
 
-\begin{theorem}[cf. Host \citeproc{ref-host2019short}{(2019)}, Theorem
-3]\protect\hypertarget{thm-GenErdosConjDyn}{}\label{thm-GenErdosConjDyn}
+\begin{theorem}[{cf. Host, 2019, Theorem
+3}]\protect\hypertarget{thm-GenErdosConjDyn}{}\label{thm-GenErdosConjDyn}
 
 Let \((X,\AmenableGroup)\) be a topological dynamical system where
 \(\AmenableGroup\) is an amenable group, \(x_0\in X\), \(E\) be a clopen
@@ -524,9 +528,8 @@ that \(\GroupOperation{B}{C}\subset A\).
 
 \end{theorem}
 
-\begin{theorem}[cf. Kra et al. \citeproc{ref-kra2022infinite}{(2022)},
-Theorem
-3.5]\protect\hypertarget{thm-GenErdosConjCube}{}\label{thm-GenErdosConjCube}
+\begin{theorem}[{cf. Kra et al., 2022, Theorem
+3.5}]\protect\hypertarget{thm-GenErdosConjCube}{}\label{thm-GenErdosConjCube}
 
 Let \((X,\Measure,\AmenableGroup)\) be an ergodic system under the
 action of \(\AmenableGroup\) and let \(E\subset X\) be an open set with
@@ -540,8 +543,8 @@ sequence \(\Folner\) then, for every \(k\in\N\), there exists
 
 \end{theorem}
 
-\begin{theorem}[cf. Host \citeproc{ref-host2019short}{(2019)}, Theorem
-4.4]\protect\hypertarget{thm-GenNErdosConjCube}{}\label{thm-GenNErdosConjCube}
+\begin{theorem}[{cf. Host, 2019, Theorem
+4.4}]\protect\hypertarget{thm-GenNErdosConjCube}{}\label{thm-GenNErdosConjCube}
 
 Let \((X,\Measure,\AmenableGroup)\) be an ergodic system under the
 action of \(\AmenableGroup\) and let \(E\subset X\) be an open set with
@@ -560,9 +563,8 @@ Theorem~\ref{thm-GenErdosConjCube}}{Proof of Theorem Theorem~}}\label{proof-of-t
 \subsection{Furstenberg's Correspondence
 Princple}\label{furstenbergs-correspondence-princple}
 
-\begin{theorem}[cf. Kra et al. \citeproc{ref-kra2022infinite}{(2022)},
-Theorem
-2.10]\protect\hypertarget{thm-Furstenberg}{}\label{thm-Furstenberg}
+\begin{theorem}[{cf. Kra et al., 2022, Theorem
+2.10}]\protect\hypertarget{thm-Furstenberg}{}\label{thm-Furstenberg}
 
 Let \(\AmenableGroup\) be an amenable group,
 \(A\subset \AmenableGroup\), and \(\Folner\) be a Følner sequence in
@@ -582,11 +584,28 @@ sequence \(\FurstenbergFolner\) in \(\AmenableGroup\), and a point
 
 \subsection{Kronecker Factor}\label{kronecker-factor}
 
-\begin{proposition}[\{\{\textless{} term-title ref=
-``prp-KroneckerGeneric'' removeURLs=true
-\textgreater\}\}]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
+\begin{proposition}[{cf. Host, 2019, Proposition
+5}]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
 
-~
+Let \((X,\AmenableGroup)\) be a topological dynamical system where
+\(\AmenableGroup\) is an amenable group, \(x_0\in X\), and \(\Measure\)
+be an ergodic invariant probability measure supported on the closed
+orbit of \(x_0\) under the action of \(\AmenableGroup\).
+
+Let \(\KroneckerFactor\) be the \emph{Kronecker factor} of
+\((X,\Measure,\AmenableGroup)\), with factor map
+\(\ProjectionMap:X\rightarrow\KroneckerSpace\).
+
+Let \(X\times\KroneckerSpace\) be endowed with the group action of
+\(\AmenableGroup\times\KroneckerAction\). Let \(\tilde\Measure\) be the
+measure on \(X\times\KroneckerSpace\) and image of \(\Measure\) under
+the map \(X\rightarrow X\times\KroneckerSpace\) where
+\(x\mapsto(x,\ProjectionMap(x))\).
+
+Then there exists a Følner sequence \(\tilde{\Folner}\) and a point
+\(\KroneckerSpaceElement_0\in\KroneckerSpace\) such that
+\((x_0,\KroneckerSpaceElement_0)\) is generic for \(\tilde{\Measure}\)
+along \(\tilde{\Folner}\).
 
 \end{proposition}
 
@@ -602,8 +621,7 @@ sequence \(\FurstenbergFolner\) in \(\AmenableGroup\), and a point
 
 \section{Proof of Theorem (ref)}\label{proof-of-theorem-ref}
 
-\section*{Discussion}\label{discussion}
-\addcontentsline{toc}{section}{Discussion}
+\section{Discussion}\label{discussion}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}

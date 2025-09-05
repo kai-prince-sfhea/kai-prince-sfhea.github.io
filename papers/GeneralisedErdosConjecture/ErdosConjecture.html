@@ -2,12 +2,12 @@
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince">
-<meta name="dcterms.date" content="2025-08-14">
+<meta name="dcterms.date" content="2025-09-05">
 
 <title>A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups – Kai Prince</title>
 <style>
@@ -60,14 +60,14 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fa1c8edd53197323e59ac54f42cadf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-6b4275e0d0022fcd7b0582fcf79143c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-c1fa1c8edd53197323e59ac54f42cadf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d7fc5677f3affda326ee16cb3d720675.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -450,7 +450,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 August 2025</p>
+      <p class="date">5 September 2025</p>
     </div>
   </div>
   
@@ -488,13 +488,13 @@ window.Quarto = {
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <div id="thm-GenErdosConjComb" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1 (<span class="citation" data-cites="host2019short">cf. <a href="#ref-host2019short" role="doc-biblioref">(Host, 2019)</a>, Theorem 1</span>)</strong></span> Let <span class="math inline">\((\AmenableGroup,\GroupOperation{}{})\)</span> be an <a href=".\../MathsNotes/1_Amenable_and_Density/amenable.html#def-amenable">amenable</a> <a href=".\../MathsNotes/0_Fundamental/group.html#def-group">group</a>. If <span class="math inline">\(A\subseteq\AmenableGroup\)</span> has positive <a href=".\../MathsNotes/1_Amenable_and_Density/density.html#def-density">density</a>, then there exists infinite subsets <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> of <span class="math inline">\(\AmenableGroup\)</span> such that <span class="math inline">\(\GroupOperation{B}{C}\subset A\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 1 (<span class="no-paren"><span class="citation" data-cites="host2019short">cf. Host, 2019, Theorem 1</span></span>)</strong></span> Let <span class="math inline">\((\AmenableGroup,\GroupOperation{}{})\)</span> be an <a href=".\../MathsNotes/1_Amenable_and_Density/amenable.html#def-amenable">amenable</a> <a href=".\../MathsNotes/0_Fundamental/group.html#def-group">group</a>. If <span class="math inline">\(A\subseteq\AmenableGroup\)</span> has positive <a href=".\../MathsNotes/1_Amenable_and_Density/density.html#def-density">density</a>, then there exists infinite subsets <span class="math inline">\(B\)</span> and <span class="math inline">\(C\)</span> of <span class="math inline">\(\AmenableGroup\)</span> such that <span class="math inline">\(\GroupOperation{B}{C}\subset A\)</span>.</p>
 </div>
 <div id="thm-GenErdosConjRel" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 2 (<span class="citation" data-cites="host2019short">cf. <a href="#ref-host2019short" role="doc-biblioref">(Host, 2019)</a>, Proposition 2</span>)</strong></span> There exists a set of positive density not containing any sumset of positive density and an infinite set.</p>
+<p><span class="theorem-title"><strong>Theorem 2 (<span class="no-paren"><span class="citation" data-cites="host2019short">cf. Host, 2019, Proposition 2</span></span>)</strong></span> There exists a set of positive density not containing any sumset of positive density and an infinite set.</p>
 </div>
 <div id="thm-GenNErdosConjComb" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 3 (<span class="citation" data-cites="kra2022infinite">cf. <a href="#ref-kra2022infinite" role="doc-biblioref">(Kra et al., 2022)</a>, Theorem 1.1</span>)</strong></span> Let <span class="math inline">\((\AmenableGroup,\GroupOperation{}{})\)</span> be an amenable group. If <span class="math inline">\(A\subseteq\AmenableGroup\)</span> has positive density then, for every <span class="math inline">\(k\in\N\)</span>, there are infinite subsets <span class="math inline">\(B_1,...,B_k\subset\AmenableGroup\)</span> such that <span class="math inline">\(B_1\cdot\cdots\cdot B_k\subset A\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 3 (<span class="no-paren"><span class="citation" data-cites="kra2022infinite">cf. Kra et al., 2022, Theorem 1.1</span></span>)</strong></span> Let <span class="math inline">\((\AmenableGroup,\GroupOperation{}{})\)</span> be an amenable group. If <span class="math inline">\(A\subseteq\AmenableGroup\)</span> has positive density then, for every <span class="math inline">\(k\in\N\)</span>, there are infinite subsets <span class="math inline">\(B_1,...,B_k\subset\AmenableGroup\)</span> such that <span class="math inline">\(B_1\cdot\cdots\cdot B_k\subset A\)</span>.</p>
 </div>
 </section>
 <section id="preliminaries" class="level1" data-number="2">
@@ -510,7 +510,7 @@ window.Quarto = {
 </div>
 <p>For simplicity of this paper, we will use the alternative and equivalent definition that a group, <span class="math inline">\(\AmenableGroup\)</span>, is <em>amenable</em> (and second countable) if and only if it has a <a href=".\../MathsNotes/1_Amenable_and_Density/folner.html#def-Folner">Følner</a> sequence.</p>
 <div id="def-TemperedSequenceDef" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2 (<span class="citation" data-cites="Lindenstrauss2001PETAmenable">Lindenstrauss <a href="#ref-Lindenstrauss2001PETAmenable" role="doc-biblioref">(2001)</a>, Definition 1.1, Proposition 1.4</span>)</strong></span> A sequence of sets <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> will be said to be <em>tempered</em> if, for some <span class="math inline">\(b&gt;0\)</span> and all <span class="math inline">\(n\in\mathbb{N}\)</span>,</p>
+<p><span class="theorem-title"><strong>Definition 2 (<span class="no-paren"><span class="citation" data-cites="Lindenstrauss2001PETAmenable">Lindenstrauss, 2001, Definition 1.1 and Proposition 1.4</span></span>)</strong></span> A sequence of sets <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> will be said to be <em>tempered</em> if, for some <span class="math inline">\(b&gt;0\)</span> and all <span class="math inline">\(n\in\mathbb{N}\)</span>,</p>
 <p><span id="eq-ShulmanCondition"><span class="math display">\[
 \CountingMeasure{\bigcup_{1\leq k&lt;N}\Folner[k]^{-1}\Folner[N]}\leq b\CountingMeasure{\Folner[N]}.
 \tag{1}\]</span></span></p>
@@ -531,7 +531,7 @@ window.Quarto = {
 <section id="topological-dynamics-of-group-actions" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="topological-dynamics-of-group-actions"><span class="header-section-number">2.2</span> Topological Dynamics of Group Actions</h2>
 <div id="def-ActionDef" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4 (<span class="citation" data-cites="Bekka2000GroupActionDynamics">Bekka and Mayer <a href="#ref-Bekka2000GroupActionDynamics" role="doc-biblioref">(2000)</a> Section 2</span>)</strong></span> An <em>action</em> of a group, <span class="math inline">\(\Group\)</span>, on a measurable space <span class="math inline">\((X,\SigmaAlgebra{B})\)</span> is a measurable mapping <span class="math display">\[\Group\times X\rightarrow X,\ (\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x} \]</span> with the following properties:</p>
+<p><span class="theorem-title"><strong>Definition 4 (<span class="no-paren"><span class="citation" data-cites="Bekka2000GroupActionDynamics">Bekka and Mayer, 2000, Section 2</span></span>)</strong></span> An <em>action</em> of a group, <span class="math inline">\(\Group\)</span>, on a measurable space <span class="math inline">\((X,\SigmaAlgebra{B})\)</span> is a measurable mapping <span class="math display">\[\Group\times X\rightarrow X,\ (\GroupElement,x)\mapsto \GroupAction{\GroupElement}{x} \]</span> with the following properties:</p>
 <ol type="1">
 <li>Associativity: For all <span class="math inline">\(\GroupElement,\GroupElement'\in \Group,x\in X\)</span>, then <span class="math inline">\(\GroupAction{\GroupElement}{(\GroupAction{\GroupElement'}{x})}=\GroupAction{(\GroupOperation{\GroupElement}{\GroupElement'})}{x}\)</span></li>
 <li>Identity: There exists an identity element <span class="math inline">\(\GroupIdentity\in\Group\)</span> such that <span class="math inline">\(\GroupAction{\GroupIdentity}{x}=x\)</span> for all <span class="math inline">\(x\in X\)</span>.</li>
@@ -552,11 +552,12 @@ window.Quarto = {
 <section id="recurrence-results-ergodic-theorems" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="recurrence-results-ergodic-theorems"><span class="header-section-number">2.3</span> Recurrence Results &amp; Ergodic Theorems</h2>
 <div id="thm-BergelsonRecurrence" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 4 (<span class="citation" data-cites="Bergelson1985Recurrence">Bergelson <a href="#ref-Bergelson1985Recurrence" role="doc-biblioref">(1985)</a>, Theorem 1.1</span>)</strong></span> Let <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> be a probability space and suppose that <span class="math inline">\(B_n\in\SigmaAlgebra{B}\)</span> such that <span class="math inline">\(\Measure(B_n)=b&gt;0\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 4 (<span class="no-paren"><span class="citation" data-cites="Bergelson1985Recurrence">Bergelson, 1985, Theorem 1.1</span></span>)</strong></span> Let <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> be a probability space and suppose that <span class="math inline">\(B_n\in\SigmaAlgebra{B}\)</span> such that <span class="math inline">\(\Measure(B_n)=b&gt;0\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
 <p>Then there exists a positively dense index set <span class="math inline">\(I\subset\mathbb{N}\)</span> such that, for any finite subset <span class="math inline">\(F\subseteq I\)</span>, we have <span class="math display">\[\Measure\left(\bigcap_{i\in F}B_i \right)&gt;0. \]</span></p>
 </div>
 <div id="thm-GeneralisedPET" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 5 ({{&lt; term-title ref= “thm-GeneralisedPET” removeURLs=true &gt;}})</strong></span> &nbsp;</p>
+<p><span class="theorem-title"><strong>Theorem 5 (<span class="no-paren"><span class="citation" data-cites="Lindenstrauss2001PETAmenable">cf. Lindenstrauss, 2001, Theorem 1.2</span></span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be a discrete amenable group acting on a measure space <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> by measure preserving transformation and let <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> be a tempered Følner sequence.</p>
+<p>Then, for any <span class="math inline">\(f\in\text{L}^1(\Measure)\)</span>, there is a <span class="math inline">\(\AmenableGroup\)</span>-invariant <span class="math inline">\(\bar{f}\in\text{L}^1(\Measure)\)</span> such that <span class="math display">\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\bar{f}(x) \]</span> for <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span>. In particular, if the <span class="math inline">\(\AmenableGroup\)</span> action is ergodic, then <span class="math display">\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\int f(x)\ d\Measure(x) \]</span> for <span class="math inline">\(\Measure\)</span> almost every <span class="math inline">\(x\)</span>.</p>
 </div>
 </section>
 <section id="erdős-cubes-cubic-measures" class="level2" data-number="2.4">
@@ -568,15 +569,15 @@ window.Quarto = {
 <section id="key-dynamical-results" class="level2" data-number="2.6">
 <h2 data-number="2.6" class="anchored" data-anchor-id="key-dynamical-results"><span class="header-section-number">2.6</span> Key Dynamical Results</h2>
 <div id="thm-GenErdosConjDyn" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6 (cf. <span class="citation" data-cites="host2019short">Host <a href="#ref-host2019short" role="doc-biblioref">(2019)</a>, Theorem 3</span>)</strong></span> Let <span class="math inline">\((X,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an amenable group, <span class="math inline">\(x_0\in X\)</span>, <span class="math inline">\(E\)</span> be a clopen subset of <span class="math inline">\(X\)</span> and <span class="math display">\[A=\{\AmenableGroupElement\in\AmenableGroup:\GroupAction{\AmenableGroupElement}{x_0}\in E\}.\]</span> Let <span class="math inline">\(X\times X\)</span> be acted upon by <span class="math inline">\(\AmenableGroup\times\AmenableGroup\)</span>. Let <span class="math inline">\(x_1\in X\)</span> and <span class="math inline">\(\nu\)</span> be a measure on <span class="math inline">\(X\times X\)</span> such that <span class="math inline">\((x_0,x_1)\)</span> is <a href=".\../MathsNotes/2_Topological_Dynamics/actions.html#def-generic">generic</a> along some Følner sequence <span class="math inline">\(\Folner=(\Folner[N])_{N\in\N}\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 6 (<span class="no-paren"><span class="citation" data-cites="host2019short">cf. Host, 2019, Theorem 3</span></span>)</strong></span> Let <span class="math inline">\((X,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an amenable group, <span class="math inline">\(x_0\in X\)</span>, <span class="math inline">\(E\)</span> be a clopen subset of <span class="math inline">\(X\)</span> and <span class="math display">\[A=\{\AmenableGroupElement\in\AmenableGroup:\GroupAction{\AmenableGroupElement}{x_0}\in E\}.\]</span> Let <span class="math inline">\(X\times X\)</span> be acted upon by <span class="math inline">\(\AmenableGroup\times\AmenableGroup\)</span>. Let <span class="math inline">\(x_1\in X\)</span> and <span class="math inline">\(\nu\)</span> be a measure on <span class="math inline">\(X\times X\)</span> such that <span class="math inline">\((x_0,x_1)\)</span> is <a href=".\../MathsNotes/2_Topological_Dynamics/actions.html#def-generic">generic</a> along some Følner sequence <span class="math inline">\(\Folner=(\Folner[N])_{N\in\N}\)</span>.</p>
 <p>Assume there exists <span class="math inline">\(\varepsilon&gt;0\)</span> and a sequence <span class="math inline">\((s_i)_{i\in\N}\)</span> in <span class="math inline">\(\AmenableGroup\)</span> such that <span class="math display">\[\GroupAction{s_i}{x_0}\rightarrow x_1\text{ as }i\rightarrow\infty\text{ and }\nu(\GroupAction{s_i^{-1}}{E}\times E)\geq\varepsilon\text{ for all }i. \]</span> Then there exist infinite subsets <span class="math inline">\(B,C\subseteq \AmenableGroup\)</span> such that <span class="math inline">\(\GroupOperation{B}{C}\subset A\)</span>.</p>
 </div>
 <div id="thm-GenErdosConjCube" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 7 (cf. <span class="citation" data-cites="kra2022infinite">Kra et al. <a href="#ref-kra2022infinite" role="doc-biblioref">(2022)</a>, Theorem 3.5</span>)</strong></span> Let <span class="math inline">\((X,\Measure,\AmenableGroup)\)</span> be an ergodic system under the <a href=".\../MathsNotes/2_Topological_Dynamics/actions.html#def-action">action</a> of <span class="math inline">\(\AmenableGroup\)</span> and let <span class="math inline">\(E\subset X\)</span> be an open set with <span class="math inline">\(\Measure(E)&gt;0\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 7 (<span class="no-paren"><span class="citation" data-cites="kra2022infinite">cf. Kra et al., 2022, Theorem 3.5</span></span>)</strong></span> Let <span class="math inline">\((X,\Measure,\AmenableGroup)\)</span> be an ergodic system under the <a href=".\../MathsNotes/2_Topological_Dynamics/actions.html#def-action">action</a> of <span class="math inline">\(\AmenableGroup\)</span> and let <span class="math inline">\(E\subset X\)</span> be an open set with <span class="math inline">\(\Measure(E)&gt;0\)</span>.</p>
 <p>If <span class="math inline">\(a\in X\)</span> is generic for <span class="math inline">\(\Measure\)</span> with respect to some Følner sequence <span class="math inline">\(\Folner\)</span> then, for every <span class="math inline">\(k\in\N\)</span>, there exists <span class="math inline">\(2\)</span>-dimensional Erd"{o}s cube <span class="math inline">\(\underline{x}=(x_{00},x_{01},x_{10},x_{11})\in X^{[[2]]}\)</span> with <span class="math inline">\(x_{00}=a\)</span> and <span class="math inline">\(x_{11}\in E\)</span>.</p>
 </div>
 <div id="thm-GenNErdosConjCube" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 8 (cf. <span class="citation" data-cites="host2019short">Host <a href="#ref-host2019short" role="doc-biblioref">(2019)</a>, Theorem 4.4</span>)</strong></span> Let <span class="math inline">\((X,\Measure,\AmenableGroup)\)</span> be an ergodic system under the action of <span class="math inline">\(\AmenableGroup\)</span> and let <span class="math inline">\(E\subset X\)</span> be an open set with <span class="math inline">\(\Measure(E)&gt;0\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 8 (<span class="no-paren"><span class="citation" data-cites="host2019short">cf. Host, 2019, Theorem 4.4</span></span>)</strong></span> Let <span class="math inline">\((X,\Measure,\AmenableGroup)\)</span> be an ergodic system under the action of <span class="math inline">\(\AmenableGroup\)</span> and let <span class="math inline">\(E\subset X\)</span> be an open set with <span class="math inline">\(\Measure(E)&gt;0\)</span>.</p>
 <p>If <span class="math inline">\(a\in X\)</span> is generic for <span class="math inline">\(\Measure\)</span> with respect to some Følner sequence <span class="math inline">\(\Folner\)</span> then, for every <span class="math inline">\(k\in\N\)</span>, there exists <span class="math inline">\(k\)</span>-dimensional Erd"{o}s cubes <span class="math inline">\(\underline{x}\in X^{[[k]]}\)</span> with <span class="math inline">\(x_{\vec{0}}=a\)</span> and <span class="math inline">\(x_{\vec{1}}\in E\)</span>.</p>
 </div>
 </section>
@@ -586,14 +587,17 @@ window.Quarto = {
 <section id="furstenbergs-correspondence-princple" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="furstenbergs-correspondence-princple"><span class="header-section-number">3.1</span> Furstenberg’s Correspondence Princple</h2>
 <div id="thm-Furstenberg" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 9 (cf. <span class="citation" data-cites="kra2022infinite">Kra et al. <a href="#ref-kra2022infinite" role="doc-biblioref">(2022)</a>, Theorem 2.10</span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be an amenable group, <span class="math inline">\(A\subset \AmenableGroup\)</span>, and <span class="math inline">\(\Folner\)</span> be a Følner sequence in <span class="math inline">\(\AmenableGroup\)</span> such that the limit <span class="math display">\[\delta=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}\]</span> exists.</p>
+<p><span class="theorem-title"><strong>Theorem 9 (<span class="no-paren"><span class="citation" data-cites="kra2022infinite">cf. Kra et al., 2022, Theorem 2.10</span></span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be an amenable group, <span class="math inline">\(A\subset \AmenableGroup\)</span>, and <span class="math inline">\(\Folner\)</span> be a Følner sequence in <span class="math inline">\(\AmenableGroup\)</span> such that the limit <span class="math display">\[\delta=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}\]</span> exists.</p>
 <p>Then there exists an ergodic system <span class="math inline">\((\ShiftSpace,\Measure,\AmenableGroup)\)</span> that is acted on by <span class="math inline">\(\AmenableGroup\)</span>, a clopen set <span class="math inline">\(E\subset\ShiftSpace\)</span>, a Følner sequence <span class="math inline">\(\FurstenbergFolner\)</span> in <span class="math inline">\(\AmenableGroup\)</span>, and a point <span class="math inline">\(a\in\ShiftSpace\)</span> that is generic with <span class="math inline">\(\Measure\)</span> with respect to <span class="math inline">\(\FurstenbergFolner\)</span> such that <span class="math inline">\(\Measure(E)\geq\delta\)</span> and <span class="math display">\[A={\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E}. \]</span></p>
 </div>
 </section>
 <section id="kronecker-factor" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="kronecker-factor"><span class="header-section-number">3.2</span> <a href=".\../MathsNotes/2_Topological_Dynamics/factor-maps.html#prp-KroneckerGeneric">Kronecker</a> Factor</h2>
+<h2 data-number="3.2" class="anchored" data-anchor-id="kronecker-factor"><span class="header-section-number">3.2</span> <a href=".\../MathsNotes/2_Topological_Dynamics/kronecker-factor.html#def-KroneckerFactor">Kronecker</a> Factor</h2>
 <div id="prp-KroneckerGeneric" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1 ({{&lt; term-title ref= “prp-KroneckerGeneric” removeURLs=true &gt;}})</strong></span> &nbsp;</p>
+<p><span class="theorem-title"><strong>Proposition 1 (<span class="no-paren"><span class="citation" data-cites="host2019short">cf. Host, 2019, Proposition 5</span></span>)</strong></span> Let <span class="math inline">\((X,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an amenable group, <span class="math inline">\(x_0\in X\)</span>, and <span class="math inline">\(\Measure\)</span> be an ergodic invariant probability measure supported on the closed orbit of <span class="math inline">\(x_0\)</span> under the action of <span class="math inline">\(\AmenableGroup\)</span>.</p>
+<p>Let <span class="math inline">\(\KroneckerFactor\)</span> be the <em>Kronecker factor</em> of <span class="math inline">\((X,\Measure,\AmenableGroup)\)</span>, with factor map <span class="math inline">\(\ProjectionMap:X\rightarrow\KroneckerSpace\)</span>.</p>
+<p>Let <span class="math inline">\(X\times\KroneckerSpace\)</span> be endowed with the group action of <span class="math inline">\(\AmenableGroup\times\KroneckerAction\)</span>. Let <span class="math inline">\(\tilde\Measure\)</span> be the measure on <span class="math inline">\(X\times\KroneckerSpace\)</span> and image of <span class="math inline">\(\Measure\)</span> under the map <span class="math inline">\(X\rightarrow X\times\KroneckerSpace\)</span> where <span class="math inline">\(x\mapsto(x,\ProjectionMap(x))\)</span>.</p>
+<p>Then there exists a Følner sequence <span class="math inline">\(\tilde{\Folner}\)</span> and a point <span class="math inline">\(\KroneckerSpaceElement_0\in\KroneckerSpace\)</span> such that <span class="math inline">\((x_0,\KroneckerSpaceElement_0)\)</span> is generic for <span class="math inline">\(\tilde{\Measure}\)</span> along <span class="math inline">\(\tilde{\Folner}\)</span>.</p>
 </div>
 </section>
 <section id="choosing-a-point-x_1" class="level2" data-number="3.3">

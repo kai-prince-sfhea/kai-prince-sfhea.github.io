@@ -2,12 +2,12 @@
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince">
-<meta name="dcterms.date" content="2025-08-14">
+<meta name="dcterms.date" content="2025-09-05">
 
 <title>Factor Maps – Kai Prince</title>
 <style>
@@ -60,14 +60,14 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-c1fa1c8edd53197323e59ac54f42cadf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-6b4275e0d0022fcd7b0582fcf79143c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-c1fa1c8edd53197323e59ac54f42cadf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-d7fc5677f3affda326ee16cb3d720675.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -425,7 +425,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 August 2025</p>
+      <p class="date">5 September 2025</p>
     </div>
   </div>
   
@@ -442,28 +442,56 @@ window.Quarto = {
 <ul>
 <li><a href="../../MathsNotes/0_Fundamental/group.html">Group</a></li>
 <li><a href="../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html">Measure Theory and Ergodic Theory</a></li>
-<li><a href="../../MathsNotes/1_Amenable_and_Density/folner.html">Følner sequence</a></li>
-<li><a href="../../MathsNotes/1_Amenable_and_Density/amenable.html">Amenable</a></li>
-<li><a href="../../MathsNotes/2_Topological_Dynamics/actions.html">Actions</a></li>
 </ul>
 </section>
 <div id="def-MeasurableFactor" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1 (<span class="citation" data-cites="kra2022infinite">Kra et al. <a href="#ref-kra2022infinite" role="doc-biblioref">(2022)</a>, Definition 2.1</span>)</strong></span> For a system <span class="math inline">\((X,\Measure,T)\)</span> we say that the system <span class="math inline">\((Y,\
-u,S)\)</span> is a <em>measurable factor</em> of <span class="math inline">\((X,\Measure,T)\)</span> if there is a measurable map <span class="math inline">\(\ProjectionMap:X\rightarrow Y\)</span>, the <em>measurable factor map</em>, such that <span class="math inline">\(\ProjectionMap(\Measure)=\
-u\)</span> and <span class="math inline">\((S\circ\ProjectionMap)(x)=(\ProjectionMap\circ T)(x)\)</span> for <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 1 (<span class="no-paren"><span class="citation" data-cites="kra2022infinite">Kra et al., 2022, Definition 2.1</span></span>)</strong></span> For a system <span class="math inline">\((X,\Measure,T)\)</span> we say that the system <span class="math inline">\((Y,\nu,S)\)</span> is a <em>measurable factor</em> of <span class="math inline">\((X,\Measure,T)\)</span> if there is a measurable map <span class="math inline">\(\ProjectionMap:X\rightarrow Y\)</span>, the <em>measurable factor map</em>, such that <span class="math inline">\(\ProjectionMap(\Measure)=\nu\)</span> and <span class="math inline">\((S\circ\ProjectionMap)(x)=(\ProjectionMap\circ T)(x)\)</span> for <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span>.</p>
 </div>
-<div id="prp-KroneckerGeneric" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1 (cf. <span class="citation" data-cites="host2019short">Host <a href="#ref-host2019short" role="doc-biblioref">(2019)</a>, Proposition 5</span>)</strong></span> Let <span class="math inline">\((X,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an <a href=".\../../MathsNotes/1_Amenable_and_Density/amenable.html#def-amenable">amenable</a> <a href=".\../../MathsNotes/0_Fundamental/group.html#def-group">group</a>, <span class="math inline">\(x_0\in X\)</span>, and <span class="math inline">\(\Measure\)</span> be an ergodic invariant probability measure supported on the closed orbit of <span class="math inline">\(x_0\)</span> under the <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-action">action</a> of <span class="math inline">\(\AmenableGroup\)</span>.</p>
-<p>Let <span class="math inline">\(\KroneckerFactor\)</span> be the Kronecker factor of <span class="math inline">\((X,\Measure,\AmenableGroup)\)</span>, with factor map <span class="math inline">\(\ProjectionMap:X\rightarrow\KroneckerSpace\)</span>.</p>
-<p>Let <span class="math inline">\(X\times\KroneckerSpace\)</span> be endowed with the group action of <span class="math inline">\(\AmenableGroup\times\KroneckerAction\)</span>. Let <span class="math inline">\(\tilde\Measure\)</span> be the measure on <span class="math inline">\(X\times\KroneckerSpace\)</span> and image of <span class="math inline">\(\Measure\)</span> under the map <span class="math inline">\(X\rightarrow X\times\KroneckerSpace\)</span> where <span class="math inline">\(x\mapsto(x,\ProjectionMap(x))\)</span>.</p>
-<p>Then there exists a <a href=".\../../MathsNotes/1_Amenable_and_Density/folner.html#def-Folner">Følner</a> sequence <span class="math inline">\(\tilde{\Folner}\)</span> and a point <span class="math inline">\(\KroneckerSpaceElement_0\in\KroneckerSpace\)</span> such that <span class="math inline">\((x_0,\KroneckerSpaceElement_0)\)</span> is <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-generic">generic</a> for <span class="math inline">\(\tilde{\Measure}\)</span> along <span class="math inline">\(\tilde{\Folner}\)</span>.</p>
+<div id="def-ConditionalExpectation" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2 (<span class="no-paren"><span class="citation" data-cites="ISem28">Jamneshan and Kreidler, 2025, Lemma 8.11</span></span>)</strong></span> Let <span class="math inline">\((X\SigmaAlgebra{B}),(Y,\SigmaAlgebra{C})\)</span> be probability spaces and let <span class="math inline">\(U:\text{L}^2(X)\rightarrow\text{L}^2(Y)\)</span> be a Markov embedding. The <em>conditional expectation</em> of <span class="math inline">\(f\in\text{L}^2(X)\)</span> on <span class="math inline">\((Y)\)</span> is the orthogonal projection of <span class="math inline">\(f\)</span> on <span class="math inline">\(U(\text{L}^2(Y))\)</span>, denoted <span class="math inline">\(\Expectation(f\mid Y)\)</span>, such that</p>
+<ol type="1">
+<li>(Linearity) <span class="math inline">\(f\mapsto\Expectation(f\mid Y)\)</span> is a linear operator from <span class="math inline">\(\text{L}^2(X)\)</span> to <span class="math inline">\(\text{L}^2(Y)\)</span>, i.e., <span class="math display">\[\Expectation(f+g\mid\SigmaAlgebra{C})=\Expectation(f\mid\SigmaAlgebra{C})+\Expectation(g\mid\SigmaAlgebra{C}).\]</span></li>
+<li>(Non-Negative) If <span class="math inline">\(f\geq0\)</span>, then <span class="math inline">\(\Expectation(f\mid Y)\geq0\)</span>.</li>
+<li>If <span class="math inline">\(f\in \text{L}^2(Y)\)</span>, then <span class="math inline">\(\Expectation(U(f)\mid Y)=f\)</span>. In particular, <span class="math inline">\(\Expectation(\mathbb{1}\mid Y)=\mathbb{1}\)</span>.</li>
+<li>If <span class="math inline">\(f\in\text{L}^2(X)\)</span> and <span class="math inline">\(g\in\text{L}^\infty(Y)\)</span>, then <span class="math inline">\(\Expectation(fU(g)\mid Y)=g\Expectation(f\mid Y)\)</span>.</li>
+<li>For <span class="math inline">\(f\in\text{L}^2(X)\)</span>, <span class="math display">\[\int_X f\ \mathrm{d}\Measure_X=\int_Y\Expectation(f\mid Y)\ \mathrm{d}\Measure_Y. \]</span></li>
+<li>For <span class="math inline">\(f\in\text{L}^2(X)\)</span>, the condtional expectation <span class="math inline">\(\Expectation(f\mid Y)\)</span> is the unique element of <span class="math inline">\(\text{L}^2(Y)\)</span> satisfying <span class="math display">\[\int_Y\Expectation(f\mid Y)h\ \mathrm{d}\Measure_Y=\int_Xf(U(h))\ \mathrm{d}\Measure_X, \]</span>for all <span class="math inline">\(h\in\text{L}^\infty(Y)\)</span>.</li>
+<li>For <span class="math inline">\(f\in\text{L}^2(X)\)</span>, <span class="math display">\[|\Expectation(f\mid Y)|^2\leq\Expectation(|f|^2\mid Y). \]</span></li>
+<li>The conditional expectation operator extends to a linear operator from <span class="math inline">\(\text{L}^1(X)\)</span> to <span class="math inline">\(\text{L}^1(Y)\)</span> satisfying the properties (1)-(5). Moreover, it maps each <span class="math inline">\(\text{L}^p(X)\)</span> to <span class="math inline">\(\text{L}^p(Y)\)</span>, for <span class="math inline">\(1\leq p\leq\infty\)</span>, with <span class="math inline">\(||\Expectation(f\mid Y)||)_{\text{L}^p(Y)}\leq||f||_{\text{L}^p(X)}\)</span> for every <span class="math inline">\(f\in\text{L}^p(X)\)</span>.</li>
+<li>(Monotone Convergence) If <span class="math inline">\(0\leq f_1\leq f_2\leq...\)</span> is a monotone sequence and <span class="math inline">\(f\)</span> is an element in <span class="math inline">\(\text{L}^2(X)\)</span> such that <span class="math inline">\((f_n)_{n\in\mathbb{N}}\)</span> converges to <span class="math inline">\(f\)</span> almost everywhere, then <span class="math inline">\(\Expectation(f_n\mid Y)\)</span> converges to <span class="math inline">\(\Expectation(f\mid Y)\)</span> almost everywhere.</li>
+<li>(Dominated Convergence) If <span class="math inline">\((f_n)_{n\in\mathbb{N}}\)</span> is a sequence and <span class="math inline">\(f\)</span> is an element in <span class="math inline">\(\text{L}^2(X)\)</span> such that <span class="math inline">\(f_n\)</span> converges to <span class="math inline">\(f\)</span> almost everywhere and there is <span class="math inline">\(g\in\text{L}^1(X)\)</span> with <span class="math inline">\(|f_n|\leq g\)</span> almost everywhere for all <span class="math inline">\(n\)</span>, then <span class="math inline">\(\Expectation(f_n\mid Y)\)</span> converges to <span class="math inline">\(\Expectation(f\mid Y)\)</span> almost surely.</li>
+</ol>
+<p>In the case that <span class="math inline">\(Y=X\)</span>, then we instead denote the conditional expectation as <span class="math inline">\(\Expectation(f\mid\SigmaAlgebra{C})\)</span>.</p>
 </div>
+<p>Whilst looking at conditional expectations and understanding property (5), we remarked that <span class="math inline">\(\Expectation(f\mid\SigmaAlgebra{C})\)</span> averages a function <span class="math inline">\(f:X\rightarrow\SigmaAlgebra{C}\)</span> in <span class="math inline">\((X,\SigmaAlgebra{B})\)</span> on each subset in <span class="math inline">\(\SigmaAlgebra{C}\)</span>.</p>
+<div id="def-Disintegration" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3 (<span class="no-paren"><span class="citation" data-cites="kra2022infinite">Kra et al., 2022</span></span>)</strong></span> Fix a system <span class="math inline">\((X,\Measure,\Group)\)</span> and a probability space <span class="math inline">\((\Omega,\nu)\)</span>. Whenever we have a map <span class="math inline">\(\omega\mapsto\Measure_\omega\)</span> from <span class="math inline">\(\Omega\)</span> to <span class="math inline">\(\mathcal{M}(X)\)</span>, the set of probability measures on <span class="math inline">\(X\)</span>, with the properties</p>
+<ol type="1">
+<li><span class="math inline">\(\omega\mapsto\Measure_\omega(B)\)</span> is measurable for every Borel set <span class="math inline">\(B\subset X\)</span>,</li>
+<li><span class="math inline">\(\int_Xf\ \mathrm{d}\Measure=\int_\Omega\int_Xf\ \mathrm{d}\Measure_\omega\ \mathrm{d}\nu(\omega)\)</span> for all measurable and bounded <span class="math inline">\(f:X\rightarrow\mathbb{C}\)</span>,</li>
+</ol>
+<p>we call <span class="math inline">\(\omega\mapsto\Measure_\omega\)</span> a <em>disintegration</em> of <span class="math inline">\(\Measure\)</span>.</p>
+</div>
+<div id="thm-FactorMapDisintegration" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1</strong></span> If <span class="math inline">\(\pi:(X,\SigmaAlgebra{B},\Measure)\rightarrow(Y,\SigmaAlgebra{C},\nu)\)</span> is a measurable factor map, then there exists a disintegration <span class="math inline">\(y\mapsto\Measure_y\)</span> of <span class="math inline">\(\Measure\)</span> defined on <span class="math inline">\((Y,\nu)\)</span> such that <span class="math display">\[\Expectation(f\mid Y)(y)=\int_Xf\ d\Measure_y \]</span> for <span class="math inline">\(\nu\)</span>-almost every <span class="math inline">\(y\in Y\)</span>, whenever <span class="math inline">\(f:X\rightarrow\mathbb{C}\)</span> is measurable and bounded. Furthermore, if <span class="math inline">\(y\mapsto\eta_y\)</span> is another such disintegration, then <span class="math inline">\(\eta_y=\Measure_y\)</span> for <span class="math inline">\(\nu\)</span>-almost every <span class="math inline">\(y\in Y\)</span>.</p>
+</div>
+<div id="def-ErgodicDecomposition" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4 (<span class="no-paren"><span class="citation" data-cites="kra2022infinite">Kra et al., 2022, Definition 2.7</span></span>)</strong></span> Let <span class="math inline">\((X,\Measure,\Group)\)</span> be a system and <span class="math inline">\(\SigmaAlgebra{C}\)</span> be a <span class="math inline">\(\sigma\)</span>-algebra of <span class="math inline">\(G\)</span>-invariant Borel sets. An of <span class="math inline">\(\Measure\)</span> is a disintegration <span class="math inline">\(x\mapsto\Measure_x\)</span> of <span class="math inline">\(\Measure\)</span> defined on <span class="math inline">\((X,\Measure)\)</span> such that <span class="math display">\[\int_Xf\ d\Measure_x=E(f\mid\SigmaAlgebra{C})(x) \]</span> holds for <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span>, whenever <span class="math inline">\(f:X\rightarrow\mathbb{C}\)</span> is measurable and bounded.</p>
+</div>
+<p>Notice that, by <a href="#thm-FactorMapDisintegration" class="quarto-xref">Theorem&nbsp;1</a>, we immediately have the property that, if <span class="math inline">\(x\mapsto\nu_x\)</span> is another ergodic decomposition of <span class="math inline">\((X,\Measure,\Group)\)</span>, <span class="math inline">\(\Measure_x=\nu_x\)</span> for <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span>.</p>
+<p>In working on Exercise 8.5 provided by <span class="citation" data-cites="ISem28">Jamneshan and Kreidler <a href="#ref-ISem28" role="doc-biblioref">(2025)</a></span>, we also reach the following result:</p>
+<div id="thm-ErgodicDecomposition" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2 (<span class="no-paren"><span class="citation" data-cites="ISem28">cf. Jamneshan and Kreidler, 2025, Exercise 8.5</span></span>)</strong></span> For a system <span class="math inline">\((X,\Measure,\Group)\)</span>, there exists an ergodic decomposition <span class="math inline">\(x\mapsto\Measure_x\)</span> where, for <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span>, the measure <span class="math inline">\(\Measure_x\)</span> is <span class="math inline">\(\Group\)</span>-invariant and ergodic.</p>
+</div>
+<p>This is proved by starting with <a href="#def-Disintegration" class="quarto-xref">Definition&nbsp;3</a> and <a href="#thm-FactorMapDisintegration" class="quarto-xref">Theorem&nbsp;1</a> and using the assumptions that <span class="math inline">\(Y=X\)</span>, <span class="math inline">\(\nu=\Measure\)</span>, and <span class="math inline">\(\SigmaAlgebra{C}\)</span> is the <span class="math inline">\(\sigma\)</span>-algebra of <span class="math inline">\(\Group\)</span>-invariant Borel sets. We then use the fact that <span class="math inline">\(\text{L}^2(Y,\SigmaAlgebra{C})\subseteq\text{L}^2(X,\SigmaAlgebra{B})\)</span> to conclude that there exists a Markov embedding <span class="math display">\[U:\text{L}^2(Y,\Sigma_Y,\Measure_Y)\rightarrow\text{L}^2(X,\text{Bor}(X),\Measure_X)\]</span> where <span class="math inline">\(U(\text{L}^2(Y,\Sigma_Y,\nu))=\text{L}^2(X,\Sigma_Y,\Measure)\)</span>. We then show that <span class="math inline">\((X,\SigmaAlgebra{B},\Measure_y,\Group)\)</span> is a measure-preserving system by showing that <span class="math inline">\((U_\gamma)_*\Measure_y=\Measure_y\)</span> for every <span class="math inline">\(\gamma\in\Group\)</span> and almost every <span class="math inline">\(y\in Y\)</span> using <a href="#thm-FactorMapDisintegration" class="quarto-xref">Theorem&nbsp;1</a>. We conclude the proof by proving ergodicity by arriving to the conclusion that <span class="math inline">\(\Measure_y(E)=\mathbb{1}_E(y)\in\{0,1\}\)</span> for some <span class="math inline">\(E\in\SigmaAlgebra{C}\)</span>.</p>
 
 
 <section id="sec-Outlinks" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-Outlinks">Outlinks</h2>
 <ul>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/kronecker-factor.html">Kronecker Factor</a></li>
 <li><a href="../../GeneralisedErdosConjecture/ErdosConjecture.html">A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups</a></li>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/joinings.html">Joinings</a></li>
 </ul>
 </section>
 
@@ -472,8 +500,8 @@ u\)</span> and <span class="math inline">\((S\circ\ProjectionMap)(x)=(\Projectio
 <div id="ref-kra2022infinite" class="csl-entry" role="listitem">
 Kra, B., et al. (2022). '<em>Infinite sumsets in sets with positive density</em>', Available at: <a href="https://arxiv.org/abs/2206.01786">https://arxiv.org/abs/2206.01786</a>.
 </div>
-<div id="ref-host2019short" class="csl-entry" role="listitem">
-Host, B. (2019). '<em>A short proof of a conjecture of erdös proved by moreira, richter and robertson</em>', Available at: <a href="https://arxiv.org/abs/1904.09952">https://arxiv.org/abs/1904.09952</a>.
+<div id="ref-ISem28" class="csl-entry" role="listitem">
+Jamneshan, A. and Kreidler, H. (2025). '<em>ISem 28: Ergodic structure theory and applications</em>',.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

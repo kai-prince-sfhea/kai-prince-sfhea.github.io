@@ -1,0 +1,473 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  british,
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\ifLuaTeX
+  \usepackage[english]{selnolig} % disable illegal ligatures
+\fi
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+% Get Math Fonts
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont[range={\mathscr,\mathbfscr,\mathbb}]{XITSMath-Regular}
+[    Extension = .otf,
+      BoldFont = XITSMath-Bold
+]
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Proof}}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem{refremark}{Remark}[section]
+\newtheorem{refsolution}{Solution}[section]
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\newcommand{\AmenableGroup}{{\Gamma}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
+\newcommand{\Dual}[1]{{#1}^{*}}
+\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\Group}{{\Gamma}}
+\newcommand{\GroupElement}{{\gamma}}
+\newcommand{\HilbertSpace}{{H}}
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Functional Analysis},
+  pdfauthor={Kai Prince},
+  pdflang={en-GB},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Functional Analysis}
+\author{Kai Prince}
+\date{2025-09-05}
+\begin{document}
+\maketitle
+
+
+The foundational knowledge relating to Measure \& Ergodic Theory, that
+has not been covered elsewhere, was provided by Jamneshan and Kreidler
+\citeproc{ref-ISem28}{(2025)}.
+
+\begin{definition}[]\protect\hypertarget{def-Representation}{}\label{def-Representation}
+
+For a Hilbert space \(\HilbertSpace\),
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A \emph{linear isometry} is a linear map
+  \(U:\HilbertSpace \rightarrow \HilbertSpace\) such that
+  \(||Uf||=||f||\) for all \(f\in \HilbertSpace\) (and thus injective).
+\item
+  A linear isometry, \(U\), is a \emph{unitary operator} if it is
+  surjective (and thus bijective).
+\item
+  We write \(\mathscr{U}(\HilbertSpace)\) for the set of all unitary
+  operators \(U:\HilbertSpace \rightarrow \HilbertSpace\).
+\item
+  For a group \(\Group\), we call a group homomorphism
+  \(U:\Group\rightarrow\mathscr{U}(\HilbertSpace )\),
+  \(\GroupElement\mapsto U_\GroupElement\) a \emph{unitary
+  representation} of \(\Group\) on \(\HilbertSpace\).
+\end{enumerate}
+
+\end{definition}
+
+\begin{definition}[]\protect\hypertarget{def-MarkovSubLattive}{}\label{def-MarkovSubLattive}
+
+Let \(J:(Y,S)\rightarrow(X,T)\) be an extension of measure-preserving
+systems. Then \(E=U_J(\text{L}^2(Y))\) is an \emph{invariant Markov
+sub-lattice} of \(\text{L}^2(X)\), i.e.,
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(E\) is a closed linear subspace of \(\text{L}^2(X)\),
+\item
+  \(\boldsymbol{1}\in E\),
+\item
+  \(|f|,\ \text{Re}(f),\ \text{Im}(f)\in E\) for every \(f\in E\), and
+\item
+  \(U_{T_\GroupElement}f\in E\) for every \(f\in E\) and
+  \(\GroupElement\in\Group\).
+\end{enumerate}
+
+\end{definition}
+
+\begin{definition}[]\protect\hypertarget{def-ContractionSemigroup}{}\label{def-ContractionSemigroup}
+
+Let \(\HilbertSpace\) be a Hilbert space. \(\mathscr{L}(\HilbertSpace)\)
+is the space of all bounded linear operators from \(\HilbertSpace\) to
+\(\HilbertSpace\). \footnote{Note,
+  \(\mathscr{U}(\HilbertSpace)\subseteq\mathscr{L}(\HilbertSpace)\) and
+  \(||U||=1\) when \(U\in\mathscr{U}(\HilbertSpace)\), so
+  \(\mathscr{U}(\HilbertSpace)\) is a contraction semigroup.}
+
+A family \(\mathscr{S}\subseteq\mathscr{L}(\HilbertSpace)\) is a
+\emph{semigroup (of operators)} if \(UV\in\mathscr{S}\) for all
+\(U,V\in\mathscr{S}\). It is a \emph{contraction semigroup} if, in
+addition, \(||U||\leq1\) for all \(U\in\mathscr{S}\).
+
+We call
+\[\text{fix}(\mathscr{S}):=\bigcap_{U\in\mathscr{S}}\text{fix}(U)=\{f\in\HilbertSpace\mid Uf=f\text{ for every }U\in\mathscr{S}\}\]
+the \emph{fixed space} of \(\mathscr{S}\).\footnote{\(\text{fix}(\mathscr{S})\subseteq \HilbertSpace_\text{ds}\).}\footnote{Meeting
+  Notes: 0-dimensional. Next most simple case would be scaling
+  (1-dimensional), and then rotations on a place (2-dimensional).}
+
+The \emph{closed convex hull} \(\overline{\text{co}}\ A\) is the closure
+of the set of all convex combinations of elements of \(A\).
+
+The \emph{closed linear hull} \(\overline{\text{lin}}\ A\) is the
+closure of the set of all linear combinations of elements of \(A\).
+
+\end{definition}
+
+\begin{definition}[]\protect\hypertarget{def-DualGroup}{}\label{def-DualGroup}
+
+Let \(U:\AmenableGroup\rightarrow\mathscr{U}(\HilbertSpace)\) be a
+unitary representation of a discrete abelian amenable group
+\(\AmenableGroup\).
+
+A group homomorphism \(\chi:\AmenableGroup\rightarrow\mathbb{T}\), where
+\(\mathbb{T}=\{z\in\mathbb{C}\mid|z|=1\}\), is called a
+\emph{character}. The \emph{dual group} \(\Dual{\AmenableGroup}\) of
+\(\AmenableGroup\) is the set of all such characters equipped with the
+multiplication given by
+\((\chi_1\chi_2)(\AmenableGroupElement):=\chi_1(\AmenableGroupElement)\chi_2(\AmenableGroupElement)\)
+for \(\AmenableGroupElement\in\AmenableGroup\) and
+\(\chi_1,\chi_2\in\Dual{\AmenableGroup}\).\footnote{Commutator subgroup
+  and abelianisation?}
+
+\end{definition}
+
+\begin{definition}[]\protect\hypertarget{def-DiscreteSpectrum}{}\label{def-DiscreteSpectrum}
+
+Let
+\[M_f:=\text{lin}\{U_\AmenableGroupElement f\mid\AmenableGroupElement\in\AmenableGroup \}. \]
+We call a subset \(M\subseteq \HilbertSpace\) an \emph{invariant
+finite-dimensional subspace} if \(M_f\) is finite-dimensional and
+\(U_\AmenableGroupElement f\in M\) for all \(f\in M\) and
+\(\AmenableGroupElement\in\AmenableGroup\).
+
+The closure
+\[\HilbertSpace_\text{ds}=\overline{\bigcup\{M\subseteq \HilbertSpace\mid M\text{ invariant finite-dimensional subspace} \}}\subseteq \HilbertSpace \]
+is called the \emph{discrete spectrum part} of \(U\).\footnote{Meeting
+  Notes: In the \(\AmenableGroup=\mathbb{Z}\) case, then
+  \(\HilbertSpace_\text{ds}\) can be broken up into one-dimensional
+  objects that corresponds to an eigenfunction.}
+
+\end{definition}
+
+\begin{proposition}[{cf. Jamneshan and Kreidler, 2025, Proposition
+5.1.10}]\protect\hypertarget{prp-POrthogonalEigenspaces}{}\label{prp-POrthogonalEigenspaces}
+
+The eigenspaces \(\text{ker}(\chi-U)\) for \(\chi\in\Dual{\Group}\) are
+pairwise orthogonal. For \(M\subseteq \HilbertSpace\), then the
+following are equivalent:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(M\) is an irreducible invariant finite-dimensional subspace.
+\item
+  \(M\) is an invariant linear subspace which is at most
+  one-dimensional.
+\item
+  There is \(\chi\in\Dual{\Group}\) and \(f\in\text{ker}(\chi-U)\), such
+  that \(M=\mathbb{C}\cdot f\).
+\end{enumerate}
+
+\end{proposition}
+
+\begin{definition}[]\protect\hypertarget{def-StronglyContinuous}{}\label{def-StronglyContinuous}
+
+A unitary representation
+\(U:\AmenableGroup\rightarrow\mathscr{U}(\HilbertSpace)\) of a
+topological group \(\AmenableGroup\) is \emph{strongly continuous} if
+\(\AmenableGroup\rightarrow \HilbertSpace\), \(x\mapsto U_xf\) is
+continuous for every \(f\in \HilbertSpace\).
+
+\end{definition}
+
+\begin{definition}[]\protect\hypertarget{def-RegularRepresentation}{}\label{def-RegularRepresentation}
+
+For every discrete group \(\AmenableGroup\), the maps \begin{align}
+    L:\AmenableGroup\rightarrow\mathscr{U}(\text{L}^2(\AmenableGroup)),&\qquad x\mapsto L_x
+    \\ R:\AmenableGroup\rightarrow\mathscr{U}(\text{L}^2(\AmenableGroup)),&\qquad x\mapsto R_x
+\end{align} with \(L_xf:=f\circ l_{x^{-1}}\) and
+\(R_xf:=f\circ r_{x^{-1}}\) for \(f\in\text{L}^2(\AmenableGroup)\) and
+\(x\in\AmenableGroup\) are strongly continuous unitary representations.
+We call \(L\) and \(R\) the \emph{left} and \emph{right regular
+representation} of \(\AmenableGroup\), respectively.\footnote{As
+  \(\AmenableGroup\) is discrete, then any map
+  \(\AmenableGroup\rightarrow \HilbertSpace\) is continuous for any
+  topological space \(\HilbertSpace\). Thus,
+  \(\AmenableGroup\rightarrow \text{L}^2(\AmenableGroup)\) defined by
+  \(\AmenableGroupElement\mapsto L_\AmenableGroupElement f\) or
+  \(\AmenableGroupElement\mapsto R_\AmenableGroupElement f\) is always
+  continuous. Hence, \(L\) and \(R\) are strongly continuous unitary
+  representations.}
+
+\end{definition}
+
+Assume that \(U:\AmenableGroup\rightarrow\mathscr{U}(\HilbertSpace)\) is
+a strongly continuous unitary representation of a discrete group
+\(\AmenableGroup\). Let further \(P\) be the orthogonal projection onto
+the fixed space \(\text{fix}(U(\AmenableGroup))\). Then
+\[(Pf\mid g)=\lim_{N\rightarrow\infty}\frac{1}{|\Folner[N]|}\sum_{\AmenableGroupElement\in\Folner[N]}(U_\AmenableGroupElement f\mid g)\]
+for all \(f,g\in\HilbertSpace\).
+
+If \(U:\AmenableGroup\rightarrow\mathscr{U}(\HilbertSpace)\) is a
+strongly continuous unitary representation of a compact group
+\(\AmenableGroup\), then \(U\) has discrete spectrum.\footnote{This
+  \(\AmenableGroup\) would be the compact group behind the factor
+  subsystem of the larger system. For example,
+  \(\AmenableGroup=\mathbb{Z}\) for the irrational \(\alpha\) group
+  rotation would give us compact \(G=\{z\in\mathbb{C}\mid|z|=1\}\). The
+  homomorphism from \(\AmenableGroup\rightarrow \Group\) is
+  \(n\mapsto e^{2\pi i\alpha n}\).}
+
+\begin{exercise}[]\protect\hypertarget{exr-AmenableAbstractMeanErgodic}{}\label{exr-AmenableAbstractMeanErgodic}
+
+Show that
+\[\HilbertSpace=\HilbertSpace_\text{ds}\oplus \HilbertSpace_\text{wm} \]
+and what happens to \(\HilbertSpace_\text{ds}\) and
+\(\HilbertSpace_\text{wm}\) when it is averaged by the Abstract Mean
+Ergodic Theorem for amenable groups.\footnote{(Proposition
+  5.3.3)\[\HilbertSpace_\text{wm}=\left\{f\in \HilbertSpace\mid \lim_{N\rightarrow\infty}\frac{1}{|\Folner[N]|}\sum_{\varphi\in\Folner[N]}|(U_\varphi f\mid f)|^2=0  \right\}. \]}
+
+\end{exercise}
+
+\begin{proposition}[]\protect\hypertarget{prp-DSInvariantMarkov}{}\label{prp-DSInvariantMarkov}
+
+Let \((X,T)\) be a measure-preserving system. Then
+\(\text{L}^2(X)_\text{ds}\) is an invariant Markov sublattice of
+\(\text{L}^2(X)\).
+
+\end{proposition}
+
+\begin{exercise}[{Jamneshan and Kreidler, 2025, Lemma
+6.1.12}]\protect\hypertarget{exr-ISem28exr6112}{}\label{exr-ISem28exr6112}
+
+Assume that \(U:\AmenableGroup\rightarrow\mathscr{U}(\HilbertSpace)\) is
+a strongly continuous unitary representation of a discrete group
+\(\AmenableGroup\). Let further \(P\) be the orthogonal projection onto
+the fixed space \(\text{fix}(U(\AmenableGroup))\). Then
+\((Pf\mid g)=\lim_{N\rightarrow\infty}\frac{1}{|\Folner[N]|}\sum_{\AmenableGroupElement\in\Folner[N]}(U_\AmenableGroupElement f\mid g)\)
+for all \(f,g\in\HilbertSpace\).
+
+\end{exercise}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-ISem28}
+Jamneshan, A. and Kreidler, H. (2025). \textquotesingle{}\emph{ISem 28:
+Ergodic structure theory and applications}\textquotesingle,.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}

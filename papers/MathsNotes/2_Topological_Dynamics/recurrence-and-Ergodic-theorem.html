@@ -2,12 +2,12 @@
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kai Prince">
-<meta name="dcterms.date" content="2025-08-14">
+<meta name="dcterms.date" content="2025-09-05">
 
 <title>Recurrence and Ergodic Theorems – Kai Prince</title>
 <style>
@@ -60,14 +60,14 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-c1fa1c8edd53197323e59ac54f42cadf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-6b4275e0d0022fcd7b0582fcf79143c4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-c1fa1c8edd53197323e59ac54f42cadf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-d7fc5677f3affda326ee16cb3d720675.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -390,7 +390,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sec-Backlinks" id="toc-sec-Backlinks" class="nav-link active" data-scroll-target="#sec-Backlinks">Backlinks</a></li>
+  <li><a href="#sec-Notation" id="toc-sec-Notation" class="nav-link active" data-scroll-target="#sec-Notation">Notation</a></li>
+  <li><a href="#sec-Backlinks" id="toc-sec-Backlinks" class="nav-link" data-scroll-target="#sec-Backlinks">Backlinks</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/blob/main/papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="recurrence-and-Ergodic-theorem.tex"><i class="bi bi-file"></i>LaTeX</a></li><li><a href="recurrence-and-Ergodic-theorem.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -424,7 +425,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 August 2025</p>
+      <p class="date">5 September 2025</p>
     </div>
   </div>
   
@@ -436,26 +437,57 @@ window.Quarto = {
 </header>
 
 
+<section id="sec-Notation" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-Notation">Notation</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\N\)</span></td>
+<td>The Natural Numbers: 1, 2, 3, … (<a href="../../MathsNotes/0_Fundamental/axioms.html">Source</a>)</td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="sec-Backlinks" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-Backlinks">Backlinks</h2>
 <ul>
+<li><a href="../../MathsNotes/0_Fundamental/axioms.html">Axioms</a></li>
+<li><a href="../../MathsNotes/0_Fundamental/monoid.html">Monoid</a></li>
 <li><a href="../../MathsNotes/0_Fundamental/group.html">Group</a></li>
 <li><a href="../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html">Measure Theory and Ergodic Theory</a></li>
+<li><a href="../../MathsNotes/1_Amenable_and_Density/density.html">Density</a></li>
 <li><a href="../../MathsNotes/1_Amenable_and_Density/folner.html">Følner sequence</a></li>
 <li><a href="../../MathsNotes/1_Amenable_and_Density/amenable.html">Amenable</a></li>
 <li><a href="../../MathsNotes/2_Topological_Dynamics/actions.html">Actions</a></li>
 </ul>
 </section>
 <div id="thm-recurrence" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1 (<span class="citation" data-cites="Bergelson1985Recurrence">Bergelson <a href="#ref-Bergelson1985Recurrence" role="doc-biblioref">(1985)</a>, Theorem 1.1</span>)</strong></span> Let <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> be a probability space and suppose that <span class="math inline">\(B_n\in\SigmaAlgebra{B}\)</span> such that <span class="math inline">\(\Measure(B_n)=b&gt;0\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
+<p><span class="theorem-title"><strong>Theorem 1 (<span class="no-paren"><span class="citation" data-cites="Bergelson1985Recurrence">Bergelson, 1985, Theorem 1.1</span></span>)</strong></span> Let <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> be a probability space and suppose that <span class="math inline">\(B_n\in\SigmaAlgebra{B}\)</span> such that <span class="math inline">\(\Measure(B_n)=b&gt;0\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span>.</p>
 <p>Then there exists a positively dense index set <span class="math inline">\(I\subset\mathbb{N}\)</span> such that, for any finite subset <span class="math inline">\(F\subseteq I\)</span>, we have <span class="math display">\[\Measure\left(\bigcap_{i\in F}B_i \right)&gt;0. \]</span></p>
 </div>
+<div id="thm-PoincareRecurrence" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2 (Poincaré Recurrence for Upper Density)</strong></span> Let <span class="math inline">\(\Monoid\)</span> be a countably-infinite <a href=".\../../MathsNotes/1_Amenable_and_Density/amenable.html#def-amenable">amenable</a> <a href=".\../../MathsNotes/0_Fundamental/group.html#def-group">group</a> with <span class="math inline">\(\Folner\)</span> as a <a href=".\../../MathsNotes/1_Amenable_and_Density/folner.html#def-Folner">Følner</a> sequence. For all <span class="math inline">\(B\in\mathcal{P}(\Group)\)</span> such that <span class="math inline">\(\Density{B}&gt;0\)</span>, there exists <span class="math inline">\(\GroupElement\in\Group\)</span> such that <span class="math inline">\(\UpperDensity{B\cap \GroupOperation{\GroupElement}{B}}&gt;0\)</span>.</p>
+</div>
+<p>This can be proved by using Furstenberg’s Correspondence Principle with <span class="math inline">\(B\)</span> as our subset and, as <span class="math inline">\(\Measure\)</span> is measure-preserving in our Furstenberg system and by using <a href="../../../papers/MathsNotes/1_Amenable_and_Density/density.html#prp-DensityTranslationInvariance">the invariance of <span>density</span></a>, we can show that <span class="math display">\[\Density{B}=\Measure(E)=\Measure(\GroupAction{\GroupElement}{E})=\Density(\GroupOperation{\GroupElement}{B})\]</span> for all <span class="math inline">\(\GroupElement\in\Group\)</span>. By defining an infinite series <span class="math inline">\(E_n=\GroupAction{g_n}{E}\)</span> and knowing that <span class="math inline">\(\Measure(E_n)&gt;0\)</span> for all <span class="math inline">\(n\in\N\)</span>, we can use <a href="#thm-recurrence" class="quarto-xref">Theorem&nbsp;1</a> to arrive at the result that <span class="math inline">\(\Measure(\GroupAction{h}{B}\cap \GroupAction{h'}{B})&gt;0\)</span> for some <span class="math inline">\(h,h'\in\Group\)</span>. By using the fact that <span class="math inline">\(\Measure\)</span> is measure-preserving again and using the properties of <span class="math inline">\(\Measure\)</span> as a result of its construction in Furstenberg’s Correspondence Principle, we conclude that <span class="math inline">\(\UpperDensity(B\cap\GroupOperation{g}{B})&gt;0\)</span> for some <span class="math inline">\(\GroupElement\in\Group\)</span></p>
 <div id="thm-GeneralisedPET" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 2 (cf. <span class="citation" data-cites="Lindenstrauss2001PETAmenable">Lindenstrauss <a href="#ref-Lindenstrauss2001PETAmenable" role="doc-biblioref">(2001)</a>, Theorem 1.2</span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be a discrete <a href=".\../../MathsNotes/1_Amenable_and_Density/amenable.html#def-amenable">amenable</a> <a href=".\../../MathsNotes/0_Fundamental/group.html#def-group">group</a> acting on a measure space <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> by measure preserving transformation and let <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> be a <a href=".\../../MathsNotes/1_Amenable_and_Density/folner.html#def-tempered">tempered</a> <a href=".\../../MathsNotes/1_Amenable_and_Density/folner.html#def-Folner">Følner</a> sequence.</p>
+<p><span class="theorem-title"><strong>Theorem 3 (<span class="no-paren"><span class="citation" data-cites="Lindenstrauss2001PETAmenable">cf. Lindenstrauss, 2001, Theorem 1.2</span></span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be a discrete amenable group acting on a measure space <span class="math inline">\((X,\SigmaAlgebra{B},\Measure)\)</span> by measure preserving transformation and let <span class="math inline">\(\Folner=(\Folner[N])_{N\in\mathbb{N}}\)</span> be a <a href=".\../../MathsNotes/1_Amenable_and_Density/folner.html#def-tempered">tempered</a> Følner sequence.</p>
 <p>Then, for any <span class="math inline">\(f\in\text{L}^1(\Measure)\)</span>, there is a <span class="math inline">\(\AmenableGroup\)</span>-invariant <span class="math inline">\(\bar{f}\in\text{L}^1(\Measure)\)</span> such that <span class="math display">\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\bar{f}(x) \]</span> for <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span>. In particular, if the <span class="math inline">\(\AmenableGroup\)</span> <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-action">action</a> is ergodic, then <span class="math display">\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\int f(x)\ d\Measure(x) \]</span> for <span class="math inline">\(\Measure\)</span> almost every <span class="math inline">\(x\)</span>.</p>
 </div>
 <div id="cor-temperedGeneric" class="theorem corollary">
-<p><span class="theorem-title"><strong>Corollary 1 (cf. <span class="citation" data-cites="host2019short">Host <a href="#ref-host2019short" role="doc-biblioref">(2019)</a>, Corollary 8</span>)</strong></span> Let <span class="math inline">\((X,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an amenable group, <span class="math inline">\(\Measure\)</span> an ergodic measure on <span class="math inline">\(X\)</span> and <span class="math inline">\(\Folner\)</span> a tempered Følner sequence. Then <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span> is <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-generic">generic</a> for <span class="math inline">\(\Measure\)</span> along <span class="math inline">\(\Folner\)</span>.</p>
+<p><span class="theorem-title"><strong>Corollary 1 (<span class="no-paren"><span class="citation" data-cites="host2019short">cf. Host, 2019, Corollary 8</span></span>)</strong></span> Let <span class="math inline">\((X,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an amenable group, <span class="math inline">\(\Measure\)</span> an ergodic measure on <span class="math inline">\(X\)</span> and <span class="math inline">\(\Folner\)</span> a tempered Følner sequence. Then <span class="math inline">\(\Measure\)</span>-almost every <span class="math inline">\(x\in X\)</span> is <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-generic">generic</a> for <span class="math inline">\(\Measure\)</span> along <span class="math inline">\(\Folner\)</span>.</p>
+</div>
+<div id="thm-AbstractMeanErgodic" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4 (<span class="no-paren"><span class="citation" data-cites="ISem28">Jamneshan and Kreidler, 2025, Abstract Mean Ergodic Theorem</span></span>)</strong></span> For every contraction semi-group <span class="math inline">\(\mathscr{S}\subseteq\mathscr{L}(H)\)</span> on a Hilbert space <span class="math inline">\(H\)</span>, we have an orthogonal decomposition <span class="math display">\[H=\text{fix}(\mathscr{S})\oplus\overline{\text{lin}}\bigcup_{U\in\mathscr{S}}(\text{Id}_H-U)(H).\]</span> Moreover, the orthogonal projection <span class="math inline">\(P\)</span> onto <span class="math inline">\(\text{fix}(\mathscr{S})\)</span> has the following properties:</p>
+<ol type="1">
+<li><span class="math inline">\(PU=UP=P\)</span> for every <span class="math inline">\(U\in\mathscr{S}\)</span>.</li>
+<li>For every <span class="math inline">\(f\in H\)</span>, the vector <span class="math inline">\(Pf\in H\)</span> is the unique element of <span class="math inline">\(\overline{\text{co}}\{Uf\mid U\in\mathscr{S}\}\)</span> of minimal norm.</li>
+</ol>
 </div>
 
 
@@ -470,6 +502,9 @@ Lindenstrauss, E. (2001). 'Pointwise theorems for amenable groups', <em><em>Inve
 </div>
 <div id="ref-host2019short" class="csl-entry" role="listitem">
 Host, B. (2019). '<em>A short proof of a conjecture of erdös proved by moreira, richter and robertson</em>', Available at: <a href="https://arxiv.org/abs/1904.09952">https://arxiv.org/abs/1904.09952</a>.
+</div>
+<div id="ref-ISem28" class="csl-entry" role="listitem">
+Jamneshan, A. and Kreidler, H. (2025). '<em>ISem 28: Ergodic structure theory and applications</em>',.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -210,15 +210,15 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
+\newcommand{\CountingMeasure}{{\lambda}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\Group}{{\Gamma}}
 \newcommand{\GroupElement}{{\gamma}}
 \newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
-\newcommand{\CountingMeasure}{{\lambda}}
-\newcommand{\Group}{{\Gamma}}
-\newcommand{\Monoid}{{M}}
-\newcommand{\MonoidOperation}[2]{{#1}\cdot{#2}}
 \newcommand{\Inverse}[1]{{#1}^{-1}}
+\newcommand{\Monoid}{{M}}
 \newcommand{\MonoidElement}{{m}}
+\newcommand{\MonoidOperation}[2]{{#1}\cdot{#2}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -237,35 +237,10 @@
 
 \title{Følner sequence}
 \author{Kai Prince}
-\date{2025-08-14}
+\date{2025-09-05}
 \begin{document}
 \maketitle
 
-\renewcommand*\contentsname{Table of contents}
-{
-\hypersetup{linkcolor=}
-\setcounter{tocdepth}{3}
-\tableofcontents
-}
-
-\subsection*{Backlinks}\label{sec-Backlinks}
-\addcontentsline{toc}{subsection}{Backlinks}
-
-\begin{itemize}
-\tightlist
-\item
-  \href{../../MathsNotes/0_Fundamental/axioms.html}{Axioms}
-\item
-  \href{../../MathsNotes/0_Fundamental/group.html}{Group}
-\item
-  \href{../../MathsNotes/0_Fundamental/monoid.html}{Monoid}
-\item
-  \href{../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html}{Measure Theory and Ergodic Theory}
-\item
-  \href{../../MathsNotes/1_Amenable_and_Density/density.html}{Density}
-\item
-  \href{../../MathsNotes/1_Amenable_and_Density/amenable.html}{Amenable}
-\end{itemize}
 
 \section{Følner Sequences}\label{fuxf8lner-sequences}
 
@@ -337,9 +312,8 @@ of the properties of density.
 
 \section{Tempered Følner Sequences}\label{tempered-fuxf8lner-sequences}
 
-\begin{definition}[Lindenstrauss
-\citeproc{ref-Lindenstrauss2001PETAmenable}{(2001)}, Definition
-1.1]\protect\hypertarget{def-tempered}{}\label{def-tempered}
+\begin{definition}[{Lindenstrauss, 2001, Definition
+1.1}]\protect\hypertarget{def-tempered}{}\label{def-tempered}
 
 A sequence of sets \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) will be
 said to be \emph{tempered} if, for some \(b>0\) and all
@@ -353,9 +327,8 @@ is referred to as the \emph{Shulman condition}.
 
 \end{definition}
 
-\begin{proposition}[Lindenstrauss
-\citeproc{ref-Lindenstrauss2001PETAmenable}{(2001)}, Proposition
-1.4]\protect\hypertarget{prp-temperedFolner}{}\label{prp-temperedFolner}
+\begin{proposition}[{Lindenstrauss, 2001, Proposition
+1.4}]\protect\hypertarget{prp-temperedFolner}{}\label{prp-temperedFolner}
 
 ~
 
@@ -370,27 +343,6 @@ is referred to as the \emph{Shulman condition}.
 \end{enumerate}
 
 \end{proposition}
-
-\subsection*{Outlinks}\label{sec-Outlinks}
-\addcontentsline{toc}{subsection}{Outlinks}
-
-\begin{itemize}
-\tightlist
-\item
-  \href{../../MathsNotes/1_Amenable_and_Density/density.html}{Density}
-\item
-  \href{../../MathsNotes/1_Amenable_and_Density/amenable.html}{Amenable}
-\item
-  \href{../../MathsNotes/2_Topological_Dynamics/actions.html}{Actions}
-\item
-  \href{../../MathsNotes/2_Topological_Dynamics/factor-maps.html}{Factor Maps}
-\item
-  \href{../../MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html}{Furstenberg's Correspondence Principle}
-\item
-  \href{../../GeneralisedErdosConjecture/ErdosConjecture.html}{A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups}
-\item
-  \href{../../MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.html}{Recurrence and Ergodic Theorems}
-\end{itemize}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
