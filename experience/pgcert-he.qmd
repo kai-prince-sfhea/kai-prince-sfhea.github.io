@@ -1,0 +1,10 @@
+---
+title: "PGCert in Higher Education"
+description: |
+    I plan on taking the "Internalisation in higher education" and "Leadership in higher education" courses.
+end: "Expected graduation: July 2026"
+company: "University of Manchester"
+category: uni-education
+date: today
+cvDescription: true
+---

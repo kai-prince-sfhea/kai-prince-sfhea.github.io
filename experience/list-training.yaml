@@ -1,0 +1,22 @@
+- title: "A-Levels"
+  description: |
+      Subjects: Mathematics [A*], Further Mathematics [A], Physics [B]
+  end: Graduated August 2017
+  company: "Brighton Hove and Sussex Sixth Form College"
+  category: college-education
+  date: 2017-08-01
+  cvDescription: true
+- title: "Extended Project Qualification"
+  grade: A
+  description: |
+      Project Title: "Is there a method that can allow effective conversions between Mathematical Equations and Musical Notation?"
+  end: Graduated August 2017
+  company: "Brighton Hove and Sussex Sixth Form College"
+  category: college-education
+  date: 2017-08-02
+  cvDescription: true
+- title: '"Communication Access UK Training Package"'
+  end: Certified September 2024
+  company: "Communication Access UK"
+  category: cpd-memberships
+  date: 2024-09-01

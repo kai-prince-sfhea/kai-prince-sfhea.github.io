@@ -1,0 +1,10 @@
+---
+title: "PhD in Pure Maths"
+description: |
+    My Current Research is on "Ergodic Methods for Density Combinatorics in Amenable Groups".
+end: "Expected graduation: November 2028 (part-time)"
+company: "University of Manchester"
+category: uni-education
+date: today
+cvDescription: true
+---

@@ -5,6 +5,7 @@
 $commitMsg = Read-Host "Enter commit message"
 
 # Update Quarto Extension
+quarto update kai-prince-sfhea/additional-citation-options
 quarto update kai-prince-sfhea/schema
 
 # Run Quarto render

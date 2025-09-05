@@ -1,0 +1,13 @@
+---
+title: 'Best Contribution to PGR Environment'
+end: September 2024
+company: "University of Manchester"
+category: hons-awards
+date: 2024-09-01
+---
+
+::: {.callout-note}
+## [[@mcdawards2024pgrenvironment]]{.no-paren}
+
+Kai is committed to equality of access and engagement for all. Kai’s effective contributions to equality and accessibility include: using his comprehensive knowledge of university support structures to help many other PGR students; improving accessibility in the Library and AGLC buildings through better signage and changes to the My Learning Essentials resource; contributing expertise to a departmental working group on finding a balance between accessibility and engagement; and bringing together different groups working on neurodiversity training for staff.
+:::

@@ -37,6 +37,12 @@ execute:
   freeze: true
   cache: true
 
+filters:
+  - quarto
+  - additional-citation-options
+
+citeproc: false
+
 csl: harvard-manchester.csl
 link-citations: true
 

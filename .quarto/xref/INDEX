@@ -127,5 +127,95 @@
   "papers/MathsNotes/2_Topological_Dynamics/recurrence-and-Ergodic-theorem.qmd": {
     "recurrence-and-Ergodic-theorem.html": "09a4700c",
     "recurrence-and-Ergodic-theorem.tex": "a9b444d8"
+  },
+  "experience/phd.qmd": {
+    "phd.html": "6520b734"
+  },
+  "experience/SFHEA.qmd": {
+    "SFHEA.html": "72a004cd"
+  },
+  "experience/a-levels.qmd": {
+    "a-levels.html": "5984591a"
+  },
+  "experience/accessibility-wg.qmd": {
+    "accessibility-wg.html": "b59aeaf9"
+  },
+  "experience/amsp-outreach-mentor.qmd": {
+    "amsp-outreach-mentor.html": "1e392b09"
+  },
+  "experience/autism-and-adhd-he.qmd": {
+    "autism-and-adhd-he.html": "db003d9b"
+  },
+  "experience/comm-access-uk.qmd": {
+    "comm-access-uk.html": "e1d03c60"
+  },
+  "experience/dass-student-support.qmd": {
+    "dass-student-support.html": "04133fe4"
+  },
+  "experience/dissoc-president.qmd": {
+    "dissoc-president.html": "f3ec69cb"
+  },
+  "experience/epq.qmd": {
+    "epq.html": "819727a5"
+  },
+  "experience/GTA.qmd": {
+    "GTA.html": "8810380b"
+  },
+  "experience/levelling-up-tutor.qmd": {
+    "levelling-up-tutor.html": "fec95e79"
+  },
+  "experience/library-student-team.qmd": {
+    "library-student-team.html": "f707f771"
+  },
+  "experience/MAP-tutor.qmd": {
+    "MAP-tutor.html": "14bca8dc"
+  },
+  "experience/mathsoc-lc-admin.qmd": {
+    "mathsoc-lc-admin.html": "60b14cf0"
+  },
+  "experience/mmath.qmd": {
+    "mmath.html": "b50aa705"
+  },
+  "experience/nd-network.qmd": {
+    "nd-network.html": "9fa6dc8f"
+  },
+  "experience/mathsoc.qmd": {
+    "mathsoc.html": "ff2fb044"
+  },
+  "experience/CATE.qmd": {
+    "CATE.html": "d1df8828"
+  },
+  "experience/discord.qmd": {
+    "discord.html": "b602d90e"
+  },
+  "experience/mdc-excellence.qmd": {
+    "mdc-excellence.html": "01f475c8"
+  },
+  "experience/stellify.qmd": {
+    "stellify.html": "d0798a8b"
+  },
+  "experience/umpa.qmd": {
+    "umpa.html": "cbf1c8c7"
+  },
+  "experience/edia-advocacy.qmd": {
+    "edia-advocacy.html": "0ce900ec"
+  },
+  "experience/ms-certs.qmd": {
+    "ms-certs.html": "1136998a"
+  },
+  "experience/pgcert-he.qmd": {
+    "pgcert-he.html": "38569d5c"
+  },
+  "papers/MathsNotes/2_Topological_Dynamics/joinings.qmd": {
+    "joinings.html": "ae2832d7",
+    "joinings.tex": "da7b0c9f"
+  },
+  "papers/MathsNotes/2_Topological_Dynamics/functional-analysis.qmd": {
+    "functional-analysis.html": "cc0434db",
+    "functional-analysis.tex": "f64bdb8c"
+  },
+  "papers/MathsNotes/2_Topological_Dynamics/kronecker-factor.qmd": {
+    "kronecker-factor.html": "2e569570",
+    "kronecker-factor.tex": "57db7323"
   }
 }

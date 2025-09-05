@@ -1,0 +1,14 @@
+<% if (items.length !== 0) { %>
+  <% if (templateParams.header) { %><h3><%- templateParams.header %></h3><% } %>
+  <ul>
+  <% for (const item of items) { %>
+    <li <%= metadataAttrs(item) %>>
+      <b><strong><% if (item.path || item.href) { %><a href="<% if (item.path) { %><%- item.path %><% } else{ %><%- item.href %><% } %>" class="listing-title"><% } %><% if (item.name) { %><%= item.name %><% } else{ %><%= item.title %><% } %><% if (item.grade) { %> [<%= item.grade %>]<% } %><% if (item.company) { %>, <%= item.company %><% } %><% if (item.path || item.href) { %></a><% } %></strong></b>
+      <ul>
+        <li> <% if (item.start) { %><span class="listing-start"><%= item.start %></span> – <% } %><% if (item.end) { %><%= item.end %><% } else{ %>Present<% } %><span class="listing-date" style="display:none"><%= item.date %></span><% if (item.cpdHours) { %> (<%= item.hours %> hours)<% } %></li>
+        <% if (item.cvDescription) { %><li><%= item.description %></li><% } %>
+      </ul>
+    </li>
+  <% } %>
+  </ul>
+<% } %>

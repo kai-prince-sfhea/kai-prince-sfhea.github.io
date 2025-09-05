@@ -1,0 +1,5 @@
+---
+title: "UoM Maths Society"
+date: 2025-06-01
+company: "UoM Maths Society"
+---

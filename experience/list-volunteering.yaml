@@ -1,0 +1,79 @@
+- title: "Afterschool Tutor"
+  start: 2016-01-01
+  end:  March 2016
+  date: 2016-03-01
+  company: "Peacehaven Community School"
+  category: other-volunteering
+- title: "President"
+  start: 2016-09-01
+  end: June 2017
+  date: 2017-06-01
+  company: "BHASVIC Debating Society"
+  category: other-volunteering
+- title: "Student Volunteer"
+  start: 2021-05-01
+  end: June 2021
+  date: 2021-06-01
+  hours: 40
+  company: "Oxfam"
+  category: other-volunteering
+- title: "Secretary"
+  start: 2023-10-01
+  end: July 2024
+  date: 2024-07-01
+  company: "UoM Disabled Staff Network"
+  category: advocacy
+  path: edia-advocacy.qmd
+- title: "Accessibility Working Group Co-Chair"
+  start: 2024-07-01
+  date: today
+  company: "UoM Disabled Staff Network"
+  category: advocacy
+  path: edia-advocacy.qmd
+- title: "Student Representative"
+  start: 2021-10-01
+  end: November 2024
+  date: 2024-11-01
+  company: "UoM Maths Department"
+  category: advocacy
+- title: "Learning Community Administrator"
+  start: 2024-06-01
+  end: June 2025
+  date: 2025-06-01
+  company: "UoM Maths Society"
+  category: advocacy
+  path: mathsoc.qmd
+- title: "President"
+  start: 2022-06-01
+  end: June 2023
+  date: 2023-06-01
+  company: "UoM Maths Society"
+  category: advocacy
+  path: mathsoc.qmd
+- title: "General Secretary"
+  start: 2021-06-01
+  end: June 2022
+  date: 2022-06-01
+  company: "UoM Maths Society"
+  category: advocacy
+  path: mathsoc.qmd
+- title: "President"
+  start: 2024-06-01
+  end: June 2025
+  date: 2025-06-01
+  company: "UoM Disabled Students Society"
+  category: advocacy
+  path: edia-advocacy.qmd
+- title: "Postgraduate Research Co-Chair"
+  start: 2024-09-01
+  date: today
+  company: "UoM Neurodivergent Staff Network"
+  category: advocacy
+  path: edia-advocacy.qmd
+- title: "UMPA Inclusion Officer"
+  name: "Inclusion Officer"
+  start: 2023-11-01
+  end: November 2024
+  date: 2024-11-01
+  company: "University of Manchester Postgraduate Researcher's Association"
+  category: advocacy

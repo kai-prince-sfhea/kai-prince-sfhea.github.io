@@ -1,0 +1,7 @@
+---
+title: "Senior Fellowship of Advance HE (SFHEA)"
+end: awarded August 2024
+company: "University of Manchester"
+category: cpd-memberships
+date: 2024-08-01
+---

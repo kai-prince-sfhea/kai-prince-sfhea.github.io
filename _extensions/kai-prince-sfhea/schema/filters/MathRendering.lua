@@ -137,7 +137,6 @@ function link_terms_in_body(el)
 end
 
 function Meta(meta)
-    in_header = true
     if meta and meta.schema then
         local s = meta.schema
         enable_backlinks = schema.meta_bool(s.backlinks)
@@ -171,7 +170,7 @@ function Pandoc(doc)
     end
 
     -- Backlinks: unique pages this file depends on
-    if enable_backlinks then
+    if enable_backlinks and quarto.doc.is_format("html") then
         local page_set = {}
         local function consider(term)
             local tdata = TermsJSON[term]
@@ -225,7 +224,7 @@ function Pandoc(doc)
     end
 
     -- Outlinks: unique pages referencing terms defined here
-    if enable_outlinks then
+    if enable_outlinks and quarto.doc.is_format("html") then
         -- Build set of terms covered in this file (both math and non-math)
         local covered = {}
         for term, tdata in pairs(TermsJSON or {}) do
@@ -319,7 +318,9 @@ function Pandoc(doc)
                     if src ~= "" then
                         local url = schema.RelativePath(File, src:gsub("#.*$", ""))
                         if src:match("#") then url = url .. src:match("#.*$") end
-                        desc = desc .. " ([Source]("..url.."))"
+                        if quarto.doc.is_format("html") then
+                            desc = desc .. " ([Source]("..url.."))"
+                        end
                     end
                     md = md .. string.format("| %s | %s |\n", esc_pipe(term), desc)
                 end

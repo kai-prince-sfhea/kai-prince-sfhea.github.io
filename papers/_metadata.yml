@@ -14,7 +14,6 @@ format:
     include-in-header:
       - ../_extensions/kai-prince-sfhea/schema/resources/TexHeader.tex
     keep-tex: true
-    toc: true
     ton: true
 
 author:

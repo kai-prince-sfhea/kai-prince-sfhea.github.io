@@ -1,0 +1,11 @@
+---
+title: "MMath (Hons) in Mathematics"
+grade: First Class
+description: |
+    My final-year project was on "An Introduction to Hall's Theorem".
+end: Graduated July 2017
+company: "University of Manchester"
+category: uni-education
+date: 2022-07-01
+cvDescription: true
+---

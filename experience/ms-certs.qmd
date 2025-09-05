@@ -1,0 +1,7 @@
+---
+title: "Microsoft Certifications"
+name: "Microsoft Certified: Power Platform Fundamentals"
+end: certified April 2025
+date: 2025-04-01
+category: cpd-memberships
+---

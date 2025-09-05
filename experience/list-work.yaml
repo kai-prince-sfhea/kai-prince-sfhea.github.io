@@ -1,0 +1,65 @@
+- title: "Waiter"
+  start: 2016-11-01
+  end: August 2017
+  date: 2017-08-01
+  company: "Pompoko"
+  category: other-work
+- title: "Crew Member"
+  start: 2017-09-01
+  end: October 2018
+  date: 2018-10-01
+  company: "McDonald's Harpurhey"
+  category: other-work
+- title: "Line Cook"
+  start: 2018-09-01
+  end: August 2021
+  date: 2021-08-01
+  company: "TGI Fridays Royal Exchange"
+  category: other-work
+- title: "Kitchen Assistant"
+  start: 2021-07-01
+  end: March 2022
+  date: 2022-03-01
+  company: "Hampton By Hilton Manchester Northern Quarter"
+  category: other-work
+- title: "Senior Chef"
+  start: 2022-03-01
+  end: August 2021
+  date: 2022-09-01
+  company: "TGI Fridays Royal Exchange / Bolton"
+  category: other-work
+- title: "Manchester Access Programme Tutor"
+  description: |
+      Supervised Year 12 Sixth Form students enrolled on the Manchester Access Programme in completing their summer projects, including providing feedback on drafts and marking.
+  start: 2024-04-01
+  end: September 2024
+  date: 2024-09-01
+  company: "University of Manchester"
+  category: teaching
+  cvDescription: true
+- title: "MEI Levelling Up Tutor"
+  description: |
+      Supported in-person Summer Workshops for Year 12 Sixth Form students.
+  start: 2022-06-01
+  date: 2025-09-01
+  company: "University of Manchester"
+  category: teaching
+  cvDescription: true
+- title: "AMSP Outreach Mentor"
+  description: |
+      Supported weekly in-person and online Mathematical Problem-Solving Workshops for Year 12 and 13 Sixth Form students.
+  start: 2022-10-01
+  end: July 2025
+  date: 2025-07-01
+  company: "University of Manchester"
+  category: teaching
+  cvDescription: true
+- title: "DASS Student Support Worker - Physical"
+  description: |
+      I supported incoming students registered with the university's Disability Advisory & Support Service (DASS) with navigating and adjusting to the university.
+  start: 2024-08-01
+  end: June 2025
+  date: 2025-06-01
+  company: "University of Manchester"
+  category: nmh
+  cvDescription: true

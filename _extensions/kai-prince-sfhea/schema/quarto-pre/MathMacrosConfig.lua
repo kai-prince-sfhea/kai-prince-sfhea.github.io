@@ -91,7 +91,7 @@ local function create_url_title(inlines, url, capitalize)
         for _, inl in ipairs(cited_title) do
             outl = inl
             if inl.t == "Str" and capitalize then
-                outl.content = inl.content:gsub("^%l", string.upper)
+                outl.text = inl.text:gsub("^%l", string.upper)
             end
             OutputInlines:insert(outl)
         end
@@ -129,6 +129,7 @@ local function extract_math_macro(value, file)
     local variables
     local variablesDefaultString = ""
     local variablesDefaultArray = {}
+    local variablesDefaultArrayPlain = {}
 
     if MathJSONCount[cmd] == nil then
         MathJSONCount[cmd] = 1
@@ -154,6 +155,7 @@ local function extract_math_macro(value, file)
                 MandatoryVariables = 0
                 for _, string in ipairs(value.variablesDefault) do
                     table.insert(variablesDefaultArray, "O{"..pandoc.utils.stringify(string).."} ")
+                    table.insert(variablesDefaultArrayPlain, pandoc.utils.stringify(string))
                     OptionalVariables = OptionalVariables + 1
                 end
                 if #variablesDefaultArray < variables + 0 then
@@ -166,7 +168,7 @@ local function extract_math_macro(value, file)
                     MathJax = {
                         macro,
                         tonumber(variables),
-                        variablesDefaultArray
+                        variablesDefaultArrayPlain
                     },
                     LaTeX = "\\NewDocumentCommand{\\".. cmd .."}{" .. pandoc.utils.stringify(variablesDefaultArray) .. "}{" .. macro .. "}"
                 }
@@ -268,19 +270,21 @@ for _, file in ipairs(Files) do
             TermsJSON["@"..ref].divMD = schema.convert_md(found_block, metadata)
             TermsJSON["@"..ref].blockType = found_block.t
             local Div_data = schema.LoadDiv(TermsJSON["@"..ref].divMD)
-            TermsJSON["@"..ref].blockMD = schema.convert_md(Div_data.block, metadata)
-            TermsJSON["@"..ref].HTMLMD = TermsJSON["@"..ref].blockMD
-            if Div_data.title then
-                TermsJSON["@"..ref].title = schema.convert_md(Div_data.title, metadata):gsub("%s+", " ")
-                TermsJSON["@"..ref].titleMD = schema.convert_md(Div_data.title, metadata):gsub("%s+", " "):gsub("(%a)(%a*)", function(a,b) return string.upper(a)..b end)
-                TermsJSON["@"..ref].urlTitle = schema.convert_md(create_url_title(Div_data.title,file, false), metadata):gsub("%s+", " ")
-                TermsJSON["@"..ref].urlMD = schema.convert_md(create_url_title(Div_data.title,file, true), metadata):gsub("%s+", " ")
-            end
-            if Div_data.templateMap then
-                TermsJSON["@"..ref].templateMap = Div_data.templateMap
-            end
-            if Div_data.classes and #Div_data.classes > 0 then
-                TermsJSON["@"..ref].classes = Div_data.classes
+            if Div_data ~= nil then 
+                TermsJSON["@"..ref].blockMD = schema.convert_md(Div_data.block, metadata)
+                TermsJSON["@"..ref].HTMLMD = TermsJSON["@"..ref].blockMD
+                if Div_data.title then
+                    TermsJSON["@"..ref].title = schema.convert_md(Div_data.title, metadata):gsub("%s+", " ")
+                    TermsJSON["@"..ref].titleMD = schema.convert_md(Div_data.title, metadata):gsub("%s+", " "):gsub("(%a)(%a*)", function(a,b) return string.upper(a)..b end)
+                    TermsJSON["@"..ref].urlTitle = schema.convert_md(create_url_title(Div_data.title,file, false), metadata):gsub("%s+", " ")
+                    TermsJSON["@"..ref].urlMD = schema.convert_md(create_url_title(Div_data.title,file, true), metadata):gsub("%s+", " ")
+                end
+                if Div_data.templateMap then
+                    TermsJSON["@"..ref].templateMap = Div_data.templateMap
+                end
+                if Div_data.classes and #Div_data.classes > 0 then
+                    TermsJSON["@"..ref].classes = Div_data.classes
+                end
             end
         end
     end
@@ -367,21 +371,21 @@ Math = {
 }
 
 -- Save MathJSON Output to File
-MathJSONEncoding = schema.pretty_json(pandoc.json.encode(Math))
+MathJSONEncoding = schema.json_encode(Math)
 do
     local f = io.open(OutputMathJSONFile, "w")
     if f then f:write(MathJSONEncoding); f:close() end
 end
 
 -- Save TermsJSON Output to File
-TermsJSONEncoding = schema.pretty_json(pandoc.json.encode(TermsJSON))
+TermsJSONEncoding = schema.json_encode(TermsJSON)
 do
     local f = io.open(OutputTermsFile, "w")
     if f then f:write(TermsJSONEncoding); f:close() end
 end
 
 -- Save DocJSON Output to File
-DocJSONEncoding = schema.pretty_json(pandoc.json.encode(DocJSON))
+DocJSONEncoding = schema.json_encode(DocJSON)
 do
     local f = io.open(OutputDocumentContentsFile, "w")
     if f then f:write(DocJSONEncoding); f:close() end

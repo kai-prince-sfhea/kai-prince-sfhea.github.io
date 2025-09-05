@@ -1,16 +1,229 @@
 ---
 title: Kai Prince
 about:
-    template: trestles
-    image: images/kai-prince.jpg
-    image-alt: "A picture of Kai Prince"
-    links:
-        - icon: linkedin
-          text: LinkedIn
-          href: https://www.linkedin.com/in/kai-prince-cs01/
-        - icon: instagram
-          text: Instagram
-          href: https://www.instagram.com/kai_prince_sfhea/
----
+  id: about-card
+  template: trestles
+  image: images/kai-prince.jpg
+  image-alt: "A picture of Kai Prince"
+  links:
+      - icon: linkedin
+        text: LinkedIn
+        href: https://www.linkedin.com/in/kai-prince-cs01/
+      - icon: instagram
+        text: Instagram
+        href: https://www.instagram.com/kai_prince_sfhea/
+      - icon: envelope
+        text: Email
+        href: mailto:kai.prince@manchester.ac.uk
 
-About this site
+schema:
+  disable-terms: true
+
+listing:
+  - id: uni-education
+    contents:
+      - experience
+      - experience/list-training.yaml
+    sort: 
+      - "date desc"
+      - "start desc"
+    date-format: "MMMM YYYY"
+    field-types: 
+      start: date
+    template: experience/cv-listing.ejs
+    template-params:
+      header: "University"
+    categories: true
+    filter-ui: false
+    include:
+      category: uni-education
+  - id: college-education
+    contents:
+      - experience
+      - experience/list-training.yaml
+    sort: 
+      - "date desc"
+      - "start desc"
+    date-format: "MMMM YYYY"
+    field-types: 
+      start: date
+    template: experience/cv-listing.ejs
+    template-params:
+      header: "Sixth Form"
+    categories: true
+    filter-ui: false
+    include:
+      category: college-education
+
+  - id: teaching
+    contents:
+      - experience
+      - experience/list-work.yaml
+    sort: 
+      - "date desc"
+      - "start desc"
+    date-format: "MMMM YYYY"
+    field-types: 
+      start: date
+    template: experience/cv-listing.ejs
+    template-params:
+      header: "Teaching"
+    categories: true
+    filter-ui: false
+    include:
+      category: teaching
+  - id: nmh
+    contents:
+      - experience
+      - experience/list-work.yaml
+    sort: 
+      - "date desc"
+      - "start desc"
+    date-format: "MMMM YYYY"
+    field-types: 
+      start: date
+    template: experience/cv-listing.ejs
+    template-params:
+      header: "Non-Medical Helper"
+    categories: true
+    filter-ui: false
+    include:
+      category: nmh
+  - id: other-work
+    contents:
+      - experience
+      - experience/list-work.yaml
+    sort: 
+      - "date desc"
+      - "start desc"
+    date-format: "MMMM YYYY"
+    field-types: 
+      start: date
+    template: experience/cv-listing.ejs
+    template-params:
+      header: "Other Work"
+    categories: true
+    filter-ui: false
+    include:
+      category: other-work
+
+  - id: advocacy
+    contents:
+      - experience
+      - experience/list-volunteering.yaml
+    sort: 
+      - "date desc"
+      - "start desc"
+    date-format: "MMMM YYYY"
+    field-types: 
+      start: date
+    template: experience/cv-listing.ejs
+    template-params:
+      header: "Advocacy"
+    categories: true
+    filter-ui: false
+    include:
+      category: advocacy
+  - id: other-volunteering
+    contents:
+      - experience
+      - experience/list-volunteering.yaml
+    sort: 
+      - "date desc"
+      - "start desc"
+    date-format: "MMMM YYYY"
+    field-types: 
+      start: date
+    template: experience/cv-listing.ejs
+    template-params:
+      header: "Other"
+    categories: true
+    filter-ui: false
+    include:
+      category: other-volunteering
+
+  - id: cpd-memberships
+    contents:
+      - experience
+      - experience/list-training.yaml
+      - experience/list-volunteering.yaml
+      - experience/list-work.yaml
+    sort: 
+      - "date desc"
+      - "start desc"
+    date-format: "MMMM YYYY"
+    field-types: 
+      start: date
+    template: experience/cv-listing.ejs
+    template-params:
+      header: "CPD Accreditations & Registered Memberships"
+    categories: true
+    filter-ui: false
+    include:
+      category: cpd-memberships
+  - id: hons-awards
+    contents:
+      - experience
+      - experience/list-training.yaml
+      - experience/list-volunteering.yaml
+      - experience/list-work.yaml
+    sort: 
+      - "date desc"
+      - "start desc"
+    date-format: "MMMM YYYY"
+    field-types: 
+      start: date
+    template: experience/cv-listing.ejs
+    template-params:
+      header: "Honours and Awards"
+    categories: true
+    filter-ui: false
+    include:
+      category: hons-awards
+
+format:
+  schema-html: default
+  pdf: default
+---
+:::{#about-card}
+
+Introduction
+
+:::
+
+## Education
+
+:::{#uni-education}
+:::
+
+:::{#college-education}
+:::
+
+## Work Experience
+
+:::{#teaching}
+:::
+
+:::{#nmh}
+:::
+
+:::{#other-work}
+:::
+
+## Volunteering
+
+:::{#advocacy}
+:::
+
+:::{#other-volunteering}
+:::
+
+## Recognition
+
+:::{#cpd-memberships}
+:::
+
+:::{#hons-awards}
+:::
+
+## Skills

@@ -1,0 +1,8 @@
+---
+title: "Graduate Teaching Assistant"
+start: 2022-09-01
+end: June 2024
+date: 2024-06-01
+company: "University of Manchester"
+category: teaching
+---
