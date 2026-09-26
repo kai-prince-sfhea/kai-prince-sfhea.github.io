@@ -282,5 +282,8 @@
   "he_diversity_toolkit/recommended_practice/recommended_practice.qmd": {
     "recommended_practice.html": "a4ba862e",
     "recommended_practice.tex": "06cd1a6b"
+  },
+  "blogs/KEHubTeamworkingForMaths.qmd": {
+    "KEHubTeamworkingForMaths.html": "dedae4e1"
   }
 }
