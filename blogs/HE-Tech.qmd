@@ -155,7 +155,7 @@ To storyboard the active assessment-feedback loop, we shall use the "Riddle of T
 2. SLM processes this into an intermediary graph representation that identifies claim dependencies.
 3. The intermediary graph representation outputs Isabelle/HOL code for verification, including:
 
-```{isabelle}
+```{{isabelle}}
 lemma truth_teller_reports_safety:
 assumes "guard_at w g = TruthTeller"
 assumes "door_is_safe w d"
@@ -223,7 +223,7 @@ This appendix demonstrates that the proposed verification approach is technicall
 
 The following code was iteratively developed with Copilot so that I could translate my ideas into a verifiable example, which also indicates GenAI as a potential assistant within a scenario customisation interface.
 
-```{isabelle}
+```{{isabelle}}
 theory Riddle_of_Two_Guards
   imports Main
 begin
