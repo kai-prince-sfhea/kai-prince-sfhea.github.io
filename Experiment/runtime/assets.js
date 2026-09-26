@@ -16,7 +16,8 @@ export async function installAssets({consent=false,signal,onProgress=()=>{}}={})
   const file=manifest.files[i];onProgress({phase:'Browser runtimes',done:i,total:manifest.files.length});
   const stored=await cache.match(file.url);
   if(stored&&hex(await crypto.subtle.digest('SHA-256',await stored.arrayBuffer()))===file.sha256)continue;
-  const r=await fetch(file.url,{signal});if(!r.ok)throw Error('Download failed: '+file.url);
+  if(stored)await cache.delete(file.url);
+  const r=await fetch(file.url,{signal,cache:'reload'});if(!r.ok)throw Error('Download failed: '+file.url);
   const bytes=await r.arrayBuffer();const digest=hex(await crypto.subtle.digest('SHA-256',bytes));
   if(digest!==file.sha256)throw Error('Integrity check failed: '+file.url);
   await cache.put(file.url,new Response(bytes,{headers:r.headers}));
