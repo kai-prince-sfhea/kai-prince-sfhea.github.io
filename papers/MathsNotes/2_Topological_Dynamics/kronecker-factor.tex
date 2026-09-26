@@ -66,6 +66,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -127,15 +128,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -193,9 +191,11 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
 \theoremstyle{plain}
-\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -211,22 +211,37 @@
 \makeatother
 
 \newcommand{\AmenableGroup}{{\Gamma}}
+\newcommand{\AmenableGroupElement}{{\gamma}}
+\newcommand{\ContinuousFunctionSpace}[1]{{\mathscr{C}({#1})}}
+\newcommand{\CountingMeasure}[1]{{\left|#1\right|}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
-\newcommand{\KroneckerAction}{{H}}
+\newcommand{\FurstenbergFolner}[1][{\vphantom{}}]{{\Psi}_{#1}}
+\newcommand{\Group}{{\Gamma}}
+\newcommand{\GroupAction}[2]{T^{#1}{#2}}
+\newcommand{\KroneckerAction}[2]{S^{#1}{#2}}
+\newcommand{\KroneckerFactorMap}{p}
+\newcommand{\KroneckerGroup}{{H}}
 \newcommand{\KroneckerMeasure}{{m_Z}}
+\newcommand{\KroneckerProductAction}[2]{(T\times S)^{#1}{#2}}
 \newcommand{\KroneckerSpace}{{Z}}
 \newcommand{\KroneckerSpaceElement}{{z}}
 \newcommand{\Measure}{{\mu}}
 \newcommand{\ProjectionMap}[1][\vphantom{}]{{\pi}_{#1}}
+\newcommand{\ShiftSpace}{{X}}
+\newcommand{\ShiftSpaceElement}{{x}}
 \newcommand{\Topology}{{\tau}}
-\newcommand{\KroneckerFactor}{{(\KroneckerSpace,\KroneckerMeasure,\KroneckerAction)}}
+\newcommand{\FurstenbergSystem}{(\ShiftSpace,\Measure,T)}
+\newcommand{\KroneckerFactor}{{(\KroneckerSpace,\KroneckerMeasure,S)}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={Kronecker Factor},
-  pdfauthor={Kai Prince},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -237,11 +252,47 @@
 
 
 \title{Kronecker Factor}
-\author{Kai Prince}
-\date{2025-09-05}
+\author{}
+\date{2026-09-26}
 \begin{document}
 \maketitle
 
+
+We want to prove the following result generalised for amenable groups,
+where \(T\) is replaced with \(\AmenableGroup\):
+
+\begin{proposition}[{Host, 2019, Proposition
+5}]\protect\hypertarget{prp-KroneckerGenericSource0}{}\label{prp-KroneckerGenericSource0}
+
+Let \((\ShiftSpace,T)\) be a topological dynamical system,
+\(\ShiftSpaceElement_0\in\ShiftSpace\), and \(\Measure\) be an ergodic
+invariant probability measure supported on the closed orbit of
+\(\ShiftSpaceElement_0\) under \(T\). Let
+\((\KroneckerFactor,\KroneckerMeasure,S)\) be the Kronecker factor of
+\((\ShiftSpace,\Measure,T)\), with factor map
+\(\KroneckerFactorMap:\ShiftSpace\rightarrow\KroneckerSpace\). Let
+\(\ShiftSpace\times\KroneckerSpace\) be endowed with the transformation
+of \(T\times S\). Let \(\tilde\Measure\) be the measure on
+\(\ShiftSpace\times\KroneckerSpace\) and image of \(\Measure\) under the
+map \(\ShiftSpace\rightarrow\ShiftSpace\times\KroneckerSpace\) where
+\(\ShiftSpaceElement\mapsto(\ShiftSpaceElement,\KroneckerFactorMap(\ShiftSpaceElement))\).
+
+Then there exists a Følner sequence \(\tilde{\Folner}\) and a point
+\(\KroneckerSpaceElement_0\in\KroneckerSpace\) such that
+\((\ShiftSpaceElement_0,\KroneckerSpaceElement_0)\) is generic for
+\(\tilde{\Measure}\) along \(\tilde{\Folner}\).
+
+\end{proposition}
+
+Host (\citeproc{ref-host2019short}{2019}) also concludes that, for every
+\(f\in\ContinuousFunctionSpace{X}\) and every
+\(h\in\ContinuousFunctionSpace{Z}\), we have
+\[\int_Xf(\ShiftSpaceElement)\cdot (h\circ\KroneckerFactorMap)(\ShiftSpaceElement)=\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\tilde{\Folner}_N}}\sum_{n\in\tilde{\Folner}_N}f(T^n\ShiftSpaceElement_0)h(S^n\KroneckerSpaceElement_0). \]
+
+\section{Background}\label{background}
+
+Firstly, we have the defininitions of the Kronecker subsystem and
+Kronecker factor below:
 
 \begin{definition}[{Jamneshan and Kreidler, 2025, Definition 7.1.14 \&
 Subsection
@@ -259,57 +310,645 @@ We refer to \((X_\text{kro},\Topology_\text{kro})\) as the
 
 \end{definition}
 
-\begin{proposition}[{cf. Host, 2019, Proposition
-5}]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
+Kra and Host (\citeproc{ref-kra2007uniformity}{2007}, Proposition 6.1)
+and Host and Kra (\citeproc{ref-Host2018NilpotentSI}{2018}, Proposition
+24.3) were the sources given for Host
+(\citeproc{ref-host2019short}{2019}, Proposition 5). We will compare
+these original results with the result we intend to prove.
 
-Let \((X,\AmenableGroup)\) be a topological dynamical system where
-\(\AmenableGroup\) is an amenable group, \(x_0\in X\), and \(\Measure\)
-be an ergodic invariant probability measure supported on the closed
-orbit of \(x_0\) under the action of \(\AmenableGroup\).
+\begin{proposition}[{Kra and Host, 2007, Proposition
+6.1}]\protect\hypertarget{prp-KroneckerGenericSource1}{}\label{prp-KroneckerGenericSource1}
 
-Let \(\KroneckerFactor\) be the \emph{Kronecker factor} of
-\((X,\Measure,\AmenableGroup)\), with factor map
-\(\ProjectionMap:X\rightarrow\KroneckerSpace\).
+Let \((X,T)\) be a topological dynamical system, \(x_0\in X\) a
+transitive point, and \(\Measure\) an invariant ergodic measure on
+\(X\). Let \((Y,S)\) be a distal topological dynamical system, \(\nu\)
+an invariant measure on \(Y\), and
+\(\KroneckerFactorMap:\ (X,\Measure,T)\mapsto(Y,\nu,S)\) a measure
+theoretic factor map.
 
-Let \(X\times\KroneckerSpace\) be endowed with the group action of
-\(\AmenableGroup\times\KroneckerAction\). Let \(\tilde\Measure\) be the
-measure on \(X\times\KroneckerSpace\) and image of \(\Measure\) under
-the map \(X\rightarrow X\times\KroneckerSpace\) where
-\(x\mapsto(x,\ProjectionMap(x))\).
-
-Then there exists a Følner sequence \(\tilde{\Folner}\) and a point
-\(\KroneckerSpaceElement_0\in\KroneckerSpace\) such that
-\((x_0,\KroneckerSpaceElement_0)\) is generic for \(\tilde{\Measure}\)
-along \(\tilde{\Folner}\).
+Then there exists a point \(y_0\in Y\) and a sequence of intervals
+\(\boldsymbol{I}=(I_j:j\geq1)\) whose lengths tend to infinity such that
+for every continuous function \(f\) on \(X\) and every continuous
+function \(g\) on \(Y\),
+\[\int f(x)(g\circ\KroneckerFactorMap)(x)\ \mathrm{d}\Measure(x) = \lim_{j\rightarrow+\infty}\frac{1}{I_j}\sum_{n\in \CountingMeasure{I_j}}f(T^nx_0)g(s^ny_0). \]
 
 \end{proposition}
 
-The sources given by Host \citeproc{ref-host2019short}{(2019)} for this
-result were Kra and Host \citeproc{ref-kra2007uniformity}{(2007)},
-Proposition 6.1 and Host and Kra
-\citeproc{ref-Host2018NilpotentSI}{(2018)}, Proposition 24.3.
+Comparing the assumptions for
+Proposition~\ref{prp-KroneckerGenericSource0} with
+Proposition~\ref{prp-KroneckerGenericSource1}, we have:
 
-\phantomsection\label{refs}
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0577}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4038}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5385}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Proposition~\ref{prp-KroneckerGenericSource0}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Proposition~\ref{prp-KroneckerGenericSource1}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & & \(x_0\in X\) has been specified as a transitive point. \\
+2 & \(\Measure\) has been specified as being supported on the closed
+orbit of \(x_0\) under the action of \(T\). & \\
+3 & \((Y,S)\) is defined as the Kronecker factor \(\KroneckerFactor\).
+& \\
+\end{longtable}
+}
+
+Additionally:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\tilde\Measure\) appears to be a joining between \(\Measure\) and
+  \(\nu\).
+\item
+  \(\boldsymbol{I}\) is the Følner sequence \(\tilde\Phi\).
+\end{itemize}
+
+Left to check definitions for:
+
+\begin{itemize}
+\tightlist
+\item
+  (\citeproc{ref-kra2007uniformity}{Kra and Host, 2007}, Theorem 3.1):
+  Let \(k\geq1\) be an integer. For a \(k\)-step nilsystem,
+  \((X=G/\Gamma,T)\) with Haar measure \(\mu\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(G\) is a \(k\)-step nilpotent Lie group
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \(G\) is a group where, for \(g,h\in G\), we write
+      \([g,h]=ghg^{-1}h^{-1}\) for the commutator of \(g\) and \(h\) and
+      we write \([A,B]\) for the subgroup spanned by
+      \(\{[a,b]:a\in A,b\in B \}\).
+    \item
+      The commutator subgroups \(G_j\), \(j\geq1\), are defined
+      inductively by setting \(G_1=G\) and \(G_{j+1}=[G_j,G]\).
+    \item
+      Let \(k\geq 1\) be an integer. We say that \(G\) is a \(k\)-step
+      nilpotent if \$G\_\{k+1\}is the trivial subgroup.
+    \end{itemize}
+  \item
+    \(\Gamma\) is a discrete cocompact subgroup of \(G\)
+  \item
+    The compact manifold \(X=G/\Gamma\) is called a \(k\)-step
+    nilmanifold
+
+    \begin{itemize}
+    \tightlist
+    \item
+      The group \(G\) acts on \(X\) by left translations and we write
+      this action as \((g,x)\mapsto g.x\).
+    \end{itemize}
+  \item
+    \((X,T)\) is \emph{transitive} (admits a dense orbit).
+
+    \begin{itemize}
+    \tightlist
+    \item
+      This is equivalent to being minimal, uniquely ergodic, or
+      \((X,\Measure,T)\) being ergodic.
+    \end{itemize}
+  \end{itemize}
+\item
+  {[}distal{]}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    previously seen def
+
+    \begin{itemize}
+    \tightlist
+    \item
+      A topological system \((X,T)\) is \textbf{distal} if
+      \[\inf\{d(T^nx,T^ny):n\in\mathbb{N}\}>0 \] for all
+      \(x\neq y\in X\), where \(d\) is the metric on \(X\).
+      (\citeproc{ref-kra2022infinite}{Kra et al., 2022})
+    \end{itemize}
+  \item
+    a def exists for any semigroup action by assuming there's a metric
+    compact space
+  \item
+    a def exists for equicontinuous
+  \item
+    Discuss why has distal systems been used?
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Is it required for the application of the result?
+    \item
+      Is it required for the proof?
+    \end{itemize}
+  \item
+    check the Kronecker system in my case is distal
+  \end{itemize}
+\end{itemize}
+
+\begin{proof}[{Kra and Host, 2007, p. 257}]
+{[}Section 4.1 (p.~24) - association of \((X,T)\) and \(x_0\) to a
+sequence (the start is just FCP){]}
+
+Section 4.1:
+
+\begin{itemize}
+\tightlist
+\item
+  All FCP?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Define: separable subalgebra of \(\ell^\infty(\mathbb{Z})\)
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Separable subalgebra of \(\ell^\infty(\mathbb{Z})\) is meant as
+      unitary subalgebra of \(\ell^\infty(\mathbb{Z})\) as well as (*)
+
+      \begin{itemize}
+      \tightlist
+      \item
+        ISem28: An amenable group, \(\AmenableGroup\), has a group
+        homomorphism \(U:\AmenableGroup\rightarrow\mathscr{U}(H)\) where
+        \(\AmenableGroupElement\mapsto U_\AmenableGroupElement\) is a
+        unitary representation of \(\Gamma\) on \(H\). The set of all
+        unitary operators, \(\mathscr{U}(H)\), is the subset of the set
+        of linear isometries \(U:H\rightarrow H\) (such that
+        \(||Uf||=||f||\) for all \(f\in H\)) that are surjective (and
+        thus bijective).
+      \item
+        Would the amenable case of the separable subalgebra be the case
+        where \(f=U_\gamma\circ r\) where \(r\in\ell^\infty(X)\)?
+      \item
+        Kra and Host (\citeproc{ref-kra2007uniformity}{2007}) is using a
+        functional analysis approach to FCP {[}Attempt following the
+        steps with the FCP we covered{]}.
+      \item
+        For \(\ell^\infty(\AmenableGroup)\), \(a\) could be
+        \((\boldsymbol{1}_\AmenableGroupElement:\AmenableGroupElement\in \AmenableGroup)\).
+      \item
+        Easier to think of \(\ell^\infty(\mathbb{Z})\) as all the
+        bounded functions on \(\mathbb{Z}\) and has the supremum norm.
+        For \(B\subset\mathbb{Z}\) you can define a function
+        \(f\in\ell^\infty(\mathbb{Z})\), i.e., \(\boldsymbol{1}_B\).
+      \end{itemize}
+    \item
+      (*):
+
+      \begin{itemize}
+      \tightlist
+      \item
+        invariant under the shift
+      \item
+        invariant under complex conjugation
+      \item
+        closed in \(\ell^\infty(\mathbb{Z})\)
+      \item
+        {[}separable{]} for the uniform norm \(||\cdot||_\infty\)
+      \end{itemize}
+    \item
+      We mostly consider the case of the separable subalgebra
+      \(\mathcal{A}(\boldsymbol{a})\) spanned by a bounded sequence
+      \(\boldsymbol{a}=(a_n:n\in\mathbb{Z})\).
+    \item
+      The shift on \(\ell^\infty(\mathbb{Z})\) is written as \(\sigma\)
+      and thus, for a sequence \(\boldsymbol{a}=(a_n:n\in\mathbb{Z})\),
+      \(\sigma\boldsymbol{a}=(a_{n+1}:n\in\mathbb{Z})\)
+    \item
+      We use \(\bar{\boldsymbol{a}}\) to denote the conjugate sequence
+      \((\bar{\boldsymbol{a}}:n\in\mathbb{Z})\).
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+{[}If \(Y\) denotes the Kronecker factor of \((X,\Measure,T)\){]}
+
+{[}The sequence of intervals \(I\) plays the same role as the
+``Kronecker complete processes'' of {[}BFW{]}{]}
+
+We write \(d_X(\cdot,\cdot)\) and \(d_Y(\cdot,\cdot)\) for distances on
+\(X\) and \(Y\), defining the topologies of these spaces.
+
+Subsection 6.1.1 (p.~39)
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathcal{B}\) closed subalgebra of \(\text{L}^\infty(\Measure)\)
+  spanned by \(\mathcal{C}(X)\) and the function \(g\circ\pi\) with
+  \(g\in\mathcal{C}(Y)\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It is unitary, separable, and invariant under complex conjugation
+    and under \(T\).
+  \end{itemize}
+\item
+  \(W\) is the Gelfand spectrum of this algebra.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Let \(W\) be the Gelfand spectrum of \(\mathcal{B}\) then \(W\)
+    consists of the set of unitary homomorphisms from \(\mathcal{B}\) to
+    the complex numbers.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \(W\) will be a ``nice'' space - compact metric
+    \item
+      Anything we have on \(\mathcal{B}\) will have analogies in \(W\)
+
+      \begin{itemize}
+      \tightlist
+      \item
+        As \(\mathcal{B}\) is invariant under \(T\), then an equivalent
+        invariance is in \(W\), see \(R:W\rightarrow W\).
+      \item
+        Like how \(Tf=f\circ T\) looks at pointwise transformations on
+        \(\mathcal{B}\), this goes a step further with \(R\) on \(W\).
+      \end{itemize}
+    \item
+      Can construct the Kronecker factor with the Gelfand spectrum.
+
+      \begin{itemize}
+      \tightlist
+      \item
+        This would require a \(\mathcal{B}\) generated by the
+        eigenfunctions, which relates to our previous work on assuming
+        an Sigma Algebra of almost-invariant subsets.
+      \item
+        Compare with ISem28 Exercise 8.5.
+      \item
+        This method differs to using disintegrations as disintegrations
+        start with assuming a sigma algebra of almost-invariant subsets
+        whereas Gelfand spectrums starts with all the eigenfunctions
+        (which may not completely correspond to almost-invariant
+        subsets) and create a sigma algebra from this (thus being more
+        general).
+      \end{itemize}
+    \end{itemize}
+  \item
+    As \(\mathcal{B}\) is separable, \(W\) is a compact metrizable
+    space.
+  \item
+    By def, there exists an isometric isomorphism of algebras
+    \(\Psi:\mathcal{C}(W)\rightarrow\mathcal{B}\).
+
+    \begin{itemize}
+    \tightlist
+    \item
+      For \(\boldsymbol{b}\in\mathcal{B}\), the function
+      \(\Psi^{-1}(\boldsymbol{b})\) is called \emph{the function
+      associated to} \(\boldsymbol{b}\).
+    \item
+      The map \(\boldsymbol{b}\mapsto b_0\) is a character of the
+      algebra \(\mathcal{B}\). Thus, there exists a point \(w_0\in W\)
+      with \$f(w\_0)=\Psi(f)\_0 for all \(f\in\mathcal{C}(W)\)
+    \end{itemize}
+  \end{itemize}
+\item
+  The shift on \(\mathcal{B}\) induces a homeomorphism
+  \(R:W\rightarrow W\) satisfying \(\Psi(f\circ T)=\Psi(f)\circ R\) for
+  all functions \(f\in\mathcal{C}(W)\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Therefore, for every \(f\in\mathcal{C}(W)\), \(\Psi(f)\) is the
+    sequence \[\Psi(f)=\left(f(T^nw_0):n\in\mathbb{Z} \right). \]
+  \item
+    If \(f\in\mathcal{C}(W)\) satisfies \(f(T^nw_0)=0\) for all
+    \(n\in\mathbb{Z}\), then the sequence given by
+    \(\Psi(\boldsymbol{b})=f\) is identically zero and so \(f\) itself
+    is identifcally zero.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      It follows that the point \(w_0\) of \(W\) is transitive, meaning
+      that its orbit \(\{T^nw_0:n\in\mathbb{Z}\}\) is dense in \(W\).
+    \end{itemize}
+  \end{itemize}
+\item
+  The triple \((W,T,w_0)\) is called the \emph{pointed topological
+  dynamical system associated to the algebra} \(\mathcal{B}\).
+\item
+  The inclusion of \(\mathcal{C}(X)\) in \(\mathcal{B}\) induces a
+  continuous surjective map \(p:W\rightarrow X\) satisfying
+  \(f\circ p=\Psi(f)\) for every continuous function \(f\) on \(X\) and
+  we have that \(T\circ p=p\circ R\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Similarly, the map \(g\mapsto g\circ\pi\) from \(\mathcal{C}(Y)\) to
+    \(\mathcal{B}\) is an isometric homomorphism of algebras and thus
+    induces a continuous surjective map \(q:W\rightarrow Y\) satisfying
+    \(g\circ q=\Psi(g\circ\pi)\) for all continuous functions \(g\) on
+    \(Y\).
+  \item
+    We have that \(S\circ q=q\circ R\) so \(p:(W,R)\rightarrow(X,T)\)
+    and \(q:(W,R)\rightarrow(Y,S)\) are factor maps, in the topological
+    sense.
+  \end{itemize}
+\item
+  The map \(f\mapsto\int f\ \mathrm{d}\Measure\) is a positive linear
+  form on the algebra \(\mathcal{B}\) and thus, there exists a unique
+  probability measure \(\rho\) on \(W\) satisfying
+  \[\int f\ \mathrm{d}\Measure=\int\Psi(f)\ \mathrm{d}\rho\qquad\text{for all functions }f\in\mathcal{B}. \]
+
+  \begin{itemize}
+  \tightlist
+  \item
+    As \(\Psi(f\circ T)=\Psi(f)\circ R\) for all \(f\in\mathcal{B}\) and
+    \(\mu\) is invariant under \(T\), the measure \(\rho\) is invariant
+    under \(R\).
+  \item
+    As \(\Psi(f)=f\circ p\) for all continuous functions \(f\) on \(X\),
+    we have that the image of \(\rho\) under \(p\) is equal to \(\mu\).
+  \item
+    Therefore, \(p:(W,\rho,R)\rightarrow(X,\mu,T)\) is a measure
+    theoretic factor map.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Moreover, for every function \(f\in\mathcal{B}\),
+      \[\int|\Psi(f)|^2\ \mathrm{d}\rho=\int\Psi(|f|^2)\ \mathrm{d}\rho=\int|f|^2\ \mathrm{d}\mu \]
+      and the map \(\Psi\) is an isometry from the space \(\mathcal{B}\)
+      endowed with the norm \(\text{L}^2(\mu)\) into the space
+      \(\text{L}^2(\rho)\).
+    \end{itemize}
+  \end{itemize}
+\item
+  Since \(\mathcal{C}(X)\) is dense in \(\mathcal{B}\) under the
+  \(\text{L}^2(\mu)\) norm and since \(\Psi(f)=f\circ p\) for
+  \(f\in\mathcal{C}(X)\), we have that, for all \(f\in\mathcal{B}\),
+  \[\Psi(f)=f\circ p\quad(p\text{-almost everywhere}). \]
+\item
+  We claim that the map \(p:(W,\rho,R)\rightarrow(X,\mu,T)\) is an
+  isomorphism between measure preserving systems.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Indeed, the range of the map
+    \[f\mapsto f\circ p:\text{L}^2(\mu)\rightarrow\text{L}^2(\rho) \] is
+    closed in \(\text{L}^2(\rho)\) becuase this map is an isometry, and
+    it contains \(\Psi(\mathcal{B})=\mathcal{C}(W)\) and thus it is
+    equal to \(\text{L}^2(\rho)\).
+
+    \begin{itemize}
+    \tightlist
+    \item
+      In particular, \((W,\rho,R)\) is ergodic.
+    \end{itemize}
+  \end{itemize}
+\item
+  Finally, for every function \(g\in\mathcal{C}(Y)\), we have that
+  \(g\circ q=\Psi(g\circ\pi)=g\circ\pi\circ p\) (\(\rho\)-almost
+  everywhere) and so \(q=\pi\circ p\) (\(\rho\)-almost everywhere).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    In particular, the image of \(\rho\) under \(q\) is \(\nu\).
+  \end{itemize}
+\end{itemize}
+
+Subsection 6.1.2 (p.~40)
+
+\begin{itemize}
+\tightlist
+\item
+  Since \(\rho\) is ergocid under \(R\), it admits a generic point
+  \(w_1\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Recall that this means that, for every \(f\in\mathcal{C}(W)\),
+    \[\lim_{j\rightarrow+\infty}\frac{1}{j}\sum_{n=0}^{j-1}f(R^nw_1)=\int f\ \mathrm{d}\rho. \]
+  \end{itemize}
+\item
+  Set \(x_1=p(w_1)\).
+\item
+  Since \(x_0\) is a transitive point of \(X\), we can choose,
+\end{itemize}
+
+\end{proof}
+
+\section{Conclusion}\label{conclusion}
+
+\begin{proposition}[{cf. Host, 2019, Proposition
+5}]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
+
+{Let \((\ShiftSpace,\AmenableGroup)\) be a topological dynamical system
+where \(\AmenableGroup\) is an amenable group,
+\(\ShiftSpaceElement_0\in\ShiftSpace\), and \(\Measure\) be an ergodic
+invariant probability measure supported on the closed orbit of
+\(\ShiftSpaceElement_0\) under the action of \(\AmenableGroup\).}
+
+Let \(\KroneckerFactor\) be the Kronecker factor of
+\(\FurstenbergSystem\), with factor map
+\(\KroneckerFactorMap: \ShiftSpace\rightarrow\KroneckerSpace\).
+
+Let \(\ShiftSpace\times\KroneckerSpace\) be endowed with the group
+action of \(\AmenableGroup\times\KroneckerGroup\). Let
+\(\tilde\Measure\) be the measure on
+\(\ShiftSpace\times\KroneckerSpace\) and image of \(\Measure\) under the
+map \(\ShiftSpace\rightarrow\ShiftSpace\times\KroneckerSpace\) where
+\(\ShiftSpaceElement\mapsto(\ShiftSpaceElement,\KroneckerFactorMap(\ShiftSpaceElement))\).
+
+Then there exists a Følner sequence \(\tilde{\Folner}\) and a point
+\(\KroneckerSpaceElement_0\in\KroneckerSpace\) such that
+\((\ShiftSpaceElement_0,\KroneckerSpaceElement_0)\) is generic for
+\(\tilde{\Measure}\) along \(\tilde{\Folner}\).
+
+\end{proposition}
+
+\begin{proof}
+Let \(d_X(\cdot,\cdot)\) and \(d_Y(\cdot,\cdot)\) for distances on \(X\)
+and \(Y\).
+
+Let \(\mathcal{B}\) be the closed subalgebra of
+\(\text{L}^\infty(\Measure)\).
+\end{proof}
+
+\section{Recent Publications}\label{recent-publications}
+
+\begin{itemize}
+\tightlist
+\item
+  Reflect on amenable result from newer paper within the wider context
+  of the paper.
+\item
+  Write own proof not using Gelfand spectrum.
+\end{itemize}
+
+Relatively recently, Charamaras and Mountakis
+(\citeproc{ref-charamaras2024findingproductsetsclasses}{2024}) proved
+analogous results for amenable groups:
+
+\begin{proposition}[{Charamaras and Mountakis, 2024, Lemma
+3.5}]\protect\hypertarget{prp-KroneckerGenericAmenable}{}\label{prp-KroneckerGenericAmenable}
+
+Let \(\AmenableGroup\) be an amenable group, let \(\FurstenbergSystem\)
+be an ergodic \(\AmenableGroup\)-system, \(\KroneckerFactor\) be its
+Kronecker factor and
+\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)
+be a factor map.
+
+If \(\ShiftSpaceElement\in\ShiftSpace\) is a transitive point, then
+there exists a point \(\KroneckerSpaceElement\in\KroneckerSpace\) and a
+Følner sequence \(\FurstenbergFolner'\) such that
+\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\FurstenbergFolner[N]'}}\sum_{\AmenableGroupElement\in\FurstenbergFolner[N]'}f_1(\GroupAction{\AmenableGroupElement}{\ShiftSpaceElement})\cdot f_2(\KroneckerAction{\AmenableGroupElement}{\KroneckerSpaceElement})=\int_\ShiftSpace f_1\cdot(f_2\circ\KroneckerFactorMap)\ \mathrm{d}\mu \]
+holds for any \(f_1\in C(\ShiftSpace)\) and
+\(f_2\in C(\KroneckerSpace)\).
+
+\end{proposition}
+
+\begin{proposition}[{Charamaras and Mountakis, 2024, Proposition 3.7 (i
+\&
+(ii))}]\protect\hypertarget{prp-ContinuousKroneckerMap}{}\label{prp-ContinuousKroneckerMap}
+
+Let \(\AmenableGroup\) be an amenable group, let \(\FurstenbergSystem\)
+be an ergodic \(\AmenableGroup\)-system, and let
+\(\ShiftSpaceElement\in\text{gen}(\Measure,\Folner)\) for some Følner
+sequence \(\Folner\). Let \(\KroneckerFactor\) be its Kronecker factor
+and
+\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)
+be a factor map, \(\ShiftSpace\times\KroneckerSpace\) be endowed with
+the transformation \(T\times S\), and \(\tilde{\Measure}\) be the
+joining of \(\FurstenbergSystem\) and \(\KroneckerFactor\).
+
+Then there exists an ergodic extension
+\((\ShiftSpace\times\KroneckerSpace, \tilde{\Measure}, T\times S)\) of
+\((\ShiftSpace,\Measure,\AmenableGroup)\), a Følner sequence
+\(\tilde{\Folner}\), and a point
+\((\ShiftSpaceElement,\KroneckerSpaceElement)\in\text{gen}(\tilde{\Measure},\tilde{\Folner})\)
+such that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The projection map \(\ProjectionMap[\ShiftSpace]\) is a continuous
+  factor map with
+  \(\ProjectionMap[\ShiftSpace](\ShiftSpaceElement,\KroneckerSpaceElement)=\ShiftSpaceElement\).
+\item
+  The projection map \(\ProjectionMap[\KroneckerSpace]\) is a continuous
+  factor map where \(\KroneckerFactor\) is the Kronecker factor of
+  \((\ShiftSpace\times\KroneckerSpace, \tilde{\Measure}, T\times S)\).
+\end{enumerate}
+
+\end{proposition}
+
+\section{Summary}\label{summary}
+
+\begin{theorem}[]\protect\hypertarget{thm-FCP-Kronecker}{}\label{thm-FCP-Kronecker}
+
+Let \(\AmenableGroup\) be an amenable group,
+\(A\subset \AmenableGroup\), and \(\Folner\) be a Følner sequence in
+\(\AmenableGroup\) such that the limit
+\[\delta=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}\]
+exists.
+
+Then there exists an ergodic system
+\((\ShiftSpace,\Measure,\AmenableGroup)\) that is acted on by
+\(\AmenableGroup\), a factor map to its ergodic Kronecker factor
+\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\),
+Følner sequences \(\FurstenbergFolner\) and \(\tilde{\Folner}\) in
+\(\AmenableGroup\), and a point
+\((a,\KroneckerSpaceElement_0)\in\ShiftSpace\times\KroneckerSpace\) such
+that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We have \(\KroneckerSpaceElement_0=\KroneckerFactorMap(a)\).
+\item
+  We have clopen sets \(E\subset\ShiftSpace\) and
+  \(\tilde{E}\subset\KroneckerSpace\) where
+  \(\tilde{E}=\KroneckerFactorMap(E)\) and \begin{align*}
+    A&=\{\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E\}
+    \\&=\{\AmenableGroupElement\in \AmenableGroup:\KroneckerProductAction{\AmenableGroupElement}{(a,\KroneckerSpaceElement_0)\}\in \tilde{E}}.
+  \end{align*}
+\item
+  \(a\) is generic with \(\Measure\) with respect to
+  \(\FurstenbergFolner\) and \(\KroneckerSpaceElement_0\) is generic
+  with \(\KroneckerMeasure\) with respect to \(\tilde{Folner}\).
+\item
+  \(\Measure(E)=\KroneckerMeasure(\tilde{E})\geq\delta\).
+\item
+  The factor map
+  \(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)
+  is continuous.
+\end{enumerate}
+
+\end{theorem}
+
+\begin{refremark}
+Kronecker factors are \(1\)-step Pronilfactors and the continuous factor
+map
+\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)
+shows that a Kronecker factor is a topological pronilfactor.
+
+\label{rem-Kronecker}
+
+\end{refremark}
+
+\section{JdLG-Decomposition}\label{jdlg-decomposition}
+
+\protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-ISem28}
-Jamneshan, A. and Kreidler, H. (2025). \textquotesingle{}\emph{ISem 28:
-Ergodic structure theory and applications}\textquotesingle,.
+\bibitem[\citeproctext]{ref-charamaras2024findingproductsetsclasses}
+Charamaras, D. and Mountakis, A. (2024). \emph{Finding product sets in
+some classes of amenable groups}.
+https://doi.org/\url{https://doi.org/10.1017/fms.2024.155}.
 
 \bibitem[\citeproctext]{ref-host2019short}
-Host, B. (2019). \textquotesingle{}\emph{A short proof of a conjecture
-of erdös proved by moreira, richter and robertson}\textquotesingle,
-Available at: \url{https://arxiv.org/abs/1904.09952}.
-
-\bibitem[\citeproctext]{ref-kra2007uniformity}
-Kra, B. and Host, B. (2007). \textquotesingle{}\emph{Uniformity
-seminorms on \(\ell^\infty\) and applications}\textquotesingle,
-Available at: \url{https://arxiv.org/abs/0711.3637}.
+Host, B. (2019). \emph{A short proof of a conjecture of erdös proved by
+moreira, richter and robertson}. Available at:
+\url{https://arxiv.org/abs/1904.09952}
 
 \bibitem[\citeproctext]{ref-Host2018NilpotentSI}
-Host, B. and Kra, B. (2018). \textquotesingle{}{Nilpotent Structures in
-Ergodic Theory}\textquotesingle, \emph{\emph{Mathematical Surveys and
-Monographs},} 236,
+Host, B. and Kra, B. (2018). `{Nilpotent Structures in Ergodic Theory}'.
+\emph{Mathematical Surveys and Monographs}, 236,
 \href{https://doi.org/10.1090/surv/236}{https://doi.org/10.1090/surv/236.}
+
+\bibitem[\citeproctext]{ref-ISem28}
+Jamneshan, A. and Kreidler, H. (2025). \emph{ISem 28: Ergodic structure
+theory and applications}.
+
+\bibitem[\citeproctext]{ref-kra2022infinite}
+Kra, B. et al. (2022). \emph{Infinite sumsets in sets with positive
+density}. Available at: \url{https://arxiv.org/abs/2206.01786}
+
+\bibitem[\citeproctext]{ref-kra2007uniformity}
+Kra, B. and Host, B. (2007). \emph{Uniformity seminorms on
+\(\ell^\infty\) and applications}. Available at:
+\url{https://arxiv.org/abs/0711.3637}
 
 \end{CSLReferences}
 

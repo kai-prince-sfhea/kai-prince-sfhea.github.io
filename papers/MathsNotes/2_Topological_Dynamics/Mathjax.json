@@ -1,7 +1,18 @@
 {
   "AmenableGroup": "{\\Gamma}",
   "AmenableGroupElement": "{\\gamma}",
-  "CountingMeasure": "{\\lambda}",
+  "Borel": [
+    "{\\text{Bor}({#1})}",
+    1
+  ],
+  "ContinuousFunctionSpace": [
+    "{\\mathscr{C}({#1})}",
+    1
+  ],
+  "CountingMeasure": [
+    "{\\left|#1\\right|}",
+    1
+  ],
   "Density": [
     "d_{{#1}}({#2})",
     2,
@@ -11,6 +22,7 @@
     "{#1}^{*}",
     1
   ],
+  "EigenAlgebra": "{\\SigmaAlgebra{K}}",
   "Expectation": [
     "{\\mathbb{E}}_{#1}",
     1,
@@ -26,13 +38,14 @@
     1,
     "{\\vphantom{}}"
   ],
+  "FurstenbergSystem": "(\\ShiftSpace,\\Measure,T)",
   "Group": "{\\Gamma}",
   "GroupAction": [
-    "{#1}.{#2}",
+    "T^{#1}{#2}",
     2
   ],
   "GroupActionPreImage": [
-    "{#1}^{-1}.{#2}",
+    "(T{#1}){-1}.{#2}",
     2
   ],
   "GroupElement": "{\\gamma}",
@@ -50,9 +63,18 @@
       "\\vphantom{}"
     ]
   ],
-  "KroneckerAction": "{H}",
-  "KroneckerFactor": "{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}",
+  "KroneckerAction": [
+    "S^{#1}{#2}",
+    2
+  ],
+  "KroneckerFactor": "{(\\KroneckerSpace,\\KroneckerMeasure,S)}",
+  "KroneckerFactorMap": "p",
+  "KroneckerGroup": "{H}",
   "KroneckerMeasure": "{m_Z}",
+  "KroneckerProductAction": [
+    "(T\\times S)^{#1}{#2}",
+    2
+  ],
   "KroneckerSpace": "{Z}",
   "KroneckerSpaceElement": "{z}",
   "Measure": "{\\mu}",
@@ -73,6 +95,7 @@
     "\\vphantom{}"
   ],
   "ShiftSpace": "{X}",
+  "ShiftSpaceElement": "{x}",
   "SigmaAlgebra": [
     "{\\mathscr{#1}}",
     1
@@ -83,6 +106,7 @@
     "\\Topology"
   ],
   "Topology": "{\\tau}",
+  "Torus": "{\\mathbb{T}}",
   "UpperDensity": [
     "\\overline{d}_{{#1}}({#2})",
     2,

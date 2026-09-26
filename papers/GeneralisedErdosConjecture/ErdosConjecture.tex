@@ -66,6 +66,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -127,15 +128,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -193,11 +191,13 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
 \theoremstyle{plain}
+\newtheorem{corollary}{Corollary}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
 \newtheorem{proposition}{Proposition}[section]
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -214,37 +214,46 @@
 
 \newcommand{\AmenableGroup}{{\Gamma}}
 \newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\CountingMeasure}{{\lambda}}
+\newcommand{\CountingMeasure}[1]{{\left|#1\right|}}
+\newcommand{\FCPElement}{{a}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
 \newcommand{\FurstenbergFolner}[1][{\vphantom{}}]{{\Psi}_{#1}}
 \newcommand{\Group}{{\Gamma}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\GroupAction}[2]{T^{#1}{#2}}
 \newcommand{\GroupElement}{{\gamma}}
 \newcommand{\GroupIdentity}{{e}}
 \newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 \newcommand{\Identity}{{e}}
 \newcommand{\Inverse}[1]{{#1}^{-1}}
-\newcommand{\KroneckerAction}{{H}}
+\newcommand{\KroneckerAction}[2]{S^{#1}{#2}}
+\newcommand{\KroneckerFactorMap}{p}
 \newcommand{\KroneckerMeasure}{{m_Z}}
+\newcommand{\KroneckerProductAction}[2]{(T\times S)^{#1}{#2}}
 \newcommand{\KroneckerSpace}{{Z}}
 \newcommand{\KroneckerSpaceElement}{{z}}
 \newcommand{\Measure}{{\mu}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\ProjectionMap}[1][\vphantom{}]{{\pi}_{#1}}
 \newcommand{\ShiftSpace}{{X}}
+\newcommand{\ShiftSpaceElement}{{x}}
 \newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
 \newcommand{\UpperBanachDensity}[1]{\overline{d}({#1})}
 \newcommand{\Density}[2][\Folner]{d_{{#1}}({#2})}
 \newcommand{\LowerDensity}[2][\Folner]{\underline{d}_{{#1}}({#2})}
 \newcommand{\UpperDensity}[2][\Folner]{\overline{d}_{{#1}}({#2})}
-\newcommand{\KroneckerFactor}{{(\KroneckerSpace,\KroneckerMeasure,\KroneckerAction)}}
+\newcommand{\FurstenbergSystem}{(\ShiftSpace,\Measure,T)}
+\newcommand{\KroneckerFactor}{{(\KroneckerSpace,\KroneckerMeasure,S)}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups},
-  pdfauthor={Kai Prince},
+  pdfauthor={Kai Prince; Donald Robertson},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -256,16 +265,16 @@
 
 \title{A Short Proof of a Generalised Conjecture of Erdős for Amenable
 Groups}
-\author{Kai Prince}
-\date{2025-09-05}
+\author{Kai Prince \and Donald Robertson}
+\date{2026-09-26}
 \begin{document}
 \maketitle
 \begin{abstract}
 We follow steps provided by the paper published by
-\citeproc{ref-host2019short}{(Host, 2019)}, `A Short Proof of a
+(\citeproc{ref-host2019short}{Host, 2019}), `A Short Proof of a
 Conjecture of Erdős Proved by Moreira, Richter and Robertson', as well
-as using the results provided by \citeproc{ref-kra2022infinite}{(Kra et
-al., 2022)}, to generalise the proof of Erdős's conjecture for amenable
+as using the results provided by (\citeproc{ref-kra2022infinite}{Kra et
+al., 2022}), to generalise the proof of Erdős's conjecture for amenable
 groups. The main result that we aim to prove is: `every positively dense
 subset of an amenable group contains the group sumset of \(k\) infinite
 sets for every natural number \(k\)'.
@@ -273,7 +282,6 @@ sets for every natural number \(k\)'.
 
 \renewcommand*\contentsname{Table of contents}
 {
-\hypersetup{linkcolor=}
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
@@ -281,6 +289,7 @@ sets for every natural number \(k\)'.
 \subsection*{Notation}\label{sec-Notation}
 \addcontentsline{toc}{subsection}{Notation}
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
 Term & Description \\
@@ -290,6 +299,7 @@ Term & Description \\
 \endlastfoot
 \(\N\) & The Natural Numbers: 1, 2, 3, \ldots{} \\
 \end{longtable}
+}
 
 \section{Introduction}\label{introduction}
 
@@ -365,7 +375,7 @@ A sequence of sets \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) will be
 said to be \emph{tempered} if, for some \(b>0\) and all
 \(n\in\mathbb{N}\),
 
-\begin{equation}\phantomsection\label{eq-ShulmanCondition}{
+\begin{equation}\protect\phantomsection\label{eq-ShulmanCondition}{
 \CountingMeasure{\bigcup_{1\leq k<N}\Folner[k]^{-1}\Folner[N]}\leq b\CountingMeasure{\Folner[N]}.
 }\end{equation}
 
@@ -401,7 +411,7 @@ also define the \emph{upper Banach density of \(A\)} by \[
 \subsection{Topological Dynamics of Group
 Actions}\label{topological-dynamics-of-group-actions}
 
-\begin{definition}[{Bekka and Mayer, 2000, Section
+\begin{definition}[{Bekka and Mayer, 2000, ch. II, Section
 2}]\protect\hypertarget{def-ActionDef}{}\label{def-ActionDef}
 
 An \emph{action} of a group, \(\Group\), on a measurable space
@@ -415,7 +425,7 @@ with the following properties:
 \item
   Associativity: For all
   \(\GroupElement,\GroupElement'\in \Group,x\in X\), then
-  \(\GroupAction{\GroupElement}{(\GroupAction{\GroupElement'}{x})}=\GroupAction{(\GroupOperation{\GroupElement}{\GroupElement'})}{x}\)
+  \(\GroupAction{\GroupElement}{(\GroupAction{\GroupElement'}{x})}=\GroupAction{(\GroupOperation{\GroupElement}{\GroupElement'})}{x}\).
 \item
   Identity: There exists an identity element \(\GroupIdentity\in\Group\)
   such that \(\GroupAction{\GroupIdentity}{x}=x\) for all \(x\in X\).
@@ -457,7 +467,7 @@ continuous surjective maps,
 Let \(x\in X\), \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) be a Følner
 sequence in \(\Gamma\) and \(\Measure\) a probability measure on \(X\).
 Where \(\delta_x\) is the Dirac mass at \(x\), if
-\[\frac{1}{|\Folner[N]|}\sum_{\GroupElement\in\Folner[N]}\delta_{\GroupAction{\GroupElement}{x}}\underset{\text{weakly*}}{\longrightarrow} \Measure \text{ as }N\rightarrow\infty, \]
+\[\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\GroupElement\in\Folner[N]}\delta_{\GroupAction{\GroupElement}{x}}\underset{\text{weakly*}}{\longrightarrow} \Measure \text{ as }N\rightarrow\infty, \]
 then we say \emph{\(x\) is generic for \(\Measure\) with respect to
 \(\Folner\)} and we denote this with
 \(x\in\text{gen}(\Measure,\Folner)\).\footnote{consider tempered
@@ -482,29 +492,34 @@ such that, for any finite subset \(F\subseteq I\), we have
 
 \end{theorem}
 
-\begin{theorem}[{cf. Lindenstrauss, 2001, Theorem
-1.2}]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
+\begin{theorem}[\{\{\textless{} term-title ref= ``thm-GeneralisedPET''
+removeURLs=true
+\textgreater\}\}]\protect\hypertarget{thm-GeneralisedPET}{}\label{thm-GeneralisedPET}
 
-Let \(\AmenableGroup\) be a discrete amenable group acting on a measure
-space \((X,\SigmaAlgebra{B},\Measure)\) by measure preserving
-transformation and let \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) be a
-tempered Følner sequence.
-
-Then, for any \(f\in\text{L}^1(\Measure)\), there is a
-\(\AmenableGroup\)-invariant \(\bar{f}\in\text{L}^1(\Measure)\) such
-that
-\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\bar{f}(x) \]
-for \(\Measure\)-almost every \(x\in X\). In particular, if the
-\(\AmenableGroup\) action is ergodic, then
-\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\int f(x)\ d\Measure(x) \]
-for \(\Measure\) almost every \(x\).
+~
 
 \end{theorem}
+
+\subsection{Factor Maps}\label{factor-maps}
+
+\begin{definition}[{Kra et al., 2022, Definition
+2.1}]\protect\hypertarget{def-MeasurableFactorCopy}{}\label{def-MeasurableFactorCopy}
+
+For a system \((X,\Measure,T)\) we say that the system \((Y,\nu,S)\) is
+a \emph{measurable factor} of \((X,\Measure,T)\) if there is a
+measurable map \(\ProjectionMap:X\rightarrow Y\), the \emph{measurable
+factor map}, such that \(\ProjectionMap(\Measure)=\nu\) and
+\((S\circ\ProjectionMap)(x)=(\ProjectionMap\circ T)(x)\) for
+\(\Measure\)-almost every \(x\in X\).
+
+\end{definition}
+
+{[}Add definitions{]}
 
 \subsection{Erdős Cubes \& Cubic
 Measures}\label{erdux151s-cubes-cubic-measures}
 
-\subsection{Factor Maps}\label{factor-maps}
+{[}Add definitions{]}
 
 \subsection{Key Dynamical Results}\label{key-dynamical-results}
 
@@ -529,14 +544,14 @@ that \(\GroupOperation{B}{C}\subset A\).
 \end{theorem}
 
 \begin{theorem}[{cf. Kra et al., 2022, Theorem
-3.5}]\protect\hypertarget{thm-GenErdosConjCube}{}\label{thm-GenErdosConjCube}
+3.5}\footnote{Return at the end}]\protect\hypertarget{thm-GenErdosConjCube}{}\label{thm-GenErdosConjCube}
 
-Let \((X,\Measure,\AmenableGroup)\) be an ergodic system under the
-action of \(\AmenableGroup\) and let \(E\subset X\) be an open set with
-\(\Measure(E)>0\).
+Let \((\ShiftSpace,\Measure,\AmenableGroup)\) be an ergodic system under
+the action of \(\AmenableGroup\) and let \(E\subset X\) be an open set
+with \(\Measure(E)>0\).
 
-If \(a\in X\) is generic for \(\Measure\) with respect to some Følner
-sequence \(\Folner\) then, for every \(k\in\N\), there exists
+If \(\FCPElement\in X\) is generic for \(\Measure\) with respect to some
+Følner sequence \(\Folner\) then, for every \(k\in\N\), there exists
 \(2\)-dimensional Erd"\{o\}s cube
 \(\underline{x}=(x_{00},x_{01},x_{10},x_{11})\in X^{[[2]]}\) with
 \(x_{00}=a\) and \(x_{11}\in E\).
@@ -550,18 +565,20 @@ Let \((X,\Measure,\AmenableGroup)\) be an ergodic system under the
 action of \(\AmenableGroup\) and let \(E\subset X\) be an open set with
 \(\Measure(E)>0\).
 
-If \(a\in X\) is generic for \(\Measure\) with respect to some Følner
-sequence \(\Folner\) then, for every \(k\in\N\), there exists
+If \(\FCPElement\in X\) is generic for \(\Measure\) with respect to some
+Følner sequence \(\Folner\) then, for every \(k\in\N\), there exists
 \(k\)-dimensional Erd"\{o\}s cubes \(\underline{x}\in X^{[[k]]}\) with
 \(x_{\vec{0}}=a\) and \(x_{\vec{1}}\in E\).
 
 \end{theorem}
 
-\section{\texorpdfstring{Proof of Theorem
-Theorem~\ref{thm-GenErdosConjCube}}{Proof of Theorem Theorem~}}\label{proof-of-theorem-thm-generdosconjcube}
+\section{\texorpdfstring{Proof of
+Theorem~\ref{thm-GenErdosConjCube}}{Proof of Theorem~}}\label{proof-of-thm-generdosconjcube}
 
-\subsection{Furstenberg's Correspondence
-Princple}\label{furstenbergs-correspondence-princple}
+\subsection[Furstenberg's Correspondence
+Princple]{\texorpdfstring{Furstenberg's Correspondence
+Princple\footnote{Maybe adjust this result to have a tempered Folner
+  Sequence}}{Furstenberg's Correspondence Princple}}\label{furstenbergs-correspondence-princple}
 
 \begin{theorem}[{cf. Kra et al., 2022, Theorem
 2.10}]\protect\hypertarget{thm-Furstenberg}{}\label{thm-Furstenberg}
@@ -584,36 +601,153 @@ sequence \(\FurstenbergFolner\) in \(\AmenableGroup\), and a point
 
 \subsection{Kronecker Factor}\label{kronecker-factor}
 
-\begin{proposition}[{cf. Host, 2019, Proposition
-5}]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
+\begin{proposition}[{Charamaras and Mountakis, 2024, Lemma
+3.5}]\protect\hypertarget{prp-KroneckerGeneric}{}\label{prp-KroneckerGeneric}
 
-Let \((X,\AmenableGroup)\) be a topological dynamical system where
-\(\AmenableGroup\) is an amenable group, \(x_0\in X\), and \(\Measure\)
-be an ergodic invariant probability measure supported on the closed
-orbit of \(x_0\) under the action of \(\AmenableGroup\).
+Let \(\AmenableGroup\) be an amenable group, let \(\FurstenbergSystem\)
+be an ergodic \(\AmenableGroup\)-system, \(\KroneckerFactor\) be its
+Kronecker factor and
+\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)
+be a factor map.
 
-Let \(\KroneckerFactor\) be the \emph{Kronecker factor} of
-\((X,\Measure,\AmenableGroup)\), with factor map
-\(\ProjectionMap:X\rightarrow\KroneckerSpace\).
-
-Let \(X\times\KroneckerSpace\) be endowed with the group action of
-\(\AmenableGroup\times\KroneckerAction\). Let \(\tilde\Measure\) be the
-measure on \(X\times\KroneckerSpace\) and image of \(\Measure\) under
-the map \(X\rightarrow X\times\KroneckerSpace\) where
-\(x\mapsto(x,\ProjectionMap(x))\).
-
-Then there exists a Følner sequence \(\tilde{\Folner}\) and a point
-\(\KroneckerSpaceElement_0\in\KroneckerSpace\) such that
-\((x_0,\KroneckerSpaceElement_0)\) is generic for \(\tilde{\Measure}\)
-along \(\tilde{\Folner}\).
+If \(\ShiftSpaceElement\in\ShiftSpace\) is a transitive point, then
+there exists a point \(\KroneckerSpaceElement\in\KroneckerSpace\) and a
+Følner sequence \(\FurstenbergFolner'\) such that
+\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\FurstenbergFolner[N]'}}\sum_{\AmenableGroupElement\in\FurstenbergFolner[N]'}f_1(\GroupAction{\AmenableGroupElement}{\ShiftSpaceElement})\cdot f_2(\KroneckerAction{\AmenableGroupElement}{\KroneckerSpaceElement})=\int_\ShiftSpace f_1\cdot(f_2\circ\KroneckerFactorMap)\ \mathrm{d}\mu \]
+holds for any \(f_1\in C(\ShiftSpace)\) and
+\(f_2\in C(\KroneckerSpace)\).
 
 \end{proposition}
+
+This leads us onto the following results:
+
+\begin{proposition}[{Charamaras and Mountakis, 2024, Proposition 3.7 (i
+\&
+(ii))}]\protect\hypertarget{prp-KroneckerGenericContinuous}{}\label{prp-KroneckerGenericContinuous}
+
+Let \(\AmenableGroup\) be an amenable group, let \(\FurstenbergSystem\)
+be an ergodic \(\AmenableGroup\)-system, and let
+\(\ShiftSpaceElement\in\text{gen}(\Measure,\Folner)\) for some Følner
+sequence \(\Folner\). Let \(\KroneckerFactor\) be its Kronecker factor
+and
+\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)
+be a factor map, \(\ShiftSpace\times\KroneckerSpace\) be endowed with
+the transformation \(T\times S\), and \(\tilde{\Measure}\) be the
+joining of \(\FurstenbergSystem\) and \(\KroneckerFactor\).
+
+Then there exists an ergodic extension
+\((\ShiftSpace\times\KroneckerSpace, \tilde{\Measure}, T\times S)\) of
+\((\ShiftSpace,\Measure,\AmenableGroup)\), a Følner sequence
+\(\tilde{\Folner}\), and a point
+\((\ShiftSpaceElement,\KroneckerSpaceElement)\in\text{gen}(\tilde{\Measure},\tilde{\Folner})\)
+such that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The projection map \(\ProjectionMap[\ShiftSpace]\) is a continuous
+  factor map with
+  \(\ProjectionMap[\ShiftSpace](\ShiftSpaceElement,\KroneckerSpaceElement)=\ShiftSpaceElement\).
+\item
+  The projection map \(\ProjectionMap[\KroneckerSpace]\) is a continuous
+  factor map where \(\KroneckerFactor\) is the Kronecker factor of
+  \((\ShiftSpace\times\KroneckerSpace, \tilde{\Measure}, T\times S)\).
+\end{enumerate}
+
+\end{proposition}
+
+This means that, for \(a\in\ShiftSpace\), we have
+\((a,\KroneckerSpaceElement_0)\in\text{gen}(\tilde{\Measure},\tilde{\Folner})\)
+meeting the above properties. We can then let
+\(\tilde{E}=\ProjectionMap[\ShiftSpace]^{-1}(E)\) and conclude that
+\(\tilde{E}\) is a clopen subset of
+\(\ShiftSpace\times\KroneckerSpace\),
+\(A=\{\AmenableGroupElement\in \AmenableGroup:\KroneckerProductAction{\AmenableGroupElement}{(a,\KroneckerSpaceElement_0)\}\in \tilde{E}}\),
+and
+\(\Density[\tilde{\Folner}]{A}=\tilde{\Measure}(\tilde{E})=\Measure(E)\geq\delta\).
+
+Hence, we can summarise our results so far as follows:
+
+\begin{theorem}[]\protect\hypertarget{thm-FCPKroneckerThm}{}\label{thm-FCPKroneckerThm}
+
+Let \(\AmenableGroup\) be an amenable group,
+\(A\subset \AmenableGroup\), and \(\Folner\) be a Følner sequence in
+\(\AmenableGroup\) such that the limit
+\[\delta=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}\]
+exists.
+
+Then there exists an ergodic system
+\((\ShiftSpace,\Measure,\AmenableGroup)\) that is acted on by
+\(\AmenableGroup\), a factor map to its ergodic Kronecker factor
+\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\),
+Følner sequences \(\FurstenbergFolner\) and \(\tilde{\Folner}\) in
+\(\AmenableGroup\), and a point
+\((a,\KroneckerSpaceElement_0)\in\ShiftSpace\times\KroneckerSpace\) such
+that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  We have \(\KroneckerSpaceElement_0=\KroneckerFactorMap(a)\).
+\item
+  We have clopen sets \(E\subset\ShiftSpace\) and
+  \(\tilde{E}\subset\KroneckerSpace\) where
+  \(\tilde{E}=\KroneckerFactorMap(E)\) and
+  \begin{align*}   A&={\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E}   \\&={\AmenableGroupElement\in \AmenableGroup:\KroneckerProductAction{\AmenableGroupElement}{(a,\KroneckerSpaceElement_0)}\in \tilde{E}}. \end{align*}
+\item
+  \(a\) is generic with \(\Measure\) with respect to
+  \(\FurstenbergFolner\) and \(\KroneckerSpaceElement_0\) is generic
+  with \(\KroneckerMeasure\) with respect to \(\tilde{Folner}\).
+\item
+  \(\Measure(E)=\KroneckerMeasure(\tilde{E})\geq\delta\).
+\item
+  The factor map
+  \(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)
+  is continuous.
+\end{enumerate}
+
+\end{theorem}
 
 \subsection{\texorpdfstring{Choosing a point
 \(x_1\)}{Choosing a point x\_1}}\label{choosing-a-point-x_1}
 
+As a result of Theorem~\ref{thm-GeneralisedPET}, we get the following
+Corollary:
+
+\begin{corollary}[{cf. Host, 2019, Corollary
+8}]\protect\hypertarget{cor-temperedGenericCor}{}\label{cor-temperedGenericCor}
+
+Let \((X,\AmenableGroup)\) be a topological dynamical system where
+\(\AmenableGroup\) is an amenable group, \(\Measure\) an ergodic measure
+on \(X\) and \(\Folner\) a tempered Følner sequence. Then
+\(\Measure\)-almost every \(x\in X\) is generic for \(\Measure\) along
+\(\Folner\).
+
+\end{corollary}
+
+Following the steps of Host (\citeproc{ref-host2019short}{2019}), we use
+Definition~\ref{def-TemperedSequenceDef} and replace the Følner sequence
+with a tempered subsequence, denoted \(\Folner\).\footnote{We could
+  introduce this as part of FCP? Check how the Folner sequence has been
+  manipulated since FCP.}
+
+Let
+\[X_1=\{\ShiftSpaceElement\in\ShiftSpace:\ShiftSpaceElement\text{ is generic for }\mu\text{ along }\Folner\}\]
+and let \(X_2=\text{supp}(\Measure)\) be the topological support of
+\(\Measure\). By Corollary~\ref{cor-temperedGenericCor}, we have
+\(\Measure(X_1)=\Measure(X_2)=1\) and, as
+\(\KroneckerFactorMap(\Measure)=\KroneckerMeasure\), we have
+\(\KroneckerFactorMap(X_2)=\KroneckerSpace\).\footnote{Justify
+  \(\KroneckerFactorMap(X_2)=\KroneckerSpace\)}
+
+{[}Apply Erdos Cubes{]}
+
 \subsection{\texorpdfstring{The joining
 \(\nu\)}{The joining \textbackslash nu}}\label{the-joining-nu}
+
+{[}Cubic Measures?{]}
 
 \subsection{Proof Conclusion}\label{proof-conclusion}
 
@@ -623,24 +757,8 @@ along \(\tilde{\Folner}\).
 
 \section{Discussion}\label{discussion}
 
-\phantomsection\label{refs}
+\protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-host2019short}
-Host, B. (2019). \textquotesingle{}\emph{A short proof of a conjecture
-of erdös proved by moreira, richter and robertson}\textquotesingle,
-Available at: \url{https://arxiv.org/abs/1904.09952}.
-
-\bibitem[\citeproctext]{ref-kra2022infinite}
-Kra, B., et al. (2022). \textquotesingle{}\emph{Infinite sumsets in sets
-with positive density}\textquotesingle, Available at:
-\url{https://arxiv.org/abs/2206.01786}.
-
-\bibitem[\citeproctext]{ref-Lindenstrauss2001PETAmenable}
-Lindenstrauss, E. (2001). \textquotesingle Pointwise theorems for
-amenable groups\textquotesingle, \emph{\emph{Inventiones mathematicae},}
-146 (2), pp. 259--295.
-\href{https://doi.org/10.1007/s002220100162}{https://doi.org/10.1007/s002220100162.}
-
 \bibitem[\citeproctext]{ref-Bekka2000GroupActionDynamics}
 Bekka, M. B. and Mayer, M. (2000). \emph{Ergodic theory and topological
 dynamics of group actions on homogeneous spaces}. Cambridge University
@@ -648,11 +766,29 @@ Press.
 \href{https://doi.org/10.1017/cbo9780511758898}{https://doi.org/10.1017/cbo9780511758898.}
 
 \bibitem[\citeproctext]{ref-Bergelson1985Recurrence}
-Bergelson, V. (1985). \textquotesingle Sets of recurrence of zm-actions
-and properties of sets of differences in zm\textquotesingle,
-\emph{\emph{Journal of the London Mathematical Society},} s2-31 (2), pp.
-295--304.
+Bergelson, V. (1985). `Sets of recurrence of zm-actions and properties
+of sets of differences in zm'. \emph{Journal of the London Mathematical
+Society}, s2-31(2), pp. 295--304.
 \href{https://doi.org/10.1112/jlms/s2-31.2.295}{https://doi.org/10.1112/jlms/s2-31.2.295.}
+
+\bibitem[\citeproctext]{ref-charamaras2024findingproductsetsclasses}
+Charamaras, D. and Mountakis, A. (2024). \emph{Finding product sets in
+some classes of amenable groups}.
+https://doi.org/\url{https://doi.org/10.1017/fms.2024.155}.
+
+\bibitem[\citeproctext]{ref-host2019short}
+Host, B. (2019). \emph{A short proof of a conjecture of erdös proved by
+moreira, richter and robertson}. Available at:
+\url{https://arxiv.org/abs/1904.09952}
+
+\bibitem[\citeproctext]{ref-kra2022infinite}
+Kra, B. et al. (2022). \emph{Infinite sumsets in sets with positive
+density}. Available at: \url{https://arxiv.org/abs/2206.01786}
+
+\bibitem[\citeproctext]{ref-Lindenstrauss2001PETAmenable}
+Lindenstrauss, E. (2001). `Pointwise theorems for amenable groups'.
+\emph{Inventiones mathematicae}, 146(2), pp. 259--295.
+\href{https://doi.org/10.1007/s002220100162}{https://doi.org/10.1007/s002220100162.}
 
 \end{CSLReferences}
 

@@ -2,17 +2,23 @@
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Kai Prince</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -39,14 +45,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d7fc5677f3affda326ee16cb3d720675.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-50169f0012e06f534272ed79332011fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-8a74314f61e346822acdc1012f6ccd95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-50169f0012e06f534272ed79332011fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,9 +90,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-description','listing-end','listing-company','listing-category','listing-date','listing-cvDescription','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-grade',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-engines','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-grade','listing-description','listing-end','listing-company','listing-category','listing-date','listing-cvDescription','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-description","listing-end","listing-company","listing-category","listing-date","listing-cvDescription","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-grade"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-engines","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-grade","listing-description","listing-end","listing-company","listing-category","listing-date","listing-cvDescription","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -140,9 +146,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-description','listing-start','listing-date','listing-company','listing-category','listing-cvDescription','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-end',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-start-sort'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-engines','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-start','listing-end','listing-date','listing-company','listing-category','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-cvDescription',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-start-sort'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-description","listing-start","listing-date","listing-company","listing-category","listing-cvDescription","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-end"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-engines","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-start","listing-end","listing-date","listing-company","listing-category","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-cvDescription"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -224,9 +230,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-path','listing-outputHref','listing-date','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-start','listing-end','listing-company','listing-category','listing-date-modified','listing-name',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] },{ data: ['listing-start-sort'] },{ data: ['listing-date-modified-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-engines','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-path','listing-outputHref','listing-date','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-start','listing-end','listing-company','listing-category','listing-date-modified','listing-name',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] },{ data: ['listing-start-sort'] },{ data: ['listing-date-modified-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-path","listing-outputHref","listing-date","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-start","listing-end","listing-company","listing-category","listing-date-modified","listing-name"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-engines","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-path","listing-outputHref","listing-date","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-start","listing-end","listing-company","listing-category","listing-date-modified","listing-name"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -280,9 +286,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-name','listing-end','listing-date','listing-category','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-hours','listing-company',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-engines','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-name','listing-end','listing-date','listing-category','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-company','listing-hours',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-name","listing-end","listing-date","listing-category","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-hours","listing-company"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-engines","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-name","listing-end","listing-date","listing-category","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-company","listing-hours"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -308,9 +314,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-end','listing-company','listing-category','listing-date','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-filters','listing-citeproc','listing-csl','listing-link-citations','listing-schema','listing-callouty-theorem','listing-engines','listing-language','listing-draft-mode','listing-bibliography','listing-title','listing-end','listing-company','listing-category','listing-date','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-end","listing-company","listing-category","listing-date","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-filters","listing-citeproc","listing-csl","listing-link-citations","listing-schema","listing-callouty-theorem","listing-engines","listing-language","listing-draft-mode","listing-bibliography","listing-title","listing-end","listing-company","listing-category","listing-date","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -341,10 +347,10 @@ gtag('config', 'G-0QRFD5NB5R', { 'anonymize_ip': true});
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
-  "consent_type":"implied",
+  "consent_type":"express",
   "palette":"light",
   "language":"en",
-  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "page_load_consent_levels":["strictly-necessary"],
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
@@ -571,7 +577,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo">
+    <img src="./images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo light-content">
+    <img src="./images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Kai Prince</span>
@@ -619,7 +626,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(35)</span></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="about.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(36)</span></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="about.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -665,29 +672,29 @@ window.Quarto = {
 University
 </h3>
 <ul>
-<li data-index="0" data-listing-date-sort="1757030400000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<li data-index="0" data-listing-date-sort="1790380800000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <b><strong><a href="./experience/phd.html" class="listing-title">PhD in Pure Maths, University of Manchester</a></strong></b>
 <ul>
 <li>
-Expected graduation: November 2028 (part-time)<span class="listing-date" style="display:none">September 2025</span>
+Expected graduation: November 2028 (part-time)<span class="listing-date" style="display:none">September 2026</span>
 </li>
 <li>
 My Current Research is on “Ergodic Methods for Density Combinatorics in Amenable Groups”.
 </li>
 </ul>
 </li>
-<li data-index="1" data-listing-date-sort="1757030400000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<li data-index="1" data-listing-date-sort="1790380800000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <b><strong><a href="./experience/pgcert-he.html" class="listing-title">PGCert in Higher Education, University of Manchester</a></strong></b>
 <ul>
 <li>
-Expected graduation: July 2026<span class="listing-date" style="display:none">September 2025</span>
+Expected graduation: July 2026<span class="listing-date" style="display:none">September 2026</span>
 </li>
 <li>
 I plan on taking the “Internalisation in higher education” and “Leadership in higher education” courses.
 </li>
 </ul>
 </li>
-<li data-index="2" data-listing-date-sort="1656633600000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<li data-index="2" data-listing-date-sort="1656633600000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <b><strong><a href="./experience/mmath.html" class="listing-title">MMath (Hons) in Mathematics [First Class], University of Manchester</a></strong></b>
 <ul>
 <li>
@@ -739,7 +746,7 @@ Subjects: Mathematics [A*], Further Mathematics [A], Physics [B]
 Teaching
 </h3>
 <ul>
-<li data-index="0" data-listing-date-sort="1857513600000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2023-10-31">
+<li data-index="0" data-listing-date-sort="1857513600000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2023-10-31">
 <b><strong><a href="./experience/library-student-team.html" class="listing-title">Library Student Team Member, University of Manchester</a></strong></b>
 <ul>
 <li>
@@ -750,7 +757,15 @@ I assist on a variety of teaching-related projects such as assisting with the de
 </li>
 </ul>
 </li>
-<li data-index="1" data-listing-date-sort="1756684800000" data-listing-start-sort="2022-06-01">
+<li data-index="1" data-listing-date-sort="1782864000000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1594" data-listing-start-sort="2025-10-14">
+<b><strong><a href="./experience/pgr-school-rep.html" class="listing-title">Postgraduate Researcher School of Natural Science Representative, University of Manchester</a></strong></b>
+<ul>
+<li>
+<span class="listing-start">October 2025</span> – Present<span class="listing-date" style="display:none">July 2026</span>
+</li>
+</ul>
+</li>
+<li data-index="2" data-listing-date-sort="1756684800000" data-listing-start-sort="2022-06-01">
 <b><strong>MEI Levelling Up Tutor, University of Manchester</strong></b>
 <ul>
 <li>
@@ -761,7 +776,7 @@ Supported in-person Summer Workshops for Year 12 Sixth Form students.
 </li>
 </ul>
 </li>
-<li data-index="2" data-listing-date-sort="1751328000000" data-listing-start-sort="2022-10-01">
+<li data-index="3" data-listing-date-sort="1751328000000" data-listing-start-sort="2022-10-01">
 <b><strong>AMSP Outreach Mentor, University of Manchester</strong></b>
 <ul>
 <li>
@@ -772,7 +787,7 @@ Supported weekly in-person and online Mathematical Problem-Solving Workshops for
 </li>
 </ul>
 </li>
-<li data-index="3" data-listing-date-sort="1725148800000" data-listing-start-sort="2024-04-01">
+<li data-index="4" data-listing-date-sort="1725148800000" data-listing-start-sort="2024-04-01">
 <b><strong>Manchester Access Programme Tutor, University of Manchester</strong></b>
 <ul>
 <li>
@@ -783,7 +798,7 @@ Supervised Year 12 Sixth Form students enrolled on the Manchester Access Program
 </li>
 </ul>
 </li>
-<li data-index="4" data-listing-date-sort="1717200000000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2022-09-01">
+<li data-index="5" data-listing-date-sort="1717200000000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2022-09-01">
 <b><strong><a href="./experience/GTA.html" class="listing-title">Graduate Teaching Assistant, University of Manchester</a></strong></b>
 <ul>
 <li>
@@ -869,23 +884,23 @@ Other Work
 Advocacy
 </h3>
 <ul>
-<li data-index="0" data-listing-date-sort="1757030400000" data-listing-file-modified-sort="1757070592184" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2024-09-01">
+<li data-index="0" data-listing-date-sort="1790380800000" data-listing-file-modified-sort="1790455539534" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2024-09-01">
 <b><strong><a href="./experience/edia-advocacy.html" class="listing-title">Postgraduate Research Co-Chair, UoM Neurodivergent Staff Network</a></strong></b>
 <ul>
 <li>
-<span class="listing-start">September 2024</span> – Present<span class="listing-date" style="display:none">September 2025</span>
+<span class="listing-start">September 2024</span> – Present<span class="listing-date" style="display:none">September 2026</span>
 </li>
 </ul>
 </li>
-<li data-index="1" data-listing-date-sort="1757030400000" data-listing-file-modified-sort="1757070592184" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2024-07-01">
+<li data-index="1" data-listing-date-sort="1790380800000" data-listing-file-modified-sort="1790455539534" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2024-07-01">
 <b><strong><a href="./experience/edia-advocacy.html" class="listing-title">Accessibility Working Group Co-Chair, UoM Disabled Staff Network</a></strong></b>
 <ul>
 <li>
-<span class="listing-start">July 2024</span> – Present<span class="listing-date" style="display:none">September 2025</span>
+<span class="listing-start">July 2024</span> – Present<span class="listing-date" style="display:none">September 2026</span>
 </li>
 </ul>
 </li>
-<li data-index="2" data-listing-date-sort="1748736000000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2024-06-01">
+<li data-index="2" data-listing-date-sort="1748736000000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2024-06-01">
 <b><strong><a href="./experience/mathsoc.html" class="listing-title">Learning Community Administrator, UoM Maths Society</a></strong></b>
 <ul>
 <li>
@@ -893,7 +908,7 @@ Advocacy
 </li>
 </ul>
 </li>
-<li data-index="3" data-listing-date-sort="1748736000000" data-listing-file-modified-sort="1757070592184" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2024-06-01">
+<li data-index="3" data-listing-date-sort="1748736000000" data-listing-file-modified-sort="1790455539534" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2024-06-01">
 <b><strong><a href="./experience/edia-advocacy.html" class="listing-title">President, UoM Disabled Students Society</a></strong></b>
 <ul>
 <li>
@@ -917,7 +932,7 @@ Advocacy
 </li>
 </ul>
 </li>
-<li data-index="6" data-listing-date-sort="1719792000000" data-listing-file-modified-sort="1757070592184" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2023-10-01">
+<li data-index="6" data-listing-date-sort="1719792000000" data-listing-file-modified-sort="1790455539534" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2023-10-01">
 <b><strong><a href="./experience/edia-advocacy.html" class="listing-title">Secretary, UoM Disabled Staff Network</a></strong></b>
 <ul>
 <li>
@@ -925,7 +940,7 @@ Advocacy
 </li>
 </ul>
 </li>
-<li data-index="7" data-listing-date-sort="1685577600000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2022-06-01">
+<li data-index="7" data-listing-date-sort="1685577600000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2022-06-01">
 <b><strong><a href="./experience/mathsoc.html" class="listing-title">President, UoM Maths Society</a></strong></b>
 <ul>
 <li>
@@ -933,7 +948,7 @@ Advocacy
 </li>
 </ul>
 </li>
-<li data-index="8" data-listing-date-sort="1654041600000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2021-06-01">
+<li data-index="8" data-listing-date-sort="1654041600000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-start-sort="2021-06-01">
 <b><strong><a href="./experience/mathsoc.html" class="listing-title">General Secretary, UoM Maths Society</a></strong></b>
 <ul>
 <li>
@@ -984,7 +999,7 @@ Other
 CPD Accreditations &amp; Registered Memberships
 </h3>
 <ul>
-<li data-index="0" data-listing-date-sort="1743465600000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<li data-index="0" data-listing-date-sort="1743465600000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <b><strong><a href="./experience/ms-certs.html" class="listing-title">Microsoft Certified: Power Platform Fundamentals</a></strong></b>
 <ul>
 <li>
@@ -1000,19 +1015,19 @@ Certified September 2024<span class="listing-date" style="display:none">Septembe
 </li>
 </ul>
 </li>
-<li data-index="2" data-listing-date-sort="1722470400000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<b><strong><a href="./experience/autism-and-adhd-he.html" class="listing-title">“Autism and ADHD in Higher Education: Recognising and addressing the barriers through Non-Medical Helper (NMH) Mentoring and Study Skills strategies”, Optimum eLearning</a></strong></b>
-<ul>
-<li>
-completed May 2024<span class="listing-date" style="display:none">August 2024</span>
-</li>
-</ul>
-</li>
-<li data-index="3" data-listing-date-sort="1722470400000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<li data-index="2" data-listing-date-sort="1722470400000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <b><strong><a href="./experience/SFHEA.html" class="listing-title">Senior Fellowship of Advance HE (SFHEA), University of Manchester</a></strong></b>
 <ul>
 <li>
 awarded August 2024<span class="listing-date" style="display:none">August 2024</span>
+</li>
+</ul>
+</li>
+<li data-index="3" data-listing-date-sort="1722470400000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<b><strong><a href="./experience/autism-and-adhd-he.html" class="listing-title">“Autism and ADHD in Higher Education: Recognising and addressing the barriers through Non-Medical Helper (NMH) Mentoring and Study Skills strategies”, Optimum eLearning</a></strong></b>
+<ul>
+<li>
+completed May 2024<span class="listing-date" style="display:none">August 2024</span>
 </li>
 </ul>
 </li>
@@ -1024,7 +1039,7 @@ awarded August 2024<span class="listing-date" style="display:none">August 2024</
 Honours and Awards
 </h3>
 <ul>
-<li data-index="0" data-listing-date-sort="1727740800000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="70">
+<li data-index="0" data-listing-date-sort="1727740800000" data-listing-file-modified-sort="1790455539533" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="70">
 <b><strong><a href="./experience/CATE.html" class="listing-title">Collaborative Award for Teaching Excellence, University of Manchester</a></strong></b>
 <ul>
 <li>
@@ -1032,7 +1047,7 @@ October 2024<span class="listing-date" style="display:none">October 2024</span>
 </li>
 </ul>
 </li>
-<li data-index="1" data-listing-date-sort="1725148800000" data-listing-file-modified-sort="1757070592184" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="79">
+<li data-index="1" data-listing-date-sort="1725148800000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="79">
 <b><strong><a href="./experience/mdc-excellence.html" class="listing-title">Best Contribution to PGR Environment, University of Manchester</a></strong></b>
 <ul>
 <li>
@@ -1040,7 +1055,7 @@ September 2024<span class="listing-date" style="display:none">September 2024</sp
 </li>
 </ul>
 </li>
-<li data-index="2" data-listing-date-sort="1656633600000" data-listing-file-modified-sort="1757070592185" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<li data-index="2" data-listing-date-sort="1656633600000" data-listing-file-modified-sort="1790455539534" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <b><strong><a href="./experience/stellify.html" class="listing-title">Stellify Award, University of Manchester</a></strong></b>
 <ul>
 <li>
@@ -1118,13 +1133,14 @@ July 2022<span class="listing-date" style="display:none">July 2022</span>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

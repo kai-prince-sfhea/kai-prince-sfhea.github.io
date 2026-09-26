@@ -66,6 +66,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -127,15 +128,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -194,10 +192,10 @@
 \usepackage{amsthm}
 \theoremstyle{definition}
 \newtheorem{exercise}{Exercise}[section]
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
 \theoremstyle{plain}
 \newtheorem{proposition}{Proposition}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -219,13 +217,17 @@
 \newcommand{\Group}{{\Gamma}}
 \newcommand{\GroupElement}{{\gamma}}
 \newcommand{\HilbertSpace}{{H}}
+\newcommand{\Torus}{{\mathbb{T}}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={Functional Analysis},
-  pdfauthor={Kai Prince},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -236,15 +238,15 @@
 
 
 \title{Functional Analysis}
-\author{Kai Prince}
-\date{2025-09-05}
+\author{}
+\date{2026-09-26}
 \begin{document}
 \maketitle
 
 
 The foundational knowledge relating to Measure \& Ergodic Theory, that
 has not been covered elsewhere, was provided by Jamneshan and Kreidler
-\citeproc{ref-ISem28}{(2025)}.
+(\citeproc{ref-ISem28}{2025}).
 
 \begin{definition}[]\protect\hypertarget{def-Representation}{}\label{def-Representation}
 
@@ -322,13 +324,20 @@ closure of the set of all linear combinations of elements of \(A\).
 
 \end{definition}
 
+\begin{definition}[]\protect\hypertarget{def-Torus}{}\label{def-Torus}
+
+We write \(\Torus:=\{z\in\mathbb{C}\mid |z|=1\}\) for the multiplicative
+group of complex numbers of modulus one, and call this the \emph{torus}.
+
+\end{definition}
+
 \begin{definition}[]\protect\hypertarget{def-DualGroup}{}\label{def-DualGroup}
 
 Let \(U:\AmenableGroup\rightarrow\mathscr{U}(\HilbertSpace)\) be a
 unitary representation of a discrete abelian amenable group
 \(\AmenableGroup\).
 
-A group homomorphism \(\chi:\AmenableGroup\rightarrow\mathbb{T}\), where
+A group homomorphism \(\chi:\AmenableGroup\rightarrow\Torus\), where
 \(\mathbb{T}=\{z\in\mathbb{C}\mid|z|=1\}\), is called a
 \emph{character}. The \emph{dual group} \(\Dual{\AmenableGroup}\) of
 \(\AmenableGroup\) is the set of all such characters equipped with the
@@ -355,6 +364,23 @@ is called the \emph{discrete spectrum part} of \(U\).\footnote{Meeting
   Notes: In the \(\AmenableGroup=\mathbb{Z}\) case, then
   \(\HilbertSpace_\text{ds}\) can be broken up into one-dimensional
   objects that corresponds to an eigenfunction.}
+
+\end{definition}
+
+\begin{definition}[{Jamneshan and Kreidler, 2025, Definition
+5.1.8}]\protect\hypertarget{def-EigenSpace}{}\label{def-EigenSpace}
+
+Let \(U:\Group\rightarrow\mathscr{U}(\HilbertSpace)\) be a unitary
+representation of an abelian group \(\Group\). For a character
+\(\chi\in\Dual{\Group}\), we call \begin{align*}
+  \text{ker}(\chi-U):&=\{f\in\HilbertSpace\mid U_\GroupElement f=\chi(\GroupElement)f\text{ for every }\GroupElement\in\Group\}
+  \\&\bigcap_{\GroupElement\in\Group}\text{ker}(\chi(\GroupElement)\text{Id}_\HilbertSpace-U_\GroupElement)
+\end{align*} the \emph{eigenspace} of \(U\) with respect to \(\chi\),
+and elements \(f\in\text{ker}(\chi-U)\setminus\{0\}\) are called
+\emph{eigenvectors} with respect to \(\chi\). The set
+\(\sigma_p(U):=\{\chi\in\Dual{\Group}\mid\text{ker}(\chi-U)\neq\{0\}\}\)
+is the \emph{point spectrum} of \(U\) and its elements are called the
+\emph{eigenvalues} of \(U\).
 
 \end{definition}
 
@@ -459,11 +485,11 @@ for all \(f,g\in\HilbertSpace\).
 
 \end{exercise}
 
-\phantomsection\label{refs}
+\protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
 \bibitem[\citeproctext]{ref-ISem28}
-Jamneshan, A. and Kreidler, H. (2025). \textquotesingle{}\emph{ISem 28:
-Ergodic structure theory and applications}\textquotesingle,.
+Jamneshan, A. and Kreidler, H. (2025). \emph{ISem 28: Ergodic structure
+theory and applications}.
 
 \end{CSLReferences}
 

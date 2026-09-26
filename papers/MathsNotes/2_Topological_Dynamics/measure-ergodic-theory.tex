@@ -66,6 +66,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -127,15 +128,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -192,8 +190,12 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -208,20 +210,28 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
+\newcommand{\Borel}[1]{{\text{Bor}({#1})}}
+\newcommand{\ContinuousFunctionSpace}[1]{{\mathscr{C}({#1})}}
+\newcommand{\Dual}[1]{{#1}^{*}}
 \newcommand{\Group}{{\Gamma}}
 \newcommand{\GroupElement}{{\gamma}}
 \newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
+\newcommand{\HilbertSpace}{{H}}
 \newcommand{\Measure}{{\mu}}
 \newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
 \newcommand{\Topology}{{\tau}}
+\newcommand{\EigenAlgebra}{{\SigmaAlgebra{K}}}
 \newcommand{\SigmaAlgebraGenerator}[1][\Topology]{{\sigma({#1})}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={Measure Theory and Ergodic Theory},
-  pdfauthor={Kai Prince},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -232,18 +242,18 @@
 
 
 \title{Measure Theory and Ergodic Theory}
-\author{Kai Prince}
-\date{2025-09-05}
+\author{}
+\date{2026-09-26}
 \begin{document}
 \maketitle
 
 
 The foundational knowledge relating to Measure \& Ergodic Theory, that
 has not been covered elsewhere, was provided by Robertson
-\citeproc{ref-Robertson2023MeasureErgodicTheory}{(2023)}.
+(\citeproc{ref-Robertson2023MeasureErgodicTheory}{2023}).
 
-\begin{definition}[{Gleason,
-2010}]\protect\hypertarget{def-TopoMeasureSpace}{}\label{def-TopoMeasureSpace}
+\begin{definition}[{Gleason, 2010, sect.
+2}]\protect\hypertarget{def-TopoMeasureSpace}{}\label{def-TopoMeasureSpace}
 
 A \emph{topological measure space} \((X,\SigmaAlgebra{B},\Measure)\) is
 a topological space \((X,\Topology)\) such that \(\SigmaAlgebra{B}\) is
@@ -275,17 +285,86 @@ measure \(\Measure\) on \(\Group\) such that
 
 \end{definition}
 
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-Robertson2023MeasureErgodicTheory}
-Robertson, D. (2023). \textquotesingle{}\emph{MATH41021/61021 measure
-and ergodic theory}\textquotesingle, Available at:
-\url{https://personalpages.manchester.ac.uk/staff/donald.robertson/teaching/23-24/41021}
-(Accessed: 22 January 2024).
+\section{Eigenfunctions}\label{eigenfunctions}
 
+Let \((X,\Borel{X},\Measure,T)\) be a measure-preserving system.
+
+\begin{definition}[{Kra et al., 2026, sect.
+2}]\protect\hypertarget{def-MeasurableEigenfunction}{}\label{def-MeasurableEigenfunction}
+
+A nonzero function \(f\in\text{L}^2(X,\Borel{X},\Measure)\) is a
+\emph{measurable eigenfunction} with eigenvalue \(\theta\in\mathbb{C}\)
+if \(f(Tx)=\theta f(x)\) holds for \(\Measure\)-almost every \(x\in X\).
+
+\end{definition}
+
+\begin{definition}[{Kra et al., 2026, sect.
+2}]\protect\hypertarget{def-TopologicalEigenfunction}{}\label{def-TopologicalEigenfunction}
+
+A nonzero function \(f\in\ContinuousFunctionSpace{X}\) is a
+\emph{topological eigenfunction} with eigenvalue \(\theta\in\mathbb{C}\)
+if \(f(Tx)=\theta f(x)\) for all \(x\in X\).
+
+\end{definition}
+
+\section{Discrete Spectrum}\label{discrete-spectrum}
+
+\begin{proposition}[{Jamneshan and Kreidler, 2025, Corollary
+5.1.11}]\protect\hypertarget{prp-DiscreteSpectrum}{}\label{prp-DiscreteSpectrum}
+
+Let \(U:\Group\rightarrow\mathscr{U}(\HilbertSpace)\) be a unitary
+representation of an abelian group \(\Group\). Then \[
+\HilbertSpace_\text{ds}=\bar{\text{lin}}\bigcup_{\chi\in\Dual{\Group}}\text{ker}(\chi-U).
+\]
+
+\end{proposition}
+
+\section{Mixing}\label{mixing}
+
+\begin{definition}[{Kra et al., 2026, sect.
+2}]\protect\hypertarget{def-EigenAlgebra}{}\label{def-EigenAlgebra}
+
+We define \(\EigenAlgebra\) to be the sub-\(\sigma\)-algebra of
+\(\Borel{X}\) where \(\text{L}^2(X,\EigenAlgebra,\Measure)\) is the
+closed subspace of \(\text{L}^2(X,\Borel{X},\Measure)\) spanned by its
+measurable eigenfunctions.
+
+\end{definition}
+
+\begin{proposition}[{cf. Kra et al., 2026, sect.
+2}]\protect\hypertarget{prp-EigenAlgebraProp}{}\label{prp-EigenAlgebraProp}
+
+For any \(E\in\Borel{X}\) and \(\Measure\)-almost every \(x\in E\), we
+have \(\mathbb{E}(\boldsymbol{1}_E\mid\EigenAlgebra)(x)>0\).
+
+\end{proposition}
+
+\begin{theorem}[{Kra et al., 2026, Theorem
+2.4}]\protect\hypertarget{thm-WeakMixing}{}\label{thm-WeakMixing}
+
+For any \(f\in\text{L}^2(X,\Borel{X},\Measure)\), we have \[
+f\text{is weak mixing}\quad\iff\quad\mathbb{E}(f\mid\EigenAlgebra)=0.
+\]
+
+\end{theorem}
+
+\protect\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
 \bibitem[\citeproctext]{ref-Gleason2010HaarMeasure}
-Gleason, J. (2010). \textquotesingle{}\emph{Existence and uniqueness of
-haar measure}\textquotesingle,.
+Gleason, J. (2010). \emph{Existence and uniqueness of haar measure}.
+
+\bibitem[\citeproctext]{ref-ISem28}
+Jamneshan, A. and Kreidler, H. (2025). \emph{ISem 28: Ergodic structure
+theory and applications}.
+
+\bibitem[\citeproctext]{ref-kra2026shortproof}
+Kra, B. et al. (2026). \emph{A short proof of erdős's \(B+C\)
+conjecture}.
+
+\bibitem[\citeproctext]{ref-Robertson2023MeasureErgodicTheory}
+Robertson, D. (2023). \emph{MATH41021/61021 measure and ergodic theory}.
+University of Manchester. Available at:
+\url{https://personalpages.manchester.ac.uk/staff/donald.robertson/teaching/23-24/41021}
 
 \end{CSLReferences}
 

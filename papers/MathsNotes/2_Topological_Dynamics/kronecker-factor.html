@@ -2,19 +2,24 @@
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kai Prince">
-<meta name="dcterms.date" content="2025-09-05">
+<meta name="dcterms.date" content="2026-09-26">
 
 <title>Kronecker Factor – Kai Prince</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -60,14 +65,14 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-d7fc5677f3affda326ee16cb3d720675.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-50169f0012e06f534272ed79332011fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-8a74314f61e346822acdc1012f6ccd95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-50169f0012e06f534272ed79332011fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,10 +114,10 @@ gtag('config', 'G-0QRFD5NB5R', { 'anonymize_ip': true});
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
-  "consent_type":"implied",
+  "consent_type":"express",
   "palette":"light",
   "language":"en",
-  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "page_load_consent_levels":["strictly-necessary"],
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
@@ -339,7 +344,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo">
+    <img src="../../../images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo light-content">
+    <img src="../../../images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Kai Prince</span>
@@ -391,6 +397,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#sec-Backlinks" id="toc-sec-Backlinks" class="nav-link active" data-scroll-target="#sec-Backlinks">Backlinks</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background"><span class="header-section-number">1</span> Background</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2</span> Conclusion</a></li>
+  <li><a href="#recent-publications" id="toc-recent-publications" class="nav-link" data-scroll-target="#recent-publications"><span class="header-section-number">3</span> Recent Publications</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4</span> Summary</a></li>
+  <li><a href="#jdlg-decomposition" id="toc-jdlg-decomposition" class="nav-link" data-scroll-target="#jdlg-decomposition"><span class="header-section-number">5</span> JdLG-Decomposition</a></li>
   <li><a href="#sec-Outlinks" id="toc-sec-Outlinks" class="nav-link" data-scroll-target="#sec-Outlinks">Outlinks</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/blob/main/papers/MathsNotes/2_Topological_Dynamics/kronecker-factor.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="kronecker-factor.tex"><i class="bi bi-file"></i>LaTeX</a></li><li><a href="kronecker-factor.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -405,27 +416,14 @@ window.Quarto = {
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Kai Prince <a href="mailto:kai.prince@manchester.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0009-0000-5246-4227" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            The University of Manchester
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
+    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 September 2025</p>
+      <p class="date">26 September 2026</p>
     </div>
   </div>
   
@@ -441,46 +439,298 @@ window.Quarto = {
 <h2 class="unnumbered anchored" data-anchor-id="sec-Backlinks">Backlinks</h2>
 <ul>
 <li><a href="../../MathsNotes/0_Fundamental/group.html">Group</a></li>
+<li><a href="../../MathsNotes/1_Amenable_and_Density/amenable.html">Amenable</a></li>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/functional-analysis.html">Functional Analysis</a></li>
 <li><a href="../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html">Measure Theory and Ergodic Theory</a></li>
 <li><a href="../../MathsNotes/1_Amenable_and_Density/folner.html">Følner sequence</a></li>
-<li><a href="../../MathsNotes/1_Amenable_and_Density/amenable.html">Amenable</a></li>
-<li><a href="../../MathsNotes/2_Topological_Dynamics/factor-maps.html">Factor Maps</a></li>
 <li><a href="../../MathsNotes/2_Topological_Dynamics/actions.html">Actions</a></li>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/joinings.html">Joinings</a></li>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html">Furstenberg’s Correspondence Principle</a></li>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/factor-maps.html">Factor Maps</a></li>
+<li><a href="../../GeneralisedErdosConjecture/ErdosConjecture.html">A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups</a></li>
 </ul>
 </section>
+<p>We want to prove the following result generalised for <a href=".\../../MathsNotes/1_Amenable_and_Density/amenable.html#def-amenable">amenable</a> groups, where <span class="math inline">\(T\)</span> is replaced with <span class="math inline">\(\AmenableGroup\)</span>:</p>
+<div id="prp-KroneckerGenericSource0" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 1 (<span class="no-paren"><span class="citation" data-cites="host2019short">Host, 2019, Proposition 5</span></span>)</strong></span> Let <span class="math inline">\((\ShiftSpace,T)\)</span> be a topological dynamical system, <span class="math inline">\(\ShiftSpaceElement_0\in\ShiftSpace\)</span>, and <span class="math inline">\(\Measure\)</span> be an ergodic invariant probability measure supported on the closed orbit of <span class="math inline">\(\ShiftSpaceElement_0\)</span> under <span class="math inline">\(T\)</span>. Let <span class="math inline">\((\KroneckerFactor,\KroneckerMeasure,S)\)</span> be the Kronecker factor of <span class="math inline">\((\ShiftSpace,\Measure,T)\)</span>, with factor map <span class="math inline">\(\KroneckerFactorMap:\ShiftSpace\rightarrow\KroneckerSpace\)</span>. Let <span class="math inline">\(\ShiftSpace\times\KroneckerSpace\)</span> be endowed with the transformation of <span class="math inline">\(T\times S\)</span>. Let <span class="math inline">\(\tilde\Measure\)</span> be the measure on <span class="math inline">\(\ShiftSpace\times\KroneckerSpace\)</span> and image of <span class="math inline">\(\Measure\)</span> under the map <span class="math inline">\(\ShiftSpace\rightarrow\ShiftSpace\times\KroneckerSpace\)</span> where <span class="math inline">\(\ShiftSpaceElement\mapsto(\ShiftSpaceElement,\KroneckerFactorMap(\ShiftSpaceElement))\)</span>.</p>
+<p>Then there exists a <a href=".\../../MathsNotes/1_Amenable_and_Density/folner.html#def-Folner">Følner</a> sequence <span class="math inline">\(\tilde{\Folner}\)</span> and a point <span class="math inline">\(\KroneckerSpaceElement_0\in\KroneckerSpace\)</span> such that <span class="math inline">\((\ShiftSpaceElement_0,\KroneckerSpaceElement_0)\)</span> is <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-generic">generic</a> for <span class="math inline">\(\tilde{\Measure}\)</span> along <span class="math inline">\(\tilde{\Folner}\)</span>.</p>
+</div>
+<p><span class="citation" data-cites="host2019short">Host (<a href="#ref-host2019short" role="doc-biblioref">2019</a>)</span> also concludes that, for every <span class="math inline">\(f\in\ContinuousFunctionSpace{X}\)</span> and every <span class="math inline">\(h\in\ContinuousFunctionSpace{Z}\)</span>, we have <span class="math display">\[\int_Xf(\ShiftSpaceElement)\cdot (h\circ\KroneckerFactorMap)(\ShiftSpaceElement)=\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\tilde{\Folner}_N}}\sum_{n\in\tilde{\Folner}_N}f(T^n\ShiftSpaceElement_0)h(S^n\KroneckerSpaceElement_0). \]</span></p>
+<section id="background" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="background"><span class="header-section-number">1</span> Background</h2>
+<p>Firstly, we have the defininitions of the Kronecker subsystem and Kronecker factor below:</p>
 <div id="def-KroneckerFactor" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 1 (<span class="no-paren"><span class="citation" data-cites="ISem28">Jamneshan and Kreidler, 2025, Definition 7.1.14 &amp; Subsection 13.3</span></span>)</strong></span> Let <span class="math inline">\((X,T)\)</span> be a measure-preserving system. We then write <span class="math inline">\(J_\text{kro}:(X_\text{kro},T_\text{kro})\rightarrow(X,T)\)</span> for the extension <span class="math inline">\(J_E:(X_E,T_E)\rightarrow(X,T)\)</span> defined by the invariant Markov sublattice <span class="math inline">\(E=\text{L}^2(X)_\text{ds}\)</span> and call <span class="math inline">\((X_\text{kro},T_\text{kro})\)</span> the <strong>Kronecker subsystem</strong> of <span class="math inline">\((X,T)\)</span>.</p>
 <p>We refer to <span class="math inline">\((X_\text{kro},\Topology_\text{kro})\)</span> as the <em>Kronecker factor</em> of the system <span class="math inline">\((X,\Topology)\)</span>.</p>
 </div>
-<div id="prp-KroneckerGeneric" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1 (<span class="no-paren"><span class="citation" data-cites="host2019short">cf. Host, 2019, Proposition 5</span></span>)</strong></span> Let <span class="math inline">\((X,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an <a href=".\../../MathsNotes/1_Amenable_and_Density/amenable.html#def-amenable">amenable</a> <a href=".\../../MathsNotes/0_Fundamental/group.html#def-group">group</a>, <span class="math inline">\(x_0\in X\)</span>, and <span class="math inline">\(\Measure\)</span> be an ergodic invariant probability measure supported on the closed orbit of <span class="math inline">\(x_0\)</span> under the <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-action">action</a> of <span class="math inline">\(\AmenableGroup\)</span>.</p>
-<p>Let <span class="math inline">\(\KroneckerFactor\)</span> be the <em>Kronecker factor</em> of <span class="math inline">\((X,\Measure,\AmenableGroup)\)</span>, with factor map <span class="math inline">\(\ProjectionMap:X\rightarrow\KroneckerSpace\)</span>.</p>
-<p>Let <span class="math inline">\(X\times\KroneckerSpace\)</span> be endowed with the group action of <span class="math inline">\(\AmenableGroup\times\KroneckerAction\)</span>. Let <span class="math inline">\(\tilde\Measure\)</span> be the measure on <span class="math inline">\(X\times\KroneckerSpace\)</span> and image of <span class="math inline">\(\Measure\)</span> under the map <span class="math inline">\(X\rightarrow X\times\KroneckerSpace\)</span> where <span class="math inline">\(x\mapsto(x,\ProjectionMap(x))\)</span>.</p>
-<p>Then there exists a <a href=".\../../MathsNotes/1_Amenable_and_Density/folner.html#def-Folner">Følner</a> sequence <span class="math inline">\(\tilde{\Folner}\)</span> and a point <span class="math inline">\(\KroneckerSpaceElement_0\in\KroneckerSpace\)</span> such that <span class="math inline">\((x_0,\KroneckerSpaceElement_0)\)</span> is <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-generic">generic</a> for <span class="math inline">\(\tilde{\Measure}\)</span> along <span class="math inline">\(\tilde{\Folner}\)</span>.</p>
+<p><span class="citation" data-cites="kra2007uniformity">Kra and Host (<a href="#ref-kra2007uniformity" role="doc-biblioref">2007</a>, Proposition 6.1)</span> and <span class="citation" data-cites="Host2018NilpotentSI">Host and Kra (<a href="#ref-Host2018NilpotentSI" role="doc-biblioref">2018</a>, Proposition 24.3)</span> were the sources given for <span class="citation" data-cites="host2019short">Host (<a href="#ref-host2019short" role="doc-biblioref">2019</a>, Proposition 5)</span>. We will compare these original results with the result we intend to prove.</p>
+<div id="prp-KroneckerGenericSource1" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 2 (<span class="no-paren"><span class="citation" data-cites="kra2007uniformity">Kra and Host, 2007, Proposition 6.1</span></span>)</strong></span> Let <span class="math inline">\((X,T)\)</span> be a topological dynamical system, <span class="math inline">\(x_0\in X\)</span> a transitive point, and <span class="math inline">\(\Measure\)</span> an invariant ergodic measure on <span class="math inline">\(X\)</span>. Let <span class="math inline">\((Y,S)\)</span> be a distal topological dynamical system, <span class="math inline">\(\nu\)</span> an invariant measure on <span class="math inline">\(Y\)</span>, and <span class="math inline">\(\KroneckerFactorMap:\ (X,\Measure,T)\mapsto(Y,\nu,S)\)</span> a measure theoretic factor map.</p>
+<p>Then there exists a point <span class="math inline">\(y_0\in Y\)</span> and a sequence of intervals <span class="math inline">\(\boldsymbol{I}=(I_j:j\geq1)\)</span> whose lengths tend to infinity such that for every continuous function <span class="math inline">\(f\)</span> on <span class="math inline">\(X\)</span> and every continuous function <span class="math inline">\(g\)</span> on <span class="math inline">\(Y\)</span>, <span class="math display">\[\int f(x)(g\circ\KroneckerFactorMap)(x)\ \mathrm{d}\Measure(x) = \lim_{j\rightarrow+\infty}\frac{1}{I_j}\sum_{n\in \CountingMeasure{I_j}}f(T^nx_0)g(s^ny_0). \]</span></p>
 </div>
-<p>The sources given by <span class="citation" data-cites="host2019short">Host <a href="#ref-host2019short" role="doc-biblioref">(2019)</a></span> for this result were <span class="citation" data-cites="kra2007uniformity">Kra and Host <a href="#ref-kra2007uniformity" role="doc-biblioref">(2007)</a>, Proposition 6.1</span> and <span class="citation" data-cites="Host2018NilpotentSI">Host and Kra <a href="#ref-Host2018NilpotentSI" role="doc-biblioref">(2018)</a>, Proposition 24.3</span>.</p>
+<p>Comparing the assumptions for <a href="#prp-KroneckerGenericSource0" class="quarto-xref">Proposition&nbsp;1</a> with <a href="#prp-KroneckerGenericSource1" class="quarto-xref">Proposition&nbsp;2</a>, we have:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><a href="#prp-KroneckerGenericSource0" class="quarto-xref">Proposition&nbsp;1</a></th>
+<th><a href="#prp-KroneckerGenericSource1" class="quarto-xref">Proposition&nbsp;2</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td></td>
+<td><span class="math inline">\(x_0\in X\)</span> has been specified as a transitive point.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><span class="math inline">\(\Measure\)</span> has been specified as being supported on the closed orbit of <span class="math inline">\(x_0\)</span> under the <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-action">action</a> of <span class="math inline">\(T\)</span>.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span class="math inline">\((Y,S)\)</span> is defined as the Kronecker factor <span class="math inline">\(\KroneckerFactor\)</span>.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Additionally:</p>
+<ul>
+<li><span class="math inline">\(\tilde\Measure\)</span> appears to be a joining between <span class="math inline">\(\Measure\)</span> and <span class="math inline">\(\nu\)</span>.</li>
+<li><span class="math inline">\(\boldsymbol{I}\)</span> is the Følner sequence <span class="math inline">\(\tilde\Phi\)</span>.</li>
+</ul>
+<p>Left to check definitions for:</p>
+<ul>
+<li><span class="citation" data-cites="kra2007uniformity">(<a href="#ref-kra2007uniformity" role="doc-biblioref">Kra and Host, 2007</a>, Theorem 3.1)</span>: Let <span class="math inline">\(k\geq1\)</span> be an integer. For a <span class="math inline">\(k\)</span>-step nilsystem, <span class="math inline">\((X=G/\Gamma,T)\)</span> with Haar measure <span class="math inline">\(\mu\)</span>.
+<ul>
+<li><span class="math inline">\(G\)</span> is a <span class="math inline">\(k\)</span>-step nilpotent Lie <a href=".\../../MathsNotes/0_Fundamental/group.html#def-group">group</a>
+<ul>
+<li><span class="math inline">\(G\)</span> is a group where, for <span class="math inline">\(g,h\in G\)</span>, we write <span class="math inline">\([g,h]=ghg^{-1}h^{-1}\)</span> for the commutator of <span class="math inline">\(g\)</span> and <span class="math inline">\(h\)</span> and we write <span class="math inline">\([A,B]\)</span> for the subgroup spanned by <span class="math inline">\(\{[a,b]:a\in A,b\in B \}\)</span>.</li>
+<li>The commutator subgroups <span class="math inline">\(G_j\)</span>, <span class="math inline">\(j\geq1\)</span>, are defined inductively by setting <span class="math inline">\(G_1=G\)</span> and <span class="math inline">\(G_{j+1}=[G_j,G]\)</span>.</li>
+<li>Let <span class="math inline">\(k\geq 1\)</span> be an integer. We say that <span class="math inline">\(G\)</span> is a <span class="math inline">\(k\)</span>-step nilpotent if $G_{k+1}is the trivial subgroup.</li>
+</ul></li>
+<li><span class="math inline">\(\Gamma\)</span> is a discrete cocompact subgroup of <span class="math inline">\(G\)</span></li>
+<li>The compact manifold <span class="math inline">\(X=G/\Gamma\)</span> is called a <span class="math inline">\(k\)</span>-step nilmanifold
+<ul>
+<li>The group <span class="math inline">\(G\)</span> acts on <span class="math inline">\(X\)</span> by left translations and we write this action as <span class="math inline">\((g,x)\mapsto g.x\)</span>.</li>
+</ul></li>
+<li><span class="math inline">\((X,T)\)</span> is <em>transitive</em> (admits a dense orbit).
+<ul>
+<li>This is equivalent to being minimal, uniquely ergodic, or <span class="math inline">\((X,\Measure,T)\)</span> being ergodic.</li>
+</ul></li>
+</ul></li>
+<li>[distal]
+<ul>
+<li>previously seen def
+<ul>
+<li>A topological system <span class="math inline">\((X,T)\)</span> is <strong>distal</strong> if <span class="math display">\[\inf\{d(T^nx,T^ny):n\in\mathbb{N}\}&gt;0 \]</span> for all <span class="math inline">\(x\neq y\in X\)</span>, where <span class="math inline">\(d\)</span> is the metric on <span class="math inline">\(X\)</span>. <span class="citation" data-cites="kra2022infinite">(<a href="#ref-kra2022infinite" role="doc-biblioref">Kra et al., 2022</a>)</span></li>
+</ul></li>
+<li>a def exists for any semigroup action by assuming there’s a metric compact space</li>
+<li>a def exists for equicontinuous</li>
+<li>Discuss why has distal systems been used?
+<ul>
+<li>Is it required for the application of the result?</li>
+<li>Is it required for the proof?</li>
+</ul></li>
+<li>check the Kronecker system in my case is distal</li>
+</ul></li>
+</ul>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em> (<span class="no-paren"><span class="citation" data-cites="kra2007uniformity">Kra and Host, 2007, p. 257</span></span>). </span>[Section 4.1 (p.&nbsp;24) - association of <span class="math inline">\((X,T)\)</span> and <span class="math inline">\(x_0\)</span> to a sequence (the start is just FCP)]</p>
+<p>Section 4.1:</p>
+<ul>
+<li>All FCP?
+<ul>
+<li>Define: separable subalgebra of <span class="math inline">\(\ell^\infty(\mathbb{Z})\)</span>
+<ul>
+<li>Separable subalgebra of <span class="math inline">\(\ell^\infty(\mathbb{Z})\)</span> is meant as unitary subalgebra of <span class="math inline">\(\ell^\infty(\mathbb{Z})\)</span> as well as (*)
+<ul>
+<li>ISem28: An amenable group, <span class="math inline">\(\AmenableGroup\)</span>, has a group homomorphism <span class="math inline">\(U:\AmenableGroup\rightarrow\mathscr{U}(H)\)</span> where <span class="math inline">\(\AmenableGroupElement\mapsto U_\AmenableGroupElement\)</span> is a unitary representation of <span class="math inline">\(\Gamma\)</span> on <span class="math inline">\(H\)</span>. The set of all unitary operators, <span class="math inline">\(\mathscr{U}(H)\)</span>, is the subset of the set of linear isometries <span class="math inline">\(U:H\rightarrow H\)</span> (such that <span class="math inline">\(||Uf||=||f||\)</span> for all <span class="math inline">\(f\in H\)</span>) that are surjective (and thus bijective).</li>
+<li>Would the amenable case of the separable subalgebra be the case where <span class="math inline">\(f=U_\gamma\circ r\)</span> where <span class="math inline">\(r\in\ell^\infty(X)\)</span>?</li>
+<li><span class="citation" data-cites="kra2007uniformity">Kra and Host (<a href="#ref-kra2007uniformity" role="doc-biblioref">2007</a>)</span> is using a functional analysis approach to FCP [Attempt following the steps with the FCP we covered].</li>
+<li>For <span class="math inline">\(\ell^\infty(\AmenableGroup)\)</span>, <span class="math inline">\(a\)</span> could be <span class="math inline">\((\boldsymbol{1}_\AmenableGroupElement:\AmenableGroupElement\in \AmenableGroup)\)</span>.</li>
+<li>Easier to think of <span class="math inline">\(\ell^\infty(\mathbb{Z})\)</span> as all the bounded functions on <span class="math inline">\(\mathbb{Z}\)</span> and has the supremum norm. For <span class="math inline">\(B\subset\mathbb{Z}\)</span> you can define a function <span class="math inline">\(f\in\ell^\infty(\mathbb{Z})\)</span>, i.e., <span class="math inline">\(\boldsymbol{1}_B\)</span>.</li>
+</ul></li>
+<li>(*):
+<ul>
+<li>invariant under the shift</li>
+<li>invariant under complex conjugation</li>
+<li>closed in <span class="math inline">\(\ell^\infty(\mathbb{Z})\)</span></li>
+<li>[separable] for the uniform norm <span class="math inline">\(||\cdot||_\infty\)</span></li>
+</ul></li>
+<li>We mostly consider the case of the separable subalgebra <span class="math inline">\(\mathcal{A}(\boldsymbol{a})\)</span> spanned by a bounded sequence <span class="math inline">\(\boldsymbol{a}=(a_n:n\in\mathbb{Z})\)</span>.</li>
+<li>The shift on <span class="math inline">\(\ell^\infty(\mathbb{Z})\)</span> is written as <span class="math inline">\(\sigma\)</span> and thus, for a sequence <span class="math inline">\(\boldsymbol{a}=(a_n:n\in\mathbb{Z})\)</span>, <span class="math inline">\(\sigma\boldsymbol{a}=(a_{n+1}:n\in\mathbb{Z})\)</span></li>
+<li>We use <span class="math inline">\(\bar{\boldsymbol{a}}\)</span> to denote the conjugate sequence <span class="math inline">\((\bar{\boldsymbol{a}}:n\in\mathbb{Z})\)</span>.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>[If <span class="math inline">\(Y\)</span> denotes the Kronecker factor of <span class="math inline">\((X,\Measure,T)\)</span>]</p>
+<p>[The sequence of intervals <span class="math inline">\(I\)</span> plays the same role as the “Kronecker complete processes” of [BFW]]</p>
+<p>We write <span class="math inline">\(d_X(\cdot,\cdot)\)</span> and <span class="math inline">\(d_Y(\cdot,\cdot)\)</span> for distances on <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, defining the topologies of these spaces.</p>
+<p>Subsection 6.1.1 (p.&nbsp;39)</p>
+<ul>
+<li><span class="math inline">\(\mathcal{B}\)</span> closed subalgebra of <span class="math inline">\(\text{L}^\infty(\Measure)\)</span> spanned by <span class="math inline">\(\mathcal{C}(X)\)</span> and the function <span class="math inline">\(g\circ\pi\)</span> with <span class="math inline">\(g\in\mathcal{C}(Y)\)</span>.
+<ul>
+<li>It is unitary, separable, and invariant under complex conjugation and under <span class="math inline">\(T\)</span>.</li>
+</ul></li>
+<li><span class="math inline">\(W\)</span> is the Gelfand spectrum of this algebra.
+<ul>
+<li>Let <span class="math inline">\(W\)</span> be the Gelfand spectrum of <span class="math inline">\(\mathcal{B}\)</span> then <span class="math inline">\(W\)</span> consists of the set of unitary homomorphisms from <span class="math inline">\(\mathcal{B}\)</span> to the complex numbers.
+<ul>
+<li><span class="math inline">\(W\)</span> will be a “nice” space - compact metric</li>
+<li>Anything we have on <span class="math inline">\(\mathcal{B}\)</span> will have analogies in <span class="math inline">\(W\)</span>
+<ul>
+<li>As <span class="math inline">\(\mathcal{B}\)</span> is invariant under <span class="math inline">\(T\)</span>, then an equivalent invariance is in <span class="math inline">\(W\)</span>, see <span class="math inline">\(R:W\rightarrow W\)</span>.</li>
+<li>Like how <span class="math inline">\(Tf=f\circ T\)</span> looks at pointwise transformations on <span class="math inline">\(\mathcal{B}\)</span>, this goes a step further with <span class="math inline">\(R\)</span> on <span class="math inline">\(W\)</span>.</li>
+</ul></li>
+<li>Can construct the Kronecker factor with the Gelfand spectrum.
+<ul>
+<li>This would require a <span class="math inline">\(\mathcal{B}\)</span> generated by the eigenfunctions, which relates to our previous work on assuming an Sigma Algebra of almost-invariant subsets.</li>
+<li>Compare with ISem28 Exercise 8.5.</li>
+<li>This method differs to using disintegrations as disintegrations start with assuming a sigma algebra of almost-invariant subsets whereas Gelfand spectrums starts with all the eigenfunctions (which may not completely correspond to almost-invariant subsets) and create a sigma algebra from this (thus being more general).</li>
+</ul></li>
+</ul></li>
+<li>As <span class="math inline">\(\mathcal{B}\)</span> is separable, <span class="math inline">\(W\)</span> is a compact metrizable space.</li>
+<li>By def, there exists an isometric isomorphism of algebras <span class="math inline">\(\Psi:\mathcal{C}(W)\rightarrow\mathcal{B}\)</span>.
+<ul>
+<li>For <span class="math inline">\(\boldsymbol{b}\in\mathcal{B}\)</span>, the function <span class="math inline">\(\Psi^{-1}(\boldsymbol{b})\)</span> is called <em>the function associated to</em> <span class="math inline">\(\boldsymbol{b}\)</span>.</li>
+<li>The map <span class="math inline">\(\boldsymbol{b}\mapsto b_0\)</span> is a character of the algebra <span class="math inline">\(\mathcal{B}\)</span>. Thus, there exists a point <span class="math inline">\(w_0\in W\)</span> with $f(w_0)=(f)_0 for all <span class="math inline">\(f\in\mathcal{C}(W)\)</span></li>
+</ul></li>
+</ul></li>
+<li>The shift on <span class="math inline">\(\mathcal{B}\)</span> induces a homeomorphism <span class="math inline">\(R:W\rightarrow W\)</span> satisfying <span class="math inline">\(\Psi(f\circ T)=\Psi(f)\circ R\)</span> for all functions <span class="math inline">\(f\in\mathcal{C}(W)\)</span>.
+<ul>
+<li>Therefore, for every <span class="math inline">\(f\in\mathcal{C}(W)\)</span>, <span class="math inline">\(\Psi(f)\)</span> is the sequence <span class="math display">\[\Psi(f)=\left(f(T^nw_0):n\in\mathbb{Z} \right). \]</span></li>
+<li>If <span class="math inline">\(f\in\mathcal{C}(W)\)</span> satisfies <span class="math inline">\(f(T^nw_0)=0\)</span> for all <span class="math inline">\(n\in\mathbb{Z}\)</span>, then the sequence given by <span class="math inline">\(\Psi(\boldsymbol{b})=f\)</span> is identically zero and so <span class="math inline">\(f\)</span> itself is identifcally zero.
+<ul>
+<li>It follows that the point <span class="math inline">\(w_0\)</span> of <span class="math inline">\(W\)</span> is transitive, meaning that its orbit <span class="math inline">\(\{T^nw_0:n\in\mathbb{Z}\}\)</span> is dense in <span class="math inline">\(W\)</span>.</li>
+</ul></li>
+</ul></li>
+<li>The triple <span class="math inline">\((W,T,w_0)\)</span> is called the <em>pointed topological dynamical system associated to the algebra</em> <span class="math inline">\(\mathcal{B}\)</span>.</li>
+<li>The inclusion of <span class="math inline">\(\mathcal{C}(X)\)</span> in <span class="math inline">\(\mathcal{B}\)</span> induces a continuous surjective map <span class="math inline">\(p:W\rightarrow X\)</span> satisfying <span class="math inline">\(f\circ p=\Psi(f)\)</span> for every continuous function <span class="math inline">\(f\)</span> on <span class="math inline">\(X\)</span> and we have that <span class="math inline">\(T\circ p=p\circ R\)</span>.
+<ul>
+<li>Similarly, the map <span class="math inline">\(g\mapsto g\circ\pi\)</span> from <span class="math inline">\(\mathcal{C}(Y)\)</span> to <span class="math inline">\(\mathcal{B}\)</span> is an isometric homomorphism of algebras and thus induces a continuous surjective map <span class="math inline">\(q:W\rightarrow Y\)</span> satisfying <span class="math inline">\(g\circ q=\Psi(g\circ\pi)\)</span> for all continuous functions <span class="math inline">\(g\)</span> on <span class="math inline">\(Y\)</span>.</li>
+<li>We have that <span class="math inline">\(S\circ q=q\circ R\)</span> so <span class="math inline">\(p:(W,R)\rightarrow(X,T)\)</span> and <span class="math inline">\(q:(W,R)\rightarrow(Y,S)\)</span> are factor maps, in the topological sense.</li>
+</ul></li>
+<li>The map <span class="math inline">\(f\mapsto\int f\ \mathrm{d}\Measure\)</span> is a positive linear form on the algebra <span class="math inline">\(\mathcal{B}\)</span> and thus, there exists a unique probability measure <span class="math inline">\(\rho\)</span> on <span class="math inline">\(W\)</span> satisfying <span class="math display">\[\int f\ \mathrm{d}\Measure=\int\Psi(f)\ \mathrm{d}\rho\qquad\text{for all functions }f\in\mathcal{B}. \]</span>
+<ul>
+<li>As <span class="math inline">\(\Psi(f\circ T)=\Psi(f)\circ R\)</span> for all <span class="math inline">\(f\in\mathcal{B}\)</span> and <span class="math inline">\(\mu\)</span> is invariant under <span class="math inline">\(T\)</span>, the measure <span class="math inline">\(\rho\)</span> is invariant under <span class="math inline">\(R\)</span>.</li>
+<li>As <span class="math inline">\(\Psi(f)=f\circ p\)</span> for all continuous functions <span class="math inline">\(f\)</span> on <span class="math inline">\(X\)</span>, we have that the image of <span class="math inline">\(\rho\)</span> under <span class="math inline">\(p\)</span> is equal to <span class="math inline">\(\mu\)</span>.</li>
+<li>Therefore, <span class="math inline">\(p:(W,\rho,R)\rightarrow(X,\mu,T)\)</span> is a measure theoretic factor map.
+<ul>
+<li>Moreover, for every function <span class="math inline">\(f\in\mathcal{B}\)</span>, <span class="math display">\[\int|\Psi(f)|^2\ \mathrm{d}\rho=\int\Psi(|f|^2)\ \mathrm{d}\rho=\int|f|^2\ \mathrm{d}\mu \]</span> and the map <span class="math inline">\(\Psi\)</span> is an isometry from the space <span class="math inline">\(\mathcal{B}\)</span> endowed with the norm <span class="math inline">\(\text{L}^2(\mu)\)</span> into the space <span class="math inline">\(\text{L}^2(\rho)\)</span>.</li>
+</ul></li>
+</ul></li>
+<li>Since <span class="math inline">\(\mathcal{C}(X)\)</span> is dense in <span class="math inline">\(\mathcal{B}\)</span> under the <span class="math inline">\(\text{L}^2(\mu)\)</span> norm and since <span class="math inline">\(\Psi(f)=f\circ p\)</span> for <span class="math inline">\(f\in\mathcal{C}(X)\)</span>, we have that, for all <span class="math inline">\(f\in\mathcal{B}\)</span>, <span class="math display">\[\Psi(f)=f\circ p\quad(p\text{-almost everywhere}). \]</span></li>
+<li>We claim that the map <span class="math inline">\(p:(W,\rho,R)\rightarrow(X,\mu,T)\)</span> is an isomorphism between measure preserving systems.
+<ul>
+<li>Indeed, the range of the map <span class="math display">\[f\mapsto f\circ p:\text{L}^2(\mu)\rightarrow\text{L}^2(\rho) \]</span> is closed in <span class="math inline">\(\text{L}^2(\rho)\)</span> becuase this map is an isometry, and it contains <span class="math inline">\(\Psi(\mathcal{B})=\mathcal{C}(W)\)</span> and thus it is equal to <span class="math inline">\(\text{L}^2(\rho)\)</span>.
+<ul>
+<li>In particular, <span class="math inline">\((W,\rho,R)\)</span> is ergodic.</li>
+</ul></li>
+</ul></li>
+<li>Finally, for every function <span class="math inline">\(g\in\mathcal{C}(Y)\)</span>, we have that <span class="math inline">\(g\circ q=\Psi(g\circ\pi)=g\circ\pi\circ p\)</span> (<span class="math inline">\(\rho\)</span>-almost everywhere) and so <span class="math inline">\(q=\pi\circ p\)</span> (<span class="math inline">\(\rho\)</span>-almost everywhere).
+<ul>
+<li>In particular, the image of <span class="math inline">\(\rho\)</span> under <span class="math inline">\(q\)</span> is <span class="math inline">\(\nu\)</span>.</li>
+</ul></li>
+</ul>
+<p>Subsection 6.1.2 (p.&nbsp;40)</p>
+<ul>
+<li>Since <span class="math inline">\(\rho\)</span> is ergocid under <span class="math inline">\(R\)</span>, it admits a generic point <span class="math inline">\(w_1\)</span>.
+<ul>
+<li>Recall that this means that, for every <span class="math inline">\(f\in\mathcal{C}(W)\)</span>, <span class="math display">\[\lim_{j\rightarrow+\infty}\frac{1}{j}\sum_{n=0}^{j-1}f(R^nw_1)=\int f\ \mathrm{d}\rho. \]</span></li>
+</ul></li>
+<li>Set <span class="math inline">\(x_1=p(w_1)\)</span>.</li>
+<li>Since <span class="math inline">\(x_0\)</span> is a transitive point of <span class="math inline">\(X\)</span>, we can choose,</li>
+</ul>
+</div>
+</section>
+<section id="conclusion" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">2</span> Conclusion</h2>
+<div id="prp-KroneckerGeneric" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3 (<span class="no-paren"><span class="citation" data-cites="host2019short">cf. Host, 2019, Proposition 5</span></span>)</strong></span> <span class="assumptions">Let <span class="math inline">\((\ShiftSpace,\AmenableGroup)\)</span> be a topological dynamical system where <span class="math inline">\(\AmenableGroup\)</span> is an amenable group, <span class="math inline">\(\ShiftSpaceElement_0\in\ShiftSpace\)</span>, and <span class="math inline">\(\Measure\)</span> be an ergodic invariant probability measure supported on the closed orbit of <span class="math inline">\(\ShiftSpaceElement_0\)</span> under the action of <span class="math inline">\(\AmenableGroup\)</span>.</span></p>
+<p>Let <span class="math inline">\(\KroneckerFactor\)</span> be the Kronecker factor of <span class="math inline">\(\FurstenbergSystem\)</span>, with factor map <span class="math inline">\(\KroneckerFactorMap: \ShiftSpace\rightarrow\KroneckerSpace\)</span>.</p>
+<p>Let <span class="math inline">\(\ShiftSpace\times\KroneckerSpace\)</span> be endowed with the group action of <span class="math inline">\(\AmenableGroup\times\KroneckerGroup\)</span>. Let <span class="math inline">\(\tilde\Measure\)</span> be the measure on <span class="math inline">\(\ShiftSpace\times\KroneckerSpace\)</span> and image of <span class="math inline">\(\Measure\)</span> under the map <span class="math inline">\(\ShiftSpace\rightarrow\ShiftSpace\times\KroneckerSpace\)</span> where <span class="math inline">\(\ShiftSpaceElement\mapsto(\ShiftSpaceElement,\KroneckerFactorMap(\ShiftSpaceElement))\)</span>.</p>
+<p>Then there exists a Følner sequence <span class="math inline">\(\tilde{\Folner}\)</span> and a point <span class="math inline">\(\KroneckerSpaceElement_0\in\KroneckerSpace\)</span> such that <span class="math inline">\((\ShiftSpaceElement_0,\KroneckerSpaceElement_0)\)</span> is generic for <span class="math inline">\(\tilde{\Measure}\)</span> along <span class="math inline">\(\tilde{\Folner}\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(d_X(\cdot,\cdot)\)</span> and <span class="math inline">\(d_Y(\cdot,\cdot)\)</span> for distances on <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p>Let <span class="math inline">\(\mathcal{B}\)</span> be the closed subalgebra of <span class="math inline">\(\text{L}^\infty(\Measure)\)</span>.</p>
+</div>
+</section>
+<section id="recent-publications" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="recent-publications"><span class="header-section-number">3</span> Recent Publications</h2>
+<ul>
+<li>Reflect on amenable result from newer paper within the wider context of the paper.</li>
+<li>Write own proof not using Gelfand spectrum.</li>
+</ul>
+<p>Relatively recently, <span class="citation" data-cites="charamaras2024findingproductsetsclasses">Charamaras and Mountakis (<a href="#ref-charamaras2024findingproductsetsclasses" role="doc-biblioref">2024</a>)</span> proved analogous results for amenable groups:</p>
+<div id="prp-KroneckerGenericAmenable" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 4 (<span class="no-paren"><span class="citation" data-cites="charamaras2024findingproductsetsclasses">Charamaras and Mountakis, 2024, Lemma 3.5</span></span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be an amenable group, let <span class="math inline">\(\FurstenbergSystem\)</span> be an ergodic <span class="math inline">\(\AmenableGroup\)</span>-system, <span class="math inline">\(\KroneckerFactor\)</span> be its Kronecker factor and <span class="math inline">\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)</span> be a factor map.</p>
+<p>If <span class="math inline">\(\ShiftSpaceElement\in\ShiftSpace\)</span> is a transitive point, then there exists a point <span class="math inline">\(\KroneckerSpaceElement\in\KroneckerSpace\)</span> and a Følner sequence <span class="math inline">\(\FurstenbergFolner'\)</span> such that <span class="math display">\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\FurstenbergFolner[N]'}}\sum_{\AmenableGroupElement\in\FurstenbergFolner[N]'}f_1(\GroupAction{\AmenableGroupElement}{\ShiftSpaceElement})\cdot f_2(\KroneckerAction{\AmenableGroupElement}{\KroneckerSpaceElement})=\int_\ShiftSpace f_1\cdot(f_2\circ\KroneckerFactorMap)\ \mathrm{d}\mu \]</span> holds for any <span class="math inline">\(f_1\in C(\ShiftSpace)\)</span> and <span class="math inline">\(f_2\in C(\KroneckerSpace)\)</span>.</p>
+</div>
+<div id="prp-ContinuousKroneckerMap" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 5 (<span class="no-paren"><span class="citation" data-cites="charamaras2024findingproductsetsclasses">Charamaras and Mountakis, 2024, Proposition 3.7 (i &amp; (ii))</span></span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be an amenable group, let <span class="math inline">\(\FurstenbergSystem\)</span> be an ergodic <span class="math inline">\(\AmenableGroup\)</span>-system, and let <span class="math inline">\(\ShiftSpaceElement\in\text{gen}(\Measure,\Folner)\)</span> for some Følner sequence <span class="math inline">\(\Folner\)</span>. Let <span class="math inline">\(\KroneckerFactor\)</span> be its Kronecker factor and <span class="math inline">\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)</span> be a factor map, <span class="math inline">\(\ShiftSpace\times\KroneckerSpace\)</span> be endowed with the transformation <span class="math inline">\(T\times S\)</span>, and <span class="math inline">\(\tilde{\Measure}\)</span> be the joining of <span class="math inline">\(\FurstenbergSystem\)</span> and <span class="math inline">\(\KroneckerFactor\)</span>.</p>
+<p>Then there exists an ergodic extension <span class="math inline">\((\ShiftSpace\times\KroneckerSpace, \tilde{\Measure}, T\times S)\)</span> of <span class="math inline">\((\ShiftSpace,\Measure,\AmenableGroup)\)</span>, a Følner sequence <span class="math inline">\(\tilde{\Folner}\)</span>, and a point <span class="math inline">\((\ShiftSpaceElement,\KroneckerSpaceElement)\in\text{gen}(\tilde{\Measure},\tilde{\Folner})\)</span> such that:</p>
+<ol type="1">
+<li>The projection map <span class="math inline">\(\ProjectionMap[\ShiftSpace]\)</span> is a continuous factor map with <span class="math inline">\(\ProjectionMap[\ShiftSpace](\ShiftSpaceElement,\KroneckerSpaceElement)=\ShiftSpaceElement\)</span>.</li>
+<li>The projection map <span class="math inline">\(\ProjectionMap[\KroneckerSpace]\)</span> is a continuous factor map where <span class="math inline">\(\KroneckerFactor\)</span> is the Kronecker factor of <span class="math inline">\((\ShiftSpace\times\KroneckerSpace, \tilde{\Measure}, T\times S)\)</span>.</li>
+</ol>
+</div>
+</section>
+<section id="summary" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="summary"><span class="header-section-number">4</span> Summary</h2>
+<div id="thm-FCP-Kronecker" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be an amenable group, <span class="math inline">\(A\subset \AmenableGroup\)</span>, and <span class="math inline">\(\Folner\)</span> be a Følner sequence in <span class="math inline">\(\AmenableGroup\)</span> such that the limit <span class="math display">\[\delta=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}\]</span> exists.</p>
+<p>Then there exists an ergodic system <span class="math inline">\((\ShiftSpace,\Measure,\AmenableGroup)\)</span> that is acted on by <span class="math inline">\(\AmenableGroup\)</span>, a factor map to its ergodic Kronecker factor <span class="math inline">\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)</span>, Følner sequences <span class="math inline">\(\FurstenbergFolner\)</span> and <span class="math inline">\(\tilde{\Folner}\)</span> in <span class="math inline">\(\AmenableGroup\)</span>, and a point <span class="math inline">\((a,\KroneckerSpaceElement_0)\in\ShiftSpace\times\KroneckerSpace\)</span> such that:</p>
+<ol type="1">
+<li>We have <span class="math inline">\(\KroneckerSpaceElement_0=\KroneckerFactorMap(a)\)</span>.</li>
+<li>We have clopen sets <span class="math inline">\(E\subset\ShiftSpace\)</span> and <span class="math inline">\(\tilde{E}\subset\KroneckerSpace\)</span> where <span class="math inline">\(\tilde{E}=\KroneckerFactorMap(E)\)</span> and <span class="math display">\[\begin{align*}
+  A&amp;=\{\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E\}
+  \\&amp;=\{\AmenableGroupElement\in \AmenableGroup:\KroneckerProductAction{\AmenableGroupElement}{(a,\KroneckerSpaceElement_0)\}\in \tilde{E}}.
+\end{align*}\]</span></li>
+<li><span class="math inline">\(a\)</span> is generic with <span class="math inline">\(\Measure\)</span> with respect to <span class="math inline">\(\FurstenbergFolner\)</span> and <span class="math inline">\(\KroneckerSpaceElement_0\)</span> is generic with <span class="math inline">\(\KroneckerMeasure\)</span> with respect to <span class="math inline">\(\tilde{Folner}\)</span>.</li>
+<li><span class="math inline">\(\Measure(E)=\KroneckerMeasure(\tilde{E})\geq\delta\)</span>.</li>
+<li>The factor map <span class="math inline">\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)</span> is continuous.</li>
+</ol>
+</div>
+<div id="rem-Kronecker" class="proof remark">
+<p><span class="proof-title"><em>Remark 1</em>. </span>Kronecker factors are <span class="math inline">\(1\)</span>-step Pronilfactors and the continuous factor map <span class="math inline">\(\KroneckerFactorMap: \FurstenbergSystem\rightarrow\KroneckerFactor\)</span> shows that a Kronecker factor is a topological pronilfactor.</p>
+</div>
+</section>
+<section id="jdlg-decomposition" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="jdlg-decomposition"><span class="header-section-number">5</span> JdLG-Decomposition</h2>
 
 
+</section>
 <section id="sec-Outlinks" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-Outlinks">Outlinks</h2>
 <ul>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.html">Furstenberg’s Correspondence Principle</a></li>
 <li><a href="../../GeneralisedErdosConjecture/ErdosConjecture.html">A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups</a></li>
+<li><a href="../../MathsNotes/3_Main_Tools/progressive-measure.html">Progressive Measures</a></li>
 </ul>
 </section>
 
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-ISem28" class="csl-entry" role="listitem">
-Jamneshan, A. and Kreidler, H. (2025). '<em>ISem 28: Ergodic structure theory and applications</em>',.
+<div id="ref-charamaras2024findingproductsetsclasses" class="csl-entry" role="listitem">
+Charamaras, D. and Mountakis, A. (2024). <em>Finding product sets in some classes of amenable groups</em>. https://doi.org/<a href="https://doi.org/10.1017/fms.2024.155">https://doi.org/10.1017/fms.2024.155</a>.
 </div>
 <div id="ref-host2019short" class="csl-entry" role="listitem">
-Host, B. (2019). '<em>A short proof of a conjecture of erdös proved by moreira, richter and robertson</em>', Available at: <a href="https://arxiv.org/abs/1904.09952">https://arxiv.org/abs/1904.09952</a>.
-</div>
-<div id="ref-kra2007uniformity" class="csl-entry" role="listitem">
-Kra, B. and Host, B. (2007). '<em>Uniformity seminorms on <span class="math inline">\(\ell^\infty\)</span> and applications</em>', Available at: <a href="https://arxiv.org/abs/0711.3637">https://arxiv.org/abs/0711.3637</a>.
+Host, B. (2019). <em>A short proof of a conjecture of erdös proved by moreira, richter and robertson</em>. Available at: <a href="https://arxiv.org/abs/1904.09952">https://arxiv.org/abs/1904.09952</a>
 </div>
 <div id="ref-Host2018NilpotentSI" class="csl-entry" role="listitem">
-Host, B. and Kra, B. (2018). '<span class="nocase">Nilpotent Structures in Ergodic Theory</span>', <em><em>Mathematical Surveys and Monographs</em>,</em> 236, <a href="https://doi.org/10.1090/surv/236">https://doi.org/10.1090/surv/236.</a>
+Host, B. and Kra, B. (2018). ‘<span class="nocase">Nilpotent Structures in Ergodic Theory</span>’. <em>Mathematical Surveys and Monographs</em>, 236, <a href="https://doi.org/10.1090/surv/236">https://doi.org/10.1090/surv/236.</a>
+</div>
+<div id="ref-ISem28" class="csl-entry" role="listitem">
+Jamneshan, A. and Kreidler, H. (2025). <em>ISem 28: Ergodic structure theory and applications</em>.
+</div>
+<div id="ref-kra2022infinite" class="csl-entry" role="listitem">
+Kra, B. et al. (2022). <em>Infinite sumsets in sets with positive density</em>. Available at: <a href="https://arxiv.org/abs/2206.01786">https://arxiv.org/abs/2206.01786</a>
+</div>
+<div id="ref-kra2007uniformity" class="csl-entry" role="listitem">
+Kra, B. and Host, B. (2007). <em>Uniformity seminorms on <span class="math inline">\(\ell^\infty\)</span> and applications</em>. Available at: <a href="https://arxiv.org/abs/0711.3637">https://arxiv.org/abs/0711.3637</a>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -547,13 +797,14 @@ Host, B. and Kra, B. (2018). '<span class="nocase">Nilpotent Structures in Ergod
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

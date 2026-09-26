@@ -66,6 +66,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -127,15 +128,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -193,9 +191,9 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
-\theoremstyle{plain}
 \newtheorem{corollary}{Corollary}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -212,10 +210,10 @@
 
 \newcommand{\AmenableGroup}{{\Gamma}}
 \newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\CountingMeasure}{{\lambda}}
+\newcommand{\CountingMeasure}[1]{{\left|#1\right|}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
 \newcommand{\Group}{{\Gamma}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\GroupAction}[2]{T^{#1}{#2}}
 \newcommand{\GroupElement}{{\gamma}}
 \newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 \newcommand{\Measure}{{\mu}}
@@ -228,9 +226,12 @@
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={Recurrence and Ergodic Theorems},
-  pdfauthor={Kai Prince},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -241,8 +242,8 @@
 
 
 \title{Recurrence and Ergodic Theorems}
-\author{Kai Prince}
-\date{2025-09-05}
+\author{}
+\date{2026-09-26}
 \begin{document}
 \maketitle
 
@@ -250,6 +251,7 @@
 \section*{Notation}\label{sec-Notation}
 \addcontentsline{toc}{section}{Notation}
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
 Term & Description \\
@@ -259,6 +261,7 @@ Term & Description \\
 \endlastfoot
 \(\N\) & The Natural Numbers: 1, 2, 3, \ldots{} \\
 \end{longtable}
+}
 
 \begin{theorem}[{Bergelson, 1985, Theorem
 1.1}]\protect\hypertarget{thm-recurrence}{}\label{thm-recurrence}
@@ -308,9 +311,8 @@ transformation and let \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) be a
 tempered Følner sequence.
 
 Then, for any \(f\in\text{L}^1(\Measure)\), there is a
-\(\AmenableGroup\)-invariant \(\bar{f}\in\text{L}^1(\Measure)\) such
-that
-\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\bar{f}(x) \]
+\(\AmenableGroup\)-invariant \(f'\in\text{L}^1(\Measure)\) such that
+\[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=f'(x) \]
 for \(\Measure\)-almost every \(x\in X\). In particular, if the
 \(\AmenableGroup\) action is ergodic, then
 \[\lim_{N\rightarrow\infty}\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\AmenableGroupElement\in\Folner[N]}f(\GroupAction{\AmenableGroupElement}{x})=\int f(x)\ d\Measure(x) \]
@@ -350,29 +352,27 @@ Moreover, the orthogonal projection \(P\) onto
 
 \end{theorem}
 
-\phantomsection\label{refs}
+\protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
 \bibitem[\citeproctext]{ref-Bergelson1985Recurrence}
-Bergelson, V. (1985). \textquotesingle Sets of recurrence of zm-actions
-and properties of sets of differences in zm\textquotesingle,
-\emph{\emph{Journal of the London Mathematical Society},} s2-31 (2), pp.
-295--304.
+Bergelson, V. (1985). `Sets of recurrence of zm-actions and properties
+of sets of differences in zm'. \emph{Journal of the London Mathematical
+Society}, s2-31(2), pp. 295--304.
 \href{https://doi.org/10.1112/jlms/s2-31.2.295}{https://doi.org/10.1112/jlms/s2-31.2.295.}
 
-\bibitem[\citeproctext]{ref-Lindenstrauss2001PETAmenable}
-Lindenstrauss, E. (2001). \textquotesingle Pointwise theorems for
-amenable groups\textquotesingle, \emph{\emph{Inventiones mathematicae},}
-146 (2), pp. 259--295.
-\href{https://doi.org/10.1007/s002220100162}{https://doi.org/10.1007/s002220100162.}
-
 \bibitem[\citeproctext]{ref-host2019short}
-Host, B. (2019). \textquotesingle{}\emph{A short proof of a conjecture
-of erdös proved by moreira, richter and robertson}\textquotesingle,
-Available at: \url{https://arxiv.org/abs/1904.09952}.
+Host, B. (2019). \emph{A short proof of a conjecture of erdös proved by
+moreira, richter and robertson}. Available at:
+\url{https://arxiv.org/abs/1904.09952}
 
 \bibitem[\citeproctext]{ref-ISem28}
-Jamneshan, A. and Kreidler, H. (2025). \textquotesingle{}\emph{ISem 28:
-Ergodic structure theory and applications}\textquotesingle,.
+Jamneshan, A. and Kreidler, H. (2025). \emph{ISem 28: Ergodic structure
+theory and applications}.
+
+\bibitem[\citeproctext]{ref-Lindenstrauss2001PETAmenable}
+Lindenstrauss, E. (2001). `Pointwise theorems for amenable groups'.
+\emph{Inventiones mathematicae}, 146(2), pp. 259--295.
+\href{https://doi.org/10.1007/s002220100162}{https://doi.org/10.1007/s002220100162.}
 
 \end{CSLReferences}
 

@@ -66,6 +66,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -127,15 +128,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -210,20 +208,24 @@
 
 \newcommand{\AmenableGroup}{{\Gamma}}
 \newcommand{\AmenableGroupElement}{{\gamma}}
-\newcommand{\CountingMeasure}{{\lambda}}
+\newcommand{\CountingMeasure}[1]{{\left|#1\right|}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
 \newcommand{\FurstenbergFolner}[1][{\vphantom{}}]{{\Psi}_{#1}}
 \newcommand{\Group}{{\Gamma}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
+\newcommand{\GroupAction}[2]{T^{#1}{#2}}
+\newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
 \newcommand{\Measure}{{\mu}}
 \newcommand{\ShiftSpace}{{X}}
 
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={Furstenberg's Correspondence Principle},
-  pdfauthor={Kai Prince},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -234,8 +236,8 @@
 
 
 \title{Furstenberg's Correspondence Principle}
-\author{Kai Prince}
-\date{2025-09-05}
+\author{}
+\date{2026-09-26}
 \begin{document}
 \maketitle
 
@@ -255,16 +257,381 @@ Then there exists an ergodic system
 sequence \(\FurstenbergFolner\) in \(\AmenableGroup\), and a point
 \(a\in\ShiftSpace\) that is generic with \(\Measure\) with respect to
 \(\FurstenbergFolner\) such that \(\Measure(E)\geq\delta\) and
-\[A={\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E}. \]
+\[A=\{\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E\}. \]
 
 \end{theorem}
 
-\phantomsection\label{refs}
+\begin{theorem}[{cf. Kra et al., 2026, Theorem
+2.5}]\protect\hypertarget{thm-FCP2}{}\label{thm-FCP2}
+
+Let \(\AmenableGroup\) be an amenable group,
+\(A\subset \AmenableGroup\), and \(\Folner\) be a Følner sequence in
+\(\AmenableGroup\) such that the limit
+\[\delta=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}\]
+exists.
+
+Then there exists an ergodic measure-preserving system
+\((\ShiftSpace,\Measure,\AmenableGroup)\) that is acted on by
+\(\AmenableGroup\), a clopen set \(E\subset\ShiftSpace\), a Følner
+sequence \(\FurstenbergFolner\) in \(\AmenableGroup\), and a point
+\(a\in\ShiftSpace\) such that:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The point \(a\) is generic with \(\Measure\) with respect to
+  \(\FurstenbergFolner\).
+\item
+  \(\Measure(E)\geq\delta>0\).
+\item
+  \(A=\{\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E\}\).
+\item
+  Every measurable eigenfucntion is equal to \(\mu\)-almost everywhere
+  to a topological eigenfunction.
+\end{enumerate}
+
+\end{theorem}
+
+See:
+
+(\citeproc{ref-kra2022infinite}{Kra et al., 2022}, Proposition 3.20 and
+Lemma 5.7):
+
+\begin{itemize}
+\tightlist
+\item
+  Suppose for each \(j\in\mathbb{N}\), we have a system
+  \((X_j,\Measure_j,T_j)\) and suppose there are continuous factor maps
+  \(\pi_j:X_j\rightarrow X_{j-1}\) for all \(j>1\). Then there exists a
+  unique \emph{inverse limit} \((X,\Measure,T)\), which is a system
+  admitting continuous factor maps \(\psi_k:X\rightarrow X_j\) such that
+  \(\pi_j\circ\psi_j=\psi_{j-1}\) for every \(j>1\), and such that
+  \[\bigcup_{j\in\mathbb{N}}C(X_j)\circ\psi_j \] is dense in \(C(X)\).
+  Additionally, whenever each of the systems \((X_j,\Measure_j,T_j)\) is
+  ergodic, so is the inverse limit \((X,\Measure,T)\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    According to the original source {[}Nilpotent Structures in Ergodic
+    Theory{]}, this applies to topological dynamical systems generally.
+  \end{itemize}
+\item
+  Theorem 5.3: Fix an ergodic system \((X,\Measure,T)\). For every
+  \(k\in\mathbb{N}\), there is a system \((Z_k,m_k,T)\) with all the
+  following properties:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The system \((Z_k,m_k,T)\) is an inverse limit of ergodic \(k\)-step
+    nilsystems.
+  \item
+    There is a measurable factor map \(\rho_k\) from \((X,\mu,T)\) to
+    \((Z_k,m_k,T)\).
+  \item
+    For any \(f\in\text{L}^\infty(X,\Measure)\), we have
+    \(||f||_{k+1}=0\) if and only if \(f\) and
+    \(\text{L}^\infty(Z_k,m_k)\circ\rho_k\) are orthogonal in
+    \(\text{L}^2(X,\Measure)\).
+  \end{itemize}
+\item
+  Definition 5.4 \& 5.5:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Whenever \((X,\Measure,T)\) is ergodic, we call the system
+    \((Z_k,m_k,T)\) satisfying the conclusion of Theorem 5.3 the
+    \(k\)\emph{-step pronilfactor} of \((X,\Measure,T)\).
+  \item
+    Given an ergodic system \((X,\Measure,T)\) and \(k\in\mathbb{N}\),
+    let \((Z_k,m_k,T)\) be its \(k\)-step pronilfactor. We say that
+    \((X,\Measure,T)\) \emph{has topological pronilfactors} if, for
+    every \(k\in\mathbb{N}\), there is a continuous factor map
+    \(\pi_k:X\rightarrow Z_k\).
+  \end{itemize}
+\item
+  Proposition 5.6 is equivalent to Charamaras and Mountakis
+  (\citeproc{ref-charamaras2024findingproductsetsclasses}{2024}, Lemma
+  3.5)
+\item
+  Lemma 5.7 is a generalisation of Proposition 3.20.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Both start with an ergodic system.
+  \item
+    Instead of \(a\in\text{gen}(\Measure,\Folner)\), \(a\) is a
+    transitive point (admits dense orbit).
+  \item
+    The systems shown to exist:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Both be ergodic systems with Folner sequences with a generic point
+      and a continuous factor map such that \(a\) maps to this generic
+      point.
+    \item
+      Have topological pronilfactors in Lemma 5.7, instead of a
+      continuous factor map to its Kronecker factor.
+    \end{itemize}
+  \item
+    Lemma 5.7 also states the original ergodic system and the existing
+    system are measure theoretically isomorphic systems.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Proposition 3.20 states this within its proof
+    \end{itemize}
+  \end{itemize}
+\item
+  Proof of Lemma 5.7 vs Proposition 3.20:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Measurable Factor Maps: Existence of measurable factor map/s to its
+    pronilfactors or Kronecker Factor.
+  \item
+    Product/Kronecker system:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Lemma 5.7 creates a product space by taking the countable product
+      over \(k\in\mathbb{N}\) of \(k\)-step pronilfactors.
+    \item
+      Proposition 3.20 focuses solely on the \(1\)-step pronilfactor,
+      i.e., Kronecker factor.
+    \item
+      The transformation on these spaces is the product transformation
+      of all \(k\)-step pronilfactors and is distal on this product
+      system.
+    \item
+      Using a previous proposition, or essentially Charamaras and
+      Mountakis
+      (\citeproc{ref-charamaras2024findingproductsetsclasses}{2024},
+      Lemma 3.5), to determine the generic point in the product space or
+      Kronecker space.
+    \end{itemize}
+  \item
+    New system:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      A new system is created by taking the product between the original
+      system and the Product/Kronecker system, defining the generic
+      point as the product of the generic points in each system and the
+      transformation similarly.
+    \item
+      The measure is defined as the push forward of the original measure
+      with the measurable factor maps to each coordinate in the new
+      system.
+    \item
+      Lemma 5.7 defines the new space to be the orbit closure of the
+      generic point in the constructed product space and defining the
+      projection of the first coordinate onto the original system.
+    \end{itemize}
+  \item
+    The continuous map from the new system to the original system is
+    defined as the projection on the first coordinate.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Similarly, the projection on the remaining coordinates are
+      continuous maps from the new system to the original system's
+      pronilfactors.
+    \end{itemize}
+  \item
+    Isomorphism: The maps \(x\mapsto(x,\rho(x))\) and \((x,z)\mapsto z\)
+    are inverses of each other almost everywhere and so the two spaces
+    are measure theoretically isomorphic.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Thus, the new system is ergodic and the \(k\)-step pronilfactors
+      of each system are isomorphic to each other.
+    \end{itemize}
+  \item
+    Conclusion: the continuous maps from the new system to the
+    original's \(k\)-step pronilfactors and the new system's generic
+    point maps to the generic points in the \(k\)-step pronilfactors
+    define continuous factor maps from the new system to its \(k\)-step
+    pronilfactors.
+  \end{itemize}
+\end{itemize}
+
+(\citeproc{ref-charamaras2024findingproductsetsclasses}{Charamaras and
+Mountakis, 2024}, Lemma 3.5 \& Proposition 3.7):
+
+\begin{itemize}
+\tightlist
+\item
+  Lemma 3.5: Covered in Kronecker factor notes and already generalised
+  to amenable groups. It is also a generalisation of Kra et al.
+  (\citeproc{ref-kra2022infinite}{2022}, Propositions 3.19 \& 5.6).
+\item
+  Proposition 3.7: Similar generalising of Kra et al.
+  (\citeproc{ref-kra2022infinite}{2022}, Proposition 3.20)
+\end{itemize}
+
+(\citeproc{ref-kra2025densityfinitesumstheorem}{Kra et al., 2025},
+Definition 4.3 \& Subsection 4.4):
+
+\begin{itemize}
+\tightlist
+\item
+  Definition 4.3 (Nilsystems, pronilsystems): Let \(\Group\) be an
+  \(s\)-step nilpotent Lie group and let \(\Gamma\subseteq\Group\) be a
+  discrete and cocompact subgroup. The compact manifold
+  \(X=\Group/\Gamma\) is an \(s\)-step nilmanifold.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The group \(\Group\) acts on \(X\) by left translation, and there is
+    a unique Borel probability measure \(\Measure\) on \(X\) that is
+    invariant under this action, the \emph{Haar measure} on \(X\).
+    Letting \(T:X\rightarrow X\) denote left translation by a fixed
+    element of \(\Group\), the resulting measure preserving system
+    \((X,\Measure,T)\) is called an \(s\)-step nilsystem (as usual
+    endowed with the Borel \(\sigma\)-algebra).
+  \item
+    An inverse limit of \(s\)-step nilsystems is called an \(s\)-step
+    pronilsystem.
+  \end{itemize}
+\end{itemize}
+
+Notes:
+
+\begin{itemize}
+\tightlist
+\item
+  This result is FCP but skipping the shift space straight to the system
+  that has a continuous factor map to its Kronecker factor.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This is where property 4 comes from.
+  \end{itemize}
+\end{itemize}
+
+\section{Comparison with Functional Analysis
+Approach}\label{comparison-with-functional-analysis-approach}
+
+\subsection{Defining the Algebra}\label{defining-the-algebra}
+
+(\citeproc{ref-kra2007uniformity}{Kra and Host, 2007, p. 242}) uses a
+separable subalgebra, \(\mathcal{A}\), which is a unitary subalgebra of
+\(\ell^\infty(\mathbb{Z})\) that is invariant under the shift and under
+complex conjugation, closed in \(\ell^\infty(\mathbb{Z})\) and separable
+for the uniform norm written \(||\ \cdot\ ||_\infty\). They have the
+intent to mostly consider the case of the separable subalgebra
+\(\mathcal{A}(\boldsymbol{a})\) spanned by a bounded sequence
+\(\boldsymbol{a}=(a_n:n\in\mathbb{Z})\). They also write \(\sigma\) for
+the shift on \(\ell^\infty(\mathbb{Z})\) where, for a sequence
+\(\boldsymbol{a}=(a_n:n\in\mathbb{Z})\),
+\(\sigma\boldsymbol{a}=(a_{n+1}:n\in\mathbb{Z})\) and
+\(\overline{\boldsymbol{a}}\) to denote the conjugate sequence
+\((\overline{a}_n:n\in\mathbb{Z})\).
+
+This means that:
+
+\begin{itemize}
+\tightlist
+\item
+  We have the constant sequence
+  \(\boldsymbol{1}=(1:n\in\mathbb{Z})\in\mathcal{A}\).
+\item
+  For \(f\in\mathcal{A}\), we have
+  \(||f||_\infty=\sup_{n\in\mathbb{Z}}|f_n|\),
+  \(\sigma f\in\mathcal{A}\) and \(\overline{f}\in\mathcal{A}\).
+\item
+  For \(f,g\in\mathcal{A}\)\$, we have \(f+g\in\mathcal{A}\) and
+  \(f\cdot g\in\mathcal{A}\).
+\item
+  If \(\boldsymbol{f}_n\in\mathcal{A}\) for all \(n\in\mathbb{N}\) and
+  \(\lim_{n\rightarrow\infty}||f_n-f||_\infty=0\), then
+  \(f\in\mathcal{A}\).
+\item
+  (Countable dense subset) There exists a countable set
+  \(\{f_n:n\in\mathbb{N}\}\subseteq\mathcal{A}\) such that, for every
+  \(f\in\mathcal{A}\) and every \(\varepsilon>0\), there exists
+  \(n\in\mathbb{N}\) suchh that \(||f_n-f||_\infty<\varepsilon\).
+\item
+  \(\mathcal{A}(\boldsymbol{a})\) is generated by applying any
+  combination of the above to \(\boldsymbol{a}\) and then taking the
+  closure.
+\end{itemize}
+
+With our approach, the subalgebra is a consequence of our construction.
+For example, \(E\subset\AmenableGroup\) corresponds to a vector where
+\[e(\AmenableGroupElement)\begin{cases}1&\AmenableGroupElement\in E,\\0&\AmenableGroupElement\notin E. \end{cases} \]
+This gives us
+\[\boldsymbol{e}=(e(\AmenableGroupElement):\AmenableGroupElement\in\AmenableGroup)\in\ell^\infty(\AmenableGroup),\]
+and \(\mathcal{A}(\boldsymbol{e})\) is the subalgebra we work with,
+where we define the shift using the group action
+\(\GroupAction{\AmenableGroupElement_1}{e(\AmenableGroupElement_2)}=e(\GroupOperation{\AmenableGroupElement_1}{\AmenableGroupElement_2})\).
+Thus, the approach is equivalent so far.
+
+\section{Defining the Dynamical
+System}\label{defining-the-dynamical-system}
+
+(\citeproc{ref-kra2007uniformity}{Kra and Host, 2007, p. 242}) goes on
+to let \(X'\) be the \emph{Gelfand spectrum} of \(\mathcal{A}\), stating
+this means \(X\) consists of the set of unitary homomorphisms from
+\(\mathcal{A}\) to the complex numbers.
+
+This means that: - For all \(f,g\in\mathcal{A}\),
+\(\lambda\in\mathbb{C}\) and \(\varphi\in X'\), we have
+\(\varphi(f+g)=\varphi(f)+\varphi(g)\),
+\(\varphi(f\cdot g)=\varphi(f)\cdot \varphi(g)\), and
+\(\varphi(\lambda f)=\lambda\varphi(f)\). - For all \(\varphi\in X\), we
+have \(\varphi(\boldsymbol{1})=1\).
+
+They then let \(C(X)\) denote the algebra of continuous functions on
+\(X\) and conclude that there exists an isometric isomorphism of
+algebras \(\Phi:C(X)\rightarrow\mathcal{A}\). They also define, for
+\(\boldsymbol{b}\in\mathcal{A}\), the function \(\Phi^{-1}(b)\) as
+\emph{the function associated to} \(\boldsymbol{b}\).
+
+With our approach, we instead use the shift space
+\(\ShiftSpace=\{0,1\}^\AmenableGroup\) such that
+\(\boldsymbol{e}\in\ShiftSpace\), which ignores the subalgebra
+construction, and define a topological dynamical system.
+
+\protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-charamaras2024findingproductsetsclasses}
+Charamaras, D. and Mountakis, A. (2024). \emph{Finding product sets in
+some classes of amenable groups}.
+https://doi.org/\url{https://doi.org/10.1017/fms.2024.155}.
+
 \bibitem[\citeproctext]{ref-kra2022infinite}
-Kra, B., et al. (2022). \textquotesingle{}\emph{Infinite sumsets in sets
-with positive density}\textquotesingle, Available at:
-\url{https://arxiv.org/abs/2206.01786}.
+Kra, B. et al. (2022). \emph{Infinite sumsets in sets with positive
+density}. Available at: \url{https://arxiv.org/abs/2206.01786}
+
+\bibitem[\citeproctext]{ref-kra2025densityfinitesumstheorem}
+Kra, B. et al. (2025). \emph{The density finite sums theorem}. Available
+at: \url{https://arxiv.org/abs/2504.06424}
+
+\bibitem[\citeproctext]{ref-kra2026shortproof}
+Kra, B. et al. (2026). \emph{A short proof of erdős's \(B+C\)
+conjecture}.
+
+\bibitem[\citeproctext]{ref-kra2007uniformity}
+Kra, B. and Host, B. (2007). \emph{Uniformity seminorms on
+\(\ell^\infty\) and applications}. Available at:
+\url{https://arxiv.org/abs/0711.3637}
 
 \end{CSLReferences}
 

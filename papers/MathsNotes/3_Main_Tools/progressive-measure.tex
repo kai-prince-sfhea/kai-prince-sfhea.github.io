@@ -1,0 +1,701 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  british,
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\ifLuaTeX
+\usepackage[bidi=basic,shorthands=off]{babel}
+\else
+\usepackage[bidi=default,shorthands=off]{babel}
+\fi
+\ifLuaTeX
+  \usepackage{selnolig} % disable illegal ligatures
+\fi
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+% Get Math Fonts
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont[range={\mathscr,\mathbfscr,\mathbb}]{XITSMath-Regular}
+[    Extension = .otf,
+      BoldFont = XITSMath-Bold
+]
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+\theoremstyle{remark}
+\AtBeginDocument{\renewcommand*{\proofname}{Proof}}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\newtheorem{refremark}{Remark}[section]
+\newtheorem{refsolution}{Solution}[section]
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\newcommand{\AmenableGroup}{{\Gamma}}
+\newcommand{\Borel}[1]{{\text{Bor}({#1})}}
+\newcommand{\ContinuousFunctionSpace}[1]{{\mathscr{C}({#1})}}
+\newcommand{\Dual}[1]{{#1}^{*}}
+\newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
+\newcommand{\Group}{{\Gamma}}
+\newcommand{\GroupAction}[2]{T^{#1}{#2}}
+\newcommand{\GroupActionPreImage}[2]{(T{#1}){-1}.{#2}}
+\newcommand{\GroupElement}{{\gamma}}
+\newcommand{\Measure}{{\mu}}
+\newcommand{\ProjectionMap}[1][\vphantom{}]{{\pi}_{#1}}
+\newcommand{\SigmaAlgebra}[1]{{\mathscr{#1}}}
+\newcommand{\EigenAlgebra}{{\SigmaAlgebra{K}}}
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
+\hypersetup{
+  pdftitle={Progressive Measures},
+  pdflang={en-GB},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Progressive Measures}
+\author{}
+\date{2026-09-26}
+\begin{document}
+\maketitle
+
+
+\begin{definition}[{Kra et al., 2025, Definition
+3.1}]\protect\hypertarget{def-ProgressiveMeasure0}{}\label{def-ProgressiveMeasure0}
+
+Let \((X,T)\) be a topological system and \(k\in\mathbb{N}\). We say
+that a probability measure \(\tau\in\mathcal{M}(X^{k+1})\) is
+\emph{progressive} if, for all open sets \(U_1,...,U_k\subset X\) with
+\[\tau(X\times U_1\times\cdots\times U_k)>0 \] there exist infinitely
+many \(n\in\mathbb{N}\) such that
+\[\tau((X\times U_1\times\cdots\times U_{k-1}\times U_k)\cap T_{\triangle}^{-n}(U_1\times U_2\times\cdots\times U_k\times X))>0. \]
+
+\end{definition}
+
+\begin{definition}[{cf. Kra et al., 2025, Definition
+3.1}]\protect\hypertarget{def-ProgressiveMeasure}{}\label{def-ProgressiveMeasure}
+
+Let \((X,\Group)\) be a topological system and \(k\in\mathbb{N}\). We
+say that a probability measure \(\tau\in\mathcal{M}(X^{k+1})\) is
+\emph{progressive} if, for all open sets \(U_1,...,U_k\subset X\) with
+\[\tau(X\times U_1\times\cdots\times U_k)>0 \] there exist infinitely
+many \(\GroupElement\in\Group\) such that
+\[\tau((X\times U_1\times\cdots\times U_{k-1}\times U_k)\cap \GroupActionPreImage{\GroupElement}{U_1\times U_2\times\cdots\times U_k\times X})>0. \]
+
+\end{definition}
+
+If \((a,x_1,...,x_k)\) is a \(k+1\)-term Erdős progression where \(U_j\)
+is a neighbourhood of \(x_j\) for \(1\leq j\leq k\), then
+\[B=(X\times U_1\times\cdots\times U_{k-1}\times U_k)\cap T_{\triangle}^{-n}(U_1\times U_2\times\cdots\times U_k\times X)\]
+has \((a,x_1,...,x_k)\in B\) and, if further \(\tau(B)>0\), \(B\)
+contains infinitely many other \(k+1\)-term Erdős progressions.
+
+Similarly, if \((a,x_{0...01},...,x_{1...1})\) is a \(k\)-dimensional
+Erdős cube where \(U_j\) is a neighbourhood of \(x_j\) for all
+\(j\in\{0,1\}^k\), \(c_i:\{0,1\}^k\rightarrow\{0,1\}^k\) such that
+\[c_i(j)(n)=\begin{cases}1 & j=n,\\ j(n)&\text{otherwise}, \end{cases} \]
+and \$C\_, then
+\[B=(X\times U_1\times\cdots\times U_{k-1}\times U_k)\cap T_{\triangle}^{-n}(U_1\times U_2\times\cdots\times U_k\times X)\]
+
+\begin{definition}[{cf. Kra et al., 2025, Definition
+3.1}]\protect\hypertarget{def-ProgressiveCubicMeasure}{}\label{def-ProgressiveCubicMeasure}
+
+Let \((X,\Group)\) be a topological system and \(k\in\mathbb{N}\). We
+say that a probability measure \(\tau\in\mathcal{M}(X^{k+1})\) is
+\emph{progressive} if, for all open sets \(U_1,...,U_k\subset X\) with
+\[\tau(X\times U_1\times\cdots\times U_k)>0 \] there exist infinitely
+many \(\GroupElement\in\Group\) such that
+\[\tau((X\times U_1\times\cdots\times U_{k-1}\times U_k)\cap \GroupAction{\GroupElement}{U_1\times U_2\times\cdots\times U_k\times X})>0. \]
+
+\end{definition}
+
+If \((a,x_1,...,x_k)\) is a \(k+1\)-term Erdős progression where \(U_j\)
+is a neighbourhood of \(x_j\) for \(1\leq j\leq k\), then
+\[B=(X\times U_1\times\cdots\times U_{k-1}\times U_k)\cap T_{\triangle}^{-n}(U_1\times U_2\times\cdots\times U_k\times X)\]
+has \((a,x_1,...,x_k)\in B\) and, if further \(\tau(B)>0\), \(B\)
+contains infinitely many other \(k+1\)-term Erdős progressions.
+
+\begin{proposition}[{Kra et al., 2025, Proposition
+3.2}]\protect\hypertarget{prp-ProgressiveMeasureErdosExistence}{}\label{prp-ProgressiveMeasureErdosExistence}
+
+Fix \(k\in\mathbb{N}\) and let \((X,T)\) be a topological system. Let
+\(a\in X\), \(U_1,...,U_k\subset X\) be open sets, and let
+\(\tau\in\mathcal{M}(X^{k+1})\) be a progressive measure satisfying
+\(\tau(\{a\}\times X^k)=1\).
+
+If \(\tau(X\times U_1\times\cdots\times U_k)>0\), then there exists an
+Erdős progression \((a,x_1,...,x_k)\) with \(x_j\in U_j\) for all
+\(1\leq j\leq k\).
+
+\end{proposition}
+
+\begin{proof}
+Let \(V=U_1\times\cdots\times U_k\). As \(\tau\) is a progressive
+measure, we can find \(c(1)\in\mathbb{N}\) such that
+\[\tau((X\times V)\cap T_{\triangle}^{-c(1)}(V\times X))>0. \]
+\end{proof}
+
+\section{Constructing Progressive
+Measures}\label{constructing-progressive-measures}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Check that the system has topological pronilfactors.
+\item
+  Define a product measure in the \(k-1\)-step pronilfactor that is
+  generic with \(\Folner\) and \(a\in\text{gen}(\mu,\Folner)\) and
+  structured similarly to the progression.
+\item
+  Project this measure back to the system by using conditional
+  expectations.
+\end{enumerate}
+
+\section{Claim seemingly related to Progressive
+Measures}\label{claim-seemingly-related-to-progressive-measures}
+
+We will look at the following result to see how progressive measures are
+involved and determine whether we can generalise this:
+
+\begin{lemma}[{Kra et al., 2026, Claim
+1}]\protect\hypertarget{lem-ProgressiveRecurrence}{}\label{lem-ProgressiveRecurrence}
+
+Let \((X,\Measure,T)\) be an ergodic measure-preserving system where
+every measurable eigenfunction is equal \(\Measure\)-almost everywhere
+to a topological eigenfunction.Also let \(\lambda\) be a self-joining of
+\((X,\Measure,T)\), \(d:X\times X\rightarrow[0,\infty)\) denote a metric
+on \(X\), and
+\((x,y)\in\text{gen}(\lambda,\Folner)\cap(\text{gen}(\Measure,\Folner)\times\text{gen}(\Measure,\Folner))\cap(X\times\text{supp }\Measure)\)
+for a Følner sequence \(\Folner\).
+
+For any clopen set \(E\subset X\) with \(\Measure(E)>0\) and any
+measurable set \(Y\subset X\times X\): If
+\(\lambda\left((X\times E)\cap Y\right)>0\) then, for every
+\(\varepsilon>0\), there exist infinitely many
+\(\GroupElement\in\Group\) such that \[
+d(T^bx,y)<\varepsilon\qquad\text{and}\qquad\lambda\left((T^{-b}X\times E)\cap Y\right)>0.
+\]
+
+\end{lemma}
+
+The proof of this result uses the following results:
+
+\ldots{}
+
+We follow and breakdown the proof of
+Lemma~\ref{lem-ProgressiveRecurrence} given by Kra et al.
+(\citeproc{ref-kra2026shortproof}{2026}):
+
+\begin{proof}
+Let \(f_\text{c}=\mathbb{E}(\boldsymbol{1}_E\mid\EigenAlgebra)\) and
+\(f_\text{wm}=\boldsymbol{1}_E-f_\text{c}\). As \begin{align*}
+  \mathbb{E}(f_\text{wm}\mid\EigenAlgebra)&=\mathbb{E}(\boldsymbol{1}_E-\mathbb{E}(\boldsymbol{1}_E\mid\EigenAlgebra)\mid\EigenAlgebra)
+  \\&=\mathbb{E}(\boldsymbol{1}_E\mid\EigenAlgebra)-\mathbb{E}(\boldsymbol{1}_E\mid\EigenAlgebra)
+  \\&=0,
+\end{align*} then, by \textbf{?@thm-WeakMixing2}, \(f_\text{wm}\) is
+mixing.
+
+By \textbf{?@prp-EigenAlgebraProp2}, \(f_\text{c}>0\) for
+\(\Measure\)-almost every \(x\in E\). This gives us \begin{align*}
+  0<\lambda\left((X\times E)\cap Y\right)&=\int(\boldsymbol{1}\otimes\boldsymbol{1}_E)\cdot\boldsymbol{1}_Y\ \mathrm{d}\lambda
+  \\&=\int(\boldsymbol{1}\otimes f_\text{c})\cdot\boldsymbol{1}_Y\ \mathrm{d}\lambda
+  \\&=\eta,
+\end{align*} where
+\(\eta=\langle(\boldsymbol{1}\otimes f_\text{c}),\boldsymbol{1}_Y \rangle\).
+
+\begin{quote}
+Though Kra et al. (\citeproc{ref-kra2026shortproof}{2026}) focuses on
+\(b\in\mathbb{N}\) from this point on, we would need to generalise to an
+amenable group \(\AmenableGroup\).
+\end{quote}
+
+As \(f_\text{c}\in\text{L}^2(X,\EigenAlgebra,\Measure)\) and that
+\(\text{L}^2(X,\EigenAlgebra,\Measure)\) is defined to be the closed
+subspace of \(\text{L}^2(X,\Borel{X},\Measure)\) spanned by its
+measurable eigenfunctions, then \(f_\text{c}\) can be approximated by
+eigenfunctions. By the assumption that every measurable eigenfunction in
+\((X,\Measure,T)\) is equal \(\Measure\)-almost everywhere to a
+topological eigenfunction, there exists \(r\in\mathbb{N}\) and
+topological eigenfunctions
+\(\chi_1,...,\chi_r\in\ContinuousFunctionSpace(X)\) such that
+\(f_\text{c}'=\chi_1+\cdots+\chi_r\) satisfies
+\(||f_\text{c}'-f_\text{c}||<\eta/6\). Note, by construction,
+\(f_\text{c}'\in\ContinuousFunctionSpace(X)\) too.
+
+Let \(\delta>0\) be sufficiently small such that, for \(1\leq i\leq r\)
+and for all \(z\in B_\delta(y)\), we have
+\(|\chi_i(y)-\chi_i(z)|<\eta/6r\). As \(\chi_i\) is a topological
+eigenfunction, we also have
+\end{proof}
+
+\begin{itemize}
+\tightlist
+\item
+  Will have to look at finite dimensional representations for Amenable
+  Groups setting instead of eigenfunctions
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For actions of abelian groups, the Kronecker factor is spanned by
+    eigenfunctions. For actions of general amenable groups, the
+    Kronecker factor is made up of finite-dimensional representations.
+  \item
+    A finite dimensional representation is a homomorphism from G to U(n)
+    the group of nxn unitary matrices.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      When n = 1 this is just a homomorphism to the circle.
+    \item
+      When also G = Z this is just the choice of an eigenvalue.
+    \end{itemize}
+  \item
+    What we are used to is that the Kronecker factor is made up of
+    eigenfunctions.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      More generally, the Kronecker factor is made up of spaces that
+      look like K/L where K is a compact group and L is a closed
+      subgroup. The action of Gamma on each such space will be
+      determined by a homomorphism alpha from G to K. Thus the group
+      element g in Gamma acts on the coset kL by alpha(g)kL. This is an
+      action by isometries because we can always fix an invariant metric
+      on K/L. This is enough to generalize the sentence in the claim
+      that you mentioned during our meeting.
+    \item
+      In this more general world, instead of eigenfunctions chi, we have
+      ``matrix coefficients'' which are functions of the form chi(x) =
+      \textless{} pi(x) u, v \textgreater{} where u and v are vectors in
+      L2(K/L).
+    \end{itemize}
+  \end{itemize}
+\item
+  Could use the tensor product representation with its dual
+  representation?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Show \(f_c\otimes\bar{f_c}\in\text{fix}(U\otimes\bar{U})\).
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Or construct \(f_c\) such that this is the case.
+    \item
+      Or write \(f_c\) in terms of its orthonormal bases as it belongs
+      to an irreducible invariant finite-dimensional subspace \(M\). If
+      so, \(T^g\) would appear to be a matrix transformation \(A_g\) on
+      \(M\) that preserves the inner product. The matrix coefficients
+      will be defined by \((T^ge_i\mid e_j)\). \(A_g\) is a unitary
+      matrix to conserve measures and \(g\mapsto A_g\) is a homomorphism
+      mapping from \(G\) to a compact group of unitary matrices (prove).
+    \end{itemize}
+  \item
+    Define topological function analogue, using \[
+    \sum_{i=1}^ne_i\otimes\bar{e_i},
+    \] where \(\{e_1,...,e_n\}\) is an orthonormal basis of an invariant
+    finite-dimensional subspace \(M\subseteq H\).
+  \item
+    Use the fact that the linear hull of these topological function
+    analogues are dense in \(\text{fix}(U\otimes\bar{U})\) to construct
+    a topological function analogue that is ``close'' to \(f_c\).
+  \end{itemize}
+\end{itemize}
+
+\section{Discrete Spectrum \&
+Eigenmatrices}\label{discrete-spectrum-eigenmatrices}
+
+\begin{definition}[{cf. Jamneshan and Kreidler, 2025, Definition
+5.1.2}]\protect\hypertarget{def-Discrete-Spectrum}{}\label{def-Discrete-Spectrum}
+
+For a unitary representation
+\(U:G\rightarrow\mathscr{U}(\mathcal{L}(X,\Borel{X}))\), we call an
+invariant finite-dimensional subspace
+\(M\subseteq\mathcal{L}(X,\Borel{X})\) \emph{irreducible} if \(\{0\}\)
+and \(M\) are the only invariant linear subspaces contained in \(M\).
+
+\end{definition}
+
+\begin{definition}[{cf. Jamneshan and Kreidler, 2025, Definition 5.1.1
+\& Corollary
+5.1.5}]\protect\hypertarget{def-Discrete-Spectrum}{}\label{def-Discrete-Spectrum}
+
+Let \(U:G\rightarrow\mathscr{U}(\mathcal{L}(X))\) be a unitary
+representation of a group \(G\). Then the closure \[
+\mathcal{L}(X,\Borel{X})_\text{ds}:=\overline{\text{lin}}\bigcup\{M\subseteq \mathcal{L}(X,\Borel{X})\mid M\text{ irreducible invariant finite-dimensional subspace}\}\subseteq \mathcal{L}(X)
+\] is called the \emph{discrete spectrum part} of \(U\). As \(M_1+M_2\)
+is an invariant finite-dimensional subspace for invariant
+finite-dimensional subspaces \(M_1,M_2\), then
+\(\mathcal{L}(X)\text{ds}\) is always a (closed) linear subspace of
+\(\mathcal{L}(X)\).
+
+\end{definition}
+
+As there exists \(\ProjectionMap:X\rightarrow K/L\) where \(K\) is a
+compact group, \(L\subseteq K\) is a closed subgroup and \(m\) is an
+invariant measure on \(K/L\) such that
+\(\text{L}^2(X,\SigmaAlgebra{K},\Measure)\cong\text{L}^2(K/L,m)\) and,
+for \(f:K/L\rightarrow\mathbb{C}\),
+\(f\circ\ProjectionMap:X\rightarrow\mathbb{C}\).
+
+As \(\text{L}^2(X,\SigmaAlgebra{K},\Measure)\cong\text{L}^2(K/L,m)\), we
+know that \(\ProjectionMap^{-1}\) exists and thus there exists
+\(\bar{f}_\text{c}\in\text{L}^2(K/L,m)\) such that
+\(\bar{f}_\text{c}=f_\text{c}\circ\ProjectionMap^{-1}\).
+
+\begin{theorem}[{Farashahi, 2017, Theorem
+4.6}]\protect\hypertarget{thm-Peter-Weyl-decomp}{}\label{thm-Peter-Weyl-decomp}
+
+Let \(H\) be a closed subgroup of a compact group \(G\) and \(\mu\) be
+the normalized \(G\)-invariant measure on \(G/H\). The Hilbert space
+\(\text{L}^2(G/H,\mu)\) satisfies the following orthogonality
+decomposition \[
+\text{L}^2(G/H,\mu)=\bigoplus_{[\pi]\in\Dual{G/H}}\epsilon_\pi(G/H),
+\] where \(\epsilon_\pi\) denotes the linear span of the matrix elements
+of \(\pi\). (\(\pi\) may not be the same as the previous one)
+
+\end{theorem}
+
+Note:
+
+\begin{itemize}
+\tightlist
+\item
+  (\citeproc{ref-Farashahi2017PeterWeyl}{Farashahi, 2017}, Theorem 4.5)
+  will be helpful in confirming that every continuous function can be
+  approximated equicontinuously with a linear combination of
+  ``eigenfunctions''.
+\end{itemize}
+
+Let \(\{e_1,...,e_n\}\) be the (continuous) orthonormal basis of a
+sufficiently large invariant finite-dimensional subspace
+\(M\subseteq\text{L}^2(X,\SigmaAlgebra{K},\Measure)\) such that there
+exists \(h\in M\) where \(||f_\text{c}-h||_{\text{L}^2}<\eta/6\) and \[
+h=\sum_{i=1}^n \langle h,e_i \rangle e_i.
+\]
+
+By the Cauchy-Schwartz Inequality, \[
+  \langle h,e_i\rangle\leq ||h||_{\text{L}^2}\cdot||e_i||_{\text{L}^2}=||h||_{\text{L}^2}.
+\]
+
+We also have \begin{align*}
+U_gh&=\sum_{i=1}^n\langle h,e_i \rangle \sum_{j=1}^n \langle U_ge_i,e_j\rangle e_j
+\\&=\sum_{j=1}^n \left(\sum_{i=1}^n\langle h,e_i \rangle \langle U_ge_i,e_j\rangle\right) e_j.
+\end{align*} As we have \[
+\langle U_ge_i,e_j\rangle = \langle e_i,U_g^{-1}e_j\rangle,
+\] then \begin{align*}
+U_gh&=\sum_{j=1}^n \left(\sum_{i=1}^n\langle h,e_i \rangle \langle U_ge_i,e_j\rangle\right) e_j
+\\&=\sum_{j=1}^n \left\langle \sum_{i=1}^n\langle h,e_i \rangle e_i,U_g^{-1}e_j\right\rangle e_j
+\\&=\sum_{j=1}^n \langle h,U_g^{-1}e_j\rangle e_j.
+\end{align*}
+
+Let \(\delta>0\) be sufficiently small such that, for \(1\leq i\leq n\),
+we have \(|e_i(y)-e_i(z)|<\eta/6n\) whenever \(d(z,y)<\delta\). Applying
+\(U_g\) and focusing on each \(1\leq i\leq n\), we want to show that \[
+|U_ge_i(y)-U_ge_i(z)|<\eta/6n
+\] for all \(g\in G\).
+
+We have \[
+U_ge_i=\sum_{j=1}^n \langle U_ge_i,e_j\rangle e_j.
+\] For each \(e_j\), we have that
+
+\begin{itemize}
+\tightlist
+\item
+  Use continuity as \(e_j\) is assumed to be continuous
+\item
+  Orthogonal invariance
+\item
+  Kronecker factor is uniquely ergodic so every point has dense orbit
+\end{itemize}
+
+Below is incorrect at the moment:
+
+, as \(e_1,...,e_n\) is an orthonormal basis and
+\(|e_j(y)-e_j(z)|<\eta/6n\) for all \(1\leq j\leq n\), we get
+\begin{align*}
+|U_ge_i(y)-U_ge_i(z)|^2&= \sum_{j=1}^n |\langle U_ge_i,e_j\rangle (e_j(y)-e_j(z))|^2
+\\&=\left(\frac{\eta}{6n}\right)^2\sum_{j=1}^n |\langle U_ge_i,e_j\rangle|^2
+\\&=\left(\frac{\eta}{6n}\right)^2.
+\end{align*} Thus, \[
+|U_ge_i(y)-U_ge_i(z)|<\frac{\eta}{6n}.
+\]
+
+\subsection{Rough work}\label{rough-work}
+
+By definition of the dual representation, we have \begin{align*}
+\overline{h}(f)&=\langle f,h\rangle
+\\&=\langle f,\sum_{i=1}^n \langle h,e_i \rangle e_i\rangle
+\\&=\sum_{i=1}^n \overline{\langle h,e_i \rangle} \langle f,e_i\rangle
+\\&=\sum_{i=1}^n \overline{\langle h,e_i \rangle} \overline{e_i}(f),
+\end{align*} for any \(f\in\mathcal{L}(X)\). Thus, \[
+\overline{h}=\sum_{i=1}^n \overline{\langle h,e_i \rangle}\overline{e_i}.
+\]
+
+With our tensor product
+\(U\otimes\overline{U}:G\rightarrow\mathscr{U}(\mathcal{L}(X)\otimes\mathcal{L}(\mathcal{L}(X)))\)
+with the dual representation, we get \begin{align*}
+(U_g\otimes\overline{U_g})(h\otimes\overline{h})&=(U_gh)\otimes(\overline{U_gh})
+\\&=\sum_{i=1}^n\left( \langle h,e_i \rangle U_ge_i\right)\otimes\left(\overline{\langle h,e_i \rangle}\overline{U_ge_i}\right)
+\\&=\sum_{i=1}^n\left(\langle h,e_i \rangle \sum_{j=1}^n \langle U_ge_i,e_j\rangle e_j\right)\otimes\left(\overline{\langle h,e_i \rangle}\sum_{k=1}^n\overline{\langle U_ge_i,e_k\rangle}\overline{e_k}\right)
+\end{align*} for all \(g\in G\).
+
+Continuing on, we have \begin{align*}
+(U_g\otimes\overline{U_g})(h\otimes\overline{h})&=\sum_{i=1}^n\left(\langle h,e_i \rangle \sum_{j=1}^n \langle U_ge_i,e_j\rangle e_j\right)\otimes\left(\overline{\langle h,e_i \rangle}\sum_{k=1}^n\overline{\langle U_ge_i,e_k\rangle}\overline{e_k}\right)
+\\&= \sum_{j=1}^n \sum_{k=1}^n\left(\sum_{i=1}^n\langle h,e_i \rangle \overline{\langle h,e_i \rangle} \langle U_ge_i,e_j\rangle \overline{\langle U_ge_i,e_k\rangle}\right) e_j\otimes\overline{e_k}.
+\end{align*}
+
+As \(U_x\) is unitary, then \(U_ge_1,...,U_ge_n\) also forms an
+orthonormal basis and we get \[
+e_k=\sum_{i=1}^n\langle e_k,U_ge_i\rangle U_ge_i.
+\]
+
+We also have \[
+\sum_{i=1}^n\langle h,e_i \rangle \overline{\langle h,e_i \rangle} \langle U_ge_i,e_j\rangle \overline{\langle U_ge_i,e_k\rangle}=\sum_{i=1}^n\langle\langle e_i,h \rangle h,e_i \rangle \langle\langle e_k,U_ge_i\rangle U_ge_i,e_j\rangle
+\]
+
+As \[
+  U_gh=\sum_{i=1}^n \langle h,e_i\rangle U_ge_i=\sum_{j=1}^n \langle h,U_g^{-1}e_j\rangle e_j
+\] and \(U_ge_1,...,U_ge_n\) are orthonormal, we get \[
+\langle h,e_i\rangle U_ge_i=\sum_{j=1}^n\langle h,U_g^{-1}e_j\rangle \langle e_j,U_ge_i\rangle U_ge_i
+\]
+
+Using the Cauchy-Schwartz Inequality, we get \begin{align*}
+|\langle h,U_g^{-1}e_i\rangle|&\leq ||h||\cdot||U_g^{-1}e_i||
+\\& = ||h||\cdot ||e_i||
+\\& = ||h||
+\end{align*}
+
+We have \[
+U_ge_i=\sum_{j=1}^n \langle U_ge_i,e_j\rangle e_j,
+\] and so \[
+U_ge_i(y)-U_ge_i(z)=\sum_{j=1}^n \langle U_ge_i,e_j\rangle (e_j(y)-e_j(z)).
+\] As \(|e_j(y)-e_j(z)|<\eta/6n\) for all \(1\leq j\leq n\), we get
+\begin{align*}
+|U_ge_i(y)-U_ge_i(z)|&\leq \sum_{j=1}^n \langle U_ge_i,e_j\rangle |(e_j(y)-e_j(z))|
+\\&<\frac{\eta}{6n}\sum_{j=1}^n \langle U_ge_i,e_j\rangle
+\end{align*}
+
+\protect\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-Farashahi2017PeterWeyl}
+Farashahi, A. G. (2017). `Peter-weyl theorem for homogeneous spaces of
+compact groups'. \emph{International Journal of Analysis and
+Applications}, 13(1), pp. 22--31. Available at:
+\url{https://doaj.org/article/937bd45db3334aed9b0a8a029b1b852e}
+
+\bibitem[\citeproctext]{ref-ISem28}
+Jamneshan, A. and Kreidler, H. (2025). \emph{ISem 28: Ergodic structure
+theory and applications}.
+
+\bibitem[\citeproctext]{ref-kra2025densityfinitesumstheorem}
+Kra, B. et al. (2025). \emph{The density finite sums theorem}. Available
+at: \url{https://arxiv.org/abs/2504.06424}
+
+\bibitem[\citeproctext]{ref-kra2026shortproof}
+Kra, B. et al. (2026). \emph{A short proof of erdős's \(B+C\)
+conjecture}.
+
+\end{CSLReferences}
+
+
+
+
+\end{document}

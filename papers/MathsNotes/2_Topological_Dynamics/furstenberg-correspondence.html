@@ -2,19 +2,24 @@
 <html xmlns="https://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kai Prince">
-<meta name="dcterms.date" content="2025-09-05">
+<meta name="dcterms.date" content="2026-09-26">
 
 <title>Furstenberg’s Correspondence Principle – Kai Prince</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -60,14 +65,14 @@ div.csl-indent {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../../site_libs/bootstrap/bootstrap-dark-d7fc5677f3affda326ee16cb3d720675.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-4a5c2988e556875ff92a7e338832eaed.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-50169f0012e06f534272ed79332011fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-8a74314f61e346822acdc1012f6ccd95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-50169f0012e06f534272ed79332011fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,10 +114,10 @@ gtag('config', 'G-0QRFD5NB5R', { 'anonymize_ip': true});
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
   "notice_banner_type":"simple",
-  "consent_type":"implied",
+  "consent_type":"express",
   "palette":"light",
   "language":"en",
-  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "page_load_consent_levels":["strictly-necessary"],
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
@@ -339,7 +344,8 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../../images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo">
+    <img src="../../../images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo light-content">
+    <img src="../../../images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Kai Prince</span>
@@ -391,6 +397,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#sec-Backlinks" id="toc-sec-Backlinks" class="nav-link active" data-scroll-target="#sec-Backlinks">Backlinks</a></li>
+  <li><a href="#comparison-with-functional-analysis-approach" id="toc-comparison-with-functional-analysis-approach" class="nav-link" data-scroll-target="#comparison-with-functional-analysis-approach"><span class="header-section-number">1</span> Comparison with Functional Analysis Approach</a>
+  <ul class="collapse">
+  <li><a href="#defining-the-algebra" id="toc-defining-the-algebra" class="nav-link" data-scroll-target="#defining-the-algebra"><span class="header-section-number">1.1</span> Defining the Algebra</a></li>
+  </ul></li>
+  <li><a href="#defining-the-dynamical-system" id="toc-defining-the-dynamical-system" class="nav-link" data-scroll-target="#defining-the-dynamical-system"><span class="header-section-number">2</span> Defining the Dynamical System</a></li>
   <li><a href="#sec-Outlinks" id="toc-sec-Outlinks" class="nav-link" data-scroll-target="#sec-Outlinks">Outlinks</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/blob/main/papers/MathsNotes/2_Topological_Dynamics/furstenberg-correspondence.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="furstenberg-correspondence.tex"><i class="bi bi-file"></i>LaTeX</a></li><li><a href="furstenberg-correspondence.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -405,27 +416,14 @@ window.Quarto = {
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Kai Prince <a href="mailto:kai.prince@manchester.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0009-0000-5246-4227" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            The University of Manchester
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
+    
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 September 2025</p>
+      <p class="date">26 September 2026</p>
     </div>
   </div>
   
@@ -440,30 +438,162 @@ window.Quarto = {
 <section id="sec-Backlinks" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-Backlinks">Backlinks</h2>
 <ul>
+<li><a href="../../MathsNotes/0_Fundamental/axioms.html">Axioms</a></li>
 <li><a href="../../MathsNotes/0_Fundamental/group.html">Group</a></li>
-<li><a href="../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html">Measure Theory and Ergodic Theory</a></li>
-<li><a href="../../MathsNotes/1_Amenable_and_Density/folner.html">Følner sequence</a></li>
 <li><a href="../../MathsNotes/1_Amenable_and_Density/amenable.html">Amenable</a></li>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/measure-ergodic-theory.html">Measure Theory and Ergodic Theory</a></li>
+<li><a href="../../MathsNotes/1_Amenable_and_Density/density.html">Density</a></li>
+<li><a href="../../MathsNotes/1_Amenable_and_Density/folner.html">Følner sequence</a></li>
 <li><a href="../../MathsNotes/2_Topological_Dynamics/actions.html">Actions</a></li>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/kronecker-factor.html">Kronecker Factor</a></li>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/factor-maps.html">Factor Maps</a></li>
 </ul>
 </section>
 <div id="thm-FCP" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 1 (<span class="no-paren"><span class="citation" data-cites="kra2022infinite">cf. Kra et al., 2022, Theorem 2.10</span></span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be an <a href=".\../../MathsNotes/1_Amenable_and_Density/amenable.html#def-amenable">amenable</a> <a href=".\../../MathsNotes/0_Fundamental/group.html#def-group">group</a>, <span class="math inline">\(A\subset \AmenableGroup\)</span>, and <span class="math inline">\(\Folner\)</span> be a <a href=".\../../MathsNotes/1_Amenable_and_Density/folner.html#def-Folner">Følner</a> sequence in <span class="math inline">\(\AmenableGroup\)</span> such that the limit <span class="math display">\[\delta=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}\]</span> exists.</p>
-<p>Then there exists an ergodic system <span class="math inline">\((\ShiftSpace,\Measure,\AmenableGroup)\)</span> that is acted on by <span class="math inline">\(\AmenableGroup\)</span>, a clopen set <span class="math inline">\(E\subset\ShiftSpace\)</span>, a Følner sequence <span class="math inline">\(\FurstenbergFolner\)</span> in <span class="math inline">\(\AmenableGroup\)</span>, and a point <span class="math inline">\(a\in\ShiftSpace\)</span> that is <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-generic">generic</a> with <span class="math inline">\(\Measure\)</span> with respect to <span class="math inline">\(\FurstenbergFolner\)</span> such that <span class="math inline">\(\Measure(E)\geq\delta\)</span> and <span class="math display">\[A={\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E}. \]</span></p>
+<p>Then there exists an ergodic system <span class="math inline">\((\ShiftSpace,\Measure,\AmenableGroup)\)</span> that is acted on by <span class="math inline">\(\AmenableGroup\)</span>, a clopen set <span class="math inline">\(E\subset\ShiftSpace\)</span>, a Følner sequence <span class="math inline">\(\FurstenbergFolner\)</span> in <span class="math inline">\(\AmenableGroup\)</span>, and a point <span class="math inline">\(a\in\ShiftSpace\)</span> that is <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-generic">generic</a> with <span class="math inline">\(\Measure\)</span> with respect to <span class="math inline">\(\FurstenbergFolner\)</span> such that <span class="math inline">\(\Measure(E)\geq\delta\)</span> and <span class="math display">\[A=\{\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E\}. \]</span></p>
 </div>
+<div id="thm-FCP2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2 (<span class="no-paren"><span class="citation" data-cites="kra2026shortproof">cf. Kra et al., 2026, Theorem 2.5</span></span>)</strong></span> Let <span class="math inline">\(\AmenableGroup\)</span> be an amenable group, <span class="math inline">\(A\subset \AmenableGroup\)</span>, and <span class="math inline">\(\Folner\)</span> be a Følner sequence in <span class="math inline">\(\AmenableGroup\)</span> such that the limit <span class="math display">\[\delta=\lim_{N\rightarrow\infty}\frac{\CountingMeasure{A\cap\Folner[N]}}{\CountingMeasure{\Folner[N]}}\]</span> exists.</p>
+<p>Then there exists an ergodic measure-preserving system <span class="math inline">\((\ShiftSpace,\Measure,\AmenableGroup)\)</span> that is acted on by <span class="math inline">\(\AmenableGroup\)</span>, a clopen set <span class="math inline">\(E\subset\ShiftSpace\)</span>, a Følner sequence <span class="math inline">\(\FurstenbergFolner\)</span> in <span class="math inline">\(\AmenableGroup\)</span>, and a point <span class="math inline">\(a\in\ShiftSpace\)</span> such that:</p>
+<ol type="1">
+<li>The point <span class="math inline">\(a\)</span> is generic with <span class="math inline">\(\Measure\)</span> with respect to <span class="math inline">\(\FurstenbergFolner\)</span>.</li>
+<li><span class="math inline">\(\Measure(E)\geq\delta&gt;0\)</span>.</li>
+<li><span class="math inline">\(A=\{\AmenableGroupElement\in \AmenableGroup:\GroupAction{\AmenableGroupElement}{a}\in E\}\)</span>.</li>
+<li>Every measurable eigenfucntion is equal to <span class="math inline">\(\mu\)</span>-almost everywhere to a topological eigenfunction.</li>
+</ol>
+</div>
+<p>See:</p>
+<p><span class="citation" data-cites="kra2022infinite">(<a href="#ref-kra2022infinite" role="doc-biblioref">Kra et al., 2022</a>, Proposition 3.20 and Lemma 5.7)</span>:</p>
+<ul>
+<li>Suppose for each <span class="math inline">\(j\in\mathbb{N}\)</span>, we have a system <span class="math inline">\((X_j,\Measure_j,T_j)\)</span> and suppose there are continuous factor maps <span class="math inline">\(\pi_j:X_j\rightarrow X_{j-1}\)</span> for all <span class="math inline">\(j&gt;1\)</span>. Then there exists a unique <em><a href=".\../../MathsNotes/0_Fundamental/axioms.html#def-inverse">inverse</a> limit</em> <span class="math inline">\((X,\Measure,T)\)</span>, which is a system admitting continuous factor maps <span class="math inline">\(\psi_k:X\rightarrow X_j\)</span> such that <span class="math inline">\(\pi_j\circ\psi_j=\psi_{j-1}\)</span> for every <span class="math inline">\(j&gt;1\)</span>, and such that <span class="math display">\[\bigcup_{j\in\mathbb{N}}C(X_j)\circ\psi_j \]</span> is dense in <span class="math inline">\(C(X)\)</span>. Additionally, whenever each of the systems <span class="math inline">\((X_j,\Measure_j,T_j)\)</span> is ergodic, so is the inverse limit <span class="math inline">\((X,\Measure,T)\)</span>.
+<ul>
+<li>According to the original source [Nilpotent Structures in Ergodic Theory], this applies to topological dynamical systems generally.</li>
+</ul></li>
+<li>Theorem 5.3: Fix an ergodic system <span class="math inline">\((X,\Measure,T)\)</span>. For every <span class="math inline">\(k\in\mathbb{N}\)</span>, there is a system <span class="math inline">\((Z_k,m_k,T)\)</span> with all the following properties:
+<ul>
+<li>The system <span class="math inline">\((Z_k,m_k,T)\)</span> is an inverse limit of ergodic <span class="math inline">\(k\)</span>-step nilsystems.</li>
+<li>There is a measurable factor map <span class="math inline">\(\rho_k\)</span> from <span class="math inline">\((X,\mu,T)\)</span> to <span class="math inline">\((Z_k,m_k,T)\)</span>.</li>
+<li>For any <span class="math inline">\(f\in\text{L}^\infty(X,\Measure)\)</span>, we have <span class="math inline">\(||f||_{k+1}=0\)</span> if and only if <span class="math inline">\(f\)</span> and <span class="math inline">\(\text{L}^\infty(Z_k,m_k)\circ\rho_k\)</span> are orthogonal in <span class="math inline">\(\text{L}^2(X,\Measure)\)</span>.</li>
+</ul></li>
+<li>Definition 5.4 &amp; 5.5:
+<ul>
+<li>Whenever <span class="math inline">\((X,\Measure,T)\)</span> is ergodic, we call the system <span class="math inline">\((Z_k,m_k,T)\)</span> satisfying the conclusion of Theorem 5.3 the <span class="math inline">\(k\)</span><em>-step pronilfactor</em> of <span class="math inline">\((X,\Measure,T)\)</span>.</li>
+<li>Given an ergodic system <span class="math inline">\((X,\Measure,T)\)</span> and <span class="math inline">\(k\in\mathbb{N}\)</span>, let <span class="math inline">\((Z_k,m_k,T)\)</span> be its <span class="math inline">\(k\)</span>-step pronilfactor. We say that <span class="math inline">\((X,\Measure,T)\)</span> <em>has topological pronilfactors</em> if, for every <span class="math inline">\(k\in\mathbb{N}\)</span>, there is a continuous factor map <span class="math inline">\(\pi_k:X\rightarrow Z_k\)</span>.</li>
+</ul></li>
+<li>Proposition 5.6 is equivalent to <span class="citation" data-cites="charamaras2024findingproductsetsclasses">Charamaras and Mountakis (<a href="#ref-charamaras2024findingproductsetsclasses" role="doc-biblioref">2024</a>, Lemma 3.5)</span></li>
+<li>Lemma 5.7 is a generalisation of Proposition 3.20.
+<ul>
+<li>Both start with an ergodic system.</li>
+<li>Instead of <span class="math inline">\(a\in\text{gen}(\Measure,\Folner)\)</span>, <span class="math inline">\(a\)</span> is a transitive point (admits dense orbit).</li>
+<li>The systems shown to exist:
+<ul>
+<li>Both be ergodic systems with Folner sequences with a generic point and a continuous factor map such that <span class="math inline">\(a\)</span> maps to this generic point.</li>
+<li>Have topological pronilfactors in Lemma 5.7, instead of a continuous factor map to its <a href=".\../../MathsNotes/2_Topological_Dynamics/kronecker-factor.html#def-KroneckerFactor">Kronecker</a> factor.</li>
+</ul></li>
+<li>Lemma 5.7 also states the original ergodic system and the existing system are measure theoretically isomorphic systems.
+<ul>
+<li>Proposition 3.20 states this within its proof</li>
+</ul></li>
+</ul></li>
+<li>Proof of Lemma 5.7 vs Proposition 3.20:
+<ul>
+<li>Measurable Factor Maps: Existence of measurable factor map/s to its pronilfactors or Kronecker Factor.</li>
+<li>Product/Kronecker system:
+<ul>
+<li>Lemma 5.7 creates a product space by taking the countable product over <span class="math inline">\(k\in\mathbb{N}\)</span> of <span class="math inline">\(k\)</span>-step pronilfactors.</li>
+<li>Proposition 3.20 focuses solely on the <span class="math inline">\(1\)</span>-step pronilfactor, i.e., Kronecker factor.</li>
+<li>The transformation on these spaces is the product transformation of all <span class="math inline">\(k\)</span>-step pronilfactors and is distal on this product system.</li>
+<li>Using a previous proposition, or essentially <span class="citation" data-cites="charamaras2024findingproductsetsclasses">Charamaras and Mountakis (<a href="#ref-charamaras2024findingproductsetsclasses" role="doc-biblioref">2024</a>, Lemma 3.5)</span>, to determine the generic point in the product space or Kronecker space.</li>
+</ul></li>
+<li>New system:
+<ul>
+<li>A new system is created by taking the product between the original system and the Product/Kronecker system, defining the generic point as the product of the generic points in each system and the transformation similarly.</li>
+<li>The measure is defined as the push forward of the original measure with the measurable factor maps to each coordinate in the new system.</li>
+<li>Lemma 5.7 defines the new space to be the orbit closure of the generic point in the constructed product space and defining the projection of the first coordinate onto the original system.</li>
+</ul></li>
+<li>The continuous map from the new system to the original system is defined as the projection on the first coordinate.
+<ul>
+<li>Similarly, the projection on the remaining coordinates are continuous maps from the new system to the original system’s pronilfactors.</li>
+</ul></li>
+<li>Isomorphism: The maps <span class="math inline">\(x\mapsto(x,\rho(x))\)</span> and <span class="math inline">\((x,z)\mapsto z\)</span> are inverses of each other almost everywhere and so the two spaces are measure theoretically isomorphic.
+<ul>
+<li>Thus, the new system is ergodic and the <span class="math inline">\(k\)</span>-step pronilfactors of each system are isomorphic to each other.</li>
+</ul></li>
+<li>Conclusion: the continuous maps from the new system to the original’s <span class="math inline">\(k\)</span>-step pronilfactors and the new system’s generic point maps to the generic points in the <span class="math inline">\(k\)</span>-step pronilfactors define continuous factor maps from the new system to its <span class="math inline">\(k\)</span>-step pronilfactors.</li>
+</ul></li>
+</ul>
+<p><span class="citation" data-cites="charamaras2024findingproductsetsclasses">(<a href="#ref-charamaras2024findingproductsetsclasses" role="doc-biblioref">Charamaras and Mountakis, 2024</a>, Lemma 3.5 &amp; Proposition 3.7)</span>:</p>
+<ul>
+<li>Lemma 3.5: Covered in Kronecker factor notes and already generalised to amenable groups. It is also a generalisation of <span class="citation" data-cites="kra2022infinite">Kra et al. (<a href="#ref-kra2022infinite" role="doc-biblioref">2022</a>, Propositions 3.19 &amp; 5.6)</span>.</li>
+<li>Proposition 3.7: Similar generalising of <span class="citation" data-cites="kra2022infinite">Kra et al. (<a href="#ref-kra2022infinite" role="doc-biblioref">2022</a>, Proposition 3.20)</span></li>
+</ul>
+<p><span class="citation" data-cites="kra2025densityfinitesumstheorem">(<a href="#ref-kra2025densityfinitesumstheorem" role="doc-biblioref">Kra et al., 2025</a>, Definition 4.3 &amp; Subsection 4.4)</span>:</p>
+<ul>
+<li>Definition 4.3 (Nilsystems, pronilsystems): Let <span class="math inline">\(\Group\)</span> be an <span class="math inline">\(s\)</span>-step nilpotent Lie group and let <span class="math inline">\(\Gamma\subseteq\Group\)</span> be a discrete and cocompact subgroup. The compact manifold <span class="math inline">\(X=\Group/\Gamma\)</span> is an <span class="math inline">\(s\)</span>-step nilmanifold.
+<ul>
+<li>The group <span class="math inline">\(\Group\)</span> acts on <span class="math inline">\(X\)</span> by left translation, and there is a unique Borel probability measure <span class="math inline">\(\Measure\)</span> on <span class="math inline">\(X\)</span> that is invariant under this <a href=".\../../MathsNotes/2_Topological_Dynamics/actions.html#def-action">action</a>, the <em>Haar measure</em> on <span class="math inline">\(X\)</span>. Letting <span class="math inline">\(T:X\rightarrow X\)</span> denote left translation by a fixed element of <span class="math inline">\(\Group\)</span>, the resulting measure preserving system <span class="math inline">\((X,\Measure,T)\)</span> is called an <span class="math inline">\(s\)</span>-step nilsystem (as usual endowed with the Borel <span class="math inline">\(\sigma\)</span>-algebra).</li>
+<li>An inverse limit of <span class="math inline">\(s\)</span>-step nilsystems is called an <span class="math inline">\(s\)</span>-step pronilsystem.</li>
+</ul></li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>This result is FCP but skipping the shift space straight to the system that has a continuous factor map to its Kronecker factor.
+<ul>
+<li>This is where property 4 comes from.</li>
+</ul></li>
+</ul>
+<section id="comparison-with-functional-analysis-approach" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="comparison-with-functional-analysis-approach"><span class="header-section-number">1</span> Comparison with Functional Analysis Approach</h2>
+<section id="defining-the-algebra" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="defining-the-algebra"><span class="header-section-number">1.1</span> Defining the Algebra</h3>
+<p><span class="citation" data-cites="kra2007uniformity">(<a href="#ref-kra2007uniformity" role="doc-biblioref">Kra and Host, 2007, p. 242</a>)</span> uses a separable subalgebra, <span class="math inline">\(\mathcal{A}\)</span>, which is a unitary subalgebra of <span class="math inline">\(\ell^\infty(\mathbb{Z})\)</span> that is invariant under the shift and under complex conjugation, closed in <span class="math inline">\(\ell^\infty(\mathbb{Z})\)</span> and separable for the uniform norm written <span class="math inline">\(||\ \cdot\ ||_\infty\)</span>. They have the intent to mostly consider the case of the separable subalgebra <span class="math inline">\(\mathcal{A}(\boldsymbol{a})\)</span> spanned by a bounded sequence <span class="math inline">\(\boldsymbol{a}=(a_n:n\in\mathbb{Z})\)</span>. They also write <span class="math inline">\(\sigma\)</span> for the shift on <span class="math inline">\(\ell^\infty(\mathbb{Z})\)</span> where, for a sequence <span class="math inline">\(\boldsymbol{a}=(a_n:n\in\mathbb{Z})\)</span>, <span class="math inline">\(\sigma\boldsymbol{a}=(a_{n+1}:n\in\mathbb{Z})\)</span> and <span class="math inline">\(\overline{\boldsymbol{a}}\)</span> to denote the conjugate sequence <span class="math inline">\((\overline{a}_n:n\in\mathbb{Z})\)</span>.</p>
+<p>This means that:</p>
+<ul>
+<li>We have the constant sequence <span class="math inline">\(\boldsymbol{1}=(1:n\in\mathbb{Z})\in\mathcal{A}\)</span>.</li>
+<li>For <span class="math inline">\(f\in\mathcal{A}\)</span>, we have <span class="math inline">\(||f||_\infty=\sup_{n\in\mathbb{Z}}|f_n|\)</span>, <span class="math inline">\(\sigma f\in\mathcal{A}\)</span> and <span class="math inline">\(\overline{f}\in\mathcal{A}\)</span>.</li>
+<li>For <span class="math inline">\(f,g\in\mathcal{A}\)</span>$, we have <span class="math inline">\(f+g\in\mathcal{A}\)</span> and <span class="math inline">\(f\cdot g\in\mathcal{A}\)</span>.</li>
+<li>If <span class="math inline">\(\boldsymbol{f}_n\in\mathcal{A}\)</span> for all <span class="math inline">\(n\in\mathbb{N}\)</span> and <span class="math inline">\(\lim_{n\rightarrow\infty}||f_n-f||_\infty=0\)</span>, then <span class="math inline">\(f\in\mathcal{A}\)</span>.</li>
+<li>(Countable dense subset) There exists a countable set <span class="math inline">\(\{f_n:n\in\mathbb{N}\}\subseteq\mathcal{A}\)</span> such that, for every <span class="math inline">\(f\in\mathcal{A}\)</span> and every <span class="math inline">\(\varepsilon&gt;0\)</span>, there exists <span class="math inline">\(n\in\mathbb{N}\)</span> suchh that <span class="math inline">\(||f_n-f||_\infty&lt;\varepsilon\)</span>.</li>
+<li><span class="math inline">\(\mathcal{A}(\boldsymbol{a})\)</span> is generated by applying any combination of the above to <span class="math inline">\(\boldsymbol{a}\)</span> and then taking the closure.</li>
+</ul>
+<p>With our approach, the subalgebra is a consequence of our construction. For example, <span class="math inline">\(E\subset\AmenableGroup\)</span> corresponds to a vector where <span class="math display">\[e(\AmenableGroupElement)\begin{cases}1&amp;\AmenableGroupElement\in E,\\0&amp;\AmenableGroupElement\notin E. \end{cases} \]</span> This gives us <span class="math display">\[\boldsymbol{e}=(e(\AmenableGroupElement):\AmenableGroupElement\in\AmenableGroup)\in\ell^\infty(\AmenableGroup),\]</span> and <span class="math inline">\(\mathcal{A}(\boldsymbol{e})\)</span> is the subalgebra we work with, where we define the shift using the group action <span class="math inline">\(\GroupAction{\AmenableGroupElement_1}{e(\AmenableGroupElement_2)}=e(\GroupOperation{\AmenableGroupElement_1}{\AmenableGroupElement_2})\)</span>. Thus, the approach is equivalent so far.</p>
+</section>
+</section>
+<section id="defining-the-dynamical-system" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="defining-the-dynamical-system"><span class="header-section-number">2</span> Defining the Dynamical System</h2>
+<p><span class="citation" data-cites="kra2007uniformity">(<a href="#ref-kra2007uniformity" role="doc-biblioref">Kra and Host, 2007, p. 242</a>)</span> goes on to let <span class="math inline">\(X'\)</span> be the <em>Gelfand spectrum</em> of <span class="math inline">\(\mathcal{A}\)</span>, stating this means <span class="math inline">\(X\)</span> consists of the set of unitary homomorphisms from <span class="math inline">\(\mathcal{A}\)</span> to the complex numbers.</p>
+<p>This means that: - For all <span class="math inline">\(f,g\in\mathcal{A}\)</span>, <span class="math inline">\(\lambda\in\mathbb{C}\)</span> and <span class="math inline">\(\varphi\in X'\)</span>, we have <span class="math inline">\(\varphi(f+g)=\varphi(f)+\varphi(g)\)</span>, <span class="math inline">\(\varphi(f\cdot g)=\varphi(f)\cdot \varphi(g)\)</span>, and <span class="math inline">\(\varphi(\lambda f)=\lambda\varphi(f)\)</span>. - For all <span class="math inline">\(\varphi\in X\)</span>, we have <span class="math inline">\(\varphi(\boldsymbol{1})=1\)</span>.</p>
+<p>They then let <span class="math inline">\(C(X)\)</span> denote the algebra of continuous functions on <span class="math inline">\(X\)</span> and conclude that there exists an isometric isomorphism of algebras <span class="math inline">\(\Phi:C(X)\rightarrow\mathcal{A}\)</span>. They also define, for <span class="math inline">\(\boldsymbol{b}\in\mathcal{A}\)</span>, the function <span class="math inline">\(\Phi^{-1}(b)\)</span> as <em>the function associated to</em> <span class="math inline">\(\boldsymbol{b}\)</span>.</p>
+<p>With our approach, we instead use the shift space <span class="math inline">\(\ShiftSpace=\{0,1\}^\AmenableGroup\)</span> such that <span class="math inline">\(\boldsymbol{e}\in\ShiftSpace\)</span>, which ignores the subalgebra construction, and define a topological dynamical system.</p>
 
 
+</section>
 <section id="sec-Outlinks" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="sec-Outlinks">Outlinks</h2>
 <ul>
+<li><a href="../../MathsNotes/2_Topological_Dynamics/kronecker-factor.html">Kronecker Factor</a></li>
+<li><a href="../../MathsNotes/3_Main_Tools/erdos-cubes.html">Erdős Cubes</a></li>
 <li><a href="../../GeneralisedErdosConjecture/ErdosConjecture.html">A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups</a></li>
 </ul>
 </section>
 
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-charamaras2024findingproductsetsclasses" class="csl-entry" role="listitem">
+Charamaras, D. and Mountakis, A. (2024). <em>Finding product sets in some classes of amenable groups</em>. https://doi.org/<a href="https://doi.org/10.1017/fms.2024.155">https://doi.org/10.1017/fms.2024.155</a>.
+</div>
 <div id="ref-kra2022infinite" class="csl-entry" role="listitem">
-Kra, B., et al. (2022). '<em>Infinite sumsets in sets with positive density</em>', Available at: <a href="https://arxiv.org/abs/2206.01786">https://arxiv.org/abs/2206.01786</a>.
+Kra, B. et al. (2022). <em>Infinite sumsets in sets with positive density</em>. Available at: <a href="https://arxiv.org/abs/2206.01786">https://arxiv.org/abs/2206.01786</a>
+</div>
+<div id="ref-kra2025densityfinitesumstheorem" class="csl-entry" role="listitem">
+Kra, B. et al. (2025). <em>The density finite sums theorem</em>. Available at: <a href="https://arxiv.org/abs/2504.06424">https://arxiv.org/abs/2504.06424</a>
+</div>
+<div id="ref-kra2026shortproof" class="csl-entry" role="listitem">
+Kra, B. et al. (2026). <em>A short proof of erdős’s <span class="math inline">\(B+C\)</span> conjecture</em>.
+</div>
+<div id="ref-kra2007uniformity" class="csl-entry" role="listitem">
+Kra, B. and Host, B. (2007). <em>Uniformity seminorms on <span class="math inline">\(\ell^\infty\)</span> and applications</em>. Available at: <a href="https://arxiv.org/abs/0711.3637">https://arxiv.org/abs/0711.3637</a>
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -530,13 +660,14 @@ Kra, B., et al. (2022). '<em>Infinite sumsets in sets with positive density</em>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -1,0 +1,12 @@
+export const swReady=('serviceWorker'in navigator&&isSecureContext)?(async()=>{
+ const registration=await navigator.serviceWorker.register('/Experiment/sw.js');
+ if(!registration.active)await new Promise((resolve,reject)=>{const worker=registration.installing||registration.waiting;if(!worker)return reject(Error('Offline worker is unavailable'));const timer=setTimeout(()=>reject(Error('Offline installation timed out')),60000);worker.addEventListener('statechange',()=>{if(worker.state==='activated'){clearTimeout(timer);resolve();}else if(worker.state==='redundant'){clearTimeout(timer);reject(Error('Offline installation failed'));}});});
+ const expected=new URL('/Experiment/sw.js',location.href).href;
+ if(navigator.serviceWorker.controller?.scriptURL!==expected)await new Promise((resolve,reject)=>{const timer=setTimeout(()=>{navigator.serviceWorker.removeEventListener('controllerchange',changed);reject(Error('Reload to activate the prototype offline worker'));},10000);function changed(){if(navigator.serviceWorker.controller?.scriptURL===expected){clearTimeout(timer);navigator.serviceWorker.removeEventListener('controllerchange',changed);resolve();}}navigator.serviceWorker.addEventListener('controllerchange',changed);changed();});
+ return registration;
+})():Promise.reject(Error('A secure HTTPS origin is required for offline installation.'));
+swReady.catch(()=>{});
+export async function setOffline(value){await swReady;if(!navigator.serviceWorker.controller)await new Promise(resolve=>navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true}));const channel=new MessageChannel();return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Offline switch timed out')),5000);channel.port1.onmessage=()=>{clearTimeout(timer);resolve();};navigator.serviceWorker.controller.postMessage({type:'offline',value},[channel.port2]);});}
+export async function offlineState(){const c=await caches.open('thread-settings-cdc6a147cc');const r=await c.match('/Experiment/__offline');return r&&(await r.text())==='1';}
+
+export async function allowModelDownload(){const registration=await swReady;const channel=new MessageChannel();return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Download consent could not be registered')),5000);channel.port1.onmessage=()=>{clearTimeout(timer);resolve();};registration.active.postMessage({type:'allow-model-download'},[channel.port2]);});}

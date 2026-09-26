@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Kai Prince">
+<meta name="dcterms.date" content="2026-09-26">
+<meta name="keywords" content="Mathematical Research, Open Research, Open Education, Universal Design for Learning, Disability Inclusion">
+
+<title>Designing an Alternative Approach to Mathematical Research – Kai Prince</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-50169f0012e06f534272ed79332011fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8a74314f61e346822acdc1012f6ccd95.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-50169f0012e06f534272ed79332011fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0QRFD5NB5R"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0QRFD5NB5R', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"express",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en-GB"
+  });
+});
+</script> 
+  
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+<meta name="quarto:status" content="draft">
+
+
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo light-content">
+    <img src="../../images/kai-prince.jpg" alt="A picture of Kai Prince" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Kai Prince</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-mathematical-research" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Mathematical Research</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-mathematical-research">    
+        <li>
+    <a class="dropdown-item" href="../../papers/GeneralisedErdosConjecture/ErdosConjecture.html">
+ <span class="dropdown-text">A Short Proof of a Generalised Conjecture of Erdős for Amenable Groups</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sec-Backlinks" id="toc-sec-Backlinks" class="nav-link active" data-scroll-target="#sec-Backlinks">Backlinks</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#open-research" id="toc-open-research" class="nav-link" data-scroll-target="#open-research"><span class="header-section-number">2</span> Open Research</a>
+  <ul class="collapse">
+  <li><a href="#uom-policies" id="toc-uom-policies" class="nav-link" data-scroll-target="#uom-policies"><span class="header-section-number">2.1</span> UoM Policies</a></li>
+  </ul></li>
+  <li><a href="#mathematical-research" id="toc-mathematical-research" class="nav-link" data-scroll-target="#mathematical-research"><span class="header-section-number">3</span> Mathematical Research</a>
+  <ul class="collapse">
+  <li><a href="#researcher-lifecycle" id="toc-researcher-lifecycle" class="nav-link" data-scroll-target="#researcher-lifecycle"><span class="header-section-number">3.1</span> Researcher Lifecycle</a></li>
+  <li><a href="#mathematical-research-methodologies" id="toc-mathematical-research-methodologies" class="nav-link" data-scroll-target="#mathematical-research-methodologies"><span class="header-section-number">3.2</span> Mathematical Research Methodologies</a></li>
+  <li><a href="#knowledge-exchange-initiatives" id="toc-knowledge-exchange-initiatives" class="nav-link" data-scroll-target="#knowledge-exchange-initiatives"><span class="header-section-number">3.3</span> Knowledge Exchange Initiatives</a></li>
+  <li><a href="#research-outputs" id="toc-research-outputs" class="nav-link" data-scroll-target="#research-outputs"><span class="header-section-number">3.4</span> Research Outputs</a></li>
+  <li><a href="#proof-verification" id="toc-proof-verification" class="nav-link" data-scroll-target="#proof-verification"><span class="header-section-number">3.5</span> Proof Verification</a></li>
+  <li><a href="#open-research-in-mathematics" id="toc-open-research-in-mathematics" class="nav-link" data-scroll-target="#open-research-in-mathematics"><span class="header-section-number">3.6</span> Open Research in Mathematics</a></li>
+  <li><a href="#ethical-ai-research-practices" id="toc-ethical-ai-research-practices" class="nav-link" data-scroll-target="#ethical-ai-research-practices"><span class="header-section-number">3.7</span> Ethical AI Research Practices</a></li>
+  </ul></li>
+  <li><a href="#authoring" id="toc-authoring" class="nav-link" data-scroll-target="#authoring"><span class="header-section-number">4</span> Authoring</a>
+  <ul class="collapse">
+  <li><a href="#executable-papers-open-education-resources" id="toc-executable-papers-open-education-resources" class="nav-link" data-scroll-target="#executable-papers-open-education-resources"><span class="header-section-number">4.1</span> Executable Papers &amp; Open Education Resources</a></li>
+  <li><a href="#platforms" id="toc-platforms" class="nav-link" data-scroll-target="#platforms"><span class="header-section-number">4.2</span> Platforms</a>
+  <ul class="collapse">
+  <li><a href="#overleaf" id="toc-overleaf" class="nav-link" data-scroll-target="#overleaf"><span class="header-section-number">4.2.1</span> Overleaf</a></li>
+  <li><a href="#obsidian" id="toc-obsidian" class="nav-link" data-scroll-target="#obsidian"><span class="header-section-number">4.2.2</span> Obsidian</a></li>
+  <li><a href="#quarto-quarto-extensions" id="toc-quarto-quarto-extensions" class="nav-link" data-scroll-target="#quarto-quarto-extensions"><span class="header-section-number">4.2.3</span> Quarto &amp; Quarto Extensions</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#backend-development" id="toc-backend-development" class="nav-link" data-scroll-target="#backend-development"><span class="header-section-number">5</span> Backend Development</a>
+  <ul class="collapse">
+  <li><a href="#rendering-workflow-knowledge-graphs" id="toc-rendering-workflow-knowledge-graphs" class="nav-link" data-scroll-target="#rendering-workflow-knowledge-graphs"><span class="header-section-number">5.1</span> Rendering Workflow &amp; Knowledge Graphs</a></li>
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing"><span class="header-section-number">5.2</span> Data Processing</a>
+  <ul class="collapse">
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><span class="header-section-number">5.2.1</span> Data Cleaning</a></li>
+  <li><a href="#mathematical-data" id="toc-mathematical-data" class="nav-link" data-scroll-target="#mathematical-data"><span class="header-section-number">5.2.2</span> Mathematical Data</a></li>
+  <li><a href="#mathematical-proofs" id="toc-mathematical-proofs" class="nav-link" data-scroll-target="#mathematical-proofs"><span class="header-section-number">5.2.3</span> Mathematical Proofs</a></li>
+  <li><a href="#terminology-definitions-conclusions" id="toc-terminology-definitions-conclusions" class="nav-link" data-scroll-target="#terminology-definitions-conclusions"><span class="header-section-number">5.2.4</span> Terminology, Definitions &amp; Conclusions</a></li>
+  </ul></li>
+  <li><a href="#data-management" id="toc-data-management" class="nav-link" data-scroll-target="#data-management"><span class="header-section-number">5.3</span> Data Management</a>
+  <ul class="collapse">
+  <li><a href="#data-processing-1" id="toc-data-processing-1" class="nav-link" data-scroll-target="#data-processing-1"><span class="header-section-number">5.3.1</span> Data Processing</a></li>
+  <li><a href="#error-handling" id="toc-error-handling" class="nav-link" data-scroll-target="#error-handling"><span class="header-section-number">5.3.2</span> Error Handling</a></li>
+  </ul></li>
+  <li><a href="#document-rendering-progressive-json-css" id="toc-document-rendering-progressive-json-css" class="nav-link" data-scroll-target="#document-rendering-progressive-json-css"><span class="header-section-number">5.4</span> Document Rendering, Progressive JSON &amp; CSS</a></li>
+  </ul></li>
+  <li><a href="#frontend-development" id="toc-frontend-development" class="nav-link" data-scroll-target="#frontend-development"><span class="header-section-number">6</span> Frontend Development</a>
+  <ul class="collapse">
+  <li><a href="#pdf-output" id="toc-pdf-output" class="nav-link" data-scroll-target="#pdf-output"><span class="header-section-number">6.1</span> PDF Output</a></li>
+  <li><a href="#web-output" id="toc-web-output" class="nav-link" data-scroll-target="#web-output"><span class="header-section-number">6.2</span> Web Output</a>
+  <ul class="collapse">
+  <li><a href="#progressive-web-app" id="toc-progressive-web-app" class="nav-link" data-scroll-target="#progressive-web-app"><span class="header-section-number">6.2.1</span> Progressive Web App</a></li>
+  <li><a href="#accessibility-options-and-features" id="toc-accessibility-options-and-features" class="nav-link" data-scroll-target="#accessibility-options-and-features"><span class="header-section-number">6.2.2</span> Accessibility Options and Features</a></li>
+  <li><a href="#linked-knowledge" id="toc-linked-knowledge" class="nav-link" data-scroll-target="#linked-knowledge"><span class="header-section-number">6.2.3</span> Linked Knowledge</a></li>
+  <li><a href="#semantic-search" id="toc-semantic-search" class="nav-link" data-scroll-target="#semantic-search"><span class="header-section-number">6.2.4</span> Semantic Search</a></li>
+  <li><a href="#customisable-notation-terminology" id="toc-customisable-notation-terminology" class="nav-link" data-scroll-target="#customisable-notation-terminology"><span class="header-section-number">6.2.5</span> Customisable Notation &amp; Terminology</a></li>
+  <li><a href="#interactive-proofs" id="toc-interactive-proofs" class="nav-link" data-scroll-target="#interactive-proofs"><span class="header-section-number">6.2.6</span> Interactive Proofs</a></li>
+  <li><a href="#personalised-varied-learning" id="toc-personalised-varied-learning" class="nav-link" data-scroll-target="#personalised-varied-learning"><span class="header-section-number">6.2.7</span> Personalised &amp; Varied Learning</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">7</span> Discussion</a>
+  <ul class="collapse">
+  <li><a href="#copyright-considerations-the-importance-of-individuality" id="toc-copyright-considerations-the-importance-of-individuality" class="nav-link" data-scroll-target="#copyright-considerations-the-importance-of-individuality"><span class="header-section-number">7.1</span> Copyright Considerations &amp; the Importance of Individuality</a></li>
+  <li><a href="#research-implications" id="toc-research-implications" class="nav-link" data-scroll-target="#research-implications"><span class="header-section-number">7.2</span> Research Implications</a></li>
+  <li><a href="#teaching-implications" id="toc-teaching-implications" class="nav-link" data-scroll-target="#teaching-implications"><span class="header-section-number">7.3</span> Teaching Implications</a></li>
+  <li><a href="#interdisciplinary-contexts" id="toc-interdisciplinary-contexts" class="nav-link" data-scroll-target="#interdisciplinary-contexts"><span class="header-section-number">7.4</span> Interdisciplinary Contexts</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/blob/main/papers/OpenMathResQuartoExt/OpenMathResQuartoExt.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="OpenMathResQuartoExt.tex"><i class="bi bi-file"></i>LaTeX</a></li><li><a href="OpenMathResQuartoExt.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Designing an Alternative Approach to Mathematical Research</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Maths</div>
+    <div class="quarto-category">Research</div>
+    <div class="quarto-category">Open Research Methods</div>
+  </div>
+  </div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Kai Prince <a href="mailto:kai.prince@manchester.ac.uk" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0009-0000-5246-4227" class="quarto-title-author-orcid" aria-label="ORCID profile for Kai Prince"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            The University of Manchester
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">26 September 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Mathematical Research, Open Research, Open Education, Universal Design for Learning, Disability Inclusion</p>
+  </div>
+</div>
+
+</header>
+
+
+<section id="sec-Backlinks" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-Backlinks">Backlinks</h2>
+<ul>
+<li><a href="../MathsNotes/2_Topological_Dynamics/actions.html">Actions</a></li>
+<li><a href="../MathsNotes/3_Main_Tools/progressive-measure.html">Progressive Measures</a></li>
+</ul>
+</section>
+<p>[Book Project]</p>
+<p>[Check Journal-format Thesis requirements]</p>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>Concept: Designing a Quarto Extension to generate an Open Education Website to maximise the accessibility of Open Research projects.</p>
+<p>[Insert OpenMath motivations]</p>
+<p>[Insert Disability Inclusion in Research motivations]</p>
+</section>
+<section id="open-research" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Open Research</h1>
+<p>The “Position Statement on Open Research” at <span class="citation" data-cites="uom2025OpenResPosition">The University of Manchester (<a href="#ref-uom2025OpenResPosition" role="doc-biblioref">2025c</a>)</span> covers what Open Research is, why it is important and its principles:</p>
+<ul>
+<li>Pre-registration of research;</li>
+<li>Transparency in research methodology;</li>
+<li>Public availability and reusability of research data and analysis code;</li>
+<li>Public accessibility and transparency of research communication;</li>
+<li>Data described according to FAIR Data Principles, ensuring that it is Findable, Accessible Interoperable and Reusable and publicly available where possible;</li>
+<li>Using web-based tools to facilitate collaboration.</li>
+</ul>
+<section id="uom-policies" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="uom-policies"><span class="header-section-number">2.1</span> UoM Policies</h2>
+<p><span class="citation" data-cites="uom2025PubPolicy">The University of Manchester (<a href="#ref-uom2025PubPolicy" role="doc-biblioref">2025a</a>)</span> details state that researchers must be open and transparent when conducting and communicating their research in terms of:</p>
+<ol type="1">
+<li>the disclosure of any conflicts of interest;</li>
+<li>the reporting of research data collection methods;</li>
+<li>the analysis and interpretation of data;</li>
+<li>making all research findings widely available (including sharing negative results as appropriate) by publishing as open access under a Creative Commons Attribution (CC BY) license;</li>
+<li>disseminating research in a way that will maximise engagement and secondary use, with students obtaining prior permission from their supervisor; and</li>
+<li>promoting public engagement/involvement in research.</li>
+</ol>
+<p><span class="citation" data-cites="uom2024ResDataMngmtPolicy">The University of Manchester (<a href="#ref-uom2024ResDataMngmtPolicy" role="doc-biblioref">2024</a>)</span> that research data must be stored in an “accurate, complete unadulterated and reliable manner” as well as meeting FAIR data principles, where the data must be made interoperable whenever possible, and “made available in a timely way with as few restrictions as possible”.</p>
+<p><span class="citation" data-cites="uom2025RespMetrics">The University of Manchester (<a href="#ref-uom2025RespMetrics" role="doc-biblioref">2025b</a>)</span> endorse five principles of responsible metrics:</p>
+<ul>
+<li>Robustness</li>
+<li>Humility</li>
+<li>Transparency</li>
+<li>Diversity</li>
+<li>Reflexivity</li>
+</ul>
+</section>
+</section>
+<section id="mathematical-research" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Mathematical Research</h1>
+<section id="researcher-lifecycle" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="researcher-lifecycle"><span class="header-section-number">3.1</span> Researcher Lifecycle</h2>
+<p>[Conceptual overlaps between Open Research &amp; Open Education]</p>
+</section>
+<section id="mathematical-research-methodologies" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="mathematical-research-methodologies"><span class="header-section-number">3.2</span> Mathematical Research Methodologies</h2>
+</section>
+<section id="knowledge-exchange-initiatives" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="knowledge-exchange-initiatives"><span class="header-section-number">3.3</span> Knowledge Exchange Initiatives</h2>
+</section>
+<section id="research-outputs" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="research-outputs"><span class="header-section-number">3.4</span> Research Outputs</h2>
+<p>[Papers]</p>
+<p>[Presentations]</p>
+<p>[Posters]</p>
+<p>[Social Media Content]</p>
+<p>[Public Outreach]</p>
+</section>
+<section id="proof-verification" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="proof-verification"><span class="header-section-number">3.5</span> Proof Verification</h2>
+<p>[Rocq/Lean]</p>
+</section>
+<section id="open-research-in-mathematics" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="open-research-in-mathematics"><span class="header-section-number">3.6</span> Open Research in Mathematics</h2>
+<p>[Accessibility]</p>
+<p>[Findability]</p>
+<p>[Interoperability]</p>
+<p>[Reusability]</p>
+<p>[Below is from Knowledge Graphs YouTube Lecture 1.7]</p>
+<p>Linked Data Principles:</p>
+<ol type="1">
+<li>Use URIs as names for things.</li>
+<li>Use HTTP URIs so that people can look up those names.</li>
+<li>When someone looks up a URI, provide useful information, using the standards (Resource Description Framework (RDF), SPARQL).</li>
+<li>Include links to other URIs, so they can discover more things.</li>
+</ol>
+<p>Tim Berners-Lee’s 5-Star Criteria for Linked Open Data:</p>
+<ol type="1">
+<li>Available on the Web (whatever format) but with an <strong>open license</strong>, to be Open Data.</li>
+<li>Available as <strong>machine-readable structured data</strong> (e.g., excel instead of image scan of a table).</li>
+<li>As (2) plus <strong>non-proprietary format</strong> (e.g., CSV instead of Excel).</li>
+<li>All of the above plus: use <strong>open standards from W3C</strong> (RDF and SPARQL) to identify things so that people can point at your stuff.</li>
+<li>All the above plus: <strong>link your data to other people’s data</strong> to provide context.</li>
+</ol>
+</section>
+<section id="ethical-ai-research-practices" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="ethical-ai-research-practices"><span class="header-section-number">3.7</span> Ethical AI Research Practices</h2>
+</section>
+</section>
+<section id="authoring" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Authoring</h1>
+<p>[Format: What is it; What aspects they already cover; Summarise remaining actions]</p>
+<section id="executable-papers-open-education-resources" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="executable-papers-open-education-resources"><span class="header-section-number">4.1</span> Executable Papers &amp; Open Education Resources</h2>
+<p>[Open Access &amp; Open Education]</p>
+<p>[Universal Design for Learning]</p>
+<p>[Executable Papers]</p>
+</section>
+<section id="platforms" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="platforms"><span class="header-section-number">4.2</span> Platforms</h2>
+<section id="overleaf" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="overleaf"><span class="header-section-number">4.2.1</span> Overleaf</h3>
+</section>
+<section id="obsidian" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="obsidian"><span class="header-section-number">4.2.2</span> Obsidian</h3>
+</section>
+<section id="quarto-quarto-extensions" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="quarto-quarto-extensions"><span class="header-section-number">4.2.3</span> Quarto &amp; Quarto Extensions</h3>
+<p>[Journal Article Templates]</p>
+</section>
+</section>
+</section>
+<section id="backend-development" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Backend Development</h1>
+<p>[Approach - Algorithmic wherever possible]</p>
+<section id="rendering-workflow-knowledge-graphs" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="rendering-workflow-knowledge-graphs"><span class="header-section-number">5.1</span> Rendering Workflow &amp; Knowledge Graphs</h2>
+<p>Data modelling process:</p>
+<ol type="1">
+<li>Understand the domain and define specific use cases (questions) for the application</li>
+<li>Develop the initial graph data model:
+<ol type="1">
+<li>Model the nodes (entities).
+<ul>
+<li>Choose sematically orthogonal labels and avoid class hierarchies in labels or using more than 4 labels.</li>
+</ul></li>
+<li>Model the relationships between nodes.</li>
+</ol></li>
+<li>Test the use cases against the initial data model.</li>
+<li>Create the graph (instance model) with test data using Cypher.</li>
+<li>Test the use cases, including performance against the graph.</li>
+<li>Refactor (improve) the graph data model due to a change in the key use cases or for performance reasons.
+<ol type="1">
+<li>Design the new data model.</li>
+<li>Write Cypher code to transform the existing graph to implement the new data model.</li>
+<li>Retest all use cases, possibly with updated Cypher code.</li>
+</ol></li>
+<li>Implement the refactoring on the graph and retest using Cypher.
+<ol type="1">
+<li>Identify which use cases are affected by the refactor.</li>
+<li>Rewrite any queries that can take advantage of the refactoring.</li>
+<li>Test all queries affected by the refactor to ensure they return the same results as before the refactoring.</li>
+<li>PROFILE queries to determine if refactoring is a benefit.</li>
+</ol></li>
+</ol>
+<p>Use cases:</p>
+<ol type="1">
+<li>What are the <strong>sources</strong> <code>cited</code> for each <strong>result</strong>?
+<ol type="1">
+<li>Retrieve a result by its <strong>embedding vector</strong>.</li>
+<li>Trace the CITED relationships to the sources.</li>
+<li>Return the <strong>citations</strong> of the sources.</li>
+</ol></li>
+<li>What is the <strong>result</strong> that <code>defines</code> a specific <strong>object</strong>?
+<ol type="1">
+<li>Retrieve the object by its <strong>name</strong>.</li>
+<li>Trace the DEFINE relationship to the result.</li>
+<li>Return the <strong>description</strong> and <strong>href</strong> of the result.</li>
+</ol></li>
+<li>What <strong>objects</strong> are <code>required</code> for a <strong>result</strong>?
+<ol type="1">
+<li>Retrieve the result by its <strong>embedding vector</strong>.</li>
+<li>Trace the REQUIRE relationship to the objects.</li>
+<li>Return the <strong>names</strong> and <strong>notation</strong> of the objects.</li>
+</ol></li>
+<li>What objects <code>compose</code> a specific object?
+<ol type="1">
+<li>Retrieve the specific object by its <strong>name</strong>.</li>
+<li>Trace the composed DEFINE and REQUIRE relationships to objects.</li>
+<li>Return the <strong>names</strong> of the objects.</li>
+</ol></li>
+<li>What <strong>properties</strong> <code>apply</code> to a specific <strong>object</strong>?
+<ol type="1">
+<li>Retrieve the specific object by its <strong>name</strong>.</li>
+<li>Trace the composed DEFINE, REQUIRE and APPLY relationships to objects.</li>
+<li>Return the <strong>names</strong> of the objects.</li>
+</ol></li>
+<li>What nodes <code>originated</code> from a specific <strong>document</strong>?
+<ol type="1">
+<li>Retrieve the document by its <strong>path</strong>.</li>
+<li>Trace the ORIGIN relationships to the nodes.</li>
+<li>Return the key values and labels of the nodes.</li>
+</ol></li>
+</ol>
+<p>Nodes:</p>
+<ul>
+<li>SOURCE
+<ul>
+<li>[[referenceID]]</li>
+<li>citation</li>
+</ul></li>
+<li>DOCUMENT
+<ul>
+<li>[[path]]</li>
+</ul></li>
+<li>OBJECT:
+<ul>
+<li>[[identifier]]</li>
+<li>notation</li>
+</ul></li>
+<li>RESULT
+<ul>
+<li>[[embeddingVec]]</li>
+<li>[abstractionVec]</li>
+<li>desc</li>
+<li>href</li>
+</ul></li>
+</ul>
+<p>Intermediate Nodes:</p>
+<ul>
+<li>RESULT
+<ul>
+<li>create applied result with abstraction relationship to the original result unless the original result is sufficiently abstract</li>
+</ul></li>
+</ul>
+<p>Relationships:</p>
+<ul>
+<li>CITE</li>
+<li>PROPERTY</li>
+<li>ABSTRACTION</li>
+<li>APPLIED</li>
+</ul>
+<p>[SQ4R]</p>
+<p>Quarto processing:</p>
+<ol start="0" type="1">
+<li>Source Documents</li>
+<li>Pre-render</li>
+<li>Render Filters
+<ul>
+<li>Pandoc Structure:
+<ul>
+<li>Metadata</li>
+<li>Blocks
+<ul>
+<li>Blocks</li>
+<li>Inlines</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Post-render</li>
+<li>Output Documents</li>
+</ol>
+<p>Embedding RAG:</p>
+<ol start="0" type="1">
+<li>Source Documents</li>
+<li>Data Ingestion</li>
+<li>(Unstructured) Text Chunks</li>
+<li>Embeddings (using an Embedding Model)</li>
+<li>Vector Database
+<ul>
+<li>Semantic-aware</li>
+</ul></li>
+</ol>
+<p>GraphRAG:</p>
+<ol start="0" type="1">
+<li>Source Documents</li>
+<li>Chunks</li>
+<li>Knowledge Graph Generation
+<ul>
+<li>Entity Extraction (using an LLM)</li>
+<li>Relationship Extraction (using an LLM)</li>
+</ul></li>
+<li>Community Detection (using an LLM)</li>
+<li>Hierarchical Community Structures (using an LLM)</li>
+<li>Community Levels - Root, Low, or High (using an LLM)</li>
+<li>Generate Community Summaries (using an LLM)</li>
+<li>Vector Database (using an Embedding Model)
+<ul>
+<li>Context-aware</li>
+</ul></li>
+</ol>
+<p>Real-Time Knowledge Graphs (Graphiti for dynamic data management):</p>
+<ol start="0" type="1">
+<li>Source Documents</li>
+<li>Chunks</li>
+<li>Knowledge Graphs Construction</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Quarto</th>
+<th>Embedding RAG</th>
+<th>GraphRAG</th>
+<th>Temporal RAG</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Input</td>
+<td>Markdown Documents</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Output</td>
+<td>Formatted Documents</td>
+<td>Semantic-aware Vector Database</td>
+<td>Context-aware Vector Database</td>
+<td>Temporal-aware Vector Database</td>
+</tr>
+</tbody>
+</table>
+<p>[Directory specific]</p>
+</section>
+<section id="data-processing" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="data-processing"><span class="header-section-number">5.2</span> Data Processing</h2>
+<section id="data-cleaning" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="data-cleaning"><span class="header-section-number">5.2.1</span> Data Cleaning</h3>
+<p>[Automatic Abbreviation Detection]</p>
+<p>[Override/Example processing]</p>
+</section>
+<section id="mathematical-data" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="mathematical-data"><span class="header-section-number">5.2.2</span> Mathematical Data</h3>
+</section>
+<section id="mathematical-proofs" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="mathematical-proofs"><span class="header-section-number">5.2.3</span> Mathematical Proofs</h3>
+</section>
+<section id="terminology-definitions-conclusions" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="terminology-definitions-conclusions"><span class="header-section-number">5.2.4</span> Terminology, Definitions &amp; Conclusions</h3>
+<p>[Definition/Div/Paragraph processing, e.g., emph text = defined term]</p>
+<p>Basic Definition Schema:</p>
+<ul>
+<li>name: emph text</li>
+<li>container_notation</li>
+<li>element_notation</li>
+</ul>
+<p>Definition Relationships:</p>
+<ul>
+<li>REQUIRES -&gt; Definition</li>
+<li>HAS_PROPERTY -&gt; Definition</li>
+<li>SUBCATEGORY_OF -&gt; Definition</li>
+<li>CONTAINS -&gt; Definition</li>
+</ul>
+<p>[Synonym Sets]</p>
+<p>[Language-Independent URIs for Designator and Designatum, e.g., Wikidata Identifier]</p>
+<p>Want to get information about “the apple” from Wikidata:</p>
+<pre class="{HTTP}"><code>HTTP GET request
+Accept Header: text/html
+https://wikidata.org/entity/Q89</code></pre>
+<p>URI represents Designatum</p>
+<pre class="{HTTP}"><code>HTTP/2 303 See Other
+https://wikidata.org/wiki/Q89</code></pre>
+<p>URI represents Designator</p>
+<pre class="{HTTP}"><code>HTTP GET request
+Accept Header: text/html
+https://wikidata.org/wiki/Q89</code></pre>
+<p>Gets HTML Document</p>
+<p>Want to get machine understandable information about “the apple” from Wikidata:</p>
+<pre class="{HTTP}"><code>HTTP GET request
+Accept Header: text/turtle
+https://wikidata.org/entity/Q89</code></pre>
+<p>URI represents Designatum</p>
+<pre class="{HTTP}"><code>HTTP/2 303 See Other
+https://wikidata.org/wiki/Special:EntityData/Q89.ttl</code></pre>
+<p>URI represents Designator</p>
+<pre class="{HTTP}"><code>HTTP GET request
+Accept Header: text/turtle
+https://wikidata.org/wiki/Special:EntityData/Q89.ttl</code></pre>
+<p>Gets HTML Document RDF Document (Turtle is a way to encode RDF)</p>
+<section id="anticipating-international-translations" class="level4" data-number="5.2.4.1">
+<h4 data-number="5.2.4.1" class="anchored" data-anchor-id="anticipating-international-translations"><span class="header-section-number">5.2.4.1</span> Anticipating International Translations</h4>
+</section>
+<section id="addressing-biases" class="level4" data-number="5.2.4.2">
+<h4 data-number="5.2.4.2" class="anchored" data-anchor-id="addressing-biases"><span class="header-section-number">5.2.4.2</span> Addressing Biases</h4>
+<p>[Decolonising the Curriculum]</p>
+</section>
+</section>
+</section>
+<section id="data-management" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="data-management"><span class="header-section-number">5.3</span> Data Management</h2>
+<section id="data-processing-1" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="data-processing-1"><span class="header-section-number">5.3.1</span> Data Processing</h3>
+<section id="dependency-identification-sorting" class="level4" data-number="5.3.1.1">
+<h4 data-number="5.3.1.1" class="anchored" data-anchor-id="dependency-identification-sorting"><span class="header-section-number">5.3.1.1</span> Dependency Identification &amp; Sorting</h4>
+</section>
+<section id="internal-reference-management" class="level4" data-number="5.3.1.2">
+<h4 data-number="5.3.1.2" class="anchored" data-anchor-id="internal-reference-management"><span class="header-section-number">5.3.1.2</span> Internal Reference Management</h4>
+</section>
+<section id="external-reference-management" class="level4" data-number="5.3.1.3">
+<h4 data-number="5.3.1.3" class="anchored" data-anchor-id="external-reference-management"><span class="header-section-number">5.3.1.3</span> External Reference Management</h4>
+</section>
+<section id="cross-referencing-embedding" class="level4" data-number="5.3.1.4">
+<h4 data-number="5.3.1.4" class="anchored" data-anchor-id="cross-referencing-embedding"><span class="header-section-number">5.3.1.4</span> Cross Referencing &amp; Embedding</h4>
+</section>
+<section id="version-tracking" class="level4" data-number="5.3.1.5">
+<h4 data-number="5.3.1.5" class="anchored" data-anchor-id="version-tracking"><span class="header-section-number">5.3.1.5</span> Version Tracking</h4>
+</section>
+</section>
+<section id="error-handling" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="error-handling"><span class="header-section-number">5.3.2</span> Error Handling</h3>
+</section>
+</section>
+<section id="document-rendering-progressive-json-css" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="document-rendering-progressive-json-css"><span class="header-section-number">5.4</span> Document Rendering, Progressive JSON &amp; CSS</h2>
+<section id="latex-mathjax-presentation-mathml" class="level4" data-number="5.4.0.1">
+<h4 data-number="5.4.0.1" class="anchored" data-anchor-id="latex-mathjax-presentation-mathml"><span class="header-section-number">5.4.0.1</span> LaTeX, MathJax &amp; Presentation MathML</h4>
+<p>[Math Environment HTML Promises]</p>
+</section>
+<section id="alt-text-mathspeak-context-mathml" class="level4" data-number="5.4.0.2">
+<h4 data-number="5.4.0.2" class="anchored" data-anchor-id="alt-text-mathspeak-context-mathml"><span class="header-section-number">5.4.0.2</span> Alt-Text, MathSpeak &amp; Context MathML</h4>
+</section>
+</section>
+</section>
+<section id="frontend-development" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Frontend Development</h1>
+<section id="pdf-output" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="pdf-output"><span class="header-section-number">6.1</span> PDF Output</h2>
+</section>
+<section id="web-output" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="web-output"><span class="header-section-number">6.2</span> Web Output</h2>
+<section id="progressive-web-app" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="progressive-web-app"><span class="header-section-number">6.2.1</span> Progressive Web App</h3>
+</section>
+<section id="accessibility-options-and-features" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="accessibility-options-and-features"><span class="header-section-number">6.2.2</span> Accessibility Options and Features</h3>
+</section>
+<section id="linked-knowledge" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="linked-knowledge"><span class="header-section-number">6.2.3</span> Linked Knowledge</h3>
+</section>
+<section id="semantic-search" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="semantic-search"><span class="header-section-number">6.2.4</span> Semantic Search</h3>
+<p>[Jina.AI?]</p>
+</section>
+<section id="customisable-notation-terminology" class="level3" data-number="6.2.5">
+<h3 data-number="6.2.5" class="anchored" data-anchor-id="customisable-notation-terminology"><span class="header-section-number">6.2.5</span> Customisable Notation &amp; Terminology</h3>
+</section>
+<section id="interactive-proofs" class="level3" data-number="6.2.6">
+<h3 data-number="6.2.6" class="anchored" data-anchor-id="interactive-proofs"><span class="header-section-number">6.2.6</span> Interactive Proofs</h3>
+</section>
+<section id="personalised-varied-learning" class="level3" data-number="6.2.7">
+<h3 data-number="6.2.7" class="anchored" data-anchor-id="personalised-varied-learning"><span class="header-section-number">6.2.7</span> Personalised &amp; Varied Learning</h3>
+<section id="goal-setting-progress-monitoring" class="level4" data-number="6.2.7.1">
+<h4 data-number="6.2.7.1" class="anchored" data-anchor-id="goal-setting-progress-monitoring"><span class="header-section-number">6.2.7.1</span> Goal-Setting &amp; Progress Monitoring</h4>
+</section>
+<section id="assisted-note-making" class="level4" data-number="6.2.7.2">
+<h4 data-number="6.2.7.2" class="anchored" data-anchor-id="assisted-note-making"><span class="header-section-number">6.2.7.2</span> Assisted Note-Making</h4>
+</section>
+<section id="playful-learning" class="level4" data-number="6.2.7.3">
+<h4 data-number="6.2.7.3" class="anchored" data-anchor-id="playful-learning"><span class="header-section-number">6.2.7.3</span> Playful Learning</h4>
+</section>
+</section>
+</section>
+</section>
+<section id="discussion" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Discussion</h1>
+<section id="copyright-considerations-the-importance-of-individuality" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="copyright-considerations-the-importance-of-individuality"><span class="header-section-number">7.1</span> Copyright Considerations &amp; the Importance of Individuality</h2>
+</section>
+<section id="research-implications" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="research-implications"><span class="header-section-number">7.2</span> Research Implications</h2>
+<p>[Research Progression through Blog writing]</p>
+</section>
+<section id="teaching-implications" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="teaching-implications"><span class="header-section-number">7.3</span> Teaching Implications</h2>
+</section>
+<section id="interdisciplinary-contexts" class="level2" data-number="7.4">
+
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">7.4 Interdisciplinary Contexts</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-uom2024ResDataMngmtPolicy" class="csl-entry" role="listitem">
+The University of Manchester (2024). <em>Research data management policy</em>. Available at: <a href="https://documents.manchester.ac.uk/DocuInfo.aspx?DocID=33802">https://documents.manchester.ac.uk/DocuInfo.aspx?DocID=33802</a>
+</div>
+<div id="ref-uom2025PubPolicy" class="csl-entry" role="listitem">
+The University of Manchester (2025a). <em>Publications policy</em>. Available at: <a href="https://documents.manchester.ac.uk/DocuInfo.aspx?DocID=76067">https://documents.manchester.ac.uk/DocuInfo.aspx?DocID=76067</a>
+</div>
+<div id="ref-uom2025RespMetrics" class="csl-entry" role="listitem">
+The University of Manchester (2025b). <em>Responsible metrics statement</em>. Available at: <a href="https://documents.manchester.ac.uk/DocuInfo.aspx?DocID=75142">https://documents.manchester.ac.uk/DocuInfo.aspx?DocID=75142</a>
+</div>
+<div id="ref-uom2025OpenResPosition" class="csl-entry" role="listitem">
+The University of Manchester (2025c). <em>University of manchester position statement on open research</em>. Available at: <a href="https://documents.manchester.ac.uk/DocuInfo.aspx?DocID=55136">https://documents.manchester.ac.uk/DocuInfo.aspx?DocID=55136</a>
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/kaiprince\.co\.uk");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/blob/main/papers/OpenMathResQuartoExt/OpenMathResQuartoExt.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/kai-prince-sfhea/kai-prince-sfhea.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

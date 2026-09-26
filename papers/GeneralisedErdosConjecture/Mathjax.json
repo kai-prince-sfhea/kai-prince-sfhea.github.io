@@ -1,12 +1,16 @@
 {
   "AmenableGroup": "{\\Gamma}",
   "AmenableGroupElement": "{\\gamma}",
-  "CountingMeasure": "{\\lambda}",
+  "CountingMeasure": [
+    "{\\left|#1\\right|}",
+    1
+  ],
   "Density": [
     "d_{{#1}}({#2})",
     2,
     "\\Folner"
   ],
+  "FCPElement": "{a}",
   "Folner": [
     "{\\Phi}_{#1}",
     1,
@@ -17,9 +21,10 @@
     1,
     "{\\vphantom{}}"
   ],
+  "FurstenbergSystem": "(\\ShiftSpace,\\Measure,T)",
   "Group": "{\\Gamma}",
   "GroupAction": [
-    "{#1}.{#2}",
+    "T^{#1}{#2}",
     2
   ],
   "GroupElement": "{\\gamma}",
@@ -33,9 +38,17 @@
     "{#1}^{-1}",
     1
   ],
-  "KroneckerAction": "{H}",
-  "KroneckerFactor": "{(\\KroneckerSpace,\\KroneckerMeasure,\\KroneckerAction)}",
+  "KroneckerAction": [
+    "S^{#1}{#2}",
+    2
+  ],
+  "KroneckerFactor": "{(\\KroneckerSpace,\\KroneckerMeasure,S)}",
+  "KroneckerFactorMap": "p",
   "KroneckerMeasure": "{m_Z}",
+  "KroneckerProductAction": [
+    "(T\\times S)^{#1}{#2}",
+    2
+  ],
   "KroneckerSpace": "{Z}",
   "KroneckerSpaceElement": "{z}",
   "LowerDensity": [
@@ -51,6 +64,7 @@
     "\\vphantom{}"
   ],
   "ShiftSpace": "{X}",
+  "ShiftSpaceElement": "{x}",
   "SigmaAlgebra": [
     "{\\mathscr{#1}}",
     1

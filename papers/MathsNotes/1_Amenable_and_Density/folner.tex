@@ -66,6 +66,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -127,15 +128,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -192,10 +190,10 @@
 \floatname{codelisting}{Listing}
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \usepackage{amsthm}
-\theoremstyle{plain}
-\newtheorem{proposition}{Proposition}[section]
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[section]
 \theoremstyle{remark}
 \AtBeginDocument{\renewcommand*{\proofname}{Proof}}
 \newtheorem*{remark}{Remark}
@@ -210,7 +208,7 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
-\newcommand{\CountingMeasure}{{\lambda}}
+\newcommand{\CountingMeasure}[1]{{\left|#1\right|}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
 \newcommand{\Group}{{\Gamma}}
 \newcommand{\GroupElement}{{\gamma}}
@@ -223,9 +221,12 @@
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={Følner sequence},
-  pdfauthor={Kai Prince},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -236,8 +237,8 @@
 
 
 \title{Følner sequence}
-\author{Kai Prince}
-\date{2025-09-05}
+\author{}
+\date{2026-09-26}
 \begin{document}
 \maketitle
 
@@ -319,7 +320,7 @@ A sequence of sets \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) will be
 said to be \emph{tempered} if, for some \(b>0\) and all
 \(n\in\mathbb{N}\),
 
-\begin{equation}\phantomsection\label{eq-ShulmanCondition}{
+\begin{equation}\protect\phantomsection\label{eq-ShulmanCondition}{
 \CountingMeasure{\bigcup_{1\leq k<N}\Folner[k]^{-1}\Folner[N]}\leq b\CountingMeasure{\Folner[N]}.
 }\end{equation}
 
@@ -344,12 +345,11 @@ is referred to as the \emph{Shulman condition}.
 
 \end{proposition}
 
-\phantomsection\label{refs}
+\protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
 \bibitem[\citeproctext]{ref-Lindenstrauss2001PETAmenable}
-Lindenstrauss, E. (2001). \textquotesingle Pointwise theorems for
-amenable groups\textquotesingle, \emph{\emph{Inventiones mathematicae},}
-146 (2), pp. 259--295.
+Lindenstrauss, E. (2001). `Pointwise theorems for amenable groups'.
+\emph{Inventiones mathematicae}, 146(2), pp. 259--295.
 \href{https://doi.org/10.1007/s002220100162}{https://doi.org/10.1007/s002220100162.}
 
 \end{CSLReferences}

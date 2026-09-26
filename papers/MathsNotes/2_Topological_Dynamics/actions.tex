@@ -66,6 +66,7 @@
 
 
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -127,15 +128,12 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \ifLuaTeX
-\usepackage[bidi=basic]{babel}
+\usepackage[bidi=basic,shorthands=off]{babel}
 \else
-\usepackage[bidi=default]{babel}
+\usepackage[bidi=default,shorthands=off]{babel}
 \fi
-% get rid of language-specific shorthands (see #6817):
-\let\LanguageShortHands\languageshorthands
-\def\languageshorthands#1{}
 \ifLuaTeX
-  \usepackage[english]{selnolig} % disable illegal ligatures
+  \usepackage{selnolig} % disable illegal ligatures
 \fi
 
 
@@ -208,10 +206,11 @@
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
 
+\newcommand{\CountingMeasure}[1]{{\left|#1\right|}}
 \newcommand{\Folner}[1][\vphantom{}]{{\Phi}_{#1}}
 \newcommand{\Group}{{\Gamma}}
-\newcommand{\GroupAction}[2]{{#1}.{#2}}
-\newcommand{\GroupActionPreImage}[2]{{#1}^{-1}.{#2}}
+\newcommand{\GroupAction}[2]{T^{#1}{#2}}
+\newcommand{\GroupActionPreImage}[2]{(T{#1}){-1}.{#2}}
 \newcommand{\GroupElement}{{\gamma}}
 \newcommand{\GroupIdentity}{{e}}
 \newcommand{\GroupOperation}[2]{{#1}\cdot{#2}}
@@ -224,9 +223,12 @@
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
+% fallback for those not using the hyperref driver hyperxmp:
+\makeatletter
+\@ifundefined{xmpquote}{\newcommand{\xmpquote}[1]{#1}}{}
+\makeatother
 \hypersetup{
   pdftitle={Actions},
-  pdfauthor={Kai Prince},
   pdflang={en-GB},
   colorlinks=true,
   linkcolor={blue},
@@ -237,13 +239,13 @@
 
 
 \title{Actions}
-\author{Kai Prince}
-\date{2025-09-05}
+\author{}
+\date{2026-09-26}
 \begin{document}
 \maketitle
 
 
-\begin{definition}[{Bekka and Mayer, 2000, Section
+\begin{definition}[{Bekka and Mayer, 2000, ch. II, Section
 2}]\protect\hypertarget{def-action}{}\label{def-action}
 
 An \emph{action} of a group, \(\Group\), on a measurable space
@@ -257,7 +259,7 @@ with the following properties:
 \item
   Associativity: For all
   \(\GroupElement,\GroupElement'\in \Group,x\in X\), then
-  \(\GroupAction{\GroupElement}{(\GroupAction{\GroupElement'}{x})}=\GroupAction{(\GroupOperation{\GroupElement}{\GroupElement'})}{x}\)
+  \(\GroupAction{\GroupElement}{(\GroupAction{\GroupElement'}{x})}=\GroupAction{(\GroupOperation{\GroupElement}{\GroupElement'})}{x}\).
 \item
   Identity: There exists an identity element \(\GroupIdentity\in\Group\)
   such that \(\GroupAction{\GroupIdentity}{x}=x\) for all \(x\in X\).
@@ -311,7 +313,7 @@ continuous surjective maps,
 Let \(x\in X\), \(\Folner=(\Folner[N])_{N\in\mathbb{N}}\) be a Følner
 sequence in \(\Gamma\) and \(\Measure\) a probability measure on \(X\).
 Where \(\delta_x\) is the Dirac mass at \(x\), if
-\[\frac{1}{|\Folner[N]|}\sum_{\GroupElement\in\Folner[N]}\delta_{\GroupAction{\GroupElement}{x}}\underset{\text{weakly*}}{\longrightarrow} \Measure \text{ as }N\rightarrow\infty, \]
+\[\frac{1}{\CountingMeasure{\Folner[N]}}\sum_{\GroupElement\in\Folner[N]}\delta_{\GroupAction{\GroupElement}{x}}\underset{\text{weakly*}}{\longrightarrow} \Measure \text{ as }N\rightarrow\infty, \]
 then we say \emph{\(x\) is generic for \(\Measure\) with respect to
 \(\Folner\)} and we denote this with
 \(x\in\text{gen}(\Measure,\Folner)\).\footnote{consider tempered
@@ -335,7 +337,7 @@ representation} of \(\Group\) on \(\text{L}^2(X)\), where
 \(\mathscr{U}(\text{L}^2(X))\) is the set of all unitary operators on
 \(\text{L}^2(X)\).
 
-\phantomsection\label{refs}
+\protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
 \bibitem[\citeproctext]{ref-Bekka2000GroupActionDynamics}
 Bekka, M. B. and Mayer, M. (2000). \emph{Ergodic theory and topological

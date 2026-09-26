@@ -1,6 +1,9 @@
 {
   "AmenableGroup": "{\\Gamma}",
-  "CountingMeasure": "{\\lambda}",
+  "CountingMeasure": [
+    "{\\left|#1\\right|}",
+    1
+  ],
   "Density": [
     "d_{{#1}}({#2})",
     2,
