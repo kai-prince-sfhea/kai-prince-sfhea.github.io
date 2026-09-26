@@ -1,4 +1,4 @@
 bibliography: references.bib
 
 schema:
-  disable-terms: true
+    disable_terms: true

@@ -2,3 +2,9 @@
 /_site/
 /_schema/
 /.luarc.json
+**/*.quarto_ipynb
+/blogs/EmbracingNeuroInclusiveWritingPractice.qmd
+/blogs/HE-Leadership-FlatHierarchies.qmd
+/blogs/InternalisationHE.qmd
+/blogs/KEHubTeamworkingForMaths.qmd
+/blogs/LeadershipHE.qmd

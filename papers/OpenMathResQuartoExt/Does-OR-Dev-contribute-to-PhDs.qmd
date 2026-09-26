@@ -1,0 +1,51 @@
+---
+title: "Do Open Research Developments contribute to PhDs at the University of Manchester?"
+
+author:
+  - name: Kai Prince
+    affiliation: The University of Manchester
+    corresponding: true
+    orcid: 0009-0000-5246-4227
+    email: kai.prince@manchester.ac.uk
+
+categories: [Open Research Methods, Reflections]
+
+draft: true
+---
+
+
+
+## UoM Policies
+
+@uom2025OpenResPosition places an expectation on research staff and students "... that researchers, in discussion with collaborative partners, build Open Research practices into their research workflows wherever practical, and that research outputs will be as open as early as possible."
+
+@uom2024ResDataMngmtPolicy states that research data is the "evidence that underpins the answer to the research question and can be used to validate findings". In mathematics, we use mathematical proofs as evidence to support our results and so mathematical proofs are included as research data.
+
+The "Position Statement on Open Research" at @uom2025OpenResPosition covers what Open Research is, why it is important and its principles:
+
+- Pre-registration of research;
+- Transparency in research methodology;
+- Public availability and reusability of research data and analysis code;
+- Public accessibility and transparency of research communication;
+- Data described according to FAIR Data Principles, ensuring that it is Findable, Accessible Interoperable and Reusable and publicly available where possible;
+- Using web-based tools to facilitate collaboration.
+
+@uom2025PubPolicy details state that researchers must be open and transparent when conducting and communicating their research in terms of:
+
+1. the disclosure of any conflicts of interest;
+2. the reporting of research data collection methods;
+3. the analysis and interpretation of data;
+4. making all research findings widely available (including sharing negative results as appropriate) by publishing as open access under a Creative Commons Attribution (CC BY) license;
+5. disseminating research in a way that will maximise engagement and secondary use, with students obtaining prior permission from their supervisor; and
+6. promoting public engagement/involvement in research.
+
+@uom2024ResDataMngmtPolicy that research data must be stored in an "accurate, complete unadulterated and reliable manner" as well as meeting FAIR data principles, where the data must be made interoperable whenever possible, and "made available in a timely way with as few restrictions as possible".
+
+@uom2025RespMetrics endorse five principles of responsible metrics:
+
+- Robustness
+- Humility
+- Transparency
+- Diversity
+- Reflexivity
+

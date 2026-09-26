@@ -1,0 +1,426 @@
+---
+title: "Designing an Alternative Approach to Mathematical Research"
+
+author:
+  - name: Kai Prince
+    affiliation: The University of Manchester
+    corresponding: true
+    orcid: 0009-0000-5246-4227
+    email: kai.prince@manchester.ac.uk
+
+keywords:
+    - Mathematical Research
+    - Open Research
+    - Open Education
+    - Universal Design for Learning
+    - Disability Inclusion
+
+categories: [Maths, Research, Open Research Methods]
+
+draft: true
+---
+
+[Book Project]
+
+[Check Journal-format Thesis requirements]
+
+# Introduction
+
+Concept: Designing a Quarto Extension to generate an Open Education Website to maximise the accessibility of Open Research projects.
+
+[Insert OpenMath motivations]
+
+[Insert Disability Inclusion in Research motivations]
+
+# Open Research
+
+The "Position Statement on Open Research" at @uom2025OpenResPosition covers what Open Research is, why it is important and its principles:
+
+- Pre-registration of research;
+- Transparency in research methodology;
+- Public availability and reusability of research data and analysis code;
+- Public accessibility and transparency of research communication;
+- Data described according to FAIR Data Principles, ensuring that it is Findable, Accessible Interoperable and Reusable and publicly available where possible;
+- Using web-based tools to facilitate collaboration.
+
+## UoM Policies
+
+@uom2025PubPolicy details state that researchers must be open and transparent when conducting and communicating their research in terms of:
+
+1. the disclosure of any conflicts of interest;
+2. the reporting of research data collection methods;
+3. the analysis and interpretation of data;
+4. making all research findings widely available (including sharing negative results as appropriate) by publishing as open access under a Creative Commons Attribution (CC BY) license;
+5. disseminating research in a way that will maximise engagement and secondary use, with students obtaining prior permission from their supervisor; and
+6. promoting public engagement/involvement in research.
+
+@uom2024ResDataMngmtPolicy that research data must be stored in an "accurate, complete unadulterated and reliable manner" as well as meeting FAIR data principles, where the data must be made interoperable whenever possible, and "made available in a timely way with as few restrictions as possible".
+
+@uom2025RespMetrics endorse five principles of responsible metrics:
+
+- Robustness
+- Humility
+- Transparency
+- Diversity
+- Reflexivity
+
+# Mathematical Research
+
+## Researcher Lifecycle
+
+[Conceptual overlaps between Open Research & Open Education]
+
+## Mathematical Research Methodologies
+
+## Knowledge Exchange Initiatives
+
+## Research Outputs
+
+[Papers]
+
+[Presentations]
+
+[Posters]
+
+[Social Media Content]
+
+[Public Outreach]
+
+## Proof Verification
+
+[Rocq/Lean]
+
+## Open Research in Mathematics
+
+[Accessibility]
+
+[Findability]
+
+[Interoperability]
+
+[Reusability]
+
+[Below is from Knowledge Graphs YouTube Lecture 1.7]
+
+Linked Data Principles:
+
+1. Use URIs as names for things.
+2. Use HTTP URIs so that people can look up those names.
+3. When someone looks up a URI, provide useful information, using the standards (Resource Description Framework (RDF), SPARQL).
+4. Include links to other URIs, so they can discover more things.
+
+Tim Berners-Lee's 5-Star Criteria for Linked Open Data:
+
+1. Available on the Web (whatever format) but with an **open license**, to be Open Data.
+2. Available as **machine-readable structured data** (e.g., excel instead of image scan of a table).
+3. As (2) plus **non-proprietary format** (e.g., CSV instead of Excel).
+4. All of the above plus: use **open standards from W3C** (RDF and SPARQL) to identify things so that people can point at your stuff.
+5. All the above plus: **link your data to other people's data** to provide context.
+
+## Ethical AI Research Practices
+
+# Authoring
+
+[Format: What is it; What aspects they already cover; Summarise remaining actions]
+
+## Executable Papers & Open Education Resources
+
+[Open Access & Open Education]
+
+[Universal Design for Learning]
+
+[Executable Papers]
+
+## Platforms
+
+### Overleaf
+
+### Obsidian
+
+### Quarto & Quarto Extensions
+
+[Journal Article Templates]
+
+# Backend Development
+
+[Approach - Algorithmic wherever possible]
+
+## Rendering Workflow & Knowledge Graphs
+
+Data modelling process:
+
+1. Understand the domain and define specific use cases (questions) for the application
+2. Develop the initial graph data model:
+    1. Model the nodes (entities).
+        - Choose sematically orthogonal labels and avoid class hierarchies in labels or using more than 4 labels.
+    2. Model the relationships between nodes.
+3. Test the use cases against the initial data model.
+4. Create the graph (instance model) with test data using Cypher.
+5. Test the use cases, including performance against the graph.
+6. Refactor (improve) the graph data model due to a change in the key use cases or for performance reasons.
+    1. Design the new data model.
+    2. Write Cypher code to transform the existing graph to implement the new data model.
+    3. Retest all use cases, possibly with updated Cypher code.
+7. Implement the refactoring on the graph and retest using Cypher.
+    1. Identify which use cases are affected by the refactor.
+    2. Rewrite any queries that can take advantage of the refactoring.
+    3. Test all queries affected by the refactor to ensure they return the same results as before the refactoring.
+    4. PROFILE queries to determine if refactoring is a benefit.
+
+Use cases:
+
+1. What are the **sources** `cited` for each **result**?
+    1. Retrieve a result by its **embedding vector**.
+    2. Trace the CITED relationships to the sources.
+    3. Return the **citations** of the sources.
+2. What is the **result** that `defines` a specific **object**?
+    1. Retrieve the object by its **name**.
+    2. Trace the DEFINE relationship to the result.
+    3. Return the **description** and **href** of the result.
+3. What **objects** are `required` for a **result**?
+    1. Retrieve the result by its **embedding vector**.
+    2. Trace the REQUIRE relationship to the objects.
+    3. Return the **names** and **notation** of the objects.
+4. What objects `compose` a specific object?
+    1. Retrieve the specific object by its **name**.
+    2. Trace the composed DEFINE and REQUIRE relationships to objects.
+    3. Return the **names** of the objects.
+5. What **properties** `apply` to a specific **object**?
+    1. Retrieve the specific object by its **name**.
+    2. Trace the composed DEFINE, REQUIRE and APPLY relationships to objects.
+    3. Return the **names** of the objects.
+6. What nodes `originated` from a specific **document**?
+    1. Retrieve the document by its **path**.
+    2. Trace the ORIGIN relationships to the nodes.
+    3. Return the key values and labels of the nodes.
+
+
+
+Nodes:
+
+- SOURCE
+    - [[referenceID]]
+    - citation
+- DOCUMENT
+    - [[path]]
+- OBJECT:
+    - [[identifier]]
+    - notation
+- RESULT
+    - [[embeddingVec]]
+    - [abstractionVec]
+    - desc
+    - href
+
+Intermediate Nodes:
+
+- RESULT
+    - create applied result with abstraction relationship to the original result unless the original result is sufficiently abstract
+
+Relationships:
+
+- CITE
+- PROPERTY
+- ABSTRACTION
+- APPLIED
+
+[SQ4R]
+
+Quarto processing:
+
+0. Source Documents
+1. Pre-render
+2. Render Filters
+    - Pandoc Structure:
+        - Metadata
+        - Blocks
+            - Blocks
+            - Inlines
+3. Post-render
+4. Output Documents
+
+Embedding RAG:
+
+0. Source Documents
+1. Data Ingestion
+2. (Unstructured) Text Chunks
+3. Embeddings (using an Embedding Model)
+4. Vector Database
+    - Semantic-aware
+
+GraphRAG:
+
+0. Source Documents
+1. Chunks
+2. Knowledge Graph Generation
+    - Entity Extraction (using an LLM)
+    - Relationship Extraction (using an LLM) 
+3. Community Detection (using an LLM)
+4. Hierarchical Community Structures (using an LLM)
+5. Community Levels - Root, Low, or High (using an LLM)
+6. Generate Community Summaries (using an LLM)
+7. Vector Database (using an Embedding Model)
+    - Context-aware
+
+Real-Time Knowledge Graphs (Graphiti for dynamic data management):
+
+0. Source Documents
+1. Chunks
+2. Knowledge Graphs Construction
+
+| Stage             | Quarto                | Embedding RAG         | GraphRAG              | Temporal RAG          |
+| ---               | ---                   | ---                   | ---                   | ---                   |
+| Input             | Markdown Documents    |                       |                       |                       |
+| Output | Formatted Documents | Semantic-aware Vector Database | Context-aware Vector Database | Temporal-aware Vector Database |
+
+[Directory specific]
+
+## Data Processing
+
+### Data Cleaning
+
+[Automatic Abbreviation Detection]
+
+[Override/Example processing]
+
+### Mathematical Data
+
+### Mathematical Proofs
+
+### Terminology, Definitions & Conclusions
+
+[Definition/Div/Paragraph processing, e.g., emph text = defined term]
+
+Basic Definition Schema:
+
+- name: emph text
+- container_notation
+- element_notation
+
+Definition Relationships:
+
+- REQUIRES -> Definition
+- HAS_PROPERTY -> Definition
+- SUBCATEGORY_OF -> Definition
+- CONTAINS -> Definition
+
+[Synonym Sets]
+
+[Language-Independent URIs for Designator and Designatum, e.g., Wikidata Identifier]
+
+Want to get information about "the apple" from Wikidata:
+
+```{HTTP}
+HTTP GET request
+Accept Header: text/html
+https://wikidata.org/entity/Q89
+```
+URI represents Designatum
+
+```{HTTP}
+HTTP/2 303 See Other
+https://wikidata.org/wiki/Q89
+```
+URI represents Designator
+
+```{HTTP}
+HTTP GET request
+Accept Header: text/html
+https://wikidata.org/wiki/Q89
+```
+Gets HTML Document
+
+Want to get machine understandable information about "the apple" from Wikidata:
+
+```{HTTP}
+HTTP GET request
+Accept Header: text/turtle
+https://wikidata.org/entity/Q89
+```
+URI represents Designatum
+
+```{HTTP}
+HTTP/2 303 See Other
+https://wikidata.org/wiki/Special:EntityData/Q89.ttl
+```
+URI represents Designator
+
+```{HTTP}
+HTTP GET request
+Accept Header: text/turtle
+https://wikidata.org/wiki/Special:EntityData/Q89.ttl
+```
+Gets HTML Document RDF Document (Turtle is a way to encode RDF)
+
+#### Anticipating International Translations
+
+#### Addressing Biases
+
+[Decolonising the Curriculum]
+
+
+## Data Management
+
+### Data Processing
+
+#### Dependency Identification & Sorting
+
+#### Internal Reference Management
+
+#### External Reference Management
+
+#### Cross Referencing & Embedding
+
+#### Version Tracking
+
+### Error Handling
+
+
+## Document Rendering, Progressive JSON & CSS
+
+#### LaTeX, MathJax & Presentation MathML
+
+[Math Environment HTML Promises]
+
+#### Alt-Text, MathSpeak & Context MathML
+
+# Frontend Development
+
+## PDF Output
+
+## Web Output
+
+### Progressive Web App
+
+### Accessibility Options and Features
+
+### Linked Knowledge
+
+### Semantic Search
+
+[Jina.AI?]
+
+### Customisable Notation & Terminology
+
+### Interactive Proofs
+
+### Personalised & Varied Learning
+
+#### Goal-Setting & Progress Monitoring
+
+#### Assisted Note-Making
+
+#### Playful Learning
+
+# Discussion
+
+## Copyright Considerations & the Importance of Individuality
+
+## Research Implications
+
+[Research Progression through Blog writing]
+
+## Teaching Implications
+
+## Interdisciplinary Contexts
+

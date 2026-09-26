@@ -1,0 +1,256 @@
+---
+title: "Postgraduate Researcher School of Natural Science Representative"
+start: 2025-10-14
+date: 2026-07-01
+company: "University of Manchester"
+category: teaching
+---
+
+## DA Induction
+
+1 PGR School Rep per School (October 2025 - September 2026). If leaving, there will be a PGR Rep Handover Form to help the next rep get settled into the role.
+
+(Quarterly) reporting form required to demonstrate regular and active engagement.
+
+FSE PGR Reps Teams channel.
+
+PGR Experience Team have PGR email lists.
+
+PGR Reps Faculty Network meet every 2 months for updates/feedback/networking.
+
+Funding:
+
+- Schemes:
+  - Ignite Innovation (yearly)
+  - DA Training & Development Fund (three deadlines per year)
+- Check with Department Ops Team and/or Head of PGR to check if there's any Department Event/Activity Funding
+- Email <fse.doctoralacademy@manchester.ac.uk> if you want to organise a Faculty-wide event
+
+Committees:
+
+- University Level: Manchester Doctoral College & Students' Union
+    - PGR School Reps liaise with the SU PGR Officer
+    - PGR School Reps 
+- Faculty Level: FSE DA Operational Group (2), FSE DA Experience Team, FSE HSW Committee (1) & FSE PGR Rep Faculty Network (2)
+    - PGR School Reps join these meetings
+    - **Check with SoE Rep whether they attend the FSE HSW Committee meetings**
+- School Level:
+    - PGR SoNS Rep needed for these meetings:
+        - SoNS School Board
+        - SoNS Senior Leadership Team
+        - SoNS Research Committee
+        - SoNS EDIA Committee
+- Department Level: PGR SSLC and Departmental H&S Committees
+
+If unable to attend a meeting, the School Rep will need to request a Lead Rep to attend as a deputy.
+
+FSE PGR Rep Faculty Network:
+
+- Difference with industry-partnered and self-paid PhDs
+- Inconsistencies in networking connections across research/seminar groups
+- Supervisors being critical of research methods (update PGR Supervisor Toolkit?)
+- Lacking support for Postdoctoral Careers
+    - Currently there's a Lunch & Learn focusing on LinkedIn
+    - There exist department-level workshops
+- Issues with the website
+    - Will potentially move to SharePoint
+- What works & doesn't work when making departmental changes
+    - Reflections
+- Categorise and streamline differentiated PGR induction processes
+    - Make the induction experience more consistent
+
+Additional opportunities to make change include focus groups.
+
+MDC is organising a PGR Festival for November 2026.
+
+### Collaboration with the SoE Rep
+
+- Name: Abdelrazik Elfar (Dept of Chem Eng)
+
+## SU Induction
+
+Quality Six Pack
+
+1. Academic Experience
+2. Resources and support
+3. Post-PGR Life
+4. Supervision
+5. Equality of Opportunity
+6. University-Wide Issues and Services
+
+When deciding what to do with feedback you've received, consider:
+
+- Breadth
+- Urgency
+- Decision-making level
+- Individual problem
+
+Feedback meetings with staff:
+
+- Introductions (at the very first one)
+- Review of previous meeting and update on actions
+- Presentation of feedback
+- Discussion
+- Agreement on next steps and actions
+
+When delivering feedback, consider whether it is:
+
+- Accurate
+- Balanced
+- Constructive
+- Depersonalised and **anonymised** (GDPR and consent)
+
+Feedback structure:
+
+1. Describe
+2. Impact
+3. Specify
+4. Outcome
+
+Organise SoNS Rep Event
+
+Academic Community Grant
+
+## Knowledge Graph
+
+With KG, make sure to track and close feedback loops.
+
+- Student IDs for unique anonymisation
+- Option to subscribe to personalised updates
+- Use SharePoint and output to JSON with timestamps
+- Graph Database Design Questions
+    - What departments are affected by a specific issue?
+    - What characteristics are affected by a specific issue?
+    - What suggestions have been given to address a specific issue?
+    - What systems are connected to a specific issue?
+    - How many people raised a specific issue?
+- Data sources
+    - Optionally anonymous form
+    - Reps Teams post
+
+Nodes:
+
+- Individual Context Nodes:
+    - Individual
+    - Department
+    - School
+- UoM Nodes:
+    - Directorate
+    - Service
+- ToC Nodes:
+    - Situation:
+        - ToC1
+        - What is the current context or situation? What problem is the programme trying to address or resolve?
+    - Aim:
+        - ToC2
+        - What goal or objective is the programme trying to achieve? What is your solution to the problem? This should be linked to the overarching strategy.
+    - Impact:
+        - ToC3
+        - What is the long-term goal which relates to the ‘problem’? What will result from the removal of the problem? 
+    - Outcomes:
+        - ToC4
+        - Short and intermediate-term outcomes which must be in place for your interventions to work & for your long-term goals to be achieved. 
+    - Activity:
+        - ToC5
+        - Outline the interventions you believe (supported by your rationale and assumptions) will bring about your desired change. Activities mobilise your inputs to produce outputs. e.g. 
+    - Output:
+        - ToC6
+        - What are the results/ deliverables of the activity relevant to the achievement of your outcomes?
+    - Input:
+        - ToC7
+        - What are the human, financial and organisational resources required to achieve your desired outcomes?
+    - Rationale & Assumptions:
+        - ToC8
+        - What are your assumptions? Your assumptions explain the contextual underpinnings of the ToC. Assumptions are conditions necessary for the success of the intervention. Your rationale explains why one outcomes is needed to achieve another. Assumptions and rationales (often supported by research) strengthen the plausibility of the theory and the likelihood that its stated goals can be achieve.
+- Planning Nodes:
+    - Activity_Detail
+    - Location
+    - Location_Detail
+- Biopsychosocial Model:
+    - ICF_Body_Structure
+        - Classification Level
+    - ICF_Body_Function
+        - Classification Level
+    - Personal_Factor
+        - Classification Level
+        - E.g., internationality
+    - ICF_Activity
+        - Classification Level
+    - ICF_Environmental_Factor
+        - Classification Level
+    - Participation_Result
+        - Positive/Negative
+- Equality Impact Nodes:
+    - Characteristic
+- Other Nodes:
+    - 
+
+Relationships:
+
+- REQUIRED_FOR
+    - Input -> Activity -> Activity_Detail -> Activity_Detail -> Output -> Outcome -> Impact
+- SOLUTION_FOR
+    - Situation <- Aim <-
+        - Inputs
+        - Activities
+        - Outputs
+        - Outcomes
+        - Impact
+- JUSTIFICATION_FOR
+    - Rationale & Assumptions ->
+        - Inputs
+        - Activities
+        - Outputs
+        - Outcomes
+        - Impact
+    - Impact -> Outcomes -> Activities
+    - Participation_Result ->
+        - Activity
+        - Activity_Detail
+        - Location
+        - Location_Detail
+- RAISED_ISSUE
+    - Individual ->
+        - Situation
+        - Aim
+- SUGGESTED
+    - Individual ->
+        - Inputs
+        - Activities
+        - Outputs
+        - Outcomes
+        - Impact
+- EVIDENCED
+    - Individual -> Rationale & Assumptions
+- MEMBER_OF
+    - School <- Department <- Individual
+- TARGET_AUDIENCE
+    - Activity -> Stakeholder
+- CONTRIBUTOR_TO
+    - Participation_Result <-
+        - ICF_Body_Function
+        - ICF_Body_Structure
+        - Personal_Factors
+        - ICF_Activity
+        - ICF_Environmental_Factor
+    - Properties:
+        - Severity
+        - Facilitator/barrier
+- COMPONENT_OF
+    - ICF_Activity ->
+        - Activity
+        - Activity_Detail
+    - ICF_Environmental_Factor ->
+        - Location
+        - Location_Detail
+    - Characteristic <-
+        - ICF_Body_Function
+        - ICF_Body_Structure
+        - Personal_Factors
+    - Properties:
+        - Optional
+
+## FSE PGR Operational Group Meeting - October
+
+- Check out 'PhD by Enterprise' programme
+- 

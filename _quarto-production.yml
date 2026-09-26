@@ -1,3 +1,9 @@
+website:
+  cookie-consent: true
+  google-analytics: 
+    tracking-id: "G-0QRFD5NB5R"
+    anonymize-ip: true
+
 execute:
   freeze: auto
   cache: false

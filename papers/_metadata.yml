@@ -16,12 +16,7 @@ format:
     keep-tex: true
     ton: true
 
-author:
-  - name: Kai Prince
-    affiliation: The University of Manchester
-    corresponding: true
-    orcid: 0009-0000-5246-4227
-    email: kai.prince@manchester.ac.uk
+
 
 date: last-modified
 

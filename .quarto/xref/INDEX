@@ -217,5 +217,70 @@
   "papers/MathsNotes/2_Topological_Dynamics/kronecker-factor.qmd": {
     "kronecker-factor.html": "2e569570",
     "kronecker-factor.tex": "57db7323"
+  },
+  "blogs/InternalisationHE1.qmd": {
+    "InternalisationHE1.html": "369c4b13"
+  },
+  "experience/pgr-school-rep.qmd": {
+    "pgr-school-rep.html": "777256a7"
+  },
+  "papers/OpenMathResQuartoExt/Does-OR-Dev-contribute-to-PhDs.qmd": {
+    "Does-OR-Dev-contribute-to-PhDs.html": "02dd4ccd",
+    "Does-OR-Dev-contribute-to-PhDs.tex": "aee6f271"
+  },
+  "papers/OpenMathResQuartoExt/OpenMathResQuartoExt.qmd": {
+    "OpenMathResQuartoExt.html": "4b261c3e",
+    "OpenMathResQuartoExt.tex": "d73aeb5c"
+  },
+  "blogs/LeadershipHE1.qmd": {
+    "LeadershipHE1.html": "6b23b5f5"
+  },
+  "blogs/EmbracingNeuroInclusiveWritingPractice.qmd": {
+    "EmbracingNeuroInclusiveWritingPractice.html": "a1392c61"
+  },
+  "blogs/InternalisationHE.qmd": {
+    "InternalisationHE.html": "8fddbfec"
+  },
+  "blogs/LeadershipHE.qmd": {
+    "LeadershipHE.html": "f1b73faa"
+  },
+  "blogs/HE-Internationalisation-Neurodiversity.qmd": {
+    "HE-Internationalisation-Neurodiversity.docx": "f8e85210",
+    "HE-Internationalisation-Neurodiversity.html": "cebb41d9"
+  },
+  "blogs/HE-Leadership-FlatHierarchies.qmd": {
+    "HE-Leadership-FlatHierarchies.html": "8a6707fe"
+  },
+  "blogs/HE-Tech.qmd": {
+    "HE-Tech.html": "fb468853",
+    "HE-Tech.docx": "d745d9da"
+  },
+  "papers/MathsNotes/3_Main_Tools/erdos-cubes.qmd": {
+    "erdos-cubes.html": "dd610a49",
+    "erdos-cubes.tex": "fd3a64ba"
+  },
+  "papers/MathsNotes/3_Main_Tools/progressive-measure.qmd": {
+    "progressive-measure.html": "7e6470a7",
+    "progressive-measure.tex": "66f4b3ca"
+  },
+  "he_diversity_toolkit/differences/attention.qmd": {
+    "attention.html": "c12ebd4c",
+    "attention.tex": "7006a772"
+  },
+  "he_diversity_toolkit/differences/differences.qmd": {
+    "differences.html": "6a2f4d31",
+    "differences.tex": "d8480b6f"
+  },
+  "he_diversity_toolkit/index.qmd": {
+    "index.html": "9ab44f40",
+    "index.tex": "052c6136"
+  },
+  "he_diversity_toolkit/labels-identities/labels-identities.qmd": {
+    "labels-identities.html": "365ecfe1",
+    "labels-identities.tex": "f0ff0d46"
+  },
+  "he_diversity_toolkit/recommended_practice/recommended_practice.qmd": {
+    "recommended_practice.html": "a4ba862e",
+    "recommended_practice.tex": "06cd1a6b"
   }
 }

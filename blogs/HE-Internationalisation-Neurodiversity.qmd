@@ -1,0 +1,151 @@
+---
+title: "Are we doing enough to address the shared social challenges of cross-cultural and cross-neurotype interactions at the University of Manchester?"
+
+format:
+    schema-html:
+        toc: true
+    docx: default
+crossref:
+    labels: roman
+    title-delim: "-"
+
+categories: [PGCertHE, Higher Education, Internationalisation, Reflections]
+
+number-sections: true
+---
+
+## Acknowledgements {.unnumbered}
+
+I would like to acknowledge their contributions to the knowledge and additional reading that helped kickstart this work:
+
+- Dr Jenna Mittelmeier and Dr Sylvie Lomer for leading the 'EDUC63241 Internationalisation in Higher Education' course at the University of Manchester;
+- Optimum eLearning for their CPD course on 'Autism and ADHD in Higher Education: Recognising and addressing the barriers through Non-Medical Helper (NMH) Mentoring and Study Skills Support'.
+
+## Introduction {.unnumbered}
+
+People, communities, and organisations are seen through a deficit lens when they are viewed as [cf. @lomer2025internationalisation]:
+
+- Lacking specific skills/traits or not adhering to assumed standards necessary for success.
+- Only experiencing challenges, barriers, or struggles due to these 'deficits'.
+- Potentially suspicious in their identity, authenticity, and/or motives.
+
+This perspective is often placed on international and neurodivergent individuals, alongside an expectation for those individuals to work on their 'deficits' so that they may better assimilate with the local community.
+
+@cheng2023neurodiversity states that the neurodiversity movement and decolonisation share the following goals:
+
+1. Reconstruct ingrained structures of power and privilege;
+2. Challenge beliefs and practices that result from deficit narratives;
+3. Promote co-creation practices with communities and individuals to enable them to identify and address their own concerns appropriately;
+4. Advocate for the recognition that understanding, perspectives and values provided by lived experiences are equal in value to those provided by academic research.
+
+Given its relationship with decolonisation, we can deduce that internationalisation also challenges these deficit narratives, reframing differences as strengths or neutral traits, and emphasises the removal of systemic and local barriers rather than placing responsibility solely on individuals.
+
+Additionally, in the context of higher education, connection, inclusion, support, and autonomy are recognised as the foundations of belonging and that the barriers of belonging include: a disconnect between a course and the wider context; poor mental health; and, cultural and systemic barriers [@Blake2022buildingBelongingHE]. As internationalisation and neurodiversity university initiatives contribute towards these foundations and barriers, it is appropriate to apply belonging frameworks and recommended practices to these initiatives.
+
+Within the University of Manchester (UoM), there seems to be a general acceptance amongst EDIA advocates that these movements and related student/staff experiences clearly overlap, but there are few institution-wide examples of focused initiatives that embrace these overlaps between internationalisation and neurodiversity. This motivated my curiosity to explore what the underlying assumptions are and whether there is an ideal approach in acknowledging these overlapping themes.
+
+In this critical analysis, I will limit my exploration to the assumptions around cross-cultural and cross-neurotype social interactions. I will then critique some UoM-wide examples of social inclusion resources and practices that I've engaged with and that are relevant to these assumptions.
+
+The resources and practices I will analyse include the assumptions embedded in resource development, gaps in UoM-wide resources, and the strategies promoted across the following areas:
+
+- Pre-Arrival & Induction Resources and how they prepare students for a socially diverse campus.
+- Diversity Training and how they support students and staff in maintaining inclusive work and teaching environments.
+
+I decided to focus on this area as I believe we have a significant gap in appropriately addressing social barriers to inclusion and an opportunity for us to sufficiently prepare our students for the diverse social environments that they will encounter. There's also a demand from students and staff for neurodiversity resources but limited capacity to develop these, hence my interest in how neuro-informed practice could benefit existing resources.
+
+My reflections will be based on my experiences and perspective as an ADHDer, a part-time student on the committee of the Disabled Students' Society, and a Co-Chair of the Neurodivergent Staff Network.
+
+To benefit a diverse audience, related definitions have been included in the Appendix and I will use 'socio-communication differences' to be inclusive of internationality as well as neurodiversity.
+
+## Critical Analysis of Social Inclusion at UoM  {.unnumbered}
+
+### The Underlying Assumptions {.unnumbered}
+
+@khawaja2011copingStrategiesInternationalStudents identified that most international students in their study experienced social isolation and loneliness, as well as experiencing culture shock for students from 'diverse cultures'. The interviews suggest these socio-communication differences were negatively affecting their social interactions with home students and the students felt it was important for other international students to familiarise themselves with the local culture. The authors recommended strategies that mirror a draft resource I helped review at UoM, which leads me to believe the accounts covered in this paper are relevant to our context despite being based at an Australian university. Whilst reading the individual accounts, it made sense that students would generally focus more on recommending individual-level strategies over critiquing the university culture. However, when translating individual recommendations to wider guidance, the guidance should be critiqued through ethical reflexivity, judging the strategies with respect to the wider socio-political context [@Rizvi2023globalInterconnectivityEthicalChallenges], as well as consider the long-term impacts of diversity initiatives targeting new international students on their future cross-cultural interactions [@Burkhardt2015ShapingFutureGlobalizedWorld]. Thus, whilst we should respect the student voice of underrepresented groups especially, we have a responsibility to facilitate critical discussions that address any underlying deficit narratives of the resulting recommendations before perpetuating them. For example, recommending future international students to research the interests of home students to establish a 'common ground for interaction and friendship' is good but there should be an equal emphasis on future home students being encouraged to research the interests of international students.
+
+In one of the quotes given, an international student expressed discomfort with their tutor maintaining sustained eye contact, which the authors attributed to the 'informal interpersonal' face-to-face interactions [@khawaja2011copingStrategiesInternationalStudents]. This is a common barrier encountered by neurodivergent students. I found it concerning that follow-up actions were not included, on top of the authors' subsequent guidance being provided solely to international students. A more appropriate response could be to recommend staff accommodate their 1-2-1 meetings by, for example, using visual aids during discussion to reduce direct eye contact. This highlights an inconsistency in how we recognise appropriate strategies for neurodivergent and international students.
+
+@Livingston2020quantifyingCompensatoryStrategies[Table 1] describes four categories of social strategies in the context of autistic people:
+
+- Masking: Strategies where individuals 'blend in' to a social environment by altering and/or replacing their own social behaviours, e.g., forcing eye contact instead of avoiding it.
+- Shallow compensation: Strategies where social behaviours are imitated without a deep understanding, e.g., memorised social scripts.
+- Deep compensation: Strategies where social behaviours are reproduced with a deep understanding, e.g., methodologies in breaking down other's perspectives.
+- Accommodation: Strategies where differences in the individual's social behaviour are accommodated by focusing on environmental changes instead of individual changes, e.g., informing peers that they may quietly leave social events early due to a lower social battery.
+
+According to @OptimumeLearning2024autismADHDinHE[Unit 3], whilst masking and compensation strategies can lead to increased stress and accumulating fatigue when relied on excessively, it is important to acknowledge that the benefits of masking can outweigh its costs in some contexts when supporting neurodivergent students. For example, masking to avoid potential disability discrimination during interviews/presentations or using deep compensation to resolve interpersonal conflicts or misunderstandings. @Ward2001psychologyCultureShock mirrors this overall concept by describing culture shock as stress-inducing and that support from peers has a substantial positive impact in reducing this. Applying these concepts, I feel the recommendations provided through the interviews in @khawaja2011copingStrategiesInternationalStudents and the aforementioned draft UoM resource I reviewed primarily encourage masking and compensation strategies. This may be unintentional but it raises a gap in enabling socio-communication differences to be accommodated for and risks encouraging international students to depend excessively on masking and compensation strategies.
+
+@Cobb2019belongingCultureDignityPodcast describes true inclusion within communities as having both 'high access' and 'unconditional belonging'. Using the above framing, 'unconditional belonging' can be interpreted as minimal, equitable pressure for students to mask or compensate in cross-cultural and cross-neurotype interactions to feel they belong. Additional categories they defined are portrayed in @fig-inclusion.
+
+![@Cobb2019belongingCultureDignity[Figure 4.3] cited by @Blake2025powerOpenDoorStudentPartnership[Figure 1]](IncludedMatrix.jpeg){#fig-inclusion fig-alt="Included Matrix: Included is high access and unconditional belonging. Integrated is high access and conditional belonging. Segregated is low access and unconditional belonging. Excluded is low access and conditional belonging."}
+
+@Finn2025academicPrivilegeDifferentialAttainment identified the absence of "cultural awareness" as a contributing mechanism that led to differential attainment and a reduced sense of belonging at UoM. They also confirmed a need to "address cultural and linguistic barriers for international students". As part of their summary of issues, they identified there was a lack of culturally competent/sensitive support services and that socio-communication differences were affecting group collaboration and understanding of plagiarism/citation norms. They also identified that students often encountered stereotypes from others that reinforced deficit-based views. Whilst there were positive recommendations for targeted international student schemes to help 'integrate' underrepresented students into the community, when applying the above conceptualisations, we notice that there were no recommendations that aimed to 'include' international students by reducing the socio-communication barriers encountered through mutual 'accommodation'. This risks placing unequal burden on international students to adapt to cross-cultural interactions, rather than normalising mutual accommodation.
+
+Though local exceptions may exist, this reflects implicit assumptions within UoM's resources and practices that:
+
+- Internationalisation and neurodiversity should be considered separately when working to address social barriers;
+- Students should be expected to assimilate the dominant local culture.
+
+The 'double empathy problem', coined by @Milton2012doubleEmpathy, refers to the mutual challenge experienced by both people interacting from vastly different perspectives and embodied experiences. It reframes social difficulties associated with autism as being caused by both parties involved instead of being caused by a deficit of one party. They also concluded that differences in neurology may lead to neurodivergent socialities and shouldn't be perceived as social deficits in one person. @Crompton2020autisticPeerToPeerInformation built on this perspective further as they evidenced that the effectiveness of information transfer of autistic to autistic interactions and non-autistic to non-autistic interactions were equivalent, with a significant drop in effectiveness for mixed interactions. @OptimumeLearning2024autismADHDinHE[Unit 4] describes how social differences result in ADHD in comparison to autism by providing examples of its impacts on social interactions. Overall, social difficulties resulting from neurodivergence can be viewed as resulting from differences in social norms that developed due to differences in embodied experiences.
+
+@Finn2025academicPrivilegeDifferentialAttainment included a quote from an international student who stated that they found it harder to relate to home students, not knowing what to talk about, and that being perceived as 'bizarre' by home students. Focusing entirely on the framing of social difficulties being caused by differences in sociality, this appears to mirror the 'double empathy problem', especially since it could be interpreted that the difficulty in overcoming this social barrier was being placed on the international student instead of both parties. Thus, I feel that the 'double empathy problem' is useful as an analogy in building understanding of social barriers arising from both cross-cultural and cross-neurotype interactions.
+
+Further, @Milton2012doubleEmpathy highlighted that autistic people often gain a greater level of insight into non-autistic society than non-autistic people do into autistic society. They proposed this may be due to autistic people feeling the need to mask and learn about non-autistic society in order to survive, whereas non-autistic people generally have no incentives to do this. @khawaja2011copingStrategiesInternationalStudents identified that international students better managed transition stress by discussing their difficulties with other international students who were from the same country or experiencing similar. Combining these with the stress and fatigue implications of excessive dependence on masking and compensation strategies, we identify a demand for encouraging and supporting neurotypical home students in contributing equal effort in engaging with international and neurodivergent students in order to reduce the inequity of energy spent towards socialising.
+
+Overall, initiatives that focus on social inclusion should be catered to all students and consider socio-communication differences that result from both internationality and neurodiversity in order to encourage consistent inclusive practices that are flexible to a wide range of contexts. For example, we should avoid enforcing specific behaviours and facilitate empathetic understanding of socio-communication differences as well as normalise respectful, intentional discussions around social or group work preferences.
+
+### UoM-wide Resources {.unnumbered}
+
+Regarding the resources we currently offer, the first example we will cover is the [Life at University Resource](https://education.library.manchester.ac.uk/wp/transition/index.html), which I contributed to as part of the Library Student Team. This is sent to offer-holders yearly and provides student-created guidance to support the transition to university life, including 'preparing for study', 'joining a new community', and 'navigating relationships'. Though there is currently no specific inclusion of socio-communication differences, this was very briefly covered in a previous iteration of the resource in the 'Welcome Week' section of my [100 Days of University - FSE Guide](https://studentteam.medium.com/100-days-of-university-faculty-of-science-and-engineering-fse-guide-4f60435dc04d). The omission of this from the current resource may have been a result of the complex, large-scale restructuring and rearranging of the previous year's resource, motivated by a need to reduce information overwhelm and relocate universal concepts outside Faculty-specific resources. On reflection, this section did well in catering to a general audience of FSE students and avoiding encouragement of masking and shallow compensation strategies. However, it was insufficient in encouraging an accommodating culture as it solely focused on open-mindedness and curiosity towards socio-communication differences. For example, I have become aware that there are deficit perspectives around 'correct' social behaviours that need to be actively challenged. Additionally, this section was brief, which was likely due to my avoidance of making definitive claims without a collection of literature and lived experiences to support them. Hofstede's cultural dimensions theory [@Hofstede2011dimensionalizingCultures] was also signposted which, in the neurodiversity context, @Shea2011introductionAutismHofstede introduces in their blog discussing their interpretations of the model in the context of autistic sociality. I included it as a reflective prompt for navigating diverse cultures alongside a note that such models oversimplify human experiences and my disagreement with how IVR was interpreted in the autistic context, informed by my lived experience of ADHD sociality where this dimension appears more distinguishable.
+
+On top of its applications in cross-cultural psychology [@Ward2001psychologyCultureShock], Hofstede's model can be used as a reflective scaffold that contextualises and generalises shared barriers. For example, @khawaja2011copingStrategiesInternationalStudents mentioned students from collectivistic societies felt unprepared for independent living and often lacked the skills and knowledge to survive in individualistic societies. @Signorini2009interculturalLearningHofstede critiqued the model by arguing that the oversimplified model homogenises students and recommended alternatives that are more appropriate for educational settings. Given that homogenisation and deficit narratives are closely related, it is essential I explore appropriate models that avoid perpetuating stereotypes and scaffold social skills development to overcome the overwhelming and often unacknowledged complexities associated with cross-cultural and cross-neurotype interactions.
+
+On our university website, we have a public-facing page on [Making friends and fitting in](https://www.manchester.ac.uk/study/student-life/experience/making-friends/) under 'Student Life' with a section on 'Religion, faith and culture'. However, this consists of only two descriptive sentences and a link to the 'Culture and faith societies' at the Students' Union.
+
+A staff-led resource we offer is the 'Diversity Awareness for Students' training but this is only mandatory for students on a small range of programmes and is currently inaccessible as it hasn't been moved to Canvas.
+
+The only other staff-led resource I could find that could relate to inclusive social interactions is the 'Diversity in the workplace' training. The 'Inclusive Environment' section covers social interactions and emphasises the need to be respectful and sensitive when communicating, but the resource as a whole appears to only cover legal requirements. It does not expand on how to be respectful and sensitive in our communication when cultural differences or neurodivergence are involved. Just in case, I checked the 'Disability Equity' training too and this same issue arises there. This is not ideal as lecturers play a significant role in either integrating international students into diverse classrooms or contributing to a segregated divide [@Rizvi2023globalInterconnectivityEthicalChallenges].
+
+Overall, there is little to critique with our current staff-led provision, but it raises a substantial gap in providing adequate and appropriate support in facilitating the inclusion of internationality and neurodivergence across UoM. Ideally, we should move beyond box-ticking practices and use current understanding of cross-cultural and cross-neurotype interactions to benefit our students. This may also suggest a capacity gap in developing practical social inclusion resources. Given the university and its staff have an anticipatory duty to ensure its environment is inclusive of disabled students, which includes neurodivergent conditions, it should be easier to justify workload allocation towards the development of this resource.
+
+## Conclusion & Recommendations for Future Practice {.unnumbered}
+
+Though the following quote by @Beardon2022inclusionAutisticLearner focuses on autistic students specifically, I feel it perfectly summarises what we've covered so far:
+
+> "If inclusion doesn’t take differing types of communication and sociality into account, then it is almost certainly not genuine inclusion. Having an array of different ways to engage – both academically and socially – including different ways of knowledge transfer (such as alternative forms of assessment) is essential if autistic learners are to be given the same chances of success as their non-autistic peers."
+
+Throughout, I mentioned a need for further research multiple times, which should inform in-depth resources that explicitly identify these overlaps. However, we shouldn't wait for this progress before acting on these overlaps. A shared goal between decolonisation and neurodiversity is for equal value to be placed on the lived experiences of students as academic research [cf. @cheng2023neurodiversity], and so I feel that co-creation practices should be enough in ensuring our initiatives and resources use an evidence-informed approach when embracing these overlaps. Thus, I will conclude with my recommendations for future practice.
+
+We need student-facing resources on Cross-Cultural & Cross-Neurotype Interactions. For this, I will explore whether we can develop a resource focusing on this as part of the [Life at University Resource](https://education.library.manchester.ac.uk/wp/transition/index.html). I will ensure it is catered to students from all Faculties and includes common experiences of social barriers with different strategies provided as examples, presented neutrally with some pros and cons of each. Due to the collaborative and diverse nature of the Library Student Team, I would ensure that my international peers are able to freely contribute and develop this resource in more depth.
+
+In the long term, I believe we also need mandatory Student and Staff training on Cross-Cultural & Cross-Neurotype Interactions.
+
+This training should be mandatory as we have assignments across the university where social interactions and perceptions of 'good practice' will have a role in disproportionately impacting students' grades, such as presentations and groupwork. This is evidenced by existing issues around unequal contributions to group work [@Finn2025academicPrivilegeDifferentialAttainment] and cases of UK students demonstrating bias against ideas proposed by international students [@Qu2024UDLinclusiveHigherEducation].
+
+On top of the student training supporting the inclusion of international and neurodivergent students, it would also allow our students to be more employable due to being better equipped to navigate and address socio-communication differences when collaborating with others.
+
+Additionally, it is important staff training is created so student-staff and staff-staff interactions are also inclusive, as well as providing a resource that influences future neurodiversity and/or internationalisation initiatives to consider their overlaps. On top of this, from my own online experience of the neurodivergent community where cross-neurotype interactions are common, I believe training in recognising and accommodating socio-communication differences is a requirement for inclusive, constructive and open-minded discussions within diverse contexts.
+
+The development of this training will require a university-wide collaboration that includes international and neurodivergent students and staff. For example, I only covered a small part of cross-cultural psychology so specialists in this and related areas would ensure the output is reflective of present-day conceptualisations.
+
+We should also explore and evaluate other potential overlaps between internationalisation and neurodiversity. For example, in response to a staff member mentioning the degree awarding gap being less for disability than it is for ethnicity [@Finn2025academicPrivilegeDifferentialAttainment], we could explore the appropriateness of providing reasonable adjustments to international students. There are examples of extra exam time adjustments being provided to non-native English speakers at other organisations [@RLSSUK2021reasonableAdjustmentsEAL; @JCQ2021adjustmentsDisabilitiesLearningDifficulties, Item 5.18.6]. Through consulting with international peers, either information about a UoM equivalent is inaccessible or we do not currently provide it.
+
+{{< pagebreak >}}
+
+## References {.unnumbered}
+
+::: {#refs}
+:::
+
+## Appendix A - Glossary {.unnumbered}
+
+- *Internationalisation* is the "process of integrating an international, intercultural or global dimension into the purpose, functions or delivery" of an institution [Knight, 2004 cited in @Hans2024everythingThatQuacksInternationalization].
+- *Decolonisation* is the process of dismantling western-centric perspectives, ideologies, and systems. In the context of Higher Education, this includes challenging the overwhelming dominance of Western epistemologies in higher education and acknowledging the equal value of knowledge and practices that originate outside of western cultures [@Dawson2019rehumanisingUniversity].
+- *Neurodiversity* refers to two concepts: the neurological diversity of all people; and, the social justice movement that neurodevelopmental conditions, such as Autism, are natural and neutral differences that result from human diversity, rather than disorders or impairments that need to be fixed or cured [@cheng2023neurodiversity].
+- *Neurodiverse* relates to the neurological diversity of two or more individuals. For example, a community of only ADHD students is less neurodiverse than the entire student population.
+- *Neurotype* refers to groups of neurological traits and can be used to describe individuals who share these traits. For example, ADHD, autism and AuDHD are three intersecting neurotypes.
+- *Neurotypical/Predominant Neurotype* refers to the neurotype that represents the majority of a given population.
+- *Neurodivergence/Neurodivergent/Neuro-Minority* refers to neurotypes that represent the minority for a given population.
+- *Neurodivergent condition* refers to neurotypes that are considered medical conditions or disabilities. Aphantasia (the inability to form mental images) is an example of neurodivergence that would not be classed as a neurodivergent condition.
+- *Acquired Neurodivergence* refers to neurotypes that are a permanent result from environmental factors and life events. For example, brain injury, long COVID, severe depression, and PTSD.
+- *Individualism vs Collectivism (IDV)*: A dimension in Hofstede's model that covers differences in values relating to interdependence.
+- *Indulgence vs Restraint (IVR)*: A dimension in Hofstede's model that covers differences in values relating to the freedom or restraint of fulfilling individual desires.
