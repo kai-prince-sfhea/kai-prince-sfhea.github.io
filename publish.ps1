@@ -1,6 +1,8 @@
 # Commit and push changes in each submodule, then update and push main repo
 # Command: .\publish.ps1
 
+$ErrorActionPreference = "Stop"
+
 # Request Commit Message
 $commitMsg = Read-Host "Enter commit message"
 
@@ -16,14 +18,15 @@ $submodules = @("papers/GeneralisedErdosConjecture", "papers/MathsNotes")
 
 foreach ($sub in $submodules) {
     Set-Location $sub
+    git status
     git add .
     git commit -m "$commitMsg"  # Remove if no changes
     git pull --strategy-option=ours origin main  # Use 'ours' strategy to keep local changes
-    git push origin main
+    git push origin main --verbose
     Set-Location ../..
 }
 
 # Now update submodule references in main repo
 git add .
 git commit -m "$commitMsg"
-git push
+git push origin main --verbose
