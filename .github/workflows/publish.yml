@@ -21,6 +21,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install Python and Dependencies
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+          cache: 'pip'
+      - run: pip install jupyter
+
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
