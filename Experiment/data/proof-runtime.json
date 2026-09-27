@@ -1,0 +1,15 @@
+{
+  "kernel": "Coq 8.20.1",
+  "browser": "jsCoq 1.99.2 (development), Fleche/coq-lsp 0.2.5-dev",
+  "backend": "js_of_ocaml 5.9.1",
+  "upstream": "https://x80.org/jscoq2/",
+  "retrieved": "2026-09-26",
+  "sourceRepository": "https://github.com/jscoq/jscoq",
+  "note": "Upstream demo snapshot; no exact source commit advertised. Native Rocq 9.2.0 is newer. WASM not used: supplied libraries are incompatible with its kernel.",
+  "downloads": {
+    "new-worker.js": "86086143e732b7985fed06a729b73934879e396e0416ffbf7f6c8ffd20f8e216",
+    "init.coq-pkg": "fd3ecf2f022fae378de9d580d99272d8f96dfe0212461a1dc1e6c1a70f98c999",
+    "coq-base.coq-pkg": "1ddbaf53de54b42af8e60ba2ce27da0c735187aef8f29b684a231f7ded890833",
+    "ltac2.coq-pkg": "1646ea83b5cecf22d0a9108e0f0d58eabedf6e83f03d173e1472729dfa6a27ce"
+  }
+}

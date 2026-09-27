@@ -1,3 +1,5 @@
+import {performanceSummary} from './runtime/telemetry.js';
+import {warmup} from '/Experiment/runtime/model.js';
 import {localApi} from './runtime/local-api.js';
 import {get,put} from './runtime/store.js';
 import './runtime/pwa.js';
@@ -350,22 +352,22 @@ function renderRuntime() {
   const runtime = state.runtime || {};
   const list = $('#engine-list');
   list.replaceChildren();
-  const engines = [['model', 'Gemma 4 E2B · browser', 'Interprets your reasoning'], ['prolog', 'SWI-Prolog', 'Checks cases and relations'], ['coq', 'Coq 8.17.1 kernel', 'Checks the formal proof']];
+  const engines = [['model', 'Gemma 4 E2B · browser', 'Interprets your reasoning'], ['prolog', 'SWI-Prolog', 'Checks cases and relations'], ['coq', 'Coq 8.20.1 kernel', 'Checks the formal proof']];
   engines.forEach(([key, name, purpose]) => {
     const engine = runtime[key] || {};
     const row = node('div', 'engine-row');
     const heading = node('div', 'engine-row-header');
     heading.append(node('span', '', name));
-    heading.append(node('span', `engine-state ${engine.ready ? 'ready' : ''}`, engine.ready ? '● Ready' : state.runtime ? '○ Setup needed' : '○ Checking'));
+    heading.append(node('span', `engine-state ${engine.ready ? 'ready' : ''}`, engine.ready ? '● Ready' : engine.installed ? (engine.health==='unavailable'?'○ Unavailable':'○ Check pending') : state.runtime ? '○ Setup needed' : '○ Checking'));
     row.append(heading, node('p', '', `${purpose}. ${engine.detail || engine.message || 'Checking the local connection…'}`));
     list.append(row);
   });
   if (!state.runtime) return;
   const ready = engines.filter(([key]) => runtime[key]?.ready).length;
-  $('#runtime-label').textContent = ready === 3 ? 'On-device tools installed' : 'Device setup needed';
+  $('#runtime-label').textContent = ready === 3 ? 'On-device tools ready' : state.runtime?.coq?.installed ? 'Proof self-check pending' : 'Device setup needed';
   $('#runtime-dot').classList.toggle('ready', ready === 3);
   if (ready === 3) $('#connection-notice').hidden = true;
-  else showNotice('Your workspace is open. Open Device setup to install the offline model and proof tools.');
+  else showNotice(runtime.coq?.installed?'My proof tools will be checked before verification. If unavailable, my draft stays saved; I can retry the tools in Device setup.':'Your workspace is open. Open Device setup to install the offline model and proof tools.');
 }
 
 async function refreshRuntime() {
@@ -560,7 +562,7 @@ function addVerificationDetails(card, result) {
     if (check.scope) details.append(node('p','candidate-note',check.scope));
     if (check.theorem) details.append(node('p', '', check.theorem));
     if (check.graph) details.append(graphInspector(check.graph));
-    for (const [key, name] of [['prolog', 'Prolog'], ['coq', 'Coq 8.17.1'], ['isabelle', 'Isabelle/HOL reference (not executed)']]) {
+    for (const [key, name] of [['prolog', 'Prolog'], ['coq', 'Coq 8.20.1'], ['isabelle', 'Isabelle/HOL reference (not executed)']]) {
       const engine = check.engines?.[key];
       if (engine) details.append(node('p', '', `${name}: ${engine.status.replaceAll('_', ' ')}. ${engine.detail || ''}`));
       if (engine?.log) {
@@ -742,7 +744,7 @@ async function exportSession() {
   const record = {
     format: 'thread-reasoning-session', version: 1, exported_at: new Date().toISOString(),
     started_at: state.started, scenario: state.scenario, claims: state.claims,
-    transcript: state.transcript, reflection: $('#reflection').value,
+    transcript: state.transcript, reflection: $('#reflection').value, performance:performanceSummary(),
     draft: $('#thought').value, completed: state.solved, ...(serverSession ? {server_session: serverSession} : {})
   };
   const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], {type: 'application/json'}));
@@ -889,3 +891,5 @@ for(const id of ['guidance','motion-setting','focus-setting','timer-setting'])$(
 window.addEventListener('pagehide',persistWorkspace);
 setInterval(updateTimer, 1000);
 restorePreferences().then(initialise);
+
+document.querySelector('#warmup-workspace').onclick=async e=>{e.target.disabled=true;const status=document.querySelector('#warmup-status');status.textContent='Loading Gemma while I read…';try{await warmup();status.textContent='Gemma is ready in this workspace.';}catch(err){status.textContent=err.message;}finally{e.target.disabled=false;}};

@@ -32,4 +32,4 @@ self.addEventListener('fetch',event=>event.respondWith((async()=>{
  catch{return saved||new Response('Offline asset unavailable',{status:503});}
 })()));
 
-// build:95c9df39ba668ebc62e6431e80f5e90e0e6004b05ba9f82c416d019f79a03184
+// build:206237727c8423b6f52c64bc23a5e0631a0c61c4c6f567bf923762a4d2c4e8be

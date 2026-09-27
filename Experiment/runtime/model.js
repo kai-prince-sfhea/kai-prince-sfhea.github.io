@@ -1,3 +1,4 @@
+import {measure} from './telemetry.js';
 import {assetsReady} from './assets.js';
 let worker,seq=0,pending,epoch=0,busy=false,releaseLease;
 export const cancellationVersion=()=>epoch;
@@ -21,29 +22,34 @@ async function acquire(version){
 }
 function run(request){return new Promise((resolve,reject)=>{
  const id=++seq;
- const finish=(error,result)=>{if(pending?.id!==id)return;clearTimeout(pending.timer);pending=null;if(error){dispose();reject(error);}else resolve(result);};
+ const finish=(error,result)=>{if(pending?.id!==id)return;clearTimeout(pending.timer);pending=null;if(error){if(error.code!=='schema_error')dispose();reject(error);}else resolve(result);};
  const timer=setTimeout(()=>finish(Error('Gemma exceeded the five-minute device limit. My draft is kept; I can retry.')),300000);
  pending={id,reject,timer};
  worker.onmessage=({data})=>{
   if(data.id!==id)return;
   if(data.progress){window.dispatchEvent(new CustomEvent('model-progress',{detail:data.progress}));return;}
-  finish(data.error?Object.assign(Error(data.error),{code:data.code,diagnostics:data.diagnostics}):null,data.result);
+  finish(data.error?Object.assign(Error(data.error),{code:data.code,diagnostics:data.diagnostics,validation:data.validation,metrics:data.metrics}):null,data.result);
  };
  worker.onerror=e=>finish(Error(e.message));worker.postMessage({id,request});
 });}
 export async function infer(request,version=epoch){
+ const started=performance.now();let retries=0;
  if(busy)throw Error('Gemma is already interpreting a thought.');busy=true;
  try{
   if(!(await assetsReady()))throw Error('Install the on-device tools first using Device setup.');checkVersion(version);
+  let correction;
   for(let attempt=0;attempt<2;attempt++){
    await acquire(version);checkVersion(version);
-   try{return await run(attempt?{...request,options:{...request.options,num_predict:Math.max(1800,request.options?.num_predict||900)}}:request);}
+   try{const result=await run(attempt?{...request,correction,options:{...request.options,num_predict:Math.max(1800,request.options?.num_predict||900)}}:request);measure(request.warmup?'model_warmup':result.metrics?.cold?'model_cold':'model_warm',{outcome:'success',seconds:(performance.now()-started)/1000,retries,...result.metrics});return result;}
    catch(e){
     checkVersion(version);
-    if(e.code!=='incomplete_json'||attempt)throw e;
-    window.dispatchEvent(new CustomEvent('model-progress',{detail:'Restarting Gemma after an incomplete response…'}));
+    measure('model_attempt',{outcome:e.code||'runtime_error',seconds:e.metrics?.seconds??(performance.now()-started)/1000,attempt:attempt+1,field:e.validation?.field??null,outputCharacters:e.diagnostics?.characters??null,channelCharacters:e.diagnostics?.channels??null,...e.metrics});
+    if(!['incomplete_json','schema_error'].includes(e.code)||attempt)throw e;
+    retries++;correction=e.validation;
+    window.dispatchEvent(new CustomEvent('model-progress',{detail:'Retrying the interpretation format once; my thought stays unchanged…'}));
    }
   }
  }finally{busy=false;}
 }
 export function cancel(){epoch++;if(pending){clearTimeout(pending.timer);pending.reject(Error('Interpretation cancelled; my draft is kept.'));pending=null;}dispose();}
+export const warmup=()=>infer({warmup:true});
