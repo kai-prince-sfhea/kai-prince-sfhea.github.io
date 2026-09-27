@@ -5,6 +5,7 @@ sys.modules['litert_runtime']=stub
 import logic
 from logic import core as C, solution as G, theory as T
 import scenario_library as S, nlp, pacing
+import challenge_generator
 from case_review import split_cases
 DEFAULT=json.load(open('/app/default.json'))
 
@@ -69,14 +70,10 @@ def named_certificate(c,s,result):
 
 def prepare_goal(accepted,s):
     if s.get('domain')=='theory':
-        learned=set()
-        for c in accepted:
-            for lit in c['conclusions']:
-                if lit['positive']: learned.update(s['nodes'][lit['id']]['covers'])
-        missing=[p for p in s['targets'] if p not in learned]
+        learned,missing,targets=T.goal_progress(accepted,s)
         if missing: return dict(status='not_discovered',detail='I have not yet established every part of the scenario goal.',theorem=s['goal'],graph=dict(targets=s['targets'],learned=sorted(learned),missing=missing))
-        c=dict(id='goal',text='Scenario goal',conclusions=[dict(id=p,positive=True) for p in s['targets']],assumptions=[],depends_on=[])
-        return dict(status='candidate',compiled=compile_step(c,accepted,s),witness=dict(conclusions=[s['nodes'][p]['label'] for p in s['targets']],supporting_claims=[c['id'] for c in accepted]))
+        c=dict(id='goal',text='Scenario goal',conclusions=[dict(id=p,positive=True) for p in targets],assumptions=[],depends_on=[])
+        return dict(status='candidate',compiled=compile_step(c,accepted,s),witness=dict(conclusions=[s['nodes'][p]['label'] for p in targets],supporting_claims=[c['id'] for c in accepted]))
     claims,questions=G._prepare(accepted)
     return dict(status='search',prolog=G._prolog_source(claims,questions),theorem=G.THEOREM)
 
@@ -115,7 +112,7 @@ class BrowserGemma(nlp.Gemma):
     def request(self,body):
         try: value=next(self.responses)
         except StopIteration: raise NeedModel(body)
-        if body.get('format')==nlp.CHOICE_SCHEMA:
+        if 'has_choice' in body.get('format', {}).get('properties', {}):
             data=json.loads(value)
             original=json.loads(body['messages'][-1]['content'])['student_statement']
             action=r'\b(?:choos\w*|pick\w*|select\w*|enter\w*|go(?:ing)?\s+through|walk\w*\s+through|take\s+(?:the|this|that|a|either|other)\s+door|step\s+through)\b'
@@ -134,8 +131,15 @@ def dispatch(x):
     if op=='goal_finish': return finish_goal(a,x['result'])
     if op=='view': return view(x['claim'],s)
     if op=='parse': return parse(x['claim'],s,a)
-    if op=='split': return split_cases(x['text'])
+    if op=='split': return split_cases(x['text'], x.get('grouping','auto'))
     if op=='import': return S.import_theory(x['source'],DEFAULT)
+    if op=='generate_challenge': return S.parse_custom(challenge_generator.generate(x['config'])['source'])
+    if op=='generate_journey':
+        import journey_generator
+        return S.parse_custom(journey_generator.generate(x['spec'])['source'])
+    if op=='tutorial':
+        import journey_generator
+        return S.parse_custom(journey_generator.tutorial()['source'])
     if op=='review': return pacing.argumentation_review(x['session'],view)
     if op=='predict': return list(pacing.predictions(a,s))
     if op=='key': return pacing.formal_key(x['claim'],a,s)

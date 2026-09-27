@@ -1,1 +1,14 @@
 .device-page{max-width:940px;margin:32px auto;padding:0 24px 64px}.device-page h1{font-size:clamp(2rem,5vw,3.3rem);margin:22px 0}.device-page section{padding:24px;border:1px solid #d9ddd5;border-radius:16px;margin:24px 0;background:#fff}.device-page p{line-height:1.65}.device-page button{margin:8px 8px 8px 0}.device-page label{display:block;margin:12px 0}.device-page input:not([type=checkbox]):not([type=file]){display:block;width:100%;padding:12px;border:1px solid #aeb8ac;border-radius:8px}.device-page progress{display:block;width:100%;margin-top:14px}.device-page table{width:100%;border-collapse:collapse;font-size:14px}.device-page th,.device-page td{text-align:left;vertical-align:top;border-bottom:1px solid #ddd;padding:10px 6px;overflow-wrap:anywhere}.device-page pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:280px;overflow:auto}.device-page a{color:#315f47}.device-page .pass{color:#28623e}.device-page .fail{color:#952e2e}.device-page .blocked{color:#72541c}@media(max-width:600px){.device-page{padding:0 12px}.device-page section{padding:16px}.device-page table{font-size:12px}}
+
+#benchmark-comparison{max-width:100%;overflow:auto}#benchmark-summary table caption,#benchmark-comparison table caption{text-align:left;font-weight:600;margin:12px 0}#benchmark-summary pre{font-size:12px}
+
+.device-page{min-width:0;overflow-wrap:anywhere}.device-page input:not([type=checkbox]):not([type=file]){border-color:#66725e}.device-page button,.device-page select{min-height:44px}.device-page code{overflow-wrap:anywhere}
+
+/* Setup and evidence remain readable at the same scale as the learning space. */
+.device-page{font-size:1rem}.device-page h1{font-size:clamp(2rem,5vw,2.75rem)}.device-page h2{margin-bottom:.75rem}.device-page h3{font-size:1.25rem;margin:1rem 0 .5rem}
+.device-page p,.device-page li{font-size:1rem;line-height:1.7;max-width:75ch}.device-page p+p{margin-top:.75rem}.device-page li+li{margin-top:.5rem}
+.device-page button,.device-page input,.device-page select{font-size:1rem}.device-page select{max-width:100%;display:block;margin-top:.4rem}.device-page input[type=checkbox]{min-width:20px;min-height:20px;accent-color:var(--green)}
+.device-page table,.device-page pre,#benchmark-summary pre{font-size:.875rem;line-height:1.6}.device-page th{font-weight:600}.device-page table{table-layout:fixed}
+.device-page th,.device-page td{min-width:0;word-break:normal}.device-page pre{padding:10px;scroll-padding:10px}.device-page pre:focus-visible{outline-offset:-3px}
+#benchmark-results,#benchmark-summary{min-width:0;max-width:100%}.device-page .file-button{white-space:normal}
+@media(max-width:600px){.device-page table{font-size:.875rem}.device-page button{max-width:100%;white-space:normal}.device-page section{padding:16px 12px}.device-page th,.device-page td{padding:8px 4px}}

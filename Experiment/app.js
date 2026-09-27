@@ -1,7 +1,12 @@
+import('./runtime/audio-ui.js').catch(error=>console.warn('Optional audio unavailable:',error.message));
 import {performanceSummary} from './runtime/telemetry.js';
 import {warmup} from '/Experiment/runtime/model.js';
 import {localApi} from './runtime/local-api.js';
 import {get,put} from './runtime/store.js';
+import {learningCheckpoint,authorForm} from './runtime/learning.js';
+import {challengeForm,challengeBrief} from './runtime/challenge.js';
+import {createScenarioFlow} from './runtime/scenario-flow.js';
+import {reasoningToolkit} from './runtime/reasoning-support.js';
 import './runtime/pwa.js';
 import {cancel as cancelInterpretation} from './runtime/model.js';
 /* All inference, verification and saved work live on this device. */
@@ -12,7 +17,7 @@ const state = {
   session: null, scenario: null, claims: [], transcript: [], candidate: null,
   busy: false, solved: false, guidance: 'gentle', runtime: null,
   timer: { remaining: 0, enabled: false, announced: false, lastTick: Date.now() },
-  paused: false, started: new Date().toISOString(), library: [], editorScenario: null
+  paused: false, started: new Date().toISOString(), library: [], editorScenario: null, followConversation: true
 };
 
 window.addEventListener('model-progress',event=>{if(state.busy)state.busyDescription=event.detail;});
@@ -21,6 +26,7 @@ function node(tag, className, content) {
   const element = document.createElement(tag);
   if (className) element.className = className;
   if (content !== undefined && content !== null) element.textContent = String(content);
+  if (tag === 'pre') { element.tabIndex = 0; element.setAttribute('role','region'); element.setAttribute('aria-label','Scrollable code or data'); }
   return element;
 }
 
@@ -54,23 +60,28 @@ end
 end
 `;
 
-async function resetWorkspace(scenario) {
+async function resetWorkspace(scenario, continuation=null) {
   if (state.busy) return;
   const previous = state.session;
   setBusy(true, 'Opening a fresh reasoning trail…');
   try {
-    await startSession(scenario);
+    const opened=await startSession(scenario,continuation);
     state.transcript = [];
     $('#conversation').replaceChildren();
+    $('#review-ready').hidden = true;
     $('#thought').value = ''; $('#reflection').value = '';
-    $('#onboarding').hidden = false;
-    message('companion', scenario?.hints?.[0] || 'Two guards, two doors, and one question. What can I work out from the facts?');
+    $('#onboarding').hidden = !!state.scenario.tutorial || !$('#show-introduction').checked;
+    if(continuation&&(opened.history?.length||opened.pending||opened.progress?.solved)){
+      renderSavedAttempt(opened);
+      const savedDraft=await get('workspace:'+state.session);if(savedDraft){$('#thought').value=savedDraft.draft||'';$('#reflection').value=savedDraft.reflection||'';}
+      if(!opened.progress.solved)await flow.open({resume:true});
+    }else message('companion', state.scenario?.hints?.[0] || 'What can I work out from the given facts?');
     startTimer();
     if (previous) {
       $('#previous-attempt').href = `/Experiment/?resume=${Date.now()}#session=${encodeURIComponent(previous)}`;
       $('#previous-attempt').hidden = false;
     }
-    $('#thought').focus();
+    if(flow.phase==='thinking')$('#thought').focus();
   } catch (error) { toast(error.message); throw error; }
   finally { setBusy(false); }
 }
@@ -100,9 +111,10 @@ async function openLibrary() {
         } catch (error) { $('#library-error').textContent = error.message; $('#library-error').hidden = false; }
         finally { example.disabled = false; }
       });
+      start.setAttribute('aria-label','Start scenario: '+scenario.title);example.setAttribute('aria-label','Import this THY example: '+scenario.title);
       actions.append(start, example); card.append(actions);
       const source = node('details', 'source-code'); source.append(node('summary', '', scenario.source_name), node('pre', '', scenario.source_text));
-      const download = node('button', 'text-button', 'Download this THY'); download.addEventListener('click', () => downloadText(scenario.source_name,scenario.source_text)); source.append(download);
+      const download = node('button', 'text-button', 'Download this THY'); download.addEventListener('click', () => downloadText(scenario.source_name,scenario.source_text)); download.setAttribute('aria-label','Download this THY: '+scenario.title);source.append(download);
       card.append(source); list.append(card);
     });
   } catch(error) { list.replaceChildren(node('p','form-error',error.message)); }
@@ -165,6 +177,7 @@ function drawGraph(graph) {
   const wrap = node('div', 'node-view');
   const description = node('p', 'candidate-note', 'Read-only view. Select a node to read its full text. Arrows point from a supporting node to the expression or claim it supports. Scroll to explore larger graphs.');
   const canvas = node('div', 'node-canvas');
+  canvas.tabIndex=0;canvas.setAttribute('role','region');canvas.setAttribute('aria-label','Argument graph · scroll to explore; individual nodes are keyboard accessible');
   const selection = node('p', 'node-selection', 'Select a node to inspect it.'); selection.setAttribute('aria-live', 'polite');
   const ns = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(ns, 'svg'); svg.setAttribute('role', 'group'); svg.setAttribute('aria-label', 'Argumentation graph');
@@ -208,18 +221,21 @@ function drawGraph(graph) {
   arrow.setAttribute('d','M 0 0 L 10 5 L 0 10 z');arrow.setAttribute('fill','#667c69');marker.append(arrow);defs.append(marker);svg.append(defs);
   levels.forEach((row,level)=>row.forEach((n,i)=>{n.x=(width-row.length*210)/2+i*210+10;n.y=height-105-level*115;}));
   edges.forEach(([from,to])=>{const a=ids.get(from),b=ids.get(to);if(!a||!b)return;const line=document.createElementNS(ns,'path');line.setAttribute('d',`M ${a.x+95} ${a.y+70} L ${b.x+95} ${b.y}`);line.setAttribute('stroke','#667c69');line.setAttribute('fill','none');line.setAttribute('marker-end',`url(#${markerId})`);svg.append(line);});
-  nodes.forEach(n=>{
-    const group=document.createElementNS(ns,'g');group.setAttribute('tabindex','0');group.setAttribute('role','button');group.setAttribute('aria-label',n.label);group.setAttribute('class','visual-graph-node');
+  nodes.forEach((n,index)=>{
+    const relation=edges.filter(([,to])=>to===n.id).map(([from])=>ids.get(from)?.label).filter(Boolean);
+    const description=n.label+(relation.length?'. Supported by: '+relation.join('; '):'. No incoming support edge in this view.');
+    const group=document.createElementNS(ns,'g');group.setAttribute('tabindex',index===0?'0':'-1');group.setAttribute('role','button');group.setAttribute('aria-label',description);group.setAttribute('aria-pressed','false');group.setAttribute('class','visual-graph-node');
     const rect=document.createElementNS(ns,'rect');for(const [k,v] of Object.entries({x:n.x,y:n.y,width:190,height:70,rx:10}))rect.setAttribute(k,v);group.append(rect);
     const title=document.createElementNS(ns,'title');title.textContent=n.label;group.append(title);
     const text=document.createElementNS(ns,'text');text.setAttribute('x',n.x+12);text.setAttribute('y',n.y+27);
     const words=n.label.match(/.{1,25}(?:\s|$)|.{1,25}/g)||['']; words.slice(0,2).forEach((s,i)=>{const span=document.createElementNS(ns,'tspan');span.setAttribute('x',n.x+12);span.setAttribute('dy',i?'19':'0');span.textContent=s.trim()+(i===1&&words.length>2?'…':'');text.append(span);});group.append(text);
-    const select=()=>{selection.textContent=n.label;};group.addEventListener('click',select);group.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select();}});svg.append(group);
+    const select=()=>{selection.textContent=description;svg.querySelectorAll('[role=button]').forEach(g=>{g.tabIndex=g===group?0:-1;g.setAttribute('aria-pressed',String(g===group));});};group.addEventListener('click',select);group.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select();}else if(['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const all=[...svg.querySelectorAll('[role=button]')];const next=e.key==='Home'?0:e.key==='End'?all.length-1:(index+(['ArrowRight','ArrowDown'].includes(e.key)?1:-1)+all.length)%all.length;all.forEach((g,i)=>g.tabIndex=i===next?0:-1);all[next].focus();}});svg.append(group);
   });
   const fit = node('button','text-button','Fit graph to width');
   let fitted = false;
   fit.addEventListener('click',()=>{fitted=!fitted;svg.style.width=fitted?'100%':'';svg.style.height=fitted?'auto':'';fit.textContent=fitted?'Show full-size nodes':'Fit graph to width';});
   canvas.append(svg);wrap.append(description,fit,canvas,selection);
+  description.textContent+=' Use arrow keys to move between nodes, Home/End for first/last, and Enter to inspect. Tab leaves the graph.';
   if(traceCount>180)wrap.append(node('p','candidate-note','The node view shows the first 180 derivation nodes. The complete graph remains available as text and JSON.'));
   return wrap;
 }
@@ -231,16 +247,19 @@ function toast(text) {
   element.textContent = text;
   element.hidden = false;
   clearTimeout(toast.timeout);
-  toast.timeout = setTimeout(() => { element.hidden = true; }, 6000);
+  const dismiss = node('button','text-button','Dismiss');
+  dismiss.onclick=()=>{element.hidden=true;};element.append(dismiss);
 }
 
 function setBusy(busy, description = '') {
+  if(busy)document.dispatchEvent(new Event('thread-busy'));
   if(!busy)$('#cancel-processing').hidden=true;
   state.busy = busy;
   state.busySince = busy ? Date.now() : null;
   state.busyDescription = description;
   $('#busy-status').hidden = !busy;
   $('#busy-status').textContent = description;
+  $('#busy-elapsed').textContent = '';
   $('#submit-button').disabled = busy || !!state.candidate || !state.session;
   $('#hint-button').disabled = busy || !state.session;
   $('#thought').readOnly = false;
@@ -253,6 +272,7 @@ function setBusy(busy, description = '') {
 }
 
 function scrollConversation() {
+  if (!state.followConversation || document.activeElement === $('#thought')) return;
   const conversation = $('#conversation');
   conversation.scrollTo({top: conversation.scrollHeight, behavior: document.body.classList.contains('reduced-motion') || matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
 }
@@ -279,14 +299,33 @@ function showNotice(text) {
   notice.hidden = false;
 }
 
+function interpretationDiagnostic(content, diagnostic) {
+  if (!diagnostic || typeof diagnostic !== 'object') return;
+  const values = {};
+  for (const key of ['code', 'field', 'reason']) {
+    if (typeof diagnostic[key] === 'string') values[key] = diagnostic[key].slice(0, 1000);
+  }
+  if (!Object.keys(values).length) return;
+  const details = node('details', 'source-code');
+  details.append(node('summary', '', 'Technical details for a bug report'),
+    node('p', '', 'These describe an interpretation-tool error. They are not a judgment about my argument.'),
+    node('pre', '', JSON.stringify(values, null, 2)));
+  content.append(details);
+}
+
 function renderScenario(scenario) {
   state.scenario = scenario;
+  document.body.dataset.challengeTheme=scenario.challenge?.theme||'';
   $('#scenario-title').textContent = scenario.title || 'The two guards';
   $('#scenario-description').textContent = scenario.description || '';
   $('#scenario-goal').textContent = scenario.goal || '';
+  const visibleFacts=scenario.journey?[`Stage ${scenario.journey.stage} of 3 · ${scenario.journey.remaining} evidence credits remain.`,'My evidence review contains the observations collected so far.','Earlier certificates belong to earlier evidence. I must establish this stage’s bounded conclusion.']:scenario.challenge?['Two disputed records are available in My evidence review.','A reported concern is a claim to evaluate. The given observations and review rules are listed separately.','I need a warrant and a disposition for each record, the limits, and a combined recommendation.']:scenario.facts||[];
+  const context=$('#context-content');context.replaceChildren(node('p','',scenario.goal));const contextFacts=node('ul');visibleFacts.forEach(f=>contextFacts.append(node('li','',readable(f))));context.append(contextFacts);
   const list = $('#facts-list');
   list.replaceChildren();
-  (scenario.facts || []).forEach(fact => list.append(node('li', '', readable(fact))));
+  visibleFacts.forEach(fact => list.append(node('li', '', readable(fact))));
+  $('#challenge-brief')?.remove();
+  const brief=challengeBrief({scenario,onConfigure:openChallengeConfig,onNotes:openPause});if(brief)$('#conversation').before(brief);
   $('.scenario-art').hidden = scenario.domain === 'theory';
   $('.scenario-copy .eyebrow').textContent = scenario.difficulty || 'YOUR SCENARIO';
   const source = $('#scenario-source'); source.replaceChildren();
@@ -307,6 +346,8 @@ function renderScenario(scenario) {
 }
 
 function renderClaims() {
+  $('#challenge-brief')?.update(state.claims);
+  flow.update();
   const list = $('#claims-list');
   list.replaceChildren();
   $('#claim-count').textContent = state.claims.length;
@@ -333,10 +374,10 @@ function dependencyLabel(value) {
   return value.replaceAll('_', ' ');
 }
 
-async function startSession(scenario) {
+async function startSession(scenario,continuation=null) {
   state.caseRevision = false;
-  const result = await api('/api/session', { ...(scenario ? {scenario} : {}), guidance: state.guidance });
-  if (!result.session_id) throw new Error('The server did not create a session. Please check the setup guide.');
+  const result = continuation?await api('/api/next-stage',continuation):await api('/api/session', { ...(scenario ? {scenario} : {}), guidance: state.guidance });
+  if (!result.session_id) throw new Error('A local attempt could not be created. Please check Device setup.');
   state.session = result.session_id;
   state.claims = result.claims || [];
   state.candidate = null;
@@ -346,6 +387,8 @@ async function startSession(scenario) {
   if (result.scenario) renderScenario(result.scenario);
   renderClaims();
   setBusy(false);
+  await flow.open({initial:!scenario&&!continuation});
+  return result;
 }
 
 function renderRuntime() {
@@ -390,11 +433,12 @@ function addInterpretation(result, original) {
   if (result.case_review) message('companion', `Let’s focus on one step at a time. I’m reviewing case ${result.case_review.index} of ${result.case_review.total}.`);
   const interpretation = result.interpretation || {};
   state.candidate = {id: result.candidate_id, original, interpretation, caseReview: result.case_review};
-  const content = message('companion', 'Is this the thought I meant to express?');
+  const content = message('companion', $('#direct-wording')?.checked?'Gemma proposes this interpretation. Does it preserve the intended meaning?':'Is this the thought I meant to express?');
   const card = node('section', 'interpretation-card');
   card.append(node('div', 'eyebrow', 'YOUR THOUGHT, AS UNDERSTOOD BY GEMMA'));
   card.append(node('h3', '', 'Review the interpretation'));
   if (interpretation.text) card.append(node('p', '', interpretation.text));
+  card.append(node('p', 'candidate-note', 'I can check that every listed assumption, conclusion and choice preserves what I meant.'));
   const details = node('dl', 'interpretation-details');
   function term(title, values) {
     if (!values || (Array.isArray(values) && !values.length)) return;
@@ -410,7 +454,8 @@ function addInterpretation(result, original) {
     details.append(group);
   }
   term('Assumptions', interpretation.assumptions?.length ? interpretation.assumptions : ['No additional assumptions; this claim covers every scenario case.']);
-  term('Conclusion', interpretation.conclusion);
+  const actionOnly=interpretation.strategy&&interpretation.graph?.conclusion?.op==='const'&&interpretation.graph.conclusion.value===true;
+  term(actionOnly?'This step':'Conclusion',actionOnly?'My explicit door-choice rule is shown below.':interpretation.conclusion);
   term('Builds on', interpretation.dependencies?.map(dependencyLabel));
   if (interpretation.strategy) {
     const rule = interpretation.strategy;
@@ -425,6 +470,7 @@ function addInterpretation(result, original) {
   const edit = node('button', 'text-button', 'I meant something else');
   edit.dataset.candidateAction = 'edit';
   edit.addEventListener('click', () => {
+    $('#review-ready').hidden=true;
     const draft = state.candidate?.original || original;
     state.caseRevision = !!state.candidate?.caseReview;
     state.candidate = null;
@@ -439,7 +485,9 @@ function addInterpretation(result, original) {
   state.transcript.push({role: 'interpretation', candidate_id: result.candidate_id, interpretation});
   setBusy(false);
   scrollConversation();
-  confirm.focus({preventScroll: true});
+  $('#review-ready').hidden = false;
+  $('#review-ready').onclick=()=>{card.scrollIntoView({block:'nearest'});confirm.focus({preventScroll:true});};
+  $('#busy-status').hidden=false;$('#busy-status').textContent='Interpretation ready for review. My draft is unchanged.';
 }
 
 async function submitThought(event) {
@@ -452,21 +500,20 @@ async function submitThought(event) {
   setBusy(true, 'Gemma is interpreting this thought. You will review it before anything is checked.');
   $('#cancel-processing').hidden=false;
   try {
-    const result = await api('/api/interpret', { session_id: state.session, text, guidance: state.guidance, case_revision: !!state.caseRevision });
+    const result = await api('/api/interpret', { session_id: state.session, text, guidance: state.guidance, grouping: $('#thought-grouping').value, case_revision: !!state.caseRevision });
     state.caseRevision = false;
     if (result.candidate_id && result.interpretation) addInterpretation(result, text);
     else {
-      message('companion', result.clarification || 'Could you explain one connection between a fact and a conclusion?');
+      const content = message('companion', result.clarification || 'Could you explain one connection between a fact and a conclusion?');
+      interpretationDiagnostic(content, result.diagnostic);
       state.caseRevision = !!result.case_review;
       if (!$('#thought').value) $('#thought').value = result.original || text;
       setBusy(false);
-      $('#thought').focus();
     }
   } catch (error) {
-    message('companion', `I cannot put that thought into a clear claim yet. ${error.message}`, 'CONNECTION NOTE');
+    message('companion', `The interpretation tool could not finish. My thought is unchanged. ${error.message}`, 'TOOL STATUS');
     if (!$('#thought').value) $('#thought').value = text;
     setBusy(false);
-    $('#thought').focus();
   }
 }
 
@@ -474,6 +521,7 @@ async function verifyCandidate(candidateCard, actions, expectedId) {
   const candidate = state.candidate;
   if (!candidate || state.busy) return;
   if (candidate.id !== expectedId) { toast('That interpretation has been replaced. Review your most recent thought.'); return; }
+  $('#review-ready').hidden=true;
   setBusy(true, 'Checking this step, then checking every part of my scenario goal.');
   try {
     const result = await api('/api/verify', {session_id: state.session, candidate_id: candidate.id});
@@ -493,7 +541,7 @@ async function verifyCandidate(candidateCard, actions, expectedId) {
     }
     if (accepted && result.claim) {
       if (!state.claims.some(claim => claim.id === result.claim.id)) state.claims.push(result.claim);
-      $('#onboarding').hidden = true;
+      $('#onboarding').hidden = !!state.scenario.tutorial || !$('#show-introduction').checked;
       renderClaims();
     }
     if (unavailable) {
@@ -523,10 +571,10 @@ async function verifyCandidate(candidateCard, actions, expectedId) {
     addVerificationDetails(card, result);
     content.append(card);
     if (result.progress?.solved) showCompleted(result.solution || result.solution_check);
+    await refreshRuntime();
     setBusy(false);
     scrollConversation();
     if (accepted && result.next_case_available && !state.solved) await reviewNextCase();
-    if (!state.candidate) $('#thought').focus({preventScroll: true});
   } catch (error) {
     const content = message('companion', `The verification could not finish. ${error.message}`, 'CONNECTION NOTE');
     content.append(node('p', '', 'Your interpretation is still available above. You can retry the check or revise it.'));
@@ -541,7 +589,7 @@ async function reviewNextCase() {
     const next = await api('/api/interpret', {session_id: state.session, next_case: true});
     if (next.candidate_id) addInterpretation(next, next.original);
     else {
-      message('companion', next.clarification); state.caseRevision = !!next.case_review;
+      const content = message('companion', next.clarification); interpretationDiagnostic(content, next.diagnostic); state.caseRevision = !!next.case_review;
       if (!$('#thought').value) $('#thought').value = next.original || '';
       setBusy(false);
     }
@@ -628,7 +676,8 @@ function showCompleted(solution) {
   card.append(node('div', 'eyebrow', 'A THREAD THAT HOLDS'));
   const theory = state.scenario?.domain === 'theory';
   card.append(node('h3', '', theory ? "I've connected the case." : "I've found a way through."));
-  card.append(node('p', '', theory ? 'My confirmed reasoning establishes each part of the goal under the stated case assumptions.' : 'I know what the answer tells me, and I know which door to go through, whichever guard I ask.'));
+  card.append(node('p', '', theory ? 'My confirmed claims cover every goal and follow from the supplied scenario.' : 'I know what the answer tells me, and I know which door to go through, whichever guard I ask.'));
+  if (theory) card.append(node('p', 'candidate-note', 'The proof checks my statements against the scenario. It does not check whether my chosen reasons are enough to support my conclusion. I can review that connection in my explanation below, which is a separate learning record.'));
   if (solution?.witness?.conclusions) {
     const list = node('ul'); solution.witness.conclusions.forEach(c => list.append(node('li', '', c))); card.append(list);
   }
@@ -660,25 +709,26 @@ function showCompleted(solution) {
       trail.append(li);
     });
     overview.append(trail); card.append(overview);
-    card.append(node('h4', '', 'The direct route'));
-    card.append(node('p', '', 'Exploring other routes helps me understand the problem and eliminate approaches. Here I can distinguish that exploration from the steps needed to establish my conclusion.'));
-    const improvements = node('ul'); review.inefficiencies.forEach(t => improvements.append(node('li', '', t))); card.append(improvements);
-    card.append(node('h4', '', 'Reasoning I can carry with me'));
-    const concepts = node('ul'); review.concepts.forEach(t => concepts.append(node('li', '', t))); card.append(concepts);
-    card.append(node('p', '', review.transfer));
+    const route=node('details','debrief-detail');route.append(node('summary','','The direct route'));card.append(route);
+    route.append(node('p', '', 'Exploring other routes helps me understand the problem and eliminate approaches. Here I can distinguish that exploration from the steps needed to establish my conclusion.'));
+    const improvements = node('ul'); review.inefficiencies.forEach(t => improvements.append(node('li', '', t))); route.append(improvements);
+    const carry=node('details','debrief-detail');carry.append(node('summary','','Reasoning I can carry with me'));card.append(carry);
+    const concepts = node('ul'); review.concepts.forEach(t => concepts.append(node('li', '', t))); carry.append(concepts);
+    carry.append(node('p', '', review.transfer));
   }
   const button = node('button', 'secondary-button', 'Reflect on my reasoning ↗');
   button.addEventListener('click', openPause);
   card.append(button);
-  $('#conversation').append(card);
+  card.append(learningCheckpoint({session:state.session,scenario:state.scenario,onChallengeTransfer:()=>openChallengeConfig({...state.scenario.challenge.config,format:state.scenario.journey?'staged':'single'}),onTransfer:async source=>{try{const r=await api('/api/import-theory',{source});await resetWorkspace(r.scenario);}catch(e){toast(e.message);}}}));
+  flow.complete(card);
 }
 
-async function requestHint() {
+async function requestHint(level=0) {
   if (state.busy || !state.session) return;
   setBusy(true, 'Thinking about my next step…');
   try {
-    const result = await api('/api/hint', {session_id: state.session, guidance: state.guidance});
-    message('companion', readable(result.feedback || result.hint), 'A GENTLE NUDGE');
+    const result = await api('/api/hint', {session_id: state.session, guidance: state.guidance,level});
+    message('companion', readable(result.feedback || result.hint), 'SUPPORT I CHOSE · NOT A NEW FACT');
   } catch (error) { message('companion', `A nudge is not available yet. ${error.message}`, 'CONNECTION NOTE'); }
   finally { setBusy(false); }
 }
@@ -712,9 +762,10 @@ function updateTimer() {
   const now = Date.now();
   if (state.busy && state.busySince) {
     const elapsed = Math.floor((now-state.busySince)/1000);
-    $('#busy-status').textContent = `${state.busyDescription}${elapsed > 2 ? ` · ${elapsed}s. I can draft my next thought while this finishes.` : ''}`;
+    if ($('#busy-status').textContent !== state.busyDescription) $('#busy-status').textContent=state.busyDescription;
+    $('#busy-elapsed').textContent=elapsed>2?`${elapsed}s · My draft stays available.`:'';
   }
-  if (timer.enabled && !state.paused && !state.busy) timer.remaining = Math.max(0, timer.remaining - (now - timer.lastTick) / 1000);
+  if (timer.enabled && !state.paused && !state.busy && flow.phase==='thinking') timer.remaining = Math.max(0, timer.remaining - (now - timer.lastTick) / 1000);
   timer.lastTick = now;
   const label = $('#pace-label');
   if (!timer.enabled) { label.replaceChildren(node('span', 'pace-dot'), document.createTextNode('At your pace')); return; }
@@ -744,8 +795,8 @@ async function exportSession() {
   const record = {
     format: 'thread-reasoning-session', version: 1, exported_at: new Date().toISOString(),
     started_at: state.started, scenario: state.scenario, claims: state.claims,
-    transcript: state.transcript, reflection: $('#reflection').value, performance:performanceSummary(),
-    draft: $('#thought').value, completed: state.solved, ...(serverSession ? {server_session: serverSession} : {})
+    transcript: state.transcript, reflection: $('#reflection').value, learning:await get('learning:'+state.session), performance:performanceSummary(),
+    draft: $('#thought').value, completed: state.solved, stage_history:await stageHistory(), ...(serverSession ? {server_session: serverSession} : {})
   };
   const url = URL.createObjectURL(new Blob([JSON.stringify(record, null, 2)], {type: 'application/json'}));
   const link = node('a');
@@ -784,7 +835,7 @@ async function submitScenario(event) {
     const result = await api('/api/scenario', {scenario});
     await resetWorkspace(result.scenario || result);
     $('#customise-dialog').close();
-    $('#thought').focus();
+    $('#scenario-flow h1')?.focus();
   } catch (error) {
     $('#scenario-error').textContent = error.message;
     $('#scenario-error').hidden = false;
@@ -811,16 +862,18 @@ async function importScenario(event) {
 document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => button.closest('dialog').close()));
 $('#runtime-button').addEventListener('click', () => $('#runtime-dialog').showModal());
 $('#preferences-button').addEventListener('click', () => $('#preferences-dialog').showModal());
-$('#focus-button').addEventListener('click', () => setFocus(!document.body.classList.contains('focus-mode')));
+$('#focus-button').addEventListener('click', () => {setFocus(!document.body.classList.contains('focus-mode'));savePreferences();});
 $('#focus-setting').addEventListener('change', event => setFocus(event.target.checked));
 $('#motion-setting').addEventListener('change', event => document.body.classList.toggle('reduced-motion', event.target.checked));
 $('#motion-setting').checked = matchMedia('(prefers-reduced-motion: reduce)').matches;
 $('#guidance').addEventListener('change', updateGuidance);
 $('#timer-setting').addEventListener('change', startTimer);
-$('#dismiss-onboarding').addEventListener('click', () => { $('#onboarding').hidden = true; });
+$('#dismiss-onboarding').addEventListener('click', () => { $('#show-introduction').checked = false; $('#onboarding').hidden = true; savePreferences(); $('#thought').focus(); });
 $('#thought-form').addEventListener('submit', submitThought);
 $('#thought').addEventListener('keydown', event => { if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') { event.preventDefault(); submitThought(); } });
-$('#hint-button').addEventListener('click', requestHint);
+const support=node('details','support-ladder');support.id='support-ladder';support.append(node('summary','','Choose how much support I want'),node('p','','I can increase or reduce guidance whenever I choose. These prompts never add facts to my argument.'));
+['Restate my goal','Give a focused cue','Offer an explanation starter','Show an analogous example'].forEach((label,i)=>{const b=node('button','text-button',label);b.type='button';b.onclick=()=>requestHint(i);support.append(b);});
+$('#thought-form').after(support);$('#hint-button').addEventListener('click',()=>{support.open=!support.open;if(support.open)support.querySelector('summary').focus();});
 $('#cancel-processing').addEventListener('click',cancelInterpretation);
 $('#refresh-runtime').addEventListener('click', async () => { await refreshRuntime(); if (!state.session) { try { await startSession(); } catch (error) { toast(error.message); } } });
 $('#pause-button').addEventListener('click', openPause);
@@ -832,12 +885,31 @@ $('#import-scenario').addEventListener('change', importScenario);
 $('#dictation-button').addEventListener('click', () => $('#dictation-dialog').showModal());
 $('#dictation-done').addEventListener('click', () => { $('#dictation-dialog').close(); $('#thought').focus(); });
 $('#custom-facts').readOnly = true;
-$('#custom-facts').setAttribute('aria-label', 'Fixed scenario facts; these cannot be changed in this prototype');
+$('#custom-facts').removeAttribute('aria-label');
+const fixedHelp=node('p','fine-print','These facts are read-only. Use the scenario builder or import to change the formal rules.');fixedHelp.id='fixed-facts-help';$('#custom-facts').after(fixedHelp);$('#custom-facts').setAttribute('aria-describedby',fixedHelp.id);
 $('#custom-facts').previousElementSibling.textContent = 'Fixed facts — the logic of this scenario';
 $('#choose-scenario').addEventListener('click', openLibrary);
 $('#restart-button').addEventListener('click', () => resetWorkspace(state.scenario).catch(() => {}));
 $('#import-theory').addEventListener('change', importScenario);
 $('#download-template').addEventListener('click', () => downloadText('My_Case.thy', CUSTOM_TEMPLATE));
+
+function renderSavedAttempt(saved){
+      for (const item of saved.history || []) {
+        message('user', item.student);
+        const result = item.result;
+        state.transcript.push({role: 'verification', ...result});
+        const content = message('companion');
+        const accepted = result.status === 'verified';
+        const unavailable = ['error','pending'].includes(result.status);
+        const card = node('section', `result-card ${accepted ? 'accepted' : unavailable ? 'pending' : 'rejected'}`);
+        card.append(node('div', 'result-label', accepted ? 'My thought holds' : unavailable ? 'Verification is waiting' : 'Something to reconsider'), node('p', '', result.feedback));
+        addSolutionCheck(card, result);
+        addVerificationDetails(card, result);
+        content.append(card);
+      }
+      if (saved.progress.solved) showCompleted(saved.solution);
+      if (saved.pending) addInterpretation(saved.pending,saved.pending.original);
+}
 
 async function initialise() {
   renderRuntime();
@@ -853,24 +925,12 @@ async function initialise() {
       state.claims = saved.claims;
       renderScenario(saved.scenario);
       renderClaims();
-      $('#onboarding').hidden = true;
+      $('#onboarding').hidden = !!state.scenario.tutorial || !$('#show-introduction').checked;
       $('#conversation').replaceChildren();
-      for (const item of saved.history || []) {
-        message('user', item.student);
-        const result = item.result;
-        state.transcript.push({role: 'verification', ...result});
-        const content = message('companion');
-        const accepted = result.status === 'verified';
-        const card = node('section', `result-card ${accepted ? 'accepted' : 'rejected'}`);
-        card.append(node('div', 'result-label', accepted ? 'My thought holds' : 'Something to reconsider'), node('p', '', result.feedback));
-        addSolutionCheck(card, result);
-        addVerificationDetails(card, result);
-        content.append(card);
-      }
-      if (saved.progress.solved) showCompleted(saved.solution);
-      if (saved.pending) addInterpretation(saved.pending,saved.pending.original);
+      renderSavedAttempt(saved);
       const workspace=await get('workspace:'+state.session);
       if(workspace){$('#thought').value=workspace.draft||'';$('#reflection').value=workspace.reflection||'';}
+      if(!saved.progress.solved)await flow.open({resume:true});
       setBusy(false);
       scrollConversation();
     } else await startSession();
@@ -882,14 +942,54 @@ async function initialise() {
   await runtimePromise;
 }
 
+function applyReadingPreferences(){
+ document.documentElement.dataset.textSize=$('#text-size').value;
+ document.body.classList.toggle('reading-space',$('#reading-spacing').checked);
+}
+function applyPreferences(p={}){
+ const option=(id,value,fallback)=>{$(id).value=[...$(id).options].some(o=>o.value===value)?value:fallback;};
+ option('#guidance',p.guidance,'gentle');option('#timer-setting',p.timer,'0');option('#workspace-view',p.view,'full');option('#text-size',p.textSize,'standard');
+ $('#motion-setting').checked=typeof p.motion==='boolean'?p.motion:matchMedia('(prefers-reduced-motion: reduce)').matches;
+ document.body.classList.toggle('reduced-motion',$('#motion-setting').checked);setFocus(!!p.focus);
+ $('#direct-wording').checked=!!p.direct;$('#reading-spacing').checked=!!p.spacing;$('#show-introduction').checked=p.introduction!==false;
+ $('#anticipation-enabled').checked=p.backgroundPreparation!==false;
+ $('#onboarding').hidden=!!state.scenario?.tutorial||!$('#show-introduction').checked;
+ document.body.classList.toggle('current-view',$('#workspace-view').value==='current');flow.updateLayout();applyReadingPreferences();updateGuidance();
+}
 async function restorePreferences(){
- const p=await get('preferences');if(p){$('#guidance').value=p.guidance;$('#motion-setting').checked=p.motion;document.body.classList.toggle('reduced-motion',p.motion);setFocus(p.focus);$('#timer-setting').value=p.timer;updateGuidance();}
+ try{const [p,backgroundPreparation]=await Promise.all([get('preferences'),get('background-preparation')]);applyPreferences({...p,backgroundPreparation});}catch(error){applyPreferences();$('#preferences-status').textContent='Saved preferences could not be read. Defaults are available; device storage may be unavailable.';}
 }
 function persistWorkspace(){if(state.session)put('workspace:'+state.session,{draft:$('#thought').value,reflection:$('#reflection').value}).catch(e=>showNotice('Device storage could not save the draft: '+e.message));}
 for(const id of ['thought','reflection'])$('#'+id).addEventListener('input',persistWorkspace);
-for(const id of ['guidance','motion-setting','focus-setting','timer-setting'])$('#'+id).addEventListener('change',()=>put('preferences',{guidance:$('#guidance').value,motion:$('#motion-setting').checked,focus:$('#focus-setting').checked,timer:$('#timer-setting').value}));
+function savePreferences(){return put('preferences',{guidance:$('#guidance').value,motion:$('#motion-setting').checked,focus:$('#focus-setting').checked,timer:$('#timer-setting').value,direct:$('#direct-wording').checked,view:$('#workspace-view').value,textSize:$('#text-size').value,spacing:$('#reading-spacing').checked,introduction:$('#show-introduction').checked}).then(()=>{$('#preferences-status').textContent='Preferences saved on this browser.';}).catch(error=>{$('#preferences-status').textContent='Applied for now, but preferences could not be saved: '+error.message;});}
+for(const id of ['guidance','motion-setting','focus-setting','timer-setting'])$('#'+id).addEventListener('change',savePreferences);
+$('#conversation').addEventListener('scroll',()=>{const c=$('#conversation');state.followConversation=c.scrollHeight-c.scrollTop-c.clientHeight<80;},{passive:true});
 window.addEventListener('pagehide',persistWorkspace);
 setInterval(updateTimer, 1000);
+async function stageHistory(){if(!state.scenario?.journey)return [];let id=state.session;const records=[],seen=new Set();while(id&&records.length<3&&!seen.has(id)){seen.add(id);const s=await api('/api/session?id='+encodeURIComponent(id));records.unshift({session:s,reflection:await get('learning:'+id),workspace:await get('workspace:'+id)});id=s.previous_stage;}return records;}
+const flow=createScenarioFlow({state,onChoose:openLibrary,onTutorial:startTutorial,onPreferences:()=>$('#preferences-dialog').showModal(),onNext:(choice,rationale)=>resetWorkspace(null,{session_id:state.session,choice,rationale}),onPrepare:session_id=>api('/api/prepare-next-stage',{session_id}),onExport:exportSession,onHistory:stageHistory});
+async function startTutorial(){if(state.busy)return;setBusy(true,'Preparing the tutorial…');try{const r=await api('/api/tutorial');setBusy(false);await resetWorkspace(r.scenario);$('#library-dialog').close();}catch(e){setBusy(false);toast(e.message);}}
+const tutorialButton=node('button','secondary-button','Start guided tutorial · The archive visit');tutorialButton.onclick=startTutorial;$('#scenario-library').before(tutorialButton);
+$('#support-ladder').append(reasoningToolkit());
+$('#library-dialog').addEventListener('close',()=>{if(flow.phase!=='thinking')document.querySelector('#scenario-flow h1')?.focus();});
 restorePreferences().then(initialise);
 
 document.querySelector('#warmup-workspace').onclick=async e=>{e.target.disabled=true;const status=document.querySelector('#warmup-status');status.textContent='Loading Gemma while I read…';try{await warmup();status.textContent='Gemma is ready in this workspace.';}catch(err){status.textContent=err.message;}finally{e.target.disabled=false;}};
+
+$('#workspace-view').addEventListener('change',()=>{document.body.classList.toggle('current-view',$('#workspace-view').value==='current');if($('#workspace-view').value==='full'){flow.setCollapsed(false);put('scenario-collapsed',false).catch(()=>{});}else flow.updateLayout();savePreferences();});
+$('#direct-wording').addEventListener('change',savePreferences);
+for(const id of ['text-size','reading-spacing'])$('#'+id).addEventListener('change',()=>{applyReadingPreferences();savePreferences();});
+$('#show-introduction').addEventListener('change',()=>{$('#onboarding').hidden=!!state.scenario?.tutorial||!$('#show-introduction').checked;savePreferences();});
+async function saveBackgroundPreparation(){const enabled=$('#anticipation-enabled').checked;window.dispatchEvent(new CustomEvent('background-preparation-change',{detail:enabled}));try{await put('background-preparation',enabled);$('#preferences-status').textContent='Preferences saved on this browser.';}catch(error){$('#preferences-status').textContent='Applied for now, but the background preference could not be saved: '+error.message;}}
+$('#anticipation-enabled').addEventListener('change',saveBackgroundPreparation);
+$('#reset-preferences').addEventListener('click',async()=>{applyPreferences();flow.setCollapsed(false);startTimer();await put('scenario-collapsed',false).catch(()=>{});await savePreferences();await saveBackgroundPreparation();});
+const challengeMaker=challengeForm({generate:(config,format)=>api(format==='staged'?'/api/generate-journey':'/api/generate-challenge',{config}),start:async(scenario,guidance)=>{$('#guidance').value=guidance;updateGuidance();await savePreferences();await resetWorkspace(scenario);$('#library-dialog').close();}});
+$('#scenario-library').before(challengeMaker);
+async function openChallengeConfig(config){if(state.busy)return;await openLibrary();await challengeMaker.configure(config);}
+const currentActions=node('div','current-actions');for(const [id,label]of [['choose-scenario','Choose scenario'],['restart-button','Restart scenario']]){const b=node('button','text-button',label);b.type='button';b.onclick=()=>{if(!state.busy)$('#'+id).click();};currentActions.append(b);}$('#context-content').before(currentActions);
+const builder=authorForm(async source=>{const r=await api('/api/import-theory',{source});openCustomise(r.scenario);});
+$('#customise-dialog').append(builder);
+const createButton=node('button','secondary-button','Create a scenario from statements and rules');createButton.onclick=()=>{$('#library-dialog').close();openCustomise(state.scenario);builder.open=true;builder.querySelector('summary').focus();};$('#scenario-library').before(createButton);
+const lesson=node('details','onboarding-example');lesson.append(node('summary','','Try the review loop · example and glossary'),node('p','','Example: a library lends a book when my pass is valid AND the book is available. “My pass is valid, so I can borrow it” leaves a condition open. I can ask which condition, then explain how both facts support my claim.'),node('p','','A fact is supplied by the scenario. An assumption is a condition I add. A claim is what I assert. A warrant connects evidence to a claim. A counterexample is a case where the claim fails. A proof here is conditional on the scenario model.'),node('p','','I review the interpretation first. If Gemma changed my meaning, I correct the interpretation; that does not mean my argument was wrong. English is the currently supported interface language. Other input languages have not been validated.'));
+$('#onboarding').after(lesson);
+const readableExport=node('button','text-button','Export readable reasoning notes');readableExport.onclick=async()=>{const learning=await get('learning:'+state.session),history=await stageHistory();downloadText('thread-reasoning-notes.txt',[state.scenario.title,'Goal: '+state.scenario.goal,'Given facts:',...state.scenario.facts,'My reasoning trail:',...state.claims.map(c=>c.id+': '+(c.text||c.summary||'')+'\nInterpretation: '+(c.summary||readable(c.conclusion))),'Reflection: '+$('#reflection').value,...['why','alternative','revision','influence','transfer','plan'].map(k=>k+': '+(learning?.[k]||'')),...history.flatMap(r=>['Stage '+r.session.scenario.journey.stage,...r.session.graph.map(c=>c.text),'Evidence choice: '+(r.session.stage_decision?.choice||''),'Decision note: '+(r.session.stage_decision?.rationale||''),...Object.entries(r.reflection||{}).filter(([k])=>['why','alternative','revision','influence','transfer','plan'].includes(k)).map(([k,v])=>k+': '+v)])].join('\n\n'));};$('#pause-dialog').append(readableExport);
