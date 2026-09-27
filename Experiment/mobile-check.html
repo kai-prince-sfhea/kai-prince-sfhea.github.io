@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thread · Mobile compatibility</title><link rel="stylesheet" href="/Experiment/style.css"><link rel="stylesheet" href="/Experiment/device.css"></head><body><main class="device-page">
+<a href="/Experiment/device.html">← Device setup</a><h1>Mobile compatibility</h1>
+<p>Check storage before downloading Gemma. These checks create and remove a small temporary file. No model is downloaded and no personal data is uploaded.</p>
+<p id="capabilities" role="status">Checking browser capabilities…</p>
+<button id="storage-check">Check storage and download resume</button>
+<button id="proof-check" class="secondary-button">Check proof engine (downloads libraries)</button>
+<p>The proof check downloads about 28 MB if these libraries are not cached. It checks a true, false and unfinished theorem. It does not install Gemma or establish that your device has enough memory for it.</p>
+<pre id="results" role="status" style="white-space:pre-wrap;overflow-wrap:anywhere"></pre>
+<button id="export-check" class="secondary-button" disabled>Export compatibility evidence</button>
+<p>Desktop tests of this worker storage path and phone-sized layouts are not Android/iOS emulation. For mobile evidence, run here on the device itself; Safari 18 lacks WebGPU, required by this Gemma runtime. Safari 26 or later still needs device and memory checks.</p>
+</main><script type="module" src="/Experiment/runtime/mobile-check.js"></script></body></html>

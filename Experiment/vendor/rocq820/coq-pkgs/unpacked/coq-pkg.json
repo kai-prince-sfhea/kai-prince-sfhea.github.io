@@ -1,0 +1,107 @@
+{
+  "name": "ltac2",
+  "deps": [],
+  "modules": {
+    "Ltac2.Array": {
+      "deps": [
+        "Ltac2.Init",
+        "Ltac2.Int",
+        "Ltac2.Control",
+        "Ltac2.Bool",
+        "Ltac2.Message"
+      ]
+    },
+    "Ltac2.Bool": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Char": { "deps": [ "Ltac2.Init", "Ltac2.Int" ] },
+    "Ltac2.Constant": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Constr": { "deps": [ "Ltac2.Init", "Ltac2.Ind", "Ltac2.Array" ] },
+    "Ltac2.Constructor": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Control": { "deps": [ "Ltac2.Init", "Ltac2.Message" ] },
+    "Ltac2.Env": { "deps": [ "Ltac2.Init", "Ltac2.Std" ] },
+    "Ltac2.Evar": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.FMap": { "deps": [ "Ltac2.Init", "Ltac2.FSet" ] },
+    "Ltac2.FSet": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Float": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Fresh": { "deps": [ "Ltac2.Init", "Ltac2.Control", "Ltac2.List" ] },
+    "Ltac2.Ident": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Ind": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Init": {},
+    "Ltac2.Int": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Lazy": { "deps": [ "Ltac2.Init", "Ltac2.Ref", "Ltac2.Control" ] },
+    "Ltac2.List": {
+      "deps": [
+        "Ltac2.Init",
+        "Ltac2.Int",
+        "Ltac2.Control",
+        "Ltac2.Bool",
+        "Ltac2.Message"
+      ]
+    },
+    "Ltac2.Ltac1": { "deps": [ "Ltac2.Init", "Ltac2.Std", "Ltac2.Control" ] },
+    "Ltac2.Ltac2": {
+      "deps": [
+        "Ltac2.Init",
+        "Ltac2.Array",
+        "Ltac2.Bool",
+        "Ltac2.Char",
+        "Ltac2.Constant",
+        "Ltac2.Constr",
+        "Ltac2.Constructor",
+        "Ltac2.Control",
+        "Ltac2.Env",
+        "Ltac2.Evar",
+        "Ltac2.Float",
+        "Ltac2.Fresh",
+        "Ltac2.Ident",
+        "Ltac2.Ind",
+        "Ltac2.Int",
+        "Ltac2.Lazy",
+        "Ltac2.List",
+        "Ltac2.Ltac1",
+        "Ltac2.Message",
+        "Ltac2.Meta",
+        "Ltac2.Option",
+        "Ltac2.Pattern",
+        "Ltac2.Printf",
+        "Ltac2.Proj",
+        "Ltac2.RedFlags",
+        "Ltac2.Ref",
+        "Ltac2.Std",
+        "Ltac2.String",
+        "Ltac2.Uint63",
+        "Ltac2.FSet",
+        "Ltac2.FMap",
+        "Ltac2.TransparentState",
+        "Ltac2.Unification",
+        "Ltac2.Notations"
+      ]
+    },
+    "Ltac2.Message": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Meta": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Notations": {
+      "deps": [
+        "Ltac2.Init",
+        "Ltac2.Control",
+        "Ltac2.Option",
+        "Ltac2.Pattern",
+        "Ltac2.Array",
+        "Ltac2.Int",
+        "Ltac2.Std",
+        "Ltac2.Constr"
+      ]
+    },
+    "Ltac2.Option": { "deps": [ "Ltac2.Init", "Ltac2.Control" ] },
+    "Ltac2.Pattern": { "deps": [ "Ltac2.Init", "Ltac2.Control" ] },
+    "Ltac2.Printf": { "deps": [ "Ltac2.Message" ] },
+    "Ltac2.Proj": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Pstring": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.RedFlags": { "deps": [ "Ltac2.Init", "Ltac2.Std" ] },
+    "Ltac2.Ref": { "deps": [ "Ltac2.Init", "Ltac2.Int" ] },
+    "Ltac2.Std": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.String": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.TransparentState": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Uint63": { "deps": [ "Ltac2.Init" ] },
+    "Ltac2.Unification": { "deps": [ "Ltac2.Init", "Ltac2.TransparentState" ] },
+    "Coq.ltac2.ltac2_plugin@cma": {}
+  }
+}

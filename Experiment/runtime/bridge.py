@@ -35,7 +35,7 @@ def compile_step(c,accepted,s):
     c=parse(c,s,accepted)
     if s.get('domain')=='theory':
         pl,ids=T.prolog_source(c,s);thy,_=T.hol_source(c,s)
-        return dict(claim=c,prolog=pl,isabelle=thy,coq=[],scope='Conditional proof over the inspected finite scenario rules; original HOL source is reference, not executed in the browser.',graph=dict(kind='named-proposition graph',candidate=c,nodes=list(s['nodes'].values()),rules=s['rules'],accepted=accepted,prolog_atom_map=ids))
+        return dict(claim=c,prolog=pl,isabelle=thy,coq=[],scope='Conditional proof over the inspected finite scenario rules; problem-only HOL source is reference, not executed in the browser.',graph=dict(kind='named-proposition graph',candidate=c,nodes=[n for p,n in s['nodes'].items() if p in ids.values()],rules=[r for r in s['rules'] if r['conclusion'] in ids.values()],accepted=accepted,prolog_atom_map=ids))
     claim=C._claim(c);deps=C._dependencies(claim,accepted)
     sentences=[]
     for i,x in enumerate([*deps,claim]): sentences+=theorem('step_'+str(i),C._theorem(x))
@@ -46,15 +46,17 @@ def compile_step(c,accepted,s):
     return dict(claim=c,prolog=C._prolog_source(claim,deps),isabelle=thy,coq=sentences,scope='Exhaustive Boolean Two Guards semantics, including non-vacuous assumptions.',graph=dict(kind='Boolean argument graph',candidate=c,accepted=accepted,effective_theorem=C._theorem(claim).json()))
 
 def named_certificate(c,s,result):
-    nodes=list(s['nodes']);ids={p:'a'+str(i) for i,p in enumerate(nodes)}
-    sentences=['Section Scenario.','Variables '+' '.join(ids.values())+' : Prop.']
+    nodes=list(s['nodes']);ids={p:'a'+str(i) for i,p in enumerate(nodes)};wanted=T.relevant_projection(c,s)
+    sentences=['Section Scenario.','Variables '+' '.join(ids[p] for p in nodes if p in wanted)+' : Prop.']
     for p,n in s['nodes'].items():
-        if n['fact']: sentences.append('Hypothesis f_'+ids[p]+' : '+ids[p]+'.')
-    for i,r in enumerate(s['rules']): sentences.append('Hypothesis r'+str(i)+' : '+' -> '.join([ids[p] for p in r['premises']]+[ids[r['conclusion']]])+'.')
+        if p in wanted and n['fact']: sentences.append('Hypothesis f_'+ids[p]+' : '+ids[p]+'.')
+    for i,r in enumerate(s['rules']):
+        if r['conclusion'] not in wanted:continue
+        sentences.append('Hypothesis r'+str(i)+' : '+' -> '.join([ids[p] for p in r['premises']]+[ids[r['conclusion']]])+'.')
     # Bridge explicit negation propositions with visible conditional premises.
     terms={' '.join(n['hol'].split()):p for p,n in s['nodes'].items()}
     for term,p in terms.items():
-        if term.startswith(r'\<not> ') and term[7:] in terms:
+        if p in wanted and term.startswith(r'\<not> ') and term[7:] in terms:
             q=terms[term[7:]]
             sentences+=['Hypothesis negative_'+ids[p]+' : '+ids[p]+' -> ~ '+ids[q]+'.','Hypothesis negative_'+ids[q]+' : '+ids[q]+' -> ~ '+ids[p]+'.']
     def proof(t):
@@ -72,7 +74,7 @@ def prepare_goal(accepted,s):
             for lit in c['conclusions']:
                 if lit['positive']: learned.update(s['nodes'][lit['id']]['covers'])
         missing=[p for p in s['targets'] if p not in learned]
-        if missing: return dict(status='not_discovered',detail='I still need to establish: '+'; '.join(s['nodes'][p]['label'] for p in missing),theorem=s['goal'],graph=dict(targets=s['targets'],learned=sorted(learned),missing=missing))
+        if missing: return dict(status='not_discovered',detail='I have not yet established every part of the scenario goal.',theorem=s['goal'],graph=dict(targets=s['targets'],learned=sorted(learned),missing=missing))
         c=dict(id='goal',text='Scenario goal',conclusions=[dict(id=p,positive=True) for p in s['targets']],assumptions=[],depends_on=[])
         return dict(status='candidate',compiled=compile_step(c,accepted,s),witness=dict(conclusions=[s['nodes'][p]['label'] for p in s['targets']],supporting_claims=[c['id'] for c in accepted]))
     claims,questions=G._prepare(accepted)

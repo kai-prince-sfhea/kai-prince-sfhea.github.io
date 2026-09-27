@@ -9,6 +9,7 @@
   "/Experiment/index.html",
   "/Experiment/launch.js",
   "/Experiment/manifest.webmanifest",
+  "/Experiment/mobile-check.html",
   "/Experiment/model-check.html",
   "/Experiment/notices.html",
   "/Experiment/presentation.html",
@@ -16,7 +17,8 @@
   "/Experiment/data/assets.json",
   "/Experiment/data/build.json",
   "/Experiment/data/compiler.json",
-  "/Experiment/data/coq-files.json",
+  "/Experiment/data/proof-runtime.json",
+  "/Experiment/data/rocq-files.json",
   "/Experiment/data/scenarios.json",
   "/Experiment/licenses/Apache-2.0.txt",
   "/Experiment/licenses/Coq-LICENSE.txt",
@@ -31,6 +33,7 @@
   "/Experiment/runtime/coq.js",
   "/Experiment/runtime/device.js",
   "/Experiment/runtime/local-api.js",
+  "/Experiment/runtime/mobile-check.js",
   "/Experiment/runtime/model-check.js",
   "/Experiment/runtime/model-loader.js",
   "/Experiment/runtime/model-worker.js",
@@ -38,5 +41,9 @@
   "/Experiment/runtime/prolog-worker.js",
   "/Experiment/runtime/proofs.js",
   "/Experiment/runtime/pwa.js",
-  "/Experiment/runtime/store.js"
+  "/Experiment/runtime/schema.js",
+  "/Experiment/runtime/storage-worker.js",
+  "/Experiment/runtime/storage-writer.js",
+  "/Experiment/runtime/store.js",
+  "/Experiment/runtime/telemetry.js"
 ]
