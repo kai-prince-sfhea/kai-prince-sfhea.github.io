@@ -1,0 +1,4438 @@
+{
+  "schemaVersion": 1,
+  "version": "reasoning-examples-v1",
+  "languages": [
+    "en"
+  ],
+  "profiles": [
+    "beginner",
+    "experienced",
+    "expert"
+  ],
+  "profileNotes": {
+    "beginner": "An authored short response with a simple claim, observation or reasoning error. This is not a classification of a learner.",
+    "experienced": "An authored response distinguishing related claims or providing several explicit reasons. This is not a classification of a learner.",
+    "expert": "An authored response with more complex scope, method or uncertainty. A complex response can still contain an error; this is not a classification of a learner."
+  },
+  "purpose": "Original independent fictional demonstrations of named-proposition interpretation and reasoning practices. Outputs preserve the input, including mistaken inferences. Formal validity, truth, scenario completion and learning outcomes are separate questions. These examples are not playable facts, hints that solve a case, proof certificates or benchmark evidence. All profiles are available to every learner.",
+  "provenance": "Examples were authored for this project and agent-reviewed. Human review of fidelity, teaching value and cultural accessibility is pending. Source references describe the conceptual rationale; the sources did not author or endorse these examples.",
+  "interpretationContract": {
+    "vocabularyScope": "Each example's IDs are local to that example. Meanings form a dictionary, not a set of true premises. Do not merge this vocabulary into a playable scenario.",
+    "outputScope": "The output records only the example input's asserted conclusions and explicit supporting reasons. Negated literals deny their vocabulary meaning. Plans, uncertainty, reports and scope remain in the meanings rather than being converted to completed facts.",
+    "proofBoundary": "action=claim means an assertion can be represented; it never means the assertion has been verified. Teaching notes are not evidence and do not amend the example input.",
+    "reuseBoundary": "Retrieve only a bounded selection as separate demonstrations. The current player's interpretation still needs model fidelity review, player confirmation and formal checking. Never reuse an example as a prior player claim.",
+    "reviewStatus": "agent-reviewed; human review pending"
+  },
+  "approaches": [
+    {
+      "id": "claim",
+      "title": "Identify the claim",
+      "description": "Separate what is being asserted from its reasons, reports and stronger unstated claims.",
+      "sourceRefs": [
+        "manchester-argument"
+      ]
+    },
+    {
+      "id": "evidence",
+      "title": "Distinguish evidence from conclusion",
+      "description": "Identify the observations offered as support without treating them as automatically sufficient.",
+      "sourceRefs": [
+        "manchester-argument",
+        "manchester-critical"
+      ]
+    },
+    {
+      "id": "warrant",
+      "title": "Explain the warrant",
+      "description": "Make the rule connecting a reason to its conclusion visible and examine its conditions.",
+      "sourceRefs": [
+        "manchester-argument",
+        "informal-logic"
+      ]
+    },
+    {
+      "id": "acceptability",
+      "title": "Assess premise acceptability",
+      "description": "Examine whether a premise is credible or established enough to use for this purpose.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-sources"
+      ]
+    },
+    {
+      "id": "relevance",
+      "title": "Assess relevance",
+      "description": "Ask whether a reason bears on the particular claim and decision being considered.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ]
+    },
+    {
+      "id": "sufficiency",
+      "title": "Assess sufficiency",
+      "description": "Distinguish evidence that contributes to a claim from evidence adequate for the strength of that claim.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ]
+    },
+    {
+      "id": "alternatives",
+      "title": "Consider alternative explanations",
+      "description": "Construct a plausible competing explanation and identify evidence that would distinguish it.",
+      "sourceRefs": [
+        "manchester-critical",
+        "manchester-argument"
+      ]
+    },
+    {
+      "id": "rebuttals",
+      "title": "Respond to objections",
+      "description": "Address a relevant objection while retaining the parts of a claim that remain justified.",
+      "sourceRefs": [
+        "manchester-argument",
+        "informal-logic"
+      ]
+    },
+    {
+      "id": "proof-local-self-explanation",
+      "title": "Explain one proof step",
+      "description": "Explain why a particular inference follows from its premises and rule.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ]
+    },
+    {
+      "id": "proof-global-strategy",
+      "title": "Explain the whole proof strategy",
+      "description": "Relate a local subgoal to the overall route while distinguishing a plan from a completed proof.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "manchester-argument"
+      ]
+    },
+    {
+      "id": "construction-forward",
+      "title": "Construct reasoning forwards",
+      "description": "Start from established observations and apply applicable rules without inventing their premises.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ]
+    },
+    {
+      "id": "construction-backward",
+      "title": "Construct reasoning backwards",
+      "description": "Work from a goal to the conditions of an applicable rule, keeping required conditions distinct from proven facts.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ]
+    },
+    {
+      "id": "counterexamples",
+      "title": "Use a counterexample",
+      "description": "Test a universal claim with a relevant case that satisfies its antecedent but defeats its conclusion.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "informal-logic"
+      ]
+    },
+    {
+      "id": "cases",
+      "title": "Reason by cases",
+      "description": "Keep case assumptions separate and explain whether the listed cases exhaust the relevant possibilities.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Distinguish necessary and sufficient conditions",
+      "description": "Preserve the direction and completeness of a rule, including explicit conditions and uncertainty.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "informal-logic"
+      ]
+    },
+    {
+      "id": "source-credibility",
+      "title": "Evaluate source credibility",
+      "description": "Evaluate expertise, method, provenance and purpose for the specific claim without treating status as proof.",
+      "sourceRefs": [
+        "manchester-sources",
+        "manchester-critical"
+      ]
+    },
+    {
+      "id": "source-independence",
+      "title": "Check evidence independence",
+      "description": "Track the origin of reports so repetition is not confused with independent corroboration.",
+      "sourceRefs": [
+        "manchester-sources",
+        "manchester-critical"
+      ]
+    },
+    {
+      "id": "scope",
+      "title": "Respect the scope of a conclusion",
+      "description": "Keep population, task, time and conditions within the boundaries supported by the evidence.",
+      "sourceRefs": [
+        "manchester-critical",
+        "manchester-argument"
+      ]
+    },
+    {
+      "id": "correlation-causation",
+      "title": "Separate association from causation",
+      "description": "Consider confounding, direction and study design before interpreting a pattern as a causal effect.",
+      "sourceRefs": [
+        "manchester-critical",
+        "informal-logic"
+      ]
+    },
+    {
+      "id": "confirmation-bias",
+      "title": "Seek evidence that could challenge an expectation",
+      "description": "Notice selective search and choose informative checks rather than only confirming examples.",
+      "sourceRefs": [
+        "manchester-critical",
+        "informal-logic"
+      ]
+    },
+    {
+      "id": "critical-reflection",
+      "title": "Reflect on reasoning and next action",
+      "description": "Connect an event in the reasoning process to its significance and an actionable future adjustment.",
+      "sourceRefs": [
+        "manchester-reflection",
+        "manchester-critical"
+      ]
+    },
+    {
+      "id": "transfer",
+      "title": "Transfer a reasoning method",
+      "description": "Apply an explicitly identified reasoning practice in a different setting while checking that its conditions still fit.",
+      "sourceRefs": [
+        "udl-transfer",
+        "manchester-reflection"
+      ]
+    },
+    {
+      "id": "affirming-consequent",
+      "title": "Spot affirming the consequent",
+      "description": "Distinguish a sufficient-condition rule from its converse; interpreting an invalid inference does not validate it.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ]
+    },
+    {
+      "id": "hasty-generalisation",
+      "title": "Check a generalisation's support",
+      "description": "Compare a claim's population and scope with the observations actually sampled.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ]
+    },
+    {
+      "id": "false-dilemma",
+      "title": "Check whether options are exhaustive",
+      "description": "Ask whether a forced choice has excluded live alternatives or mixed together different decisions.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ]
+    },
+    {
+      "id": "circular-support",
+      "title": "Identify circular support",
+      "description": "Distinguish independent grounds from a conclusion repeated or renamed as its own reason.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ]
+    },
+    {
+      "id": "straw-person",
+      "title": "Represent a position fairly",
+      "description": "Check whether a reply addresses the position actually stated rather than a stronger or altered version.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ]
+    },
+    {
+      "id": "popularity-irrelevant-authority",
+      "title": "Check popularity and relevant authority",
+      "description": "Distinguish agreement or prestige from evidence relevant to the particular claim, without rejecting all expertise.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-sources"
+      ]
+    }
+  ],
+  "sourceRefs": {
+    "manchester-argument": {
+      "title": "University of Manchester Library · Developing an argument",
+      "url": "https://www.education.library.manchester.ac.uk/mle/developing-argument/"
+    },
+    "manchester-critical": {
+      "title": "University of Manchester Library · Being critical",
+      "url": "https://www.education.library.manchester.ac.uk/mle/being-critical/"
+    },
+    "manchester-sources": {
+      "title": "University of Manchester Library · Evaluating sources",
+      "url": "https://www.education.library.manchester.ac.uk/mle/evaluating-sources/"
+    },
+    "manchester-reflection": {
+      "title": "University of Manchester Library · Writing support and reflective writing",
+      "url": "https://www.education.library.manchester.ac.uk/mle/packages/writing/"
+    },
+    "proof-self-explanation": {
+      "title": "Loughborough University · Proof self-explanation training",
+      "url": "https://www.lboro.ac.uk/departments/maths-education/research/mathematical-cognition/self-ex-training/"
+    },
+    "informal-logic": {
+      "title": "Stanford Encyclopedia of Philosophy · Informal Logic",
+      "url": "https://plato.stanford.edu/entries/logic-informal/"
+    },
+    "udl-transfer": {
+      "title": "CAST Universal Design for Learning Guidelines · Maximise transfer and generalisation",
+      "url": "https://udlguidelines.cast.org/representation/building-knowledge/transfer-generalization/"
+    }
+  },
+  "examples": [
+    {
+      "id": "claim-beginner-en",
+      "approach": "claim",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "I think the blue cycling route is usable.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The blue cycling route is usable"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I think the blue route is usable.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Identify the proposed conclusion before looking for support. This sentence does not state why the route is usable.",
+      "sourceRefs": [
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "claim-experienced-en",
+      "approach": "claim",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The new trail map is easier to read, but it does not cover more paths.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The new trail map is easier to read"
+        },
+        {
+          "id": "e2",
+          "meaning": "The new trail map covers more paths"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I find the new map easier to read, but it covers no more paths.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Preserve both the positive readability claim and the denial about coverage; improvement on one dimension does not imply improvement on every dimension.",
+      "sourceRefs": [
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "claim-expert-en",
+      "approach": "claim",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "My conclusion is limited to this trial: the tested captions were legible for the five volunteers.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The tested captions were legible for the five volunteers in this trial"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I conclude only that these captions were legible for the five trial volunteers.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "The group and trial boundary belong to the claim. Do not replace this with universal accessibility or infer anything about untested readers.",
+      "sourceRefs": [
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "evidence-beginner-en",
+      "approach": "evidence",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The clay has dried because its mass was unchanged in both readings.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The clay has dried"
+        },
+        {
+          "id": "e2",
+          "meaning": "The clay's mass was unchanged in both readings"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I conclude the clay has dried because its mass was unchanged.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The repeated measurement is offered as evidence. Its adequacy depends on the measurement interval, instrument and meaning of dried.",
+      "sourceRefs": [
+        "manchester-argument",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "evidence-experienced-en",
+      "approach": "evidence",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "I suspect the feeder is blocked because the grain level stayed constant and no grain reached the tray.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The feeder may be blocked"
+        },
+        {
+          "id": "e2",
+          "meaning": "The grain level stayed constant"
+        },
+        {
+          "id": "e3",
+          "meaning": "No grain reached the tray"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I suspect a blockage because the grain level stayed constant and none reached the tray.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Keep the tentative claim tentative. Two observations can motivate a hypothesis without eliminating every alternative.",
+      "sourceRefs": [
+        "manchester-argument",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "evidence-expert-en",
+      "approach": "evidence",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The vibration reading supports inspecting the fan, because it exceeds the agreed inspection threshold; it does not establish a bearing failure.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The vibration reading supports inspecting the fan"
+        },
+        {
+          "id": "e2",
+          "meaning": "The vibration reading establishes a bearing failure"
+        },
+        {
+          "id": "e3",
+          "meaning": "The vibration reading exceeds the agreed inspection threshold"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I support inspecting the fan because the reading exceeds the threshold, without claiming bearing failure.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Distinguish evidence for an action from evidence establishing a specific cause. A useful inspection decision can coexist with uncertainty.",
+      "sourceRefs": [
+        "manchester-argument",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "warrant-beginner-en",
+      "approach": "warrant",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The lantern may be issued because it passed the lamp check and every lantern that passes that check may be issued.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The lantern may be issued"
+        },
+        {
+          "id": "e2",
+          "meaning": "The lantern passed the lamp check"
+        },
+        {
+          "id": "e3",
+          "meaning": "Every lantern that passes the lamp check may be issued"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I conclude the lantern may be issued because it passed the check and the rule permits checked lanterns.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The rule is the connecting warrant. Naming a reason without a rule would leave the relation unexplained.",
+      "sourceRefs": [
+        "manchester-argument",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "warrant-experienced-en",
+      "approach": "warrant",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The rehearsal can use the small studio because the group has six members and the studio rule permits groups of at most eight.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The rehearsal can use the small studio"
+        },
+        {
+          "id": "e2",
+          "meaning": "The group has six members"
+        },
+        {
+          "id": "e3",
+          "meaning": "The studio rule permits groups of at most eight"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I can use the studio because our six members fit its limit of eight.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A threshold rule links the group size to permission. Check whether any other booking conditions are also required.",
+      "sourceRefs": [
+        "manchester-argument",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "warrant-expert-en",
+      "approach": "warrant",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "Under the stated packing rule, this tube needs a sleeve: its surface is fragile, and that rule requires sleeves for fragile surfaces even when the contents are light.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "This tube needs a sleeve under the stated packing rule"
+        },
+        {
+          "id": "e2",
+          "meaning": "The tube's surface is fragile"
+        },
+        {
+          "id": "e3",
+          "meaning": "The stated packing rule requires sleeves for fragile surfaces even when the contents are light"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I need a sleeve for this fragile tube under the packing rule, even with light contents.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "State the operative rule and its scope. The irrelevant fact that the contents are light must not silently defeat or strengthen that rule.",
+      "sourceRefs": [
+        "manchester-argument",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "acceptability-beginner-en",
+      "approach": "acceptability",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "I cannot yet treat the puddle depth as measured, because the note only says that it looked deep.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The puddle depth can currently be treated as measured"
+        },
+        {
+          "id": "e2",
+          "meaning": "The note only says that the puddle looked deep"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I cannot treat an impression of depth as a measurement.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A qualitative impression is not a depth measurement. Rejecting that evidential description does not establish that the puddle was shallow.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-sources"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "acceptability-experienced-en",
+      "approach": "acceptability",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "I will provisionally use the thermometer reading because its calibration record is current, while recording that the sensor was close to the heater.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I will provisionally use the thermometer reading"
+        },
+        {
+          "id": "e2",
+          "meaning": "The sensor was close to the heater"
+        },
+        {
+          "id": "e3",
+          "meaning": "The thermometer's calibration record is current"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I provisionally use the calibrated thermometer while noting its position near the heater.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Calibration supports one aspect of acceptability; placement remains a limitation. Provisional use is not unconditional endorsement.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-sources"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "acceptability-expert-en",
+      "approach": "acceptability",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The reported attendance is not yet an acceptable basis for the capacity estimate, because the count includes repeat entries and no unique-visitor total is available.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The reported attendance is currently an acceptable basis for the capacity estimate"
+        },
+        {
+          "id": "e2",
+          "meaning": "The count includes repeat entries"
+        },
+        {
+          "id": "e3",
+          "meaning": "No unique-visitor total is available"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I cannot yet base capacity on a repeat-entry count without a unique-visitor total.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Acceptability is purpose-sensitive. A valid entry count may be unsuitable for estimating how many distinct people need space.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-sources"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "relevance-beginner-en",
+      "approach": "relevance",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The flask's colour does not tell me whether its lid seals.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The flask's colour tells me whether its lid seals"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I cannot infer the lid's seal from the flask's colour.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "The observation may be true yet irrelevant to the proposed mechanical property. Identify the missing relationship.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "relevance-experienced-en",
+      "approach": "relevance",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The queue count is relevant to choosing a second serving desk, but it does not tell me which recipe tastes better.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The queue count is relevant to choosing a second serving desk"
+        },
+        {
+          "id": "e2",
+          "meaning": "The queue count tells me which recipe tastes better"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I can use queue counts to consider another desk, but not to choose the tastier recipe.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "The same evidence can matter for one question and not another. Keep both questions distinct.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "relevance-expert-en",
+      "approach": "relevance",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The canopy test bears on wind resistance at the tested speed because that speed matches the event plan; it does not address water leakage.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The canopy test bears on wind resistance at the tested speed"
+        },
+        {
+          "id": "e2",
+          "meaning": "The canopy test addresses water leakage"
+        },
+        {
+          "id": "e3",
+          "meaning": "The tested wind speed matches the event plan"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I treat the matched-speed test as relevant to wind resistance, not water leakage.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Explain why the test conditions match the decision, then identify the separate property left untested.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "sufficiency-beginner-en",
+      "approach": "sufficiency",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "One working key is not enough to show that every key in this batch works.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "One working key is enough to show that every key in this batch works"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I cannot establish that every key works from one working key.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "One success supports an instance claim. It cannot alone establish a universal batch claim.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "sufficiency-experienced-en",
+      "approach": "sufficiency",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The two soil readings support checking the dry corner, but they are insufficient to describe the moisture of the whole plot.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The two soil readings support checking the dry corner"
+        },
+        {
+          "id": "e2",
+          "meaning": "The two soil readings are sufficient to describe moisture across the whole plot"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I see support for checking the dry corner, but two readings cannot describe the whole plot.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "A local action may need less evidence than a plot-wide generalisation. State which conclusion the observations can support.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "sufficiency-expert-en",
+      "approach": "sufficiency",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "Approval remains unsupported because the stipulated rehearsal checklist requires a load check and a clearance check, and only the load check is recorded.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Approval remains unsupported"
+        },
+        {
+          "id": "e2",
+          "meaning": "The stipulated rehearsal checklist requires a load check and a clearance check"
+        },
+        {
+          "id": "e3",
+          "meaning": "Only the load check is recorded"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I still lack support for approval because only one of the two required checks is recorded.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A missing required condition prevents this justification from being complete. Unsupported approval is not proof that clearance fails.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "alternatives-beginner-en",
+      "approach": "alternatives",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The bell may be silent because the battery is flat, but a loose wire could also explain it.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "A flat battery may explain the silent bell"
+        },
+        {
+          "id": "e2",
+          "meaning": "A loose wire may also explain the silent bell"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I consider a flat battery and a loose wire as explanations for the silent bell.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Keep both hypotheses open. An alternative should explain the observation, not merely be different.",
+      "sourceRefs": [
+        "manchester-critical",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "alternatives-experienced-en",
+      "approach": "alternatives",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "Fewer moths in the count could reflect fewer moths or a dimmer survey light; a checked light would help distinguish those explanations.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Fewer moths may explain the lower count"
+        },
+        {
+          "id": "e2",
+          "meaning": "A dimmer survey light may explain the lower count"
+        },
+        {
+          "id": "e3",
+          "meaning": "Checking the light would help distinguish these explanations"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I consider fewer moths or a dimmer survey light and propose checking the light.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "The measurement process can create an alternative to a real change in the population. Choose a discriminating check.",
+      "sourceRefs": [
+        "manchester-critical",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "alternatives-expert-en",
+      "approach": "alternatives",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The mural's paler appearance may come from pigment fading or changed illumination. Comparing the same patch under a fixed lamp would test the lighting explanation without assuming the pigment has changed.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Pigment fading may explain the mural's paler appearance"
+        },
+        {
+          "id": "e2",
+          "meaning": "Changed illumination may explain the mural's paler appearance"
+        },
+        {
+          "id": "e3",
+          "meaning": "Comparing the same patch under a fixed lamp would test the lighting explanation"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I consider fading or changed light and propose comparing the same mural patch under a fixed lamp.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Design a comparison that controls one candidate cause. A proposed test is not an observation that has already occurred.",
+      "sourceRefs": [
+        "manchester-critical",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "rebuttals-beginner-en",
+      "approach": "rebuttals",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The spare paddle does answer the objection that we have no replacement, but it does not answer whether that replacement fits.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The spare paddle answers the objection that no replacement exists"
+        },
+        {
+          "id": "e2",
+          "meaning": "The spare paddle answers whether the replacement fits"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I can answer the lack-of-replacement objection, but still need to check whether the paddle fits.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "An answer to one objection need not resolve every objection. Keep existence and suitability separate.",
+      "sourceRefs": [
+        "manchester-argument",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "rebuttals-experienced-en",
+      "approach": "rebuttals",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "I withdraw my claim that the room is always quiet because the delivery log records noise each morning; I retain the narrower claim that it was quiet during our evening trial.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I withdraw my claim that the room is always quiet"
+        },
+        {
+          "id": "e2",
+          "meaning": "The room was quiet during our evening trial"
+        },
+        {
+          "id": "e3",
+          "meaning": "The delivery log records noise each morning"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I withdraw the always-quiet claim after the morning noise report, retaining the quiet evening trial.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Revision can narrow a claim instead of abandoning every related observation. Preserve what the counterevidence actually challenges.",
+      "sourceRefs": [
+        "manchester-argument",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "rebuttals-expert-en",
+      "approach": "rebuttals",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The objection about an untested latch defeats the claim that the entire cabinet has been checked, even though the drawer tests remain valid.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The entire cabinet has been checked"
+        },
+        {
+          "id": "e2",
+          "meaning": "The drawer tests remain valid"
+        },
+        {
+          "id": "e3",
+          "meaning": "The latch has not been tested"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I reject the whole-cabinet check claim because of the untested latch, while retaining the drawer tests.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A targeted rebuttal should undermine the relevant whole-system claim without discarding independent valid checks.",
+      "sourceRefs": [
+        "manchester-argument",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "proof-local-self-explanation-beginner-en",
+      "approach": "proof-local-self-explanation",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "The bead goes into tray R because it is striped and the sorting rule sends striped beads to tray R.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The bead goes into tray R"
+        },
+        {
+          "id": "e2",
+          "meaning": "The bead is striped"
+        },
+        {
+          "id": "e3",
+          "meaning": "The sorting rule sends striped beads to tray R"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I put the striped bead in tray R under the sorting rule.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Explain the application of the rule, rather than repeating that the bead belongs in the tray.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "proof-local-self-explanation-experienced-en",
+      "approach": "proof-local-self-explanation",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "I can infer that the signal is enabled: the switch is on, the fuse is intact, and the stated circuit rule enables the signal when those two conditions hold together.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The signal is enabled"
+        },
+        {
+          "id": "e2",
+          "meaning": "The switch is on"
+        },
+        {
+          "id": "e3",
+          "meaning": "The fuse is intact"
+        },
+        {
+          "id": "e4",
+          "meaning": "The stated circuit rule enables the signal when the switch is on and the fuse is intact"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I infer an enabled signal from both the switch and fuse conditions under the stated rule.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          },
+          {
+            "id": "e4",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Both conjuncts matter. Explain why this is an application of a sufficient-condition rule, not a guess from one premise.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "proof-local-self-explanation-expert-en",
+      "approach": "proof-local-self-explanation",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "In this derivation, substituting the two equal spans preserves the total length because the rule permits replacement by an equal quantity; it does not show that the materials are identical.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Substituting the two equal spans preserves the total length"
+        },
+        {
+          "id": "e2",
+          "meaning": "The substitution shows that the materials are identical"
+        },
+        {
+          "id": "e3",
+          "meaning": "The rule permits replacement by an equal quantity"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I preserve length by substituting equal spans, without establishing identical materials.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "An equality step preserves the quantity named in the argument. It need not preserve unrelated physical attributes.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "proof-global-strategy-beginner-en",
+      "approach": "proof-global-strategy",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "My plan is to show that the ramp is supported before checking its final slope.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "My plan is to establish ramp support before checking its final slope"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I plan to establish ramp support before checking the slope.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "A plan identifies an order of work; it is not evidence that either check has passed.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "proof-global-strategy-experienced-en",
+      "approach": "proof-global-strategy",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "I will first establish that each crate is within its limit, then use the all-crates rule to justify dispatch.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "My plan is to establish that each crate is within its limit before applying the all-crates dispatch rule"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I plan to check every crate's limit before applying the dispatch rule.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Explain why the individual subgoals contribute to the global goal. The word each requires coverage of every relevant crate.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "proof-global-strategy-expert-en",
+      "approach": "proof-global-strategy",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "The proof route separates existence from uniqueness: I will first construct a valid seating layout, then show that any valid layout must use the same positions.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "My plan is to construct a valid seating layout and then establish uniqueness by constraining every valid layout"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I plan to construct a valid seating layout, then prove that every valid layout has those positions.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Finding one example proves existence only. The second stage has a different obligation, so a successful construction cannot silently complete it.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "construction-forward-beginner-en",
+      "approach": "construction-forward",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "The marker is visible because the screen is lit and the rule says a lit screen makes the marker visible.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The marker is visible"
+        },
+        {
+          "id": "e2",
+          "meaning": "The screen is lit"
+        },
+        {
+          "id": "e3",
+          "meaning": "The rule says a lit screen makes the marker visible"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I infer visibility from the lit screen and the stated rule.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Forward construction begins with the available observation and an applicable rule.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "construction-forward-experienced-en",
+      "approach": "construction-forward",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "The sample can be shelved because it has been labelled, and the stated rule makes every labelled sample ready for shelving.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The sample can be shelved"
+        },
+        {
+          "id": "e2",
+          "meaning": "The sample has been labelled"
+        },
+        {
+          "id": "e3",
+          "meaning": "The stated rule makes every labelled sample ready for shelving"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I infer readiness for shelving from the sample's label and the stated rule.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Select a rule whose conditions are established. Do not add an unrecorded condition simply because it would help.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "construction-forward-expert-en",
+      "approach": "construction-forward",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "The receipt is logged. The first rule makes a logged receipt sufficient for registration; the second makes registration sufficient for eligibility to request a locker. From these I establish registration and eligibility, but I do not infer that a locker has been assigned.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Registration is established"
+        },
+        {
+          "id": "e2",
+          "meaning": "Eligibility to request a locker is established"
+        },
+        {
+          "id": "e3",
+          "meaning": "The derivation establishes that a locker has been assigned"
+        },
+        {
+          "id": "e4",
+          "meaning": "A receipt is logged"
+        },
+        {
+          "id": "e5",
+          "meaning": "The stated rules make a logged receipt sufficient for registration and registration sufficient for eligibility to request a locker"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I derive registration and request eligibility from the receipt and two rules, without establishing locker assignment.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e4",
+            "positive": true
+          },
+          {
+            "id": "e5",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A chain can justify intermediate and final claims. Preserve the boundary between eligibility and an actual assignment.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "construction-backward-beginner-en",
+      "approach": "construction-backward",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "To justify using the lift under this rule, I still need to establish that the inspection is current.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Establishing that the inspection is current remains necessary to justify using the lift under this rule"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I still need to establish a current inspection to justify lift use under this rule.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Backward planning identifies an obligation; it must not be translated as a passed inspection.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "construction-backward-experienced-en",
+      "approach": "construction-backward",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "The launch rule needs a charged cell and a clear track, so my remaining subgoal is a clear track because the charged cell is already recorded.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "My remaining launch subgoal is to establish a clear track"
+        },
+        {
+          "id": "e2",
+          "meaning": "The launch rule requires a charged cell and a clear track"
+        },
+        {
+          "id": "e3",
+          "meaning": "A charged cell is already recorded"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I still need a clear track because the launch rule also needs the already recorded charged cell.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Separate the fulfilled premise from the remaining one. The goal does not make its missing premise true.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "construction-backward-expert-en",
+      "approach": "construction-backward",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "There are two stated routes to access: a day token or a resident pass. I will pursue the day-token route because the booking supplies that token; I do not need to prove possession of both credentials.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I will pursue the day-token route"
+        },
+        {
+          "id": "e2",
+          "meaning": "Both credentials are required for access"
+        },
+        {
+          "id": "e3",
+          "meaning": "The stated access rule permits a day token or a resident pass"
+        },
+        {
+          "id": "e4",
+          "meaning": "The booking supplies a day token"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I pursue the booking's day-token route because access requires that token or a resident pass, not both.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          },
+          {
+            "id": "e4",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Backward construction can select one sufficient route. Do not turn alternative routes into a conjunction.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "counterexamples-beginner-en",
+      "approach": "counterexamples",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "Not every striped pebble is smooth: this pebble is striped and rough.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Every striped pebble is smooth"
+        },
+        {
+          "id": "e2",
+          "meaning": "This pebble is striped"
+        },
+        {
+          "id": "e3",
+          "meaning": "This pebble is rough"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I reject the all-smooth claim because this striped pebble is rough.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "One genuine exception can refute a universal claim. It does not show that every striped pebble is rough.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "counterexamples-experienced-en",
+      "approach": "counterexamples",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "The rule that every numbered drawer is locked fails for drawer seven, because it has a number and is unlocked.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Every numbered drawer is locked"
+        },
+        {
+          "id": "e2",
+          "meaning": "Drawer seven is numbered"
+        },
+        {
+          "id": "e3",
+          "meaning": "Drawer seven is unlocked"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I refute the all-locked claim using numbered, unlocked drawer seven.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Check both parts of the counterexample: it must belong to the claimed class and lack the claimed property.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "counterexamples-expert-en",
+      "approach": "counterexamples",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "This three-piece design defeats the claim that an even total length requires every piece to have even length: its lengths are one, one and two units.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "An even total length requires every piece to have even length"
+        },
+        {
+          "id": "e2",
+          "meaning": "The three pieces have lengths one, one and two units"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I refute the claim that an even total requires all-even pieces using lengths one, one and two.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A counterexample attacks the stated necessity claim. It leaves open designs in which all lengths happen to be even.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "cases-beginner-en",
+      "approach": "cases",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "I have checked the dry-weather case, but I have not checked the wet-weather case.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The dry-weather case has been checked"
+        },
+        {
+          "id": "e2",
+          "meaning": "The wet-weather case has been checked"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I have checked the dry case, but not the wet case.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Completing one case does not complete an argument that needs both.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "cases-experienced-en",
+      "approach": "cases",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "For this two-position dial, position A opens channel A and position B opens channel B; because these are the only positions, one channel is always open.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "One channel is always open"
+        },
+        {
+          "id": "e2",
+          "meaning": "Position A opens channel A"
+        },
+        {
+          "id": "e3",
+          "meaning": "Position B opens channel B"
+        },
+        {
+          "id": "e4",
+          "meaning": "A and B are the only positions of this dial"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I infer an open channel in either of the dial's only two positions.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          },
+          {
+            "id": "e4",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The exhaustiveness premise is part of the justification. Without it, an unexamined third position could remain.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "cases-expert-en",
+      "approach": "cases",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "My case split covers positive, zero and negative balances. I proved the alert for the negative case only, so no all-balances alert conclusion follows from my work.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "My work establishes an alert for every balance"
+        },
+        {
+          "id": "e2",
+          "meaning": "The case split covers positive, zero and negative balances"
+        },
+        {
+          "id": "e3",
+          "meaning": "I proved the alert only for the negative case"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I cannot establish alerts for all balances from a proof covering only the negative case.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "An exhaustive partition does not make partial work exhaustive. Record which branches have actually been established.",
+      "sourceRefs": [
+        "proof-self-explanation"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "conditions-beginner-en",
+      "approach": "conditions",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "The red token is enough to enter this practice area, but it is not the only possible entry token.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The red token is sufficient for entry to this practice area"
+        },
+        {
+          "id": "e2",
+          "meaning": "The red token is necessary for entry to this practice area"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I treat a red token as sufficient for entry, but not necessary.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Sufficient means it can establish entry; necessary means entry cannot occur without it. These are different claims.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "conditions-experienced-en",
+      "approach": "conditions",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "The seal check is necessary for releasing the jar, but it is insufficient on its own because the label check is also required.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The seal check is necessary for releasing the jar"
+        },
+        {
+          "id": "e2",
+          "meaning": "The seal check alone is sufficient for releasing the jar"
+        },
+        {
+          "id": "e3",
+          "meaning": "The label check is also required to release the jar"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I need the seal check, but it is insufficient without the required label check.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Do not turn a prerequisite into a complete permission rule. Preserve the additional condition.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "conditions-expert-en",
+      "approach": "conditions",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "proof-practice"
+      ],
+      "input": "If the meter is calibrated and the probe is correctly placed, I can use this reading under the stated protocol. I have not established either condition yet.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The stated protocol permits using this reading if the meter is calibrated and the probe is correctly placed"
+        },
+        {
+          "id": "e2",
+          "meaning": "I have established that the meter is calibrated"
+        },
+        {
+          "id": "e3",
+          "meaning": "I have established that the probe is correctly placed"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I can use the reading if both protocol conditions hold, but I have established neither.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          },
+          {
+            "id": "e3",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "The conditional does not assert its antecedent. Lack of establishment also does not assert that the meter is uncalibrated or the probe misplaced.",
+      "sourceRefs": [
+        "proof-self-explanation",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "source-credibility-beginner-en",
+      "approach": "source-credibility",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "I trust the measured bowl width more than the guess, because the measured value came from a ruler reading.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I give the measured bowl width more weight than the guess"
+        },
+        {
+          "id": "e2",
+          "meaning": "The measured bowl width came from a ruler reading"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I give the ruler measurement more weight than the guessed bowl width.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The stated method matters. Still check the ruler, units and whether the right dimension was measured.",
+      "sourceRefs": [
+        "manchester-sources",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "source-credibility-experienced-en",
+      "approach": "source-credibility",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The technician's report is relevant to the motor temperature because it records the instrument, conditions and calibration date; the technician's job title alone would not establish the value.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The technician's report is relevant to the motor temperature"
+        },
+        {
+          "id": "e2",
+          "meaning": "The technician's job title alone establishes the temperature value"
+        },
+        {
+          "id": "e3",
+          "meaning": "The report records the instrument, conditions and calibration date"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I use the technician's recorded method, conditions and calibration, not the job title alone.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Relevant expertise can help, but inspect how this claim was obtained. Avoid both blind deference and blanket dismissal of experts.",
+      "sourceRefs": [
+        "manchester-sources",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "source-credibility-expert-en",
+      "approach": "source-credibility",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "I will use the survey summary cautiously because the sponsor sells the proposed product and the sampling procedure is missing; that does not by itself show that the reported answers are false.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I will use the survey summary cautiously"
+        },
+        {
+          "id": "e2",
+          "meaning": "The sponsor's interest and missing sampling procedure by themselves show that the reported answers are false"
+        },
+        {
+          "id": "e3",
+          "meaning": "The sponsor sells the proposed product"
+        },
+        {
+          "id": "e4",
+          "meaning": "The sampling procedure is missing"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I use the summary cautiously because of its sponsor and missing sampling method, without declaring its answers false.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          },
+          {
+            "id": "e4",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A conflict and a missing method warrant scrutiny. They do not automatically reverse the truth of every reported observation.",
+      "sourceRefs": [
+        "manchester-sources",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "source-independence-beginner-en",
+      "approach": "source-independence",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The two weather notices are one source repeated, because both copied the same station bulletin.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The two weather notices repeat one source"
+        },
+        {
+          "id": "e2",
+          "meaning": "Both notices copied the same station bulletin"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I count the two copied notices as one source.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Count independent origins, not the number of places where a report appears.",
+      "sourceRefs": [
+        "manchester-sources",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "source-independence-experienced-en",
+      "approach": "source-independence",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The second timer provides an independent timing record because it used its own clock and separate observations, even though both logs were stored on the same computer.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The second timer provides an independent timing record"
+        },
+        {
+          "id": "e2",
+          "meaning": "Both logs were stored on the same computer"
+        },
+        {
+          "id": "e3",
+          "meaning": "The second timer used its own clock and separate observations"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I count separate timing observations as independent despite their shared storage.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Shared storage does not necessarily mean shared measurement origin. Ask which errors could still affect both records.",
+      "sourceRefs": [
+        "manchester-sources",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "source-independence-expert-en",
+      "approach": "source-independence",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The three analyses are not three independent samples because they all reuse one participant dataset; their different methods may still test sensitivity to modelling choices.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The three analyses are three independent samples"
+        },
+        {
+          "id": "e2",
+          "meaning": "The different methods may test sensitivity to modelling choices"
+        },
+        {
+          "id": "e3",
+          "meaning": "All three analyses reuse one participant dataset"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I count one reused dataset as one sample; different methods may test sensitivity to modelling choices.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": false
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Independence can concern sampling, measurement or analysis. Reusing data need not make a robustness comparison worthless.",
+      "sourceRefs": [
+        "manchester-sources",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "scope-beginner-en",
+      "approach": "scope",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The mat stayed dry in our indoor trial; I do not know how it behaves outdoors.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The mat stayed dry in our indoor trial"
+        },
+        {
+          "id": "e2",
+          "meaning": "I know how the mat behaves outdoors"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I know the mat stayed dry indoors, but not how it behaves outdoors.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Retain the tested setting. Lack of outdoor knowledge is not a prediction of outdoor failure.",
+      "sourceRefs": [
+        "manchester-critical",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "scope-experienced-en",
+      "approach": "scope",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The shortcut reduced walking distance for people entering from the east gate, but the trial says nothing about arrivals from the west.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The shortcut reduced walking distance for people entering from the east gate"
+        },
+        {
+          "id": "e2",
+          "meaning": "The trial establishes an effect for arrivals from the west"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I retain the shortcut finding for east-gate arrivals without extending it to the west.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "A useful subgroup finding need not cover another entry route. Preserve which group was actually tested.",
+      "sourceRefs": [
+        "manchester-critical",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "scope-expert-en",
+      "approach": "scope",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The revised index improved lookup time for the sampled short entries under quiet conditions. Generalising to long entries or noisy workspaces would require additional checks.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The revised index improved lookup time for sampled short entries under quiet conditions"
+        },
+        {
+          "id": "e2",
+          "meaning": "Generalising this result to long entries or noisy workspaces requires additional checks"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I retain the quiet, short-entry lookup result and need further checks before extending its scope.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Specify both task and environment boundaries. Broadening a claim requires evidence for the additional conditions.",
+      "sourceRefs": [
+        "manchester-critical",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "correlation-causation-beginner-en",
+      "approach": "correlation-causation",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "The plants near the window grew taller, so being near the window must have caused all of the difference.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Being near the window must have caused all of the height difference"
+        },
+        {
+          "id": "e2",
+          "meaning": "The plants near the window grew taller"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I attribute all the height difference to being near the window.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Preserve this overstrong causal claim in interpretation. A comparison could also differ in watering, variety or initial size.",
+      "sourceRefs": [
+        "manchester-critical",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "correlation-causation-experienced-en",
+      "approach": "correlation-causation",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "Helmet colour and lap time were associated in this practice session, but that association alone does not show that colour changed speed.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Helmet colour and lap time were associated in this practice session"
+        },
+        {
+          "id": "e2",
+          "meaning": "The association alone establishes that helmet colour changed speed"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I recognise the colour-time association without concluding that colour caused a speed change.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "An observed association can motivate investigation without proving a causal mechanism.",
+      "sourceRefs": [
+        "manchester-critical",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "correlation-causation-expert-en",
+      "approach": "correlation-causation",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "Random allocation of desk position strengthens the causal comparison in this trial, but the unequal dropout means I cannot treat the remaining groups as unquestionably comparable.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Random allocation of desk position strengthens the causal comparison in this trial"
+        },
+        {
+          "id": "e2",
+          "meaning": "The remaining groups can be treated as unquestionably comparable"
+        },
+        {
+          "id": "e3",
+          "meaning": "Dropout was unequal between the groups"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I value random allocation but cannot assume comparability after unequal dropout.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A design strength does not erase a later source of bias. State both what the design addresses and what remains uncertain.",
+      "sourceRefs": [
+        "manchester-critical",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "confirmation-bias-beginner-en",
+      "approach": "confirmation-bias",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "I only checked the drawers that I expected to be tidy, so my search may favour my original belief.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "My search may favour my original belief"
+        },
+        {
+          "id": "e2",
+          "meaning": "I only checked drawers that I expected to be tidy"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I may have favoured my belief by checking only drawers I expected to be tidy.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The selection process can bias the evidence gathered. This identifies a search tendency, not a fixed trait of the learner.",
+      "sourceRefs": [
+        "manchester-critical",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "confirmation-bias-experienced-en",
+      "approach": "confirmation-bias",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "I will inspect a plant that my light hypothesis predicts should grow poorly, rather than only selecting the tallest plants.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I will inspect a plant that the light hypothesis predicts should grow poorly instead of selecting only the tallest plants"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I plan to test the light hypothesis on a plant predicted to grow poorly.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "State a test that could challenge the hypothesis. The planned observation is not yet a confirming or disconfirming result.",
+      "sourceRefs": [
+        "manchester-critical",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "confirmation-bias-expert-en",
+      "approach": "confirmation-bias",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate"
+      ],
+      "input": "Before inspecting the remaining samples, I will record what each competing account predicts and include a sample on which those predictions differ.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I will record the competing accounts' predictions before inspecting the remaining samples"
+        },
+        {
+          "id": "e2",
+          "meaning": "I will include a sample on which the predictions differ"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I will record rival predictions before inspection and include a sample on which they differ.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Precommitting predictions can make post-hoc reinterpretation visible. An informative result may still fail to settle every account.",
+      "sourceRefs": [
+        "manchester-critical",
+        "informal-logic"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "critical-reflection-beginner-en",
+      "approach": "critical-reflection",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reflection-and-transfer"
+      ],
+      "input": "I counted the same notice twice. Next time I will check who first recorded it.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I counted the same notice twice"
+        },
+        {
+          "id": "e2",
+          "meaning": "Next time I will check who first recorded the notice"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I counted a notice twice and will check its original source next time.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Identify one event and one practical adjustment. Personal or emotional disclosure is unnecessary.",
+      "sourceRefs": [
+        "manchester-reflection",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "critical-reflection-experienced-en",
+      "approach": "critical-reflection",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reflection-and-transfer"
+      ],
+      "input": "I revised my estimate after noticing that the two measurements used different units. That made unit checking my first step for the next comparison.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I revised my estimate after noticing different measurement units"
+        },
+        {
+          "id": "e2",
+          "meaning": "I will check units first in the next comparison"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I revised my estimate after finding different units and will check units first next time.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Connect the revision to a methodological lesson. Recording a change is not independently assessing the quality of reflection.",
+      "sourceRefs": [
+        "manchester-reflection",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "critical-reflection-expert-en",
+      "approach": "critical-reflection",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reflection-and-transfer"
+      ],
+      "input": "My preference for a neat explanation led me to dismiss the incomplete log too quickly. I will separate missing evidence from contradictory evidence before deciding what to retain.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "My preference for a neat explanation led me to dismiss the incomplete log too quickly"
+        },
+        {
+          "id": "e2",
+          "meaning": "I will distinguish missing evidence from contradictory evidence before deciding what to retain"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I dismissed an incomplete log too quickly and will distinguish missing from contradictory evidence.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "Reflection can examine a decision influence without demanding self-blame. Retaining a view for a good reason is also a legitimate outcome.",
+      "sourceRefs": [
+        "manchester-reflection",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "transfer-beginner-en",
+      "approach": "transfer",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reflection-and-transfer"
+      ],
+      "input": "I checked whether the two weather notices had the same source. Next time I compare event posters, I will also check who first supplied their dates.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I will check the original source of dates when comparing event posters"
+        },
+        {
+          "id": "e2",
+          "meaning": "I checked whether the two weather notices had the same source"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I will transfer the source-origin check from weather notices to event-poster dates.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Transfer the source-origin question, rather than the weather conclusion. Two new posters do not automatically share a source.",
+      "sourceRefs": [
+        "udl-transfer",
+        "manchester-reflection"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "transfer-experienced-en",
+      "approach": "transfer",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reflection-and-transfer"
+      ],
+      "input": "In the shelving task I separated a necessary safety check from the final approval. I can use that distinction when planning a field visit, but I must first find the visit's actual approval rules.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I can use the distinction between a necessary check and final approval when planning a field visit"
+        },
+        {
+          "id": "e2",
+          "meaning": "I must first identify the field visit's actual approval rules"
+        },
+        {
+          "id": "e3",
+          "meaning": "I separated a necessary safety check from final approval in the shelving task"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I will transfer the necessary-check versus approval distinction after checking the field visit's own rules.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Name the reusable distinction and re-establish the new domain's rules. A rule from shelving does not become a premise for a field visit.",
+      "sourceRefs": [
+        "udl-transfer",
+        "manchester-reflection"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "transfer-expert-en",
+      "approach": "transfer",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reflection-and-transfer"
+      ],
+      "input": "The failed lighting inference taught me to distinguish a measurement from its proposed cause. For the archive's humidity variation, I will list competing causes and seek a measurement that separates them; I do not yet know which cause is correct.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "I will list competing causes of the archive's humidity variation and seek a discriminating measurement"
+        },
+        {
+          "id": "e2",
+          "meaning": "I know which cause of the archive's humidity variation is correct"
+        },
+        {
+          "id": "e3",
+          "meaning": "The failed lighting inference taught me to distinguish a measurement from its proposed cause"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I will transfer the measurement-versus-cause distinction by testing rival humidity explanations, whose cause remains unknown.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": false
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Transfer the method of discriminating alternatives. Preserve the plan and the explicitly unresolved cause; do not generate the missing observation.",
+      "sourceRefs": [
+        "udl-transfer",
+        "manchester-reflection"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "affirming-consequent-beginner-en",
+      "approach": "affirming-consequent",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "If the cabin heater is on, the indicator glows. The indicator glows, so the heater must be on.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The cabin heater is on"
+        },
+        {
+          "id": "e2",
+          "meaning": "If the cabin heater is on, the indicator glows"
+        },
+        {
+          "id": "e3",
+          "meaning": "The indicator glows"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I conclude the heater is on because its indicator glows under the stated rule.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The input asserts the heater is on. Preserve that assertion for review, then ask whether another cause can make the indicator glow. The stated rule alone does not license the converse.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "affirming-consequent-experienced-en",
+      "approach": "affirming-consequent",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "Every parcel sent by express service gets a square stamp. This parcel has a square stamp, so I conclude that it was sent by express service.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "This parcel was sent by express service"
+        },
+        {
+          "id": "e2",
+          "meaning": "Every parcel sent by express service gets a square stamp"
+        },
+        {
+          "id": "e3",
+          "meaning": "This parcel has a square stamp"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I infer express delivery from the square stamp and the one-way express-service rule.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A shared marker may have several origins. The meaning is clear even though the inference requires an additional rule excluding other routes to the stamp.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "affirming-consequent-expert-en",
+      "approach": "affirming-consequent",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "The protocol says that a completed purge produces a zero reading. We observed zero, so I regard purge completion as established without checking whether the disconnected probe also reads zero.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Purge completion is established"
+        },
+        {
+          "id": "e2",
+          "meaning": "A completed purge produces a zero reading"
+        },
+        {
+          "id": "e3",
+          "meaning": "We observed a zero reading"
+        },
+        {
+          "id": "e4",
+          "meaning": "I have not checked whether a disconnected probe also reads zero"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I accept purge completion from zero without checking whether a disconnected probe could also read zero.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          },
+          {
+            "id": "e4",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "A precise protocol vocabulary does not repair the converse error. The unexamined alternative is part of the stated reasoning context, not evidence that the probe is disconnected.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "hasty-generalisation-beginner-en",
+      "approach": "hasty-generalisation",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "The first pear I tried from the crate was sweet, so every pear in the crate is sweet.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Every pear in the crate is sweet"
+        },
+        {
+          "id": "e2",
+          "meaning": "The first pear I tried from the crate was sweet"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I generalise from the first sweet pear to every pear in the crate.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Preserve the universal conclusion and the single observation. Ask whether this observation covers the remaining pears rather than declaring that all other pears are sour.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "hasty-generalisation-experienced-en",
+      "approach": "hasty-generalisation",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "The two morning trains I took arrived early. That proves this service always arrives early, including at night.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "This train service always arrives early, including at night"
+        },
+        {
+          "id": "e2",
+          "meaning": "The two morning trains I took arrived early"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I generalise from two early morning trains to every arrival, including at night.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The conclusion extends both across all services and to an unobserved time. A limited sample may inform a tentative expectation but does not establish this universal statement.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "hasty-generalisation-expert-en",
+      "approach": "hasty-generalisation",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "All twelve panels from the same production run passed our dry-room check. I therefore certify every panel made this year for wet outdoor use.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Every panel made this year is certified for wet outdoor use"
+        },
+        {
+          "id": "e2",
+          "meaning": "All twelve panels from the same production run passed the dry-room check"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I certify all this year's panels for wet outdoor use from twelve same-run dry-room checks.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Identify the changes in production population and environmental conditions. Formal interpretation records the overextended certification claim; it does not supply missing wet-use evidence.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "false-dilemma-beginner-en",
+      "approach": "false-dilemma",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "We must either replace the whole noticeboard or leave the loose corner as it is. Those are the only choices.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Replacing the whole noticeboard and leaving the loose corner unchanged are the only choices"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I treat complete replacement or leaving the corner loose as the only noticeboard choices.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [],
+        "depends_on": []
+      },
+      "teachingNote": "This is an explicit exhaustiveness claim without stated support. Ask whether repair is available; do not silently add repair as a proven option in the interpretation.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "false-dilemma-experienced-en",
+      "approach": "false-dilemma",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "Either we digitise every archive box this week or we abandon the archive project. Since full digitisation this week is impossible, we must abandon the project.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "We must abandon the archive project"
+        },
+        {
+          "id": "e2",
+          "meaning": "Digitising every archive box this week and abandoning the archive project are the only options"
+        },
+        {
+          "id": "e3",
+          "meaning": "Digitising every archive box this week is impossible"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I conclude we must abandon the archive because I treat impossible full digitisation this week as the only alternative.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The inference depends on the two-option premise. Question that premise by considering phased work or another timetable, while preserving the player's actual asserted choices.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "false-dilemma-expert-en",
+      "approach": "false-dilemma",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "I treat the timetable as a choice between zero delays and unrestricted arrivals. Because zero delays cannot be guaranteed, unrestricted arrivals are the only defensible policy.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Unrestricted arrivals are the only defensible timetable policy"
+        },
+        {
+          "id": "e2",
+          "meaning": "Zero delays and unrestricted arrivals are the only timetable options"
+        },
+        {
+          "id": "e3",
+          "meaning": "Zero delays cannot be guaranteed"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I treat unrestricted arrivals as the only defensible policy because the only alternative I consider is guaranteed zero delays.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Separate an outcome guarantee from a policy restriction. The rhetorical contrast may hide intermediate policies; their feasibility must be checked rather than assumed.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-critical"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "circular-support-beginner-en",
+      "approach": "circular-support",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "This timetable is correct because this timetable is correct.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "This timetable is correct"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I support the timetable's correctness by repeating that it is correct.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The same proposition appears as conclusion and reason. Represent both roles faithfully; repetition supplies no independent support.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "circular-support-experienced-en",
+      "approach": "circular-support",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "I trust this catalogue's entries because the catalogue is reliable. I know the catalogue is reliable because its entries can be trusted.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The catalogue's entries can be trusted"
+        },
+        {
+          "id": "e2",
+          "meaning": "The catalogue is reliable"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I justify trusting the entries by the catalogue's reliability and justify that reliability by trusting its entries.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The two claims support each other without an independent check. A dependency cycle can preserve the argument's structure without establishing either claim.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "circular-support-expert-en",
+      "approach": "circular-support",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "The rating method is accurate because it agrees with the approved reference list; the list is approved solely because it reproduces the ratings from that same method.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The rating method is accurate"
+        },
+        {
+          "id": "e2",
+          "meaning": "The reference list is approved"
+        },
+        {
+          "id": "e3",
+          "meaning": "The rating method agrees with the reference list"
+        },
+        {
+          "id": "e4",
+          "meaning": "The reference list reproduces ratings from the same method"
+        },
+        {
+          "id": "e5",
+          "meaning": "The list is approved solely because it reproduces ratings from the same method"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I accept the method from its reference list, whose approval depends solely on reproducing that method's ratings.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          },
+          {
+            "id": "e4",
+            "positive": true
+          },
+          {
+            "id": "e5",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Inspect how the reference standard was established. Agreement with a standard derived solely from the same method is not independent validation. The interpretation does not declare the method inaccurate.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "straw-person-beginner-en",
+      "approach": "straw-person",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "Neri asked us to shorten one rehearsal. Neri wants us to stop rehearsing altogether, so I reject the request.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Neri wants us to stop rehearsing altogether"
+        },
+        {
+          "id": "e2",
+          "meaning": "I reject Neri's request"
+        },
+        {
+          "id": "e3",
+          "meaning": "Neri asked us to shorten one rehearsal"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I reject shortening one rehearsal by attributing a wish to end all rehearsal.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Preserve both the reported request and the stronger attributed position. The teaching question is whether shortening one rehearsal entails ending all rehearsal.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "straw-person-experienced-en",
+      "approach": "straw-person",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "Pavo suggested adding an optional paper form. That means Pavo wants to ban online submissions, which would exclude remote applicants.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Pavo wants to ban online submissions"
+        },
+        {
+          "id": "e2",
+          "meaning": "Banning online submissions would exclude remote applicants"
+        },
+        {
+          "id": "e3",
+          "meaning": "Pavo suggested adding an optional paper form"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I take the optional paper form proposal to mean an online-submission ban that would exclude remote applicants.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "An additional option is being recast as a ban. Check the original proposal before evaluating the consequence of the altered proposal.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "straw-person-expert-en",
+      "approach": "straw-person",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "The review recommends piloting the sensor at one site before expansion. I answer that permanently refusing all sensor use would block useful monitoring, so I dismiss the recommendation.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "Permanently refusing all sensor use would block useful monitoring"
+        },
+        {
+          "id": "e2",
+          "meaning": "I dismiss the review's recommendation"
+        },
+        {
+          "id": "e3",
+          "meaning": "The review recommends piloting the sensor at one site before expansion"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I dismiss a pilot-before-expansion recommendation by criticising permanent refusal of all sensors.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          },
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The response criticises permanent refusal, whereas the stated recommendation concerns a pilot before expansion. A real drawback of a different policy does not rebut this recommendation.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-argument"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "popularity-irrelevant-authority-beginner-en",
+      "approach": "popularity-irrelevant-authority",
+      "expertise": "beginner",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "Everyone in my drawing group says the bridge model can carry the weight, so it must be safe.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The bridge model is safe to carry the weight"
+        },
+        {
+          "id": "e2",
+          "meaning": "Everyone in my drawing group says the bridge model can carry the weight"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I conclude the bridge model is safe because everyone in my drawing group agrees.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Agreement is the stated reason, but the input supplies no load test or relevant basis for that agreement. Popularity does not establish the safety claim.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-sources"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "popularity-irrelevant-authority-experienced-en",
+      "approach": "popularity-irrelevant-authority",
+      "expertise": "experienced",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "A prize-winning poet recommends this soil sensor, so its moisture readings must be accurate.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The soil sensor's moisture readings are accurate"
+        },
+        {
+          "id": "e2",
+          "meaning": "A prize-winning poet recommends the soil sensor"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I infer accurate soil readings from a prize-winning poet's recommendation.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "The recommendation and prestige are interpreted faithfully. Ask for calibration or expertise relevant to measuring soil moisture, rather than attacking the poet.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-sources"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    },
+    {
+      "id": "popularity-irrelevant-authority-expert-en",
+      "approach": "popularity-irrelevant-authority",
+      "expertise": "expert",
+      "language": "en",
+      "tags": [
+        "original-fiction",
+        "interpretation-demonstration",
+        "formal-check-separate",
+        "reasoning-trap"
+      ],
+      "input": "Eighty reviewers repeat the device maker's ten-year battery life claim, and a famous chess player endorses that claim. I therefore accept the battery's ten-year life as independently verified.",
+      "vocabulary": [
+        {
+          "id": "e1",
+          "meaning": "The battery's ten-year life is independently verified"
+        },
+        {
+          "id": "e2",
+          "meaning": "Eighty reviewers repeat the device maker's claim"
+        },
+        {
+          "id": "e3",
+          "meaning": "A famous chess player endorses the battery's ten-year life claim"
+        }
+      ],
+      "output": {
+        "action": "claim",
+        "message": "I accept independent verification of a ten-year battery life from repeated maker claims and a chess player's endorsement.",
+        "conclusions": [
+          {
+            "id": "e1",
+            "positive": true
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "e2",
+            "positive": true
+          },
+          {
+            "id": "e3",
+            "positive": true
+          }
+        ],
+        "depends_on": []
+      },
+      "teachingNote": "Count evidence origins and inspect relevant methods. Repetition plus unrelated prestige does not become independent lifespan testing; this does not itself prove that the lifespan claim is false.",
+      "sourceRefs": [
+        "informal-logic",
+        "manchester-sources"
+      ],
+      "reviewStatus": "agent-reviewed; human review pending"
+    }
+  ]
+}
+
