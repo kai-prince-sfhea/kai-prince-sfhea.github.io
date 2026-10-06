@@ -1,8 +1,34 @@
+const optionalLeases=new Map();
+// Optional download permission is bounded to this client, pack revision and hour.
+// Cache Storage preserves it when the browser suspends the worker mid-download.
+const leaseRevision=kind=>kind==='speech'?SPEECH_REVISION:kind==='embedding'?EMBEDDING_REVISION:kind==='extraction'?EXTRACTION_REVISION:null;
+const leaseKey=(id,kind)=>new URL(BASE+'__optional-lease/'+encodeURIComponent(id)+'/'+kind,location.origin).href;
+async function grantOptionalLease(settings,id,kind){
+ const expiresAt=Date.now()+3600000;optionalLeases.set(id,{...optionalLeases.get(id),[kind]:expiresAt});
+ await settings.put(leaseKey(id,kind),new Response(JSON.stringify({clientId:id,kind,revision:leaseRevision(kind),expiresAt})));
+}
+async function revokeOptionalLease(settings,id,kind){
+ const kinds=['speech','embedding','extraction'].includes(kind)?[kind]:['speech','embedding','extraction'];
+ for(const k of kinds){const leases=optionalLeases.get(id);if(leases)delete leases[k];await settings.delete(leaseKey(id,k));}
+}
+async function restoreOptionalLeases(settings,id){
+ if(!id)return {};const leases=optionalLeases.get(id)||{};
+ for(const kind of ['speech','embedding','extraction']){
+  if(leases[kind]>Date.now())continue;
+  let saved;try{saved=await(await settings.match(leaseKey(id,kind)))?.json();}catch{}
+  if(saved?.clientId===id&&saved.kind===kind&&saved.revision===leaseRevision(kind)&&Number.isFinite(saved.expiresAt)&&saved.expiresAt>Date.now()&&saved.expiresAt<=Date.now()+3600000)leases[kind]=saved.expiresAt;
+  else{delete leases[kind];if(saved)await settings.delete(leaseKey(id,kind));}
+ }
+ optionalLeases.set(id,leases);return leases;
+}
 // Template for build-pages.py: the worker controls only the prototype directory.
 const SHELL='thread-shell-v1-cdc6a147cc', RUNTIME='thread-runtime-v1-cdc6a147cc', SETTINGS='thread-settings-cdc6a147cc';
 const BASE='/Experiment/', MODEL='https://huggingface.co/litert-community/gemma-4-E2B-it-litert-lm/resolve/b3ca0d2f076785a8f4b2219ddbd2bdb99954eae1/gemma-4-E2B-it-web.litertlm';
 const EMBEDDING_REVISION='5090578d9565bb06545b4552f76e6bc2c93e4a66';
 const EMBEDDING_URLS=new Set(['config.json','generation_config.json','tokenizer.json','tokenizer_config.json','special_tokens_map.json','onnx/model_q4.onnx','onnx/model_q4.onnx_data'].map(file=>'https://huggingface.co/onnx-community/embeddinggemma-300m-ONNX/resolve/'+EMBEDDING_REVISION+'/'+file));
+const EXTRACTION_REVISION='extraction-2';
+const EXTRACTION_URLS=new Set(["https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/onnx/model.onnx", "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/onnx/heads.onnx", "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/onnx/records.onnx", "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/onnx/attrs.onnx", "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/tokenizer.json", "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/tokenizer_config.json", "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/special_tokens_map.json", "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/export_config.json"]);
+const researchLeases=new Map();
 const SPEECH_REVISION='speech-1';
 const SPEECH_URLS=new Set(["https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/config.json", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/generation_config.json", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/preprocessor_config.json", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/tokenizer.json", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/tokenizer_config.json", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/special_tokens_map.json", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/added_tokens.json", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/normalizer.json", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/merges.txt", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/vocab.json", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/onnx/encoder_model_quantized.onnx", "https://huggingface.co/onnx-community/whisper-tiny/resolve/ff4177021cc41f7db950912b73ea4fdf7d01d8e7/onnx/decoder_model_merged_quantized.onnx", "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/config.json", "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/tokenizer.json", "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/tokenizer_config.json", "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/onnx/model_quantized.onnx", "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX/resolve/1939ad2a8e416c0acfeecc08a694d14ef25f2231/voices/af_heart.bin"]);
 self.addEventListener('install',event=>event.waitUntil((async()=>{
@@ -18,22 +44,35 @@ self.addEventListener('message',event=>event.waitUntil((async()=>{
  if(event.data?.type==='offline'&&typeof event.data.value==='boolean')await c.put('/Experiment/__offline',new Response(event.data.value?'1':'0'));
  else if(event.data?.type==='allow-model-download')await c.put(BASE+'__model-consent',new Response('1'));
  else if(event.data?.type==='allow-embedding-download'&&event.data.revision===EMBEDDING_REVISION)await c.put('/Experiment/data/embedding-consent',new Response(EMBEDDING_REVISION));
+ else if(event.data?.type==='end-context-research'){researchLeases.delete(client.id);}
+ else if(event.data?.type==='allow-context-research'){researchLeases.set(client.id,Date.now()+60000);}
+ else if(event.data?.type==='allow-extraction-download'&&event.data.revision===EXTRACTION_REVISION)await c.put('/Experiment/data/extraction-consent',new Response(EXTRACTION_REVISION));
  else if(event.data?.type==='allow-speech-download'&&event.data.revision===SPEECH_REVISION)await c.put('/Experiment/data/speech-consent',new Response(SPEECH_REVISION));
+ else if(event.data?.type==='end-optional-download')await revokeOptionalLease(c,client.id,event.data.kind);
  else return;
+ if(['allow-speech-download','allow-embedding-download','allow-extraction-download'].includes(event.data?.type))await grantOptionalLease(c,client.id,event.data.type.includes('speech')?'speech':event.data.type.includes('extraction')?'extraction':'embedding');
  event.ports[0]?.postMessage({ok:true});
 })()));
 self.addEventListener('fetch',event=>event.respondWith((async()=>{
  const url=new URL(event.request.url), settings=await caches.open(SETTINGS);
  const flag=await settings.match('/Experiment/__offline'), offline=flag&&(await flag.text())==='1';
+ const lease=await restoreOptionalLeases(settings,event.clientId),kind=lease?.speech>Date.now()&&(SPEECH_URLS.has(url.href)||url.origin===location.origin&&url.pathname.includes('/Experiment/vendor/speech/'))?'speech':lease?.embedding>Date.now()?'embedding':null;
+ const consented=kind==='speech'?SPEECH_URLS.has(url.href)||(url.origin===location.origin&&url.pathname.includes('/Experiment/vendor/speech/')):kind==='embedding'?EMBEDDING_URLS.has(url.href)||(url.origin===location.origin&&url.pathname.includes('/Experiment/vendor/transformers/')):false;
  if(event.request.method!=='GET')return new Response('Network operation disabled',{status:403});
  if(url.origin!==location.origin){
+   if(!offline&&researchLeases.get(event.clientId)>Date.now()&&url.origin==='https://en.wikipedia.org'&&url.pathname==='/w/api.php'&&url.searchParams.get('action')==='query'&&url.searchParams.get('list')==='search'&&url.searchParams.get('srlimit')==='1'&&url.searchParams.get('format')==='json'&&url.searchParams.get('origin')==='*'&&(url.searchParams.get('srsearch')||'').length<=240&&[...url.searchParams.keys()].every(k=>['action','list','srlimit','format','origin','srsearch'].includes(k)))return fetch(event.request);
+   if(EXTRACTION_URLS.has(url.href)&&lease?.extraction>Date.now()&&await settings.match('/Experiment/data/extraction-consent'))return fetch(event.request);
   if(!offline&&url.href===MODEL&&await settings.match(BASE+'__model-consent'))return fetch(event.request);
-  if(!offline&&SPEECH_URLS.has(url.href)&&await settings.match('/Experiment/data/speech-consent'))return fetch(event.request);
-   if(!offline&&EMBEDDING_URLS.has(url.href)&&await settings.match('/Experiment/data/embedding-consent'))return fetch(event.request);
+  if(consented&&SPEECH_URLS.has(url.href)&&await settings.match('/Experiment/data/speech-consent'))return fetch(event.request);
+   if(consented&&EMBEDDING_URLS.has(url.href)&&await settings.match('/Experiment/data/embedding-consent'))return fetch(event.request);
   return new Response('External request disabled',{status:403});
  }
  if(!url.pathname.startsWith(BASE))return new Response('Outside prototype scope',{status:403});
- const speech=await(await caches.open('thread-speech-v1-cdc6a147cc')).match(event.request);if(speech)return speech;
+ if(event.request.cache==='reload'&&url.origin===location.origin&&(url.pathname.includes('/Experiment/vendor/extraction/')||url.pathname.includes('/Experiment/vendor/transformers/'))&&lease?.extraction>Date.now())return fetch(event.request);
+  const extraction=await(await caches.open('thread-extraction-v2-cdc6a147cc')).match(event.request);if(extraction)return extraction;
+  if(url.origin===location.origin&&(url.pathname.includes('/Experiment/vendor/extraction/')||url.pathname.includes('/Experiment/vendor/transformers/'))&&lease?.extraction>Date.now())return fetch(event.request);
+  
+  const speech=await(await caches.open('thread-speech-v1-cdc6a147cc')).match(event.request);if(speech)return speech;
   const optional=await(await caches.open('thread-embedding-v1-cdc6a147cc')).match(event.request);if(optional)return optional;
  const runtime=await caches.open(RUNTIME), local=await runtime.match(event.request,{ignoreSearch:true});
  if(local)return local;
@@ -41,11 +80,11 @@ self.addEventListener('fetch',event=>event.respondWith((async()=>{
  // updated canonical page when disconnected. Keep original request for fetch.
  const shellKey=new URL(url.href);shellKey.search='';shellKey.hash='';
  const shell=await caches.open(SHELL), saved=await shell.match(shellKey.href);
- if(offline)return saved||new Response('Not installed for offline use',{status:503});
+ if(offline&&!consented)return saved||new Response('Not installed for offline use',{status:503});
  // Never send virtual gameplay API calls or learner data to a static server.
  if(url.pathname.startsWith(BASE+'api/'))return new Response('Local API only',{status:403});
  try{const response=await fetch(event.request);if(response.ok&&saved)await shell.put(shellKey.href,response.clone());return response;}
  catch{return saved||new Response('Offline asset unavailable',{status:503});}
 })()));
 
-// build:418cde207b5d498911a118bd114c80588e9c0c6b080e8c2266aafacfce4dd177
+// build:57ca0657b1c9fcd4bbe7bbe563c25c4634d4c1e18e3e4253d08f342afefca67c

@@ -1,0 +1,11 @@
+Thread GLiNER 2.5 browser adapter
+
+Model: fastino/gliner2.5-multi-v1 (Apache-2.0).
+ONNX exporter: nicolasembleton/gliner2.5-multi-v1-onnx revision13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c.
+Host: Pastel-Org/gliner2.5-onnx-webgpu MIT revision9f8173223d84bb65e6952d070137a990f93ef298.
+Vendored files: gliner-boundary.mjs, joint-ie.mjs, classify-constraints.mjs.
+Thread changes: explicit input overflow error; combined entity/classification schema; bounded candidate records and token cache; exact source validation and local-only loading in Thread worker.
+Runtime: onnxruntime-web1.26.0, npm package integrity sha512-LbRr/8zZt2xilI2smrVQGGKINo0U46i8qJp+UXyMBGfqN7KjnH1BiwCwLwyNIVV4i9CKFv7Sf4PwLKWnT8/bEA==.
+WASM production backend1CPUthread. WebGPU boundary correctness has not been certified.
+Tokenizer: shared Transformers.js3.8.1.
+No output establishes a known fact or a verified learner meaning.

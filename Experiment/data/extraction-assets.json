@@ -1,0 +1,182 @@
+{
+  "version": 2,
+  "model": "nicolasembleton/gliner2.5-multi-v1-onnx",
+  "sourceModel": "fastino/gliner2.5-multi-v1",
+  "revision": "13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c",
+  "adapterRevision": "9f8173223d84bb65e6952d070137a990f93ef298",
+  "runtime": "onnxruntime-web@1.26.0",
+  "tokenizerRuntime": "@huggingface/transformers@3.8.1",
+  "languages": "multilingual encoder; English gameplay",
+  "executionProvider": "wasm",
+  "heads": [
+    "entities",
+    "classification",
+    "relations",
+    "records",
+    "attributes"
+  ],
+  "files": [
+    {
+      "name": "onnx/model.onnx",
+      "path": "extraction-model/onnx/model.onnx",
+      "url": "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/onnx/model.onnx",
+      "bytes": 1121494477,
+      "sha256": "4d42b04535a40d5f1da5e1fde57fdf5fc96d897a083895acc58734c7612bc5fb"
+    },
+    {
+      "name": "onnx/heads.onnx",
+      "path": "extraction-model/onnx/heads.onnx",
+      "url": "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/onnx/heads.onnx",
+      "bytes": 23651033,
+      "sha256": "d6f6f3335deb11f0d55f4ff22c9cec2bc6b5a0f3c99f4c396fcb124776d316a2"
+    },
+    {
+      "name": "onnx/records.onnx",
+      "path": "extraction-model/onnx/records.onnx",
+      "url": "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/onnx/records.onnx",
+      "bytes": 1191956,
+      "sha256": "bef6dbb75ffbe584fdfc9af19a763c9b6539ea32f5821268f1663dc61beac2a5"
+    },
+    {
+      "name": "onnx/attrs.onnx",
+      "path": "extraction-model/onnx/attrs.onnx",
+      "url": "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/onnx/attrs.onnx",
+      "bytes": 7382194,
+      "sha256": "ef85db425fe9827cc9e89e586cb05959c2542264b733409c1d0fee2e84b60b5b"
+    },
+    {
+      "name": "tokenizer.json",
+      "path": "extraction-model/tokenizer.json",
+      "url": "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/tokenizer.json",
+      "bytes": 16035853,
+      "sha256": "c62446df87ae18ec98b133f8f84fc449a07cc89bbf8ef192a4cb5f9c53777a7a"
+    },
+    {
+      "name": "tokenizer_config.json",
+      "path": "extraction-model/tokenizer_config.json",
+      "url": "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/tokenizer_config.json",
+      "bytes": 646,
+      "sha256": "fd4a31dc2f1f17e31638c5f0e783b81cdb2fbe6bddd116a8d9e5d50d78148cf1"
+    },
+    {
+      "name": "special_tokens_map.json",
+      "path": "extraction-model/special_tokens_map.json",
+      "url": "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/special_tokens_map.json",
+      "bytes": 2415,
+      "sha256": "df495ab27c8851887f6c3e19540accf0e380edcf907dde0391daa3d9566e1370"
+    },
+    {
+      "name": "export_config.json",
+      "path": "extraction-model/export_config.json",
+      "url": "https://huggingface.co/nicolasembleton/gliner2.5-multi-v1-onnx/resolve/13c5cdc182e66f03dbb8b6e5edc8aa356f3eec8c/export_config.json",
+      "bytes": 125,
+      "sha256": "c45f73ea8f2928aa6d9024061b1e009cf2ef7812f862bb4c7249311b761d94a7"
+    },
+    {
+      "name": "vendor/extraction/gliner-boundary.mjs",
+      "path": "vendor/extraction/gliner-boundary.mjs",
+      "url": null,
+      "bytes": 35564,
+      "sha256": "2d4dcd95247248aacd61b81ed280a1d4ea71653243754d4636ee5297ffcc7a13"
+    },
+    {
+      "name": "vendor/extraction/joint-ie.mjs",
+      "path": "vendor/extraction/joint-ie.mjs",
+      "url": null,
+      "bytes": 10705,
+      "sha256": "8abefaf493be1883b3f7db3e61d05198eff617c2eafbe34050616974c0aa10aa"
+    },
+    {
+      "name": "vendor/extraction/classify-constraints.mjs",
+      "path": "vendor/extraction/classify-constraints.mjs",
+      "url": null,
+      "bytes": 2754,
+      "sha256": "7c657af9d71b78e92a3005100e13f7bfda9ee1d25a8240e5be80867c66ec1888"
+    },
+    {
+      "name": "vendor/extraction/GLINER25-HOST-LICENSE.txt",
+      "path": "vendor/extraction/GLINER25-HOST-LICENSE.txt",
+      "url": null,
+      "bytes": 1073,
+      "sha256": "151c6c455673d5d19035fd4292cf42ffadf0343f7431fbccaa384d7e42b3b462"
+    },
+    {
+      "name": "vendor/extraction/GLINER25-MODEL-LICENSE.txt",
+      "path": "vendor/extraction/GLINER25-MODEL-LICENSE.txt",
+      "url": null,
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "name": "vendor/extraction/THREAD-NOTICE.txt",
+      "path": "vendor/extraction/THREAD-NOTICE.txt",
+      "url": null,
+      "bytes": 896,
+      "sha256": "bd3b6d21fb6c30dbce3137ded62687bb41af414362e3f38371b0d9e38219c1e3"
+    },
+    {
+      "name": "vendor/extraction/ort.wasm.bundle.min.mjs",
+      "path": "vendor/extraction/ort.wasm.bundle.min.mjs",
+      "url": null,
+      "bytes": 72809,
+      "sha256": "1e3491b976ffaf231ac5bd48fb17516ce31d5f1a47c67a63b6bbb868655483bd"
+    },
+    {
+      "name": "vendor/extraction/ort-wasm-simd-threaded.mjs",
+      "path": "vendor/extraction/ort-wasm-simd-threaded.mjs",
+      "url": null,
+      "bytes": 24180,
+      "sha256": "2de262ca1fe2d6e0ef9236bf77632fa01de232ce7b6a33071c37637ee53f4669"
+    },
+    {
+      "name": "vendor/extraction/ort-wasm-simd-threaded.wasm",
+      "path": "vendor/extraction/ort-wasm-simd-threaded.wasm",
+      "url": null,
+      "bytes": 13022405,
+      "sha256": "040d52ce5066707a10d45cb9500c35e70a9c2fb33c4fb63428da9ae45b956b97"
+    },
+    {
+      "name": "vendor/extraction/ONNX-RUNTIME-LICENSE.txt",
+      "path": "vendor/extraction/ONNX-RUNTIME-LICENSE.txt",
+      "url": null,
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "name": "vendor/extraction/ONNX-ThirdPartyNotices.txt",
+      "path": "vendor/extraction/ONNX-ThirdPartyNotices.txt",
+      "url": null,
+      "bytes": 325054,
+      "sha256": "0e07b95f3a8d6230037707c5c4a2b554d12c4cb67369669ac255635528ffcee2"
+    },
+    {
+      "name": "vendor/transformers/transformers.min.js",
+      "path": "vendor/transformers/transformers.min.js",
+      "url": null,
+      "bytes": 888173,
+      "sha256": "aa5002b70e789798da263f5f99c62bd3e8fcd0c119258a493c40c180648365fa"
+    },
+    {
+      "name": "vendor/transformers/THREAD-NOTICE.txt",
+      "path": "vendor/transformers/THREAD-NOTICE.txt",
+      "url": null,
+      "bytes": 1073,
+      "sha256": "fd2c7bf2f7635f60669b8413636947e0b22a44e9b443a7e24ffeea70b95b0ece"
+    },
+    {
+      "name": "vendor/transformers/ONNX-RUNTIME-LICENSE.txt",
+      "path": "vendor/transformers/ONNX-RUNTIME-LICENSE.txt",
+      "url": null,
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "name": "vendor/transformers/ONNX-ThirdPartyNotices.txt",
+      "path": "vendor/transformers/ONNX-ThirdPartyNotices.txt",
+      "url": null,
+      "bytes": 326866,
+      "sha256": "e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc"
+    }
+  ],
+  "bytes": 1184483754
+}

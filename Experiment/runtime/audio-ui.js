@@ -4,15 +4,16 @@ import {speechTask,cancelSpeech,speechStatus} from './speech.js';
 
 const $=id=>document.getElementById(id);
 let synthesisDone,silent;
-let prefs=audioPreferences(await get('audio-preferences').catch(()=>null)),context,unlocked=false,sequence=0,current='',playing,stream,capture,source,recordTimer,recordEpoch=0,recording=false,frames=[],frameCount=0,musicTimer;
+const savedAudio=await get('audio-preferences').catch(()=>null);
+let prefs=audioPreferences(savedAudio?.consentVersion===2?savedAudio:{...savedAudio,enabled:false}),context,unlocked=false,sequence=0,current='',playing,stream,capture,source,recordTimer,recordEpoch=0,recording=false,frames=[],frameCount=0,musicTimer;
 const tones=new Set();
 function status(text){$('audio-status').textContent=text;}
 function update(){
- $('audio-mute').textContent=prefs.enabled?'Mute audio':'Enable audio';$('audio-mute').setAttribute('aria-pressed',String(!prefs.enabled));
+ $('audio-mute').textContent=prefs.enabled?'Mute audio':'Enable audio';$('audio-mute').removeAttribute('aria-pressed');
  for(const key of ['enabled','narration','music','cues'])$('audio-'+key).checked=prefs[key];
  $('audio-volume').value=prefs.volume;$('audio-rate').value=prefs.rate;
 }
-function save(){put('audio-preferences',prefs).catch(()=>status('Audio settings could not be saved.'));update();}
+function save(){put('audio-preferences',{...prefs,consentVersion:2}).catch(()=>status('Audio settings could not be saved.'));update();}
 async function unlock(){
  if(!context)context=new AudioContext();
  await context.resume();unlocked=true;
@@ -55,17 +56,18 @@ async function narrate(){
 const nav=document.querySelector('.top-actions');
 const mute=document.createElement('button');mute.id='audio-mute';mute.className='text-button';nav.append(mute);
 const settings=document.createElement('details');settings.innerHTML=`<summary>Sound & narration</summary><p>Audio starts after an interaction. All spoken information remains available as text. Local device voices are preferred; Kokoro is used if none is available.</p><label><input id="audio-enabled" type="checkbox"> Enable audio</label><label><input id="audio-narration" type="checkbox"> Narrate briefing pages</label><label><input id="audio-cues" type="checkbox"> Subtle page cues</label><label><input id="audio-music" type="checkbox"> Quiet ambient music</label><label for="audio-volume">Audio volume</label><input id="audio-volume" type="range" min="0" max="1" step="0.05"><label for="audio-rate">Narration speed</label><input id="audio-rate" type="range" min="0.75" max="1.25" step="0.05"><p>Switch narration off when using a screen reader if speech overlaps. Audio is optional and does not affect verification.</p>`;
-settings.className='audio-settings';$('preferences-status').before(settings);
+settings.className='audio-settings setting';$('preferences-status').before(settings);
 const controls=document.createElement('div');controls.className='audio-controls';controls.innerHTML='<button class="text-button" id="audio-read">Read current briefing</button><button class="text-button" id="audio-stop">Stop narration</button><span id="audio-status" role="status"></span>';document.querySelector('.topbar').after(controls);
 $('audio-read').disabled=true;
 update();
 mute.onclick=async()=>{prefs.enabled=!prefs.enabled;save();if(!prefs.enabled){stopNarration();stopMusic();}else{await unlock().catch(e=>status(e.message));music();}};
-for(const key of ['enabled','narration','cues','music','volume','rate'])$('audio-'+key).onchange=()=>{prefs[key]=['volume','rate'].includes(key)?Number($('audio-'+key).value):$('audio-'+key).checked;save();stopNarration();music();};
+for(const key of ['enabled','narration','cues','music','volume','rate'])$('audio-'+key).onchange=async()=>{const wasReading=!!playing||!!globalThis.speechSynthesis?.speaking;prefs[key]=['volume','rate'].includes(key)?Number($('audio-'+key).value):$('audio-'+key).checked;save();stopNarration();if(prefs.enabled)await unlock().catch(e=>status(e.message));music();if(wasReading&&prefs.enabled&&prefs.narration)await narrate();else if(key==='rate')status('Narration speed: '+prefs.rate+'×. Applied to the next reading.');};
 $('audio-read').onclick=async()=>{await unlock();music();if(!prefs.enabled||!prefs.narration){status('Enable audio and narration in Accessibility preferences to read this briefing.');return;}await narrate();};
 $('audio-stop').onclick=()=>{stopNarration();status('Narration stopped.');};
 $('reset-preferences').addEventListener('click',()=>{prefs=audioPreferences();save();stopNarration();music();});
 document.addEventListener('click',()=>{if(!unlocked&&prefs.enabled)unlock().then(music).catch(()=>{});},{capture:true});
-document.addEventListener('thread-exposition',event=>{stopNarration();current=event.detail?.text||'';$('audio-read').disabled=!current;if(current&&prefs.cues)note(440,0.14,0.025);if(current)setTimeout(()=>narrate(),0);});
+document.addEventListener('thread-exposition',event=>{stopNarration();current=event.detail?.text||'';$('audio-read').disabled=!current;if(current&&prefs.cues)note(440,0.25,0.10);if(current)setTimeout(()=>narrate(),0);});
+document.addEventListener('thread-verification',event=>{if(prefs.cues)note(event.detail?.status==='verified'?523.25:392,0.25,0.10);});
 $('preferences-button').addEventListener('click',stopNarration);
 document.addEventListener('thread-busy',()=>{stopNarration();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelRecording();stopNarration();stopMusic();context?.suspend().catch(()=>{});}else if(context&&unlocked)context.resume().then(music).catch(()=>{});});

@@ -145,3 +145,18 @@ dialog{overflow:auto;padding:24px;scroll-padding:16px}.conversation,.node-canvas
 @media(forced-colors:active){.flow-progress [aria-current=step]{border-color:Highlight}}
 
 .audio-controls{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;padding:.4rem 1.5rem}.audio-controls span{font-size:.85rem;max-width:55ch}.audio-settings label{display:block;margin-block:.8rem}.audio-settings input[type=range]{width:min(100%,20rem)}
+
+body.current-view .thinking-column, body.scenario-collapsed .thinking-column { max-width: 52rem; margin-inline: auto; width: 100%; }
+.audio-settings { padding: 1rem; border: 1px solid var(--line, #767676); border-radius: .6rem; }
+
+.support-panel{border:1px solid var(--line);padding:1rem;border-radius:.6rem;margin-top:1rem}.support-panel summary{font-weight:600}.support-panel p{max-width:65ch}
+
+/* Allow enlarged, spaced labels to shrink inside narrow flex/grid controls. */
+#preferences-dialog{overflow-wrap:anywhere}
+#preferences-dialog .preference-group,#preferences-dialog .setting-row>div{min-width:0}
+#preferences-dialog .dialog-header{min-width:0}
+#preferences-dialog .dialog-header .close-button{margin-inline-end:0}
+@media(max-width:700px){.workspace,.current-view .workspace,.scenario-collapsed .workspace{max-width:calc(100% - 28px);width:calc(100% - 28px);margin-inline:14px}}
+.support-column{min-width:0;width:100%;align-self:start}.support-column .support-panel{margin-top:0}.support-panel .support-ladder{border:0;padding:0}.generation-phase{padding:1rem;border:1px solid var(--line);border-radius:.6rem;margin-block:.8rem}.generation-phase input,.generation-phase select,.generation-phase textarea{display:block;width:100%;max-width:100%;margin-block:.4rem 1rem}.generation-progress{display:flex;flex-wrap:wrap;gap:1rem;padding-left:1.2rem}.generation-progress li{flex:1 1 10rem}.tour-highlight{outline:3px solid #305f8b!important;outline-offset:4px}.tour-popover{position:fixed;z-index:30;right:1rem;bottom:1rem;max-width:24rem;width:calc(100% - 2rem);padding:1rem;border:2px solid #305f8b;border-radius:.6rem;background:var(--paper,#fffefa);box-shadow:0 .2rem 1rem #0002}.tour-popover button{margin:.4rem;min-height:44px}
+@media(min-width:1300px){.workspace{max-width:1440px;grid-template-columns:minmax(220px,25%) minmax(0,1fr) minmax(220px,23%)}.current-view .workspace,.scenario-collapsed .workspace{grid-template-columns:minmax(0,1fr) minmax(220px,25%);max-width:72rem}}
+.facts-list li.labelled-evidence{padding-left:0}.facts-list li.labelled-evidence:before{content:none}

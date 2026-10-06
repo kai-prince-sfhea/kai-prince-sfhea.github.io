@@ -63,17 +63,20 @@ export function hintFor(session,level=0){
 export function learningCheckpoint({session,scenario,onTransfer,onChallengeTransfer}){
  const box=el('section');box.className='learning-checkpoint';
  const micro=!!scenario.journey&&scenario.journey.stage<scenario.journey.total;
- box.append(el('h3',micro?'A short stage reflection':'Explain, reflect and apply'),el('p','My certificate establishes translated statements under the supplied rules. My explanation is a separate learning record. I may write briefly, use dictation, skip a prompt or return later.'));
+ box.append(el('h3',micro?'A short stage reflection':'Reflect on my reasoning · Gibbs cycle'),el('p','My certificate checks my grounded argument. Reflection helps me examine how I reached it. I may write briefly, use dictation, skip a prompt or return later.'));
  const status=el('p','Loading my reflection…');status.setAttribute('role','status');
- const groups=micro?[[['why','What connection mattered at this stage?'],['revision','What remains uncertain, and what should my next check distinguish?']]]:[
-  [['why','Which facts and rule support a key step? How does it contribute to the whole argument?'],['alternative','What serious alternative or counterexample did I consider? What evidence could distinguish it?']],
-  [['revision','What did I revise or rule out, and why?'],['influence','What assumptions, task conditions or access supports influenced my reasoning? · optional']],
-  [['transfer','Where could I apply this method, and which assumptions would need checking again?'],['plan','What specific action will I try next time, and how will I know it helped?']]
+ const groups=micro?[[['why','What connection mattered at this stage?'],['revision','What remains uncertain? What should my next check distinguish?']]]:[
+  [['description','Description · what happened in my reasoning?']],
+  [['feelings','Feelings · how did the task feel? Optional; I can skip this entirely.']],
+  [['evaluation','Evaluation · what helped or hindered my progress?']],
+  [['why','Analysis · which facts and rules supported my conclusion? What alternatives did I consider?']],
+  [['revision','Conclusion · what did I learn or change?']],
+  [['plan','Action plan · where will I apply this method, and what will I check next time?']]
  ];
  const inputs={},panels=[];let selected=0,loaded=false,writing=Promise.resolve();
  const progress=el('p');progress.setAttribute('role','status');box.append(progress);
  for(const [i,fields]of groups.entries()){
-  const panel=el('section');panel.hidden=i!==0;panel.append(el('h4',micro?'What I learned so far':['Explain a connection','Reflect on the process','Plan a transfer'][i]));
+  const panel=el('section');panel.hidden=i!==0;panel.append(el('h4',micro?'What I learned so far':['Description','Feelings · optional','Evaluation','Analysis','Conclusion','Action plan'][i]));
   for(const [key,label]of fields){const l=el('label',label),a=el('textarea');a.rows=3;a.maxLength=2500;a.id=`learning-${session}-${key}`;a.dir='auto';a.disabled=true;l.htmlFor=a.id;panel.append(l,a);inputs[key]=a;}
   panels.push(panel);box.append(panel);
  }
@@ -82,14 +85,14 @@ export function learningCheckpoint({session,scenario,onTransfer,onChallengeTrans
  const nav=el('div');nav.className='flow-actions';const previous=el('button','Previous reflection'),next=el('button','Next reflection');previous.type=next.type='button';
  const show=()=>{panels.forEach((p,i)=>p.hidden=i!==selected);progress.textContent=micro?'Optional stage note':`Reflection ${selected+1} of ${groups.length}`;previous.disabled=selected===0;next.disabled=selected===groups.length-1;};
  previous.onclick=()=>{selected--;show();panels[selected].querySelector('textarea')?.focus();};next.onclick=()=>{selected++;show();panels[selected].querySelector('textarea')?.focus();};if(!micro)nav.append(previous,next);show();
- const save=el('button','Save my explanation');save.type='button';save.dataset.saveReflection='';save.disabled=true;save.onclick=async()=>{try{await persist();status.textContent='My reflection is saved locally. It has not been independently assessed.';}catch(e){status.textContent='Could not save: '+e.message;}};
+ const save=el('button','Save my reflection');save.type='button';save.dataset.saveReflection='';save.disabled=true;save.onclick=async()=>{try{await persist();status.textContent='My reflection is saved locally. It has not been independently assessed.';}catch(e){status.textContent='Could not save: '+e.message;}};
  box.append(nav,save,status,el('p','Reflection is optional and ungraded. Personal or emotional disclosure is never required.'));
  if(!micro){
-  const peer=el('details');peer.className='peer-discussion';peer.append(el('summary','Explain one idea · with a willing peer or on my own'),el('p','I can choose one connection worth explaining: what supports it, and where might it stop applying? A willing partner can restate my meaning before asking one fair question or proposing an alternative. We can exchange roles, disagree with the claim respectfully, or stop. I can rehearse both roles on my own.'),el('p','I share only text I deliberately select. Full JSON and readable exports can contain private reflections; I review them before sharing. Thread does not send anything or provide a peer community. Popularity and agreement are not evidence that a claim is sound.'));box.append(peer);
+  const peer=el('details');peer.className='peer-discussion';peer.append(el('summary','Action-plan option · rehearse one explanation'),el('p','I can choose one connection worth explaining: what supports it, and where might it stop applying? A willing partner can restate my meaning before asking one fair question or proposing an alternative. We can exchange roles, disagree with the claim respectfully, or stop. I can rehearse both roles on my own.'),el('p','I share only text I deliberately select. Full JSON and readable exports can contain private reflections; I review them before sharing. Thread does not send anything or provide a peer community. Popularity and agreement are not evidence that a claim is sound.'));panels[5].append(peer);
   const challengeTransfer=!!scenario.challenge&&!!onChallengeTransfer;
   const practice=transferPractice(scenario);
   const transfer=el('button',challengeTransfer?'Compare this seed in another subject or setting':practice.label);transfer.type='button';transfer.className='secondary-button';transfer.onclick=()=>challengeTransfer?onChallengeTransfer():onTransfer(practice.source);
-  const details=el('details');details.append(el('summary','Apply the method in another context'),el('p','I can compare the same seed and difficulty in a setting I choose. A changed setting can reveal a shared structure; it does not define my identity or ability. A fresh problem needs its assumptions checked again. I can explain which condition is necessary and which combination is sufficient.'),transfer);box.append(details);
+  const details=el('details');details.append(el('summary','Action-plan option · apply the method elsewhere'),el('p','I can compare the same seed and difficulty in a setting I choose. A changed setting can reveal a shared structure; it does not define my identity or ability. A fresh problem needs its assumptions checked again. I can explain which condition is necessary and which combination is sufficient.'),transfer);panels[5].append(details);
  }
  get('learning:'+session).then(prior=>{for(const [k,a]of Object.entries(inputs))a.value=prior?.[k]||'';status.textContent=prior?'Saved reflection restored.':'My notes save as I write.';}).catch(e=>status.textContent='Could not load reflection: '+e.message).finally(()=>{loaded=true;save.disabled=false;Object.values(inputs).forEach(a=>a.disabled=false);});
  return box;

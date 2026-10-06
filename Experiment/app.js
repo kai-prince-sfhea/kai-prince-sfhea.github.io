@@ -5,8 +5,11 @@ import {localApi} from './runtime/local-api.js';
 import {get,put} from './runtime/store.js';
 import {learningCheckpoint,authorForm} from './runtime/learning.js';
 import {challengeForm,challengeBrief} from './runtime/challenge.js';
-import {createScenarioFlow} from './runtime/scenario-flow.js';
+import {createScenarioFlow,thinkingEvidenceRows,briefingFacts,givenObservationsInspection} from './runtime/scenario-flow.js';
 import {reasoningToolkit} from './runtime/reasoning-support.js';
+import {canonicalExpressionKey} from './runtime/argument-interchange.js';
+import {graphTools} from './runtime/graph-tools.js';
+import {renderReferences} from './runtime/scenario-references.js';
 import './runtime/pwa.js';
 import {cancel as cancelInterpretation} from './runtime/model.js';
 /* All inference, verification and saved work live on this device. */
@@ -65,7 +68,7 @@ async function resetWorkspace(scenario, continuation=null) {
   const previous = state.session;
   setBusy(true, 'Opening a fresh reasoning trail…');
   try {
-    const opened=await startSession(scenario,continuation);
+    const opened=await startSession(scenario,continuation,true);
     state.transcript = [];
     $('#conversation').replaceChildren();
     $('#review-ready').hidden = true;
@@ -95,9 +98,17 @@ async function openLibrary() {
   try {
     const result = await api('/api/scenarios'); state.library = result.scenarios;
     list.replaceChildren();
+    const filters=node('section','library-filters'),searchLabel=node('label','','Find a scenario'),search=node('input');search.id='library-search';search.type='search';search.maxLength=120;searchLabel.htmlFor=search.id;
+    const familyLabel=node('label','','Scenario family'),family=node('select');family.id='library-family';familyLabel.htmlFor=family.id;const all=node('option','','All families');all.value='';family.append(all);for(const value of [...new Set(state.library.map(s=>s.family||'Original scenarios'))]){const option=node('option','',value);option.value=value;family.append(option);}
+    const count=node('p','candidate-note');count.setAttribute('role','status');filters.append(searchLabel,search,familyLabel,family,count);list.append(filters);const cards=[];
+    const filter=()=>{let shown=0;for(const {scenario,card}of cards){const selected=!family.value||(scenario.family||'Original scenarios')===family.value,found=(scenario.title+' '+scenario.description).toLocaleLowerCase().includes(search.value.toLocaleLowerCase().trim());card.hidden=!(selected&&found);if(!card.hidden)shown++;}count.textContent=shown+' of '+cards.length+' scenarios shown.';};search.oninput=family.onchange=filter;
     state.library.forEach(scenario => {
       const card = node('section', 'library-card');
       card.append(node('span', 'eyebrow', scenario.difficulty), node('h3', '', scenario.title), node('p', '', scenario.description));
+      if(scenario.family)card.append(node('p','candidate-note',scenario.family));
+      if(scenario.verification_scope){const scope=node('details');scope.append(node('summary','','Verification scope'),node('p','candidate-note',scenario.verification_scope));card.append(scope);}
+      if(scenario.content_sensitive)card.append(node('p','candidate-note','Content choice required · '+scenario.content_note));
+      if(scenario.references?.length)card.append(renderReferences(scenario));
       const actions = node('div', 'library-actions');
       const start = node('button', 'secondary-button', 'Start scenario ↗');
       start.addEventListener('click', async () => { if (state.busy) return; start.disabled = true; try { await resetWorkspace(scenario); $('#library-dialog').close(); } catch {} finally { start.disabled = false; } });
@@ -115,8 +126,9 @@ async function openLibrary() {
       actions.append(start, example); card.append(actions);
       const source = node('details', 'source-code'); source.append(node('summary', '', scenario.source_name), node('pre', '', scenario.source_text));
       const download = node('button', 'text-button', 'Download this THY'); download.addEventListener('click', () => downloadText(scenario.source_name,scenario.source_text)); download.setAttribute('aria-label','Download this THY: '+scenario.title);source.append(download);
-      card.append(source); list.append(card);
+      card.append(source); list.append(card);cards.push({scenario,card});
     });
+    filter();
   } catch(error) { list.replaceChildren(node('p','form-error',error.message)); }
 }
 
@@ -188,7 +200,7 @@ function drawGraph(graph) {
   }
   function ast(e, path, level) {
     const label=e.op==='atom'?e.name:e.op==='const'?String(e.value):e.op==='answer'?`${e.guard} guard answers yes`:e.op;
-    add(path,label,level);
+    path=canonicalExpressionKey(e);add(path,label,level);
     [e.arg,e.proposition,e.left,e.right].filter(Boolean).forEach((c,i)=>{ const child=ast(c,`${path}.${i}`,level+1); edges.push([child,path]); });
     return path;
   }
@@ -197,13 +209,13 @@ function drawGraph(graph) {
     const c=graph.candidate; add(c.id,`Step ${c.id}: ${c.text}`);
     (c.depends_on||[]).forEach(id=>{add(id,`Earlier step ${id}`,1);edges.push([id,c.id]);});
     if (graph.effective_theorem) edges.push([ast(graph.effective_theorem,'expression',1),c.id]);
-    (c.conclusions||[]).forEach((p,i)=>{const id=add(`conclusion-${i}`,`${p.positive?'':'NOT: '}${labelFor(p.id)}`,1);edges.push([id,c.id]);});
+    (c.conclusions||[]).forEach((p,i)=>{const id=add(`proposition-${p.id}-${p.positive}`,`${p.positive?'':'NOT: '}${labelFor(p.id)}`,1);edges.push([id,c.id]);});
   }
   let traceCount=0;
   function trace(t, parent, level) {
     if (++traceCount>180) return;
     const atom=t.atom||'', key=atom.match(/(?:pos|neg)\((a\d+)\)/)?.[1];
-    const id=add(`trace-${traceCount}`,`${t.kind==='fact'?'Given':'Derived'}: ${atom.startsWith('neg(')?'NOT: ':''}${labelFor(graph.prolog_atom_map?.[key]||key||atom)}`,level);
+    const id=add(key?`proposition-${graph.prolog_atom_map?.[key]||key}-${!atom.startsWith('neg(')}`:`trace-${traceCount}`,`${t.kind==='fact'?'Given':'Derived'}: ${atom.startsWith('neg(')?'NOT: ':''}${labelFor(graph.prolog_atom_map?.[key]||key||atom)}`,level);
     if(parent) edges.push([id,parent]);
     (t.premises||[]).forEach(p=>trace(p,id,level+1));
   }
@@ -319,11 +331,13 @@ function renderScenario(scenario) {
   $('#scenario-title').textContent = scenario.title || 'The two guards';
   $('#scenario-description').textContent = scenario.description || '';
   $('#scenario-goal').textContent = scenario.goal || '';
-  const visibleFacts=scenario.journey?[`Stage ${scenario.journey.stage} of 3 · ${scenario.journey.remaining} evidence credits remain.`,'My evidence review contains the observations collected so far.','Earlier certificates belong to earlier evidence. I must establish this stage’s bounded conclusion.']:scenario.challenge?['Two disputed records are available in My evidence review.','A reported concern is a claim to evaluate. The given observations and review rules are listed separately.','I need a warrant and a disposition for each record, the limits, and a combined recommendation.']:scenario.facts||[];
+  const visibleFacts=thinkingEvidenceRows(scenario);
   const context=$('#context-content');context.replaceChildren(node('p','',scenario.goal));const contextFacts=node('ul');visibleFacts.forEach(f=>contextFacts.append(node('li','',readable(f))));context.append(contextFacts);
   const list = $('#facts-list');
   list.replaceChildren();
-  visibleFacts.forEach(fact => list.append(node('li', '', readable(fact))));
+  visibleFacts.forEach(fact => list.append(node('li', /^(?:Fact F\d+|Rule \d+) · /.test(fact)?'labelled-evidence':'', readable(fact))));
+  $('#thinking-givens')?.remove();
+  if(scenario.nodes){const data=briefingFacts(scenario);if(data.reviewedSummary||scenario.challenge||scenario.journey||data.observations.length>12){const inspection=givenObservationsInspection(data.observations);inspection.id='thinking-givens';list.after(inspection);context.append(givenObservationsInspection(data.observations));}}
   $('#challenge-brief')?.remove();
   const brief=challengeBrief({scenario,onConfigure:openChallengeConfig,onNotes:openPause});if(brief)$('#conversation').before(brief);
   $('.scenario-art').hidden = scenario.domain === 'theory';
@@ -356,11 +370,12 @@ function renderClaims() {
     const item = node('li');
     item.append(node('strong', '', `Step ${String(index + 1).padStart(2, '0')}`));
     item.append(node('span', '', claim.summary || claim.text || readable(claim.conclusion)));
-    if (claim.dependencies?.length || claim.assumptions?.length) {
+    if (claim.dependencies?.length || claim.assumptions?.length || claim.cited_rules?.length) {
       const detail = node('details');
       detail.append(node('summary', '', 'What this builds on'));
       if (claim.assumptions?.length) detail.append(node('p', '', `Assumptions: ${claim.assumptions.map(readable).join('; ')}`));
       if (claim.dependencies?.length) detail.append(node('p', '', `Connections: ${claim.dependencies.map(dependencyLabel).join('; ')}`));
+      if (claim.cited_rules?.length) detail.append(node('p', '', `Cited connecting rules: ${claim.cited_rules.join('; ')}`));
       item.append(detail);
     }
     list.append(item);
@@ -374,7 +389,7 @@ function dependencyLabel(value) {
   return value.replaceAll('_', ' ');
 }
 
-async function startSession(scenario,continuation=null) {
+async function startSession(scenario,continuation=null,keepBusy=false,initial=false) {
   state.caseRevision = false;
   const result = continuation?await api('/api/next-stage',continuation):await api('/api/session', { ...(scenario ? {scenario} : {}), guidance: state.guidance });
   if (!result.session_id) throw new Error('A local attempt could not be created. Please check Device setup.');
@@ -386,8 +401,8 @@ async function startSession(scenario,continuation=null) {
   history.replaceState(null, '', `#session=${encodeURIComponent(state.session)}`);
   if (result.scenario) renderScenario(result.scenario);
   renderClaims();
-  setBusy(false);
-  await flow.open({initial:!scenario&&!continuation});
+  if(!keepBusy)setBusy(false);
+  await flow.open({initial:initial||(!scenario&&!continuation)});
   return result;
 }
 
@@ -457,6 +472,7 @@ function addInterpretation(result, original) {
   const actionOnly=interpretation.strategy&&interpretation.graph?.conclusion?.op==='const'&&interpretation.graph.conclusion.value===true;
   term(actionOnly?'This step':'Conclusion',actionOnly?'My explicit door-choice rule is shown below.':interpretation.conclusion);
   term('Builds on', interpretation.dependencies?.map(dependencyLabel));
+  if (interpretation.cited_rules?.length) term('Cited connecting rules', interpretation.cited_rules);
   if (interpretation.strategy) {
     const rule = interpretation.strategy;
     const door = value => value === 'tested' ? 'I go through the tested door.' : value === 'other' ? 'I go through the other door.' : 'I have not specified a choice yet.';
@@ -480,7 +496,7 @@ function addInterpretation(result, original) {
     $('#thought').focus();
   });
   actions.append(confirm, edit);
-  card.append(actions, node('p', 'candidate-note', 'An interpretation is a proposal. It has not been verified yet.'));
+  const pendingNote=node('p','candidate-note','An interpretation is a proposal. It has not been verified yet.');pendingNote.dataset.pendingInterpretation='true';card.append(actions,pendingNote);
   content.append(card);
   state.transcript.push({role: 'interpretation', candidate_id: result.candidate_id, interpretation});
   setBusy(false);
@@ -525,12 +541,14 @@ async function verifyCandidate(candidateCard, actions, expectedId) {
   setBusy(true, 'Checking this step, then checking every part of my scenario goal.');
   try {
     const result = await api('/api/verify', {session_id: state.session, candidate_id: candidate.id});
+    document.dispatchEvent(new CustomEvent('thread-verification',{detail:{status:result.status}}));
     state.transcript.push({role: 'verification', ...result, time: new Date().toISOString()});
     const accepted = result.status === 'accepted' || result.status === 'verified';
     const unavailable = ['unavailable', 'error', 'engine_unavailable', 'blocked', 'pending'].includes(result.status);
     const content = message('companion');
     const card = node('section', `result-card ${accepted ? 'accepted' : unavailable ? 'pending' : 'rejected'}`);
     card.append(node('div', 'result-label', accepted ? 'My thought holds' : unavailable ? 'Verification is waiting' : 'Something to reconsider'));
+    document.dispatchEvent(new CustomEvent('thread-step-checked'));
     card.append(node('p', '', readable(result.feedback) || (accepted ? 'This follows from my assumptions. What can I explore next?' : 'What am I missing in this reasoning?')));
 
     if (result.counterexample) {
@@ -559,7 +577,7 @@ async function verifyCandidate(candidateCard, actions, expectedId) {
     } else {
       state.candidate = null;
       actions.replaceChildren(node('span', 'candidate-note', accepted ? 'You confirmed this interpretation.' : 'You confirmed this interpretation. The reasoning can still be revised.'));
-      candidateCard.querySelector(':scope > .candidate-note')?.remove();
+      candidateCard.querySelector('[data-pending-interpretation]')?.remove();
       if (!accepted) {
         state.caseRevision = !!candidate.caseReview;
         const revise = node('button', 'text-button', 'Revise this thought ↗');
@@ -603,7 +621,9 @@ async function reviewNextCase() {
 
 function addVerificationDetails(card, result) {
   const details = node('details', 'verification-inspector');
+  details.dataset.logicInspection='';
   details.append(node('summary', '', 'Inspect logic & code'));
+  for(const scope of result.verification_scopes||[]){const panel=node('details','scope-inspector');panel.append(node('summary','',scope.label+' · '+scope.status));if(scope.hypothetical)panel.append(node('p','','Conditional support; this does not establish its assumptions.'));if(scope.inferred_dependencies?.length)panel.append(node('p','','Automatically recognised dependencies: '+scope.inferred_dependencies.join(', ')+'. These were not necessarily cited in my current thought.'));for(const [key,code]of Object.entries(scope.sources||{}))panel.append(node('h5','',key),node('pre','',code));details.append(panel);}
   function section(title, check) {
     if (!check) return;
     details.append(node('h4', '', title));
@@ -676,8 +696,9 @@ function showCompleted(solution) {
   card.append(node('div', 'eyebrow', 'A THREAD THAT HOLDS'));
   const theory = state.scenario?.domain === 'theory';
   card.append(node('h3', '', theory ? "I've connected the case." : "I've found a way through."));
-  card.append(node('p', '', theory ? 'My confirmed claims cover every goal and follow from the supplied scenario.' : 'I know what the answer tells me, and I know which door to go through, whichever guard I ask.'));
-  if (theory) card.append(node('p', 'candidate-note', 'The proof checks my statements against the scenario. It does not check whether my chosen reasons are enough to support my conclusion. I can review that connection in my explanation below, which is a separate learning record.'));
+  card.append(node('p', '', theory ? 'My grounded argument connects the supplied facts to every goal.' : 'I know what the answer tells me, and I know which door to go through, whichever guard I ask.'));
+  if (theory) card.append(node('p', 'candidate-note', 'The proof checks the connection from my stated premises and cited established steps. Hypothetical premises remain conditional; my optional reflection is a separate learning record.'));
+  if(state.scenario.verification_scope)card.append(node('p','candidate-note',state.scenario.verification_scope));
   if (solution?.witness?.conclusions) {
     const list = node('ul'); solution.witness.conclusions.forEach(c => list.append(node('li', '', c))); card.append(list);
   }
@@ -705,6 +726,9 @@ function showCompleted(solution) {
     const trail = node('ol');
     review.overview.forEach(step => {
       const li = node('li'); li.append(node('strong', '', `${step.step}: `), document.createTextNode(step.conclusion));
+      if (step.assumptions?.length) li.append(node('p','candidate-note','Premises: '+step.assumptions.join('; ')));
+      if (step.cited_rules?.length) li.append(node('p','candidate-note','Cited connecting rules: '+step.cited_rules.join('; ')));
+      if (step.state) li.append(node('p','candidate-note','Knowledge: '+step.state));
       if (step.depends_on.length) li.append(node('p', 'candidate-note', `Builds on ${step.depends_on.join(', ')}`));
       trail.append(li);
     });
@@ -716,9 +740,7 @@ function showCompleted(solution) {
     const concepts = node('ul'); review.concepts.forEach(t => concepts.append(node('li', '', t))); carry.append(concepts);
     carry.append(node('p', '', review.transfer));
   }
-  const button = node('button', 'secondary-button', 'Reflect on my reasoning ↗');
-  button.addEventListener('click', openPause);
-  card.append(button);
+
   card.append(learningCheckpoint({session:state.session,scenario:state.scenario,onChallengeTransfer:()=>openChallengeConfig({...state.scenario.challenge.config,format:state.scenario.journey?'staged':'single'}),onTransfer:async source=>{try{const r=await api('/api/import-theory',{source});await resetWorkspace(r.scenario);}catch(e){toast(e.message);}}}));
   flow.complete(card);
 }
@@ -784,7 +806,6 @@ function openPause() {
   const summary = $('#debrief-summary');
   summary.replaceChildren(node('strong', '', `${state.claims.length} verified ${state.claims.length === 1 ? 'step' : 'steps'}. `));
   summary.append(document.createTextNode(state.solved ? 'I established every part of my goal.' : state.claims.length ? 'I can build this explanation one connection at a time.' : 'Noticing what I am unsure about gives me a starting point.'));
-  $('.reflection-prompts p').textContent = state.scenario?.debrief || 'Where else could checking my assumptions help me?';
   $('#pause-dialog').showModal();
 }
 
@@ -870,13 +891,13 @@ $('#guidance').addEventListener('change', updateGuidance);
 $('#timer-setting').addEventListener('change', startTimer);
 $('#dismiss-onboarding').addEventListener('click', () => { $('#show-introduction').checked = false; $('#onboarding').hidden = true; savePreferences(); $('#thought').focus(); });
 $('#thought-form').addEventListener('submit', submitThought);
-$('#thought').addEventListener('keydown', event => { if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') { event.preventDefault(); submitThought(); } });
+$('#thought').addEventListener('keydown', event => { if (!event.isComposing && event.key === 'Enter' && !event.shiftKey && ($('#enter-to-send').checked || event.ctrlKey || event.metaKey)) { event.preventDefault(); submitThought(); } });
 const support=node('details','support-ladder');support.id='support-ladder';support.append(node('summary','','Choose how much support I want'),node('p','','I can increase or reduce guidance whenever I choose. These prompts never add facts to my argument.'));
 ['Restate my goal','Give a focused cue','Offer an explanation starter','Show an analogous example'].forEach((label,i)=>{const b=node('button','text-button',label);b.type='button';b.onclick=()=>requestHint(i);support.append(b);});
 $('#thought-form').after(support);$('#hint-button').addEventListener('click',()=>{support.open=!support.open;if(support.open)support.querySelector('summary').focus();});
 $('#cancel-processing').addEventListener('click',cancelInterpretation);
-$('#refresh-runtime').addEventListener('click', async () => { await refreshRuntime(); if (!state.session) { try { await startSession(); } catch (error) { toast(error.message); } } });
-$('#pause-button').addEventListener('click', openPause);
+$('#refresh-runtime').addEventListener('click', async () => { await refreshRuntime(); if (!state.session&&state.scenario) { try { await startSession(state.scenario,null,false,true); } catch (error) { toast(error.message); } } });
+$('#pause-button')?.addEventListener('click', openPause); // older saved layouts only
 $('#pause-dialog').addEventListener('close', () => { state.paused = false; state.timer.lastTick = Date.now(); updateTimer(); });
 $('#export-button').addEventListener('click', exportSession);
 $('#customise-button').addEventListener('click', () => openCustomise());
@@ -915,14 +936,17 @@ async function initialise() {
   renderRuntime();
   setBusy(true, 'Opening your local reasoning workspace…');
   const runtimePromise = refreshRuntime();
+  let openingScenario;
   try {
-    const scenario = await api('/api/scenario');
-    renderScenario(scenario.scenario || scenario);
+    const scenario = location.hash.startsWith('#session=') ? await api('/api/scenario') : await api('/api/tutorial');
+    openingScenario=scenario.scenario || scenario;
+    renderScenario(openingScenario);
     const resume = location.hash.match(/^#session=([A-Za-z0-9_-]+)$/);
     if (resume) {
       const saved = await api(`/api/session?id=${encodeURIComponent(resume[1])}`);
       state.session = saved.session_id;
       state.claims = saved.claims;
+      if(saved.contract_notice)showNotice(saved.contract_notice);
       renderScenario(saved.scenario);
       renderClaims();
       $('#onboarding').hidden = !!state.scenario.tutorial || !$('#show-introduction').checked;
@@ -933,11 +957,11 @@ async function initialise() {
       if(!saved.progress.solved)await flow.open({resume:true});
       setBusy(false);
       scrollConversation();
-    } else await startSession();
+    } else await startSession(openingScenario,null,false,true);
   } catch (error) {
     showNotice(error.message);
     setBusy(false);
-    if(!state.session)await startSession();
+    if(!state.session&&openingScenario)try{await startSession(openingScenario,null,false,true);}catch(startError){showNotice(startError.message);setBusy(false);}
   }
   await runtimePromise;
 }
@@ -951,7 +975,7 @@ function applyPreferences(p={}){
  option('#guidance',p.guidance,'gentle');option('#timer-setting',p.timer,'0');option('#workspace-view',p.view,'full');option('#text-size',p.textSize,'standard');
  $('#motion-setting').checked=typeof p.motion==='boolean'?p.motion:matchMedia('(prefers-reduced-motion: reduce)').matches;
  document.body.classList.toggle('reduced-motion',$('#motion-setting').checked);setFocus(!!p.focus);
- $('#direct-wording').checked=!!p.direct;$('#reading-spacing').checked=!!p.spacing;$('#show-introduction').checked=p.introduction!==false;
+ $('#enter-to-send').checked=p.enterToSend!==false;$('#direct-wording').checked=!!p.direct;$('#reading-spacing').checked=!!p.spacing;$('#show-introduction').checked=p.introduction!==false;
  $('#anticipation-enabled').checked=p.backgroundPreparation!==false;
  $('#onboarding').hidden=!!state.scenario?.tutorial||!$('#show-introduction').checked;
  document.body.classList.toggle('current-view',$('#workspace-view').value==='current');flow.updateLayout();applyReadingPreferences();updateGuidance();
@@ -961,8 +985,8 @@ async function restorePreferences(){
 }
 function persistWorkspace(){if(state.session)put('workspace:'+state.session,{draft:$('#thought').value,reflection:$('#reflection').value}).catch(e=>showNotice('Device storage could not save the draft: '+e.message));}
 for(const id of ['thought','reflection'])$('#'+id).addEventListener('input',persistWorkspace);
-function savePreferences(){return put('preferences',{guidance:$('#guidance').value,motion:$('#motion-setting').checked,focus:$('#focus-setting').checked,timer:$('#timer-setting').value,direct:$('#direct-wording').checked,view:$('#workspace-view').value,textSize:$('#text-size').value,spacing:$('#reading-spacing').checked,introduction:$('#show-introduction').checked}).then(()=>{$('#preferences-status').textContent='Preferences saved on this browser.';}).catch(error=>{$('#preferences-status').textContent='Applied for now, but preferences could not be saved: '+error.message;});}
-for(const id of ['guidance','motion-setting','focus-setting','timer-setting'])$('#'+id).addEventListener('change',savePreferences);
+function savePreferences(){return put('preferences',{guidance:$('#guidance').value,motion:$('#motion-setting').checked,focus:$('#focus-setting').checked,timer:$('#timer-setting').value,direct:$('#direct-wording').checked,view:$('#workspace-view').value,textSize:$('#text-size').value,spacing:$('#reading-spacing').checked,enterToSend:$('#enter-to-send').checked,introduction:$('#show-introduction').checked}).then(()=>{$('#preferences-status').textContent='Preferences saved on this browser.';}).catch(error=>{$('#preferences-status').textContent='Applied for now, but preferences could not be saved: '+error.message;});}
+for(const id of ['guidance','motion-setting','focus-setting','timer-setting','enter-to-send'])$('#'+id).addEventListener('change',savePreferences);
 $('#conversation').addEventListener('scroll',()=>{const c=$('#conversation');state.followConversation=c.scrollHeight-c.scrollTop-c.clientHeight<80;},{passive:true});
 window.addEventListener('pagehide',persistWorkspace);
 setInterval(updateTimer, 1000);
@@ -983,7 +1007,7 @@ $('#show-introduction').addEventListener('change',()=>{$('#onboarding').hidden=!
 async function saveBackgroundPreparation(){const enabled=$('#anticipation-enabled').checked;window.dispatchEvent(new CustomEvent('background-preparation-change',{detail:enabled}));try{await put('background-preparation',enabled);$('#preferences-status').textContent='Preferences saved on this browser.';}catch(error){$('#preferences-status').textContent='Applied for now, but the background preference could not be saved: '+error.message;}}
 $('#anticipation-enabled').addEventListener('change',saveBackgroundPreparation);
 $('#reset-preferences').addEventListener('click',async()=>{applyPreferences();flow.setCollapsed(false);startTimer();await put('scenario-collapsed',false).catch(()=>{});await savePreferences();await saveBackgroundPreparation();});
-const challengeMaker=challengeForm({generate:(config,format)=>api(format==='staged'?'/api/generate-journey':'/api/generate-challenge',{config}),start:async(scenario,guidance)=>{$('#guidance').value=guidance;updateGuidance();await savePreferences();await resetWorkspace(scenario);$('#library-dialog').close();}});
+const challengeMaker=challengeForm({generate:(config,format)=>api('/api/generate-task',{config}),start:async(scenario,guidance)=>{$('#guidance').value=guidance;updateGuidance();await savePreferences();await resetWorkspace(scenario);$('#library-dialog').close();}});
 $('#scenario-library').before(challengeMaker);
 async function openChallengeConfig(config){if(state.busy)return;await openLibrary();await challengeMaker.configure(config);}
 const currentActions=node('div','current-actions');for(const [id,label]of [['choose-scenario','Choose scenario'],['restart-button','Restart scenario']]){const b=node('button','text-button',label);b.type='button';b.onclick=()=>{if(!state.busy)$('#'+id).click();};currentActions.append(b);}$('#context-content').before(currentActions);
@@ -991,5 +1015,5 @@ const builder=authorForm(async source=>{const r=await api('/api/import-theory',{
 $('#customise-dialog').append(builder);
 const createButton=node('button','secondary-button','Create a scenario from statements and rules');createButton.onclick=()=>{$('#library-dialog').close();openCustomise(state.scenario);builder.open=true;builder.querySelector('summary').focus();};$('#scenario-library').before(createButton);
 const lesson=node('details','onboarding-example');lesson.append(node('summary','','Try the review loop · example and glossary'),node('p','','Example: a library lends a book when my pass is valid AND the book is available. “My pass is valid, so I can borrow it” leaves a condition open. I can ask which condition, then explain how both facts support my claim.'),node('p','','A fact is supplied by the scenario. An assumption is a condition I add. A claim is what I assert. A warrant connects evidence to a claim. A counterexample is a case where the claim fails. A proof here is conditional on the scenario model.'),node('p','','I review the interpretation first. If Gemma changed my meaning, I correct the interpretation; that does not mean my argument was wrong. English is the currently supported interface language. Other input languages have not been validated.'));
-$('#onboarding').after(lesson);
-const readableExport=node('button','text-button','Export readable reasoning notes');readableExport.onclick=async()=>{const learning=await get('learning:'+state.session),history=await stageHistory();downloadText('thread-reasoning-notes.txt',[state.scenario.title,'Goal: '+state.scenario.goal,'Given facts:',...state.scenario.facts,'My reasoning trail:',...state.claims.map(c=>c.id+': '+(c.text||c.summary||'')+'\nInterpretation: '+(c.summary||readable(c.conclusion))),'Reflection: '+$('#reflection').value,...['why','alternative','revision','influence','transfer','plan'].map(k=>k+': '+(learning?.[k]||'')),...history.flatMap(r=>['Stage '+r.session.scenario.journey.stage,...r.session.graph.map(c=>c.text),'Evidence choice: '+(r.session.stage_decision?.choice||''),'Decision note: '+(r.session.stage_decision?.rationale||''),...Object.entries(r.reflection||{}).filter(([k])=>['why','alternative','revision','influence','transfer','plan'].includes(k)).map(([k,v])=>k+': '+v)])].join('\n\n'));};$('#pause-dialog').append(readableExport);
+const supportDisclosure=node('details','support-panel');supportDisclosure.id='support-panel';supportDisclosure.append(node('summary','','ⓘ Reasoning support'),node('p','','Optional hints and examples. Opening these adds no accepted reasoning.'),$('#hint-button'),support,lesson);const supportColumn=node('aside','support-column');supportColumn.setAttribute('aria-label','Optional reasoning support');supportDisclosure.append(graphTools(state));supportColumn.append(supportDisclosure);$('main.workspace').append(supportColumn);
+const readableExport=node('button','text-button','Export readable reasoning notes');readableExport.onclick=async()=>{const learning=await get('learning:'+state.session),history=await stageHistory();downloadText('thread-reasoning-notes.txt',[state.scenario.title,'Goal: '+state.scenario.goal,'Given facts:',...state.scenario.facts,'My reasoning trail:',...state.claims.map(c=>c.id+': '+(c.text||c.summary||'')+'\nInterpretation: '+(c.summary||readable(c.conclusion))),'Reflection: '+$('#reflection').value,...['description','feelings','evaluation','why','revision','plan'].map(k=>k+': '+(learning?.[k]||'')),...history.flatMap(r=>['Stage '+r.session.scenario.journey.stage,...r.session.graph.map(c=>c.text),'Evidence choice: '+(r.session.stage_decision?.choice||''),'Decision note: '+(r.session.stage_decision?.rationale||''),...Object.entries(r.reflection||{}).filter(([k])=>['description','feelings','evaluation','why','revision','plan'].includes(k)).map(([k,v])=>k+': '+v)])].join('\n\n'));};$('#pause-dialog').append(readableExport);

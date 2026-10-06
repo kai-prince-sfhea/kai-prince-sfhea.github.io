@@ -1,6 +1,8 @@
 import {get,put} from './store.js';
-import {reasoningToolkit} from './reasoning-support.js';
 import {renderScenarioLearning} from './scenario-learning.js';
+import {formatBudget,budgetExplanation} from './budget.js';
+import {tutorialTour,closeTutorialTour} from './tutorial-tour.js';
+import {renderReferences} from './scenario-references.js';
 const el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const button=(text,fn,primary=false)=>{const b=el('button',text,primary?'primary-button':'secondary-button');b.type='button';b.onclick=fn;return b;};
 const REVIEWED_BRIEFINGS=new Set(['murder-basic','murder-temporal','murder-fuzzy','legal','sqrt-two']);
@@ -14,22 +16,37 @@ export function briefingFacts(scenario={}){
 export function givenObservationsInspection(observations){
  const details=el('details',undefined,'given-observations-inspection');
  details.append(el('summary','Inspect all given observations'),el('p',`${observations.length} exact given observations from this scenario. Opening this list adds no verified step.`));
- const list=el('ul');for(const observation of observations)list.append(el('li',observation));details.append(list);return details;
+ const list=el('ul');for(const [i,observation]of observations.entries())list.append(el('li',`Fact F${i+1} · ${observation}`));details.append(list);return details;
+}
+
+export function thinkingEvidenceRows(scenario={}){
+ if(scenario.journey)return [`Stage ${scenario.journey.stage} of 3 · ${formatBudget(scenario.journey,scenario.journey.remaining)} remain.`,'My evidence review contains the observations collected so far.','Earlier certificates belong to earlier evidence. I must establish this stage’s bounded conclusion.'];
+ if(scenario.challenge)return ['Two disputed records are available in My evidence review.','A reported concern is a claim to evaluate. The given observations and review rules are listed separately.','I need a warrant and a disposition for each record, the limits, and a combined recommendation.'];
+ if(!scenario.nodes)return [...(scenario.facts||[])];
+ const data=briefingFacts(scenario);
+ if(data.reviewedSummary)return data.facts.map(text=>'Overview · '+text);
+ if(data.observations.length>12)return [`${data.observations.length} given observations are available in the inspection below. Connecting rules remain in the briefing.`];
+ const rows=data.observations.map((text,index)=>`Fact F${index+1} · ${text}`);
+ if((scenario.rules||[]).length<=8)for(const [index,rule]of (scenario.rules||[]).entries()){
+  const conditions=rule.premises.map(id=>scenario.nodes[id]?.label),conclusion=scenario.nodes[rule.conclusion]?.label;
+  if(conclusion&&conditions.every(Boolean))rows.push(`Rule ${index+1} · If ${conditions.join(' and ')}, then ${conclusion}`);
+ }
+ return rows;
 }
 
 export function createScenarioFlow({state,onChoose,onTutorial,onPreferences,onNext,onPrepare,onExport,onHistory}){
  const main=document.querySelector('main.workspace'),root=el('section',undefined,'scenario-flow');root.id='scenario-flow';root.hidden=true;root.setAttribute('aria-label','Scenario stages');main.before(root);main.hidden=true;
  const toolbar=el('nav',undefined,'flow-toolbar');toolbar.setAttribute('aria-label','Scenario views');
- const briefButton=button('Review briefing',()=>brief(0)),collapse=button('Hide scenario information',()=>{const hidden=!(document.body.classList.contains('scenario-collapsed')||document.body.classList.contains('current-view'));setCollapsed(hidden);put('scenario-collapsed',hidden).catch(()=>{});});
+ const briefButton=button('Review briefing',()=>brief(0)),collapse=button('ⓘ Hide scenario information',()=>{const hidden=!(document.body.classList.contains('scenario-collapsed')||document.body.classList.contains('current-view'));setCollapsed(hidden);put('scenario-collapsed',hidden).catch(()=>{});});
  const completed=button('Open debrief',()=>setPhase('debrief',true));completed.hidden=true;
  collapse.id='toggle-scenario-information';collapse.setAttribute('aria-expanded','true');collapse.setAttribute('aria-controls','scenario-information');document.querySelector('.scenario-column').id='scenario-information';toolbar.append(briefButton,collapse,completed);document.querySelector('.thinking-column').prepend(toolbar);
  const coach=el('section',undefined,'tutorial-coach');coach.hidden=true;coach.setAttribute('aria-label','Tutorial guidance');toolbar.after(coach);
- let phase='thinking',page=0,briefPages=[],briefObservations=null,card=null,epoch=0,saveQueue=Promise.resolve(),learningView='prose',learningRule=0;
+ let phase='thinking',page=0,briefPages=[],briefObservations=null,card=null,epoch=0,saveQueue=Promise.resolve(),learningView='prose',learningRule=0,contentApproved=false;
  const status=el('p');status.setAttribute('role','status');
  function persist(){const id=state.session,value={phase,page};if(id)saveQueue=saveQueue.catch(()=>{}).then(()=>put('flow:'+id,value)).catch(e=>{status.textContent='Could not save this view: '+e.message;});}
  function title(text){const h=el('h1',text);h.tabIndex=-1;return h;}
  function focusHeading(){root.querySelector('h1')?.focus();}
- function updateLayout(){const hidden=document.body.classList.contains('scenario-collapsed')||document.body.classList.contains('current-view');collapse.textContent=hidden?'Show scenario information':'Hide scenario information';collapse.setAttribute('aria-expanded',String(!hidden));}
+ function updateLayout(){const hidden=document.body.classList.contains('scenario-collapsed')||document.body.classList.contains('current-view');collapse.textContent=hidden?'ⓘ Show scenario information':'ⓘ Hide scenario information';collapse.setAttribute('aria-expanded',String(!hidden));}
  function setCollapsed(value){if(!value&&document.body.classList.contains('current-view')){const view=document.querySelector('#workspace-view');view.value='full';view.dispatchEvent(new Event('change'));}document.body.classList.toggle('scenario-collapsed',!!value);updateLayout();}
  get('scenario-collapsed').then(value=>{if(value)setCollapsed(true);else updateLayout();}).catch(()=>{});
  function progress(){const list=el('ol',undefined,'flow-progress');list.setAttribute('aria-label','Scenario progress');for(const [key,label]of [['brief','1 · Briefing'],['thinking','2 · Thinking'],['debrief','3 · Reflection']]){const item=el('li',label);if(phase===key)item.setAttribute('aria-current','step');list.append(item);}return list;}
@@ -41,45 +58,63 @@ export function createScenarioFlow({state,onChoose,onTutorial,onPreferences,onNe
   root.querySelector('.flow-progress')?.remove();toolbar.querySelector('.flow-progress')?.remove();(phase==='thinking'?toolbar:root).prepend(progress());updateLayout();
   persist();if(focus){if(phase==='thinking'){const heading=state.scenario.tutorial?coach.querySelector('h3'):document.querySelector('.workspace-heading h2');if(heading){heading.tabIndex=-1;heading.focus();}}else focusHeading();}
  }
- function thinking(){updateCoach();setPhase('thinking',true);}
+ function thinking(){if(state.scenario.content_sensitive&&!contentApproved){ready();return;}updateCoach();setPhase('thinking',true);}
  function ready(){
+  if(document.querySelector('#anticipation-enabled')?.checked!==false)import('./local-api.js').then(m=>m.localApi('/api/prepare-graph',{session_id:state.session})).catch(()=>{});
   root.replaceChildren(el('p','Choose my pace','eyebrow'),title('Ready to begin'),el('h2',state.scenario.title),el('p',state.scenario.description),el('p','Read a short briefing, work through the reasoning, then reflect. My place is saved. There is no time limit unless I choose a time cue.'));
-  const actions=el('div',undefined,'flow-actions');actions.append(button('Start Scenario',()=>brief(0),true),button('Try the guided tutorial',onTutorial),button('Choose a different scenario',onChoose),button('Accessibility & preferences',onPreferences));root.append(actions,status);setPhase('ready',true);
+  const install=el('p','Before my first thought, I can check the local tools in Device setup. If they are already installed, I can start below. '),link=el('a','Open Device setup');link.href='/Experiment/device.html';install.append(link);root.append(install);
+  if(state.scenario.verification_scope)root.append(el('p',state.scenario.verification_scope,'candidate-note'));
+  if(state.scenario.references?.length)root.append(renderReferences(state.scenario));
+  const actions=el('div',undefined,'flow-actions'),begin=button('Start Scenario',()=>brief(0),true);
+  if(state.scenario.content_sensitive&&!contentApproved){
+   const notice=el('section');notice.append(el('h3','Content choice'),el('p',state.scenario.content_note||'This scenario concerns a sensitive historical case. I may choose a neutral scenario instead.'));
+   const label=el('label'),ack=el('input');ack.type='checkbox';ack.id='scenario-content-consent';label.htmlFor=ack.id;label.append(ack,document.createTextNode(' I choose to explore this non-graphic case after reading the notice.'));
+   begin.disabled=true;ack.onchange=async()=>{contentApproved=ack.checked;begin.disabled=!contentApproved;try{await put('content-consent:'+state.session,{approved:contentApproved,source_hash:state.scenario.source_hash});}catch{status.textContent='This choice applies for this visit; device storage could not save it.';}};
+   notice.append(label);root.append(notice);
+  }
+  actions.append(begin,button('Try the guided tutorial',onTutorial),button('Choose a different scenario',onChoose),button('Accessibility & preferences',onPreferences));root.append(actions,status);setPhase('ready',true);
  }
  function prepare(){const id=state.session,token=epoch;if(!state.scenario.journey?.available.length||document.querySelector('#anticipation-enabled')?.checked===false)return;onPrepare(id).then(result=>{if(token===epoch)status.textContent=result?.prepared>0?'Possible next-stage briefs are prepared locally. No future evidence has entered my reasoning.':'A next-stage brief will be prepared when I choose it. My current stage remains available.';}).catch(()=>{if(token===epoch)status.textContent='A next-stage brief will be prepared when I choose it. My current stage remains available.';});}
  function makeBrief(){
   const s=state.scenario,j=s.journey;
-  briefPages=[{heading:j?.stage_title||'The setting',text:[s.description,s.challenge?.content_preview||'I can choose another setting whenever I need.','My goal: '+s.goal],facts:[]}];
+  briefPages=[{heading:j?.stage_title||'The setting',text:[s.description,s.challenge?.content_preview||'I can choose another setting whenever I need.','My goal: '+s.goal,s.verification_scope,s.content_note].filter(Boolean),facts:[]}];
+  if(s.definitions?.length)for(let i=0;i<s.definitions.length;i+=3)briefPages.push({heading:'Concepts for this activity',text:s.definitions.slice(i,i+3),facts:[]});
+  if(s.learning_task?.example_case){const example=s.learning_task.example_case;briefPages.push({heading:example.title,text:[example.description,example.method?'Method: '+example.method:'',example.prompt,'This example is separate from my new review. Its facts do not become observations about the new records.'],facts:[]});}
+  if(s.learning_task?.arguments)for(const a of s.learning_task.arguments)briefPages.push({heading:'Argument '+a.id+' · '+a.speaker,text:[...a.premises.map(p=>'Proposed premise: '+p),'Proposed conclusion: '+a.conclusion,'This is an argument to evaluate, not a verified finding.'],facts:[]});
+  if(s.learning_task?.debate)briefPages.push({heading:'Opposing testimony',text:[s.learning_task.debate.opponent,'I can challenge the support, then construct a bounded reply. Testimony is a claim; my objection still needs evidence.'],facts:[]});
+  if(s.learning_task?.proposal)briefPages.push({heading:'An argument to evaluate',text:[s.learning_task.instruction,s.learning_task.proposal,'This proposal is an argument to examine, not a given fact or a verified step.'],facts:[]});
   if(s.tutorial)briefPages.push({heading:'How I will practise',text:['I can adjust text with browser zoom, use keyboard controls or device dictation, and choose guidance in Preferences.','I write a thought, check whether Gemma kept my meaning, then confirm it for the two proof tools. A tool error is not a judgment about my reasoning.','This is solo practice. If I want to work with a peer, we can take turns explaining one connection and asking a question. Thread does not provide a peer group or send messages.'],facts:[]});
   const {facts,observations,reviewedSummary}=briefingFacts(s);briefObservations=reviewedSummary?observations:null;
-  for(let i=0;i<facts.length;i+=4)briefPages.push({heading:`${reviewedSummary?'Case overview':'Given observations'}${facts.length>4?' · '+(Math.floor(i/4)+1):''}`,text:[reviewedSummary?'This overview explains the supplied setting, evidence and rules. I can inspect every exact given observation below.':'These observations are stipulated for this fictional exercise. Reports and interpretations still need evaluation.'],facts:facts.slice(i,i+4)});
+  for(let i=0;i<facts.length;i+=4)briefPages.push({heading:`${reviewedSummary?'Case overview':'Given observations'}${facts.length>4?' · '+(Math.floor(i/4)+1):''}`,text:[reviewedSummary?'This overview explains the supplied setting, evidence and rules. I can inspect every exact given observation below.':'These facts and principles are supplied for this activity. I can inspect which are assumptions and which are attributed findings.'],reviewedSummary,facts:facts.slice(i,i+4)});
   briefPages.push({heading:'My goal and connecting rules',text:[s.goal,'I may revisit this briefing while thinking. Reading or opening a hint never adds a verified claim.'],rules:s.rules||[],facts:[]});
  }
  function brief(index=0){
   page=Math.max(0,Math.min(index,briefPages.length-1));const b=briefPages[page];
   root.replaceChildren(el('p',`Briefing · ${page+1} of ${briefPages.length}${state.scenario.journey?' · stage '+state.scenario.journey.stage+' of 3':''}`,'eyebrow'),title(b.heading),el('p',state.scenario.title));
-  for(const text of b.text.filter(Boolean))root.append(el('p',text));if(b.facts.length){const ul=el('ul');b.facts.forEach(t=>ul.append(el('li',t)));root.append(ul);}
+  for(const text of b.text.filter(Boolean))root.append(el('p',text));if(b.facts.length){const ul=el('ul');b.facts.forEach(t=>{const facts=briefingFacts(state.scenario).facts;ul.append(el('li',`${b.reviewedSummary?'Overview':'Fact F'+(facts.indexOf(t)+1)} · ${t}`));});root.append(ul);}
+  if(page===0&&state.scenario.references?.length)root.append(renderReferences(state.scenario));
   if(briefObservations)root.append(givenObservationsInspection(briefObservations));
   if(b.rules)root.append(renderScenarioLearning(state.scenario,{view:learningView,ruleIndex:learningRule,onView:value=>learningView=value,onRule:value=>learningRule=value}));
-  if(page===0&&state.scenario.journey){const j=state.scenario.journey;root.append(el('p',`${j.remaining} evidence credits remain. Choices at a stage debrief determine which observations arrive next. Spending is not a score.`));if(j.acquired.length)root.append(el('p','Checks chosen so far: '+j.acquired.map(c=>c.label).join('; ')+'. Earlier certificates describe earlier evidence; they are not automatically claims in this stage.'));}
+  if(page===0&&state.scenario.journey){const j=state.scenario.journey;root.append(el('p',`${formatBudget(j,j.remaining)} remain. ${budgetExplanation(j)} Choices at a stage debrief determine which observations arrive next. Spending is not a score.`));if(j.acquired.length)root.append(el('p','Checks chosen so far: '+j.acquired.map(c=>c.label).join('; ')+'. Earlier certificates describe earlier evidence; they are not automatically claims in this stage.'));}
   if(state.scenario.tutorial&&page===1){const d=el('details');d.append(el('summary','A separate worked example'),el('p','In a different library, a valid pass AND an available book permit borrowing. A pass alone leaves one condition open. The complete argument checks both conditions before applying the rule. This example adds no fact to my archive visit.'));root.append(d);}
   const actions=el('div',undefined,'flow-actions');if(page>0)actions.append(button('Previous brief page',()=>brief(page-1)));if(page<briefPages.length-1)actions.append(button('Next brief page',()=>brief(page+1),true));actions.append(button('Continue to thinking',thinking,page===briefPages.length-1),button('Accessibility & preferences',onPreferences),button('Choose another scenario',onChoose));root.append(actions,status);setPhase('brief',true);document.dispatchEvent(new CustomEvent('thread-exposition',{detail:{text:[b.heading,...b.text,...b.facts].filter(Boolean).join('. ')}}));if(page===0)prepare();
  }
  function updateCoach(){
   coach.hidden=!state.scenario?.tutorial;if(coach.hidden)return;
-  const ids=new Set(state.claims.flatMap(c=>(c.graph?.conclusions||c.conclusions||[]).filter(x=>x.positive).map(x=>x.id)));
+  const ids=new Set(state.claims.filter(c=>c.epistemic?.grounded).flatMap(c=>(c.graph?.conclusions||c.conclusions||[]).filter(x=>x.positive).map(x=>x.id)));
   const next=ids.has('ready')?'enter':'ready';
   coach.replaceChildren(el('h3',next==='ready'?'Tutorial · my first connection':'Tutorial · connect the next step'),el('p',next==='ready'?'Which two facts make my visit ready? I can explain their connection using the supplied rule.':'How does a ready visit connect to entering? I still need to account for whether the archive is open.'));
   const steps=el('details');steps.append(el('summary','Show the gameplay steps'));const ol=el('ol');for(const t of ['Write or dictate a thought. Share it when ready.','Read Gemma’s proposed conclusion and reasons. If it changed my meaning, choose to revise.','Confirm only when the interpretation matches. Both proof tools must check the step.','Inspect the result and try a next connection. Hints stay optional.'])ol.append(el('li',t));steps.append(ol);coach.append(steps);
   const sample=el('details');sample.append(el('summary','Show an editable example thought'));
   const text=next==='ready'?'My archive visit is ready because my archive pass is valid and my archive visit is booked.':'I may enter the archive because my archive visit is ready and the archive is open.';
   sample.append(el('p',text),button('Use this as an editable draft',()=>{const input=document.querySelector('#thought');if(input.value.trim()){const notice=coach.querySelector('[role=status]')||el('p');notice.setAttribute('role','status');notice.textContent='My existing draft is kept. I can edit it or copy the example myself.';coach.append(notice);return;}input.value=text;input.dispatchEvent(new Event('input',{bubbles:true}));input.focus();}));coach.append(sample);
+  const walkthrough=el('details');walkthrough.append(el('summary','Optional · walk through the controls one at a time'),el('p','Five short tips highlight the actual controls as I use them. I can close the walkthrough at any time; no control exploration is required to continue.'),button('Start contextual walkthrough',tutorialTour(state.session)));coach.append(walkthrough);
  }
  function stageChoices(container){
   const j=state.scenario.journey;if(!j||j.stage===j.total)return;
-  const box=el('section',undefined,'stage-choice');box.append(el('h3','Choose my next evidence'),el('p',`${j.remaining} credits remain. A check can be useful even when it challenges my expectation. I can preserve the budget and acknowledge uncertainty.`));
+  const box=el('section',undefined,'stage-choice');box.append(el('h3','Choose my next evidence'),el('p',`${formatBudget(j,j.remaining)} remain. A check can be useful even when it challenges my expectation. I can preserve the budget and acknowledge uncertainty.`),el('p',budgetExplanation(j)));
   const label=el('label','Which check will I fund?'),select=el('select');select.id='next-evidence-choice';label.htmlFor=select.id;const blank=el('option','Choose a check');blank.value='';select.append(blank);
-  j.available.forEach(c=>{const option=el('option',`${c.label} · ${c.cost} credits · ${c.remaining} left`);option.value=c.id;select.append(option);});
+  j.available.forEach(c=>{const option=el('option',`${c.label} · ${formatBudget(j,c.cost)} · ${formatBudget(j,c.remaining)} left`);option.value=c.id;select.append(option);});
   const purpose=el('p');purpose.id='choice-purpose';select.setAttribute('aria-describedby',purpose.id);
   const noteLabel=el('label','Why this check? What result would change my view? · optional'),note=el('textarea');note.id='evidence-choice-reason';noteLabel.htmlFor=note.id;note.maxLength=2500;note.rows=3;note.dir='auto';
   const feedback=el('p');feedback.setAttribute('role','status');const next=button('Choose evidence and read the next stage',async()=>{next.disabled=true;select.disabled=true;try{await put('choice-note:'+state.session,{choice:select.value,rationale:note.value});await onNext(select.value,note.value);}catch(e){feedback.textContent=e.message;next.disabled=!select.value;select.disabled=false;}});next.disabled=true;
@@ -89,9 +124,9 @@ export function createScenarioFlow({state,onChoose,onTutorial,onPreferences,onNe
  }
  return {
   get phase(){return phase;},
-  async open({resume=false,initial=false}={}){epoch++;card=null;completed.hidden=true;status.textContent='';makeBrief();updateCoach();const id=state.session;const saved=resume?await get('flow:'+id):null;if(id!==state.session)return;if(saved?.phase==='brief')brief(saved.page||0);else if(saved?.phase==='ready')ready();else if(resume)thinking();else if(initial)ready();else brief(0);},
+  async open({resume=false,initial=false}={}){closeTutorialTour();epoch++;card=null;completed.hidden=true;status.textContent='';makeBrief();const id=state.session;state.tutorialTip=await get('tutorial-tip:'+id)||0;const consent=await get('content-consent:'+id);contentApproved=consent?.approved===true&&consent.source_hash===state.scenario.source_hash;if(id!==state.session)return;updateCoach();const saved=resume?await get('flow:'+id):null;if(id!==state.session)return;if(state.scenario.content_sensitive&&!contentApproved)ready();else if(saved?.phase==='brief')brief(saved.page||0);else if(saved?.phase==='ready')ready();else if(resume)thinking();else if(initial)ready();else brief(0);},
   update:updateCoach,
-  complete(content){makeBrief();updateCoach();card=content;completed.hidden=false;stageChoices(card);card.append(reasoningToolkit());
+  complete(content){makeBrief();updateCoach();card=content;completed.hidden=false;stageChoices(card);
    if(state.scenario.journey?.stage===3){const history=el('details');history.append(el('summary','Across my three stages'),el('p','Which evidence choice changed my view? Which uncertainty survived? My earlier reasoning was conditional on the evidence available then.'));card.prepend(history);onHistory().then(records=>{for(const r of records){const section=el('section');section.append(el('h3',`Stage ${r.session.scenario.journey.stage}`),el('p',`${r.session.progress.accepted} confirmed steps · ${r.session.progress.solved?'goal established':'goal not yet established'}`));if(r.session.stage_decision)section.append(el('p','Next evidence chosen: '+r.session.stage_decision.choice),el('p','My decision note: '+(r.session.stage_decision.rationale||'No note recorded.')));if(r.reflection?.why)section.append(el('p','My explanation: '+r.reflection.why));const a=el('a','Open this stage’s reasoning');a.href=`/Experiment/#session=${encodeURIComponent(r.session.session_id)}`;a.target='_blank';a.rel='noopener';section.append(a);history.append(section);}}).catch(e=>history.append(el('p','Could not load earlier local stages: '+e.message)));}
    setPhase('debrief',true);prepare();},
   thinking,brief,setCollapsed,updateLayout,

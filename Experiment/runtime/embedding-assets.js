@@ -105,5 +105,5 @@ export async function installEmbeddings({consent=false,signal,onProgress=()=>{}}
  try{
   if(navigator.locks?.request)return await navigator.locks.request('thread-embedding-install-cdc6a147cc:'+EMBEDDING_BASE.pathname,{ifAvailable:true},lock=>{if(!lock)throw Error('An embedding download is running in another tab.');return run();});
   throw Error('Web Locks are required to coordinate optional encoder installation across tabs.');
- }finally{installing=false;}
+ }finally{navigator.serviceWorker?.controller?.postMessage({type:'end-optional-download',kind:'embedding'});installing=false;}
 }

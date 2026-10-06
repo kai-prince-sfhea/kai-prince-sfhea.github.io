@@ -1,3 +1,4 @@
+import {resetProlog} from './proofs.js';
 import {localApi,resetVerificationCache} from './local-api.js';
 import {compile,resetCompiler} from './compiler.js';
 import {resetKernel} from './coq.js';
@@ -113,7 +114,7 @@ export async function runRetrievalBenchmark({label,power='unspecified',startStat
     const row=await test(`Gemma retrieval · ${mode} · ${fixture.id}`,async()=>{
      try{
       requireTools();if(mode==='semantic'&&!encoderReady)throw new Blocked('Optional encoder is not installed; semantic comparison not run.');
-      await setRetrievalMode(mode);resetVerificationCache();if(startState==='cold'){cancel();resetCompiler();resetKernel();disposeEmbeddings();}
+      await setRetrievalMode(mode);resetVerificationCache();if(startState==='cold'){cancel();resetCompiler();resetKernel();resetProlog();disposeEmbeddings();}
       const made=await localApi('/api/session',{scenario});turn.session=made.session_id;const saved=await get('session:'+turn.session);saved.benchmark=true;await put('session:'+turn.session,saved);
       const draft=await compile({op:'interpret',text:fixture.input,accepted:[],scenario,responses:[]});assert(draft.request,'Fixture unexpectedly bypassed model interpretation');turn.prompt={eligible:eligibleRequest(draft.request),baseline:promptSize(draft.request)};
       // This ablation must exercise the retrieval seam, not an exact-match shortcut.

@@ -1,5 +1,5 @@
 // Pure, bounded transformations shared by the UI and worker.
-export const AUDIO_DEFAULTS=Object.freeze({enabled:true,narration:true,cues:true,music:true,volume:0.35,rate:1});
+export const AUDIO_DEFAULTS=Object.freeze({enabled:false,narration:true,cues:true,music:false,volume:0.5,rate:1});
 export function audioPreferences(value={}){
  const result={...AUDIO_DEFAULTS};
  for(const key of ['enabled','narration','cues','music'])if(typeof value?.[key]==='boolean')result[key]=value[key];
