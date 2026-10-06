@@ -1,9 +1,11 @@
+import {groundedSteps} from './grounded-fixtures.js';
 // Feature fixtures, not simulated learner journeys or evidence of learning gains.
 import {compile} from './compiler.js';
 import {localApi,verifyFormal} from './local-api.js';
 import {get,put,remove} from './store.js';
 import {challengeClaim,challengeClosure,challengeStructure} from './benchmark-challenge.js';
 import {restoreAttempt} from './restore-session.js';
+import {formatBudget,budgetExplanation} from './budget.js';
 const check=(value,message)=>{if(!value)throw Error(message);};
 const config={subject:'researcher',context:'exhibition',difficulty:'challenge',seed:'onboarding-2026'};
 export async function benchmarkJourney({test,tools,includeModel}){
@@ -33,6 +35,13 @@ export async function benchmarkJourney({test,tools,includeModel}){
   check(independent.nodes.independent.fact&&independent.nodes.fits.fact&&!defer.nodes.independent.fact,'Choice did not change collected facts');
   return {paths,seed:config.seed,scope:'Deterministic feature fixtures; no procedural player simulation.'};
  });
+ await test('Budget presentation · investigation costs, debate hours and unchanged affordability',async()=>{
+  const money={remaining:3,budget_unit:'credits',task_config:{task:'investigation'}},before=JSON.stringify(money);
+  check(formatBudget(money,3)==='£3,000'&&formatBudget(money,2)==='£2,000'&&formatBudget(money,1)==='£1,000','Investigation currency scaling failed');
+  check(budgetExplanation(money).includes('fictional GBP')&&JSON.stringify(money)===before,'Budget view changed affordability or omitted the fictional-cost explanation');
+  check(formatBudget({budget_unit:'hours'},1)==='1 hour'&&formatBudget({budget_unit:'hours'},3)==='3 hours','Debate time units failed');
+  return 'Display-only amounts: fictional GBP for investigation, hours for debate; the same integer affordability units are retained.';
+ });
  await test('Staged review · goal gates, private preparation, fresh stages and repeat-safe choice',async()=>{
   tools();check(journey,'Generator prerequisite failed');let made=await localApi('/api/session',{scenario:journey});
   const preparationPreference=await get('background-preparation');
@@ -44,7 +53,7 @@ export async function benchmarkJourney({test,tools,includeModel}){
   records=[];
   for(let stage=1;stage<=3;stage++){
    const s=await get('session:'+made.session_id),known=challengeClosure(s.scenario),claim=challengeClaim(s.scenario.challenge.requirements.map(r=>r.any_of.find(id=>known.has(id))));
-   const result=await verifyFormal(claim,[],s.scenario,{cache:false});check(result.status==='verified','Stage certificate failed');s.claims=[claim];await put('session:'+s.id,s);
+   const route=groundedSteps(s.scenario,s.scenario.challenge.requirements.map(r=>r.any_of.find(id=>known.has(id)))),accepted=[];for(const step of route){const result=await verifyFormal(step,accepted,s.scenario,{cache:false});check(result.status==='verified','Stage certificate failed');accepted.push(step);}s.claims=accepted;await put('session:'+s.id,s);
    const goal=await localApi('/api/check-solution',{session_id:s.id});check(goal.progress.solved,'Complete stage did not meet its goal');
    await put('learning:'+s.id,{why:'I connected evidence to a bounded action.',plan:'Check a source independently next time.'});
    if(stage<3){const choice=stage===1?'independent':'explanation',next=await localApi('/api/next-stage',{session_id:s.id,choice,rationale:'This check distinguishes the remaining conditions.'});
@@ -58,7 +67,7 @@ export async function benchmarkJourney({test,tools,includeModel}){
  await test('Staged review · portable restore rechecks certificates and preserves reflections',async()=>{
   tools();check(records.length===3,'Completed stage fixtures unavailable');const id=await restoreAttempt({server_session:records.at(-1).session,stage_history:records});
   const final=await localApi('/api/session?id='+id),learning=await get('learning:'+id);check(final.progress.solved&&final.previous_stage&&learning.plan,'Restore lost certified completion, stage link or reflection');
-  check(final.history.length===1&&final.history[0].result.sources.coq,'Restored proof inspection missing');return 'All three stages rechecked; new session IDs, decisions, proof inspection and reflection fields retained.';
+  check(final.history.length===final.graph.length&&final.history.length>0&&final.history.every(h=>h.result.sources?.coq),'Restored proof inspection missing');return 'All three stages rechecked; every grounded step has new proof inspection, with decisions and reflection fields retained.';
  });
  await test('Learning flow UI · tutorial draft, saved briefing, stage choices and final debrief',async()=>{
   tools();check(tutorial&&records.length===3,'Flow fixtures unavailable');const frame=document.createElement('iframe');frame.title='Isolated learning-flow benchmark';frame.style.cssText='position:absolute;left:-2000px;width:1000px;height:900px';document.body.append(frame);
@@ -70,9 +79,10 @@ export async function benchmarkJourney({test,tools,includeModel}){
    await wait(()=>frame.contentDocument?.body?.dataset.flow==='brief'&&frame.contentDocument.querySelector('#busy-status')?.hidden,'saved tutorial briefing');let d=frame.contentDocument;
    check(d.querySelector('main').hidden&&d.querySelector('#scenario-flow').textContent.includes('How I will practise'),'Briefing was not restored');
    button(d,'Continue to thinking').click();check(d.body.dataset.flow==='thinking'&&!d.querySelector('main').hidden,'Thinking transition failed');
+   check(d.querySelector('#facts-list').textContent.includes('Fact F1 · My archive pass is valid')&&d.querySelector('#facts-list').textContent.includes('Rule 1 ·'),'Thinking view lost stable observation/rule references');
    d.querySelectorAll('.tutorial-coach details').forEach(x=>x.open=true);button(d,'Use this as an editable draft').click();check(d.querySelector('#thought').value.includes('archive visit is ready'),'Example did not populate editable draft');
    check(!(await localApi('/api/session?id='+made.session_id)).graph.length,'Tutorial example was accepted without confirmation');
-   button(d,'Hide scenario information').click();check(d.body.classList.contains('scenario-collapsed'),'Scenario information did not collapse');button(d,'Show scenario information').click();
+   button(d,'ⓘ Hide scenario information').click();check(d.body.classList.contains('scenario-collapsed'),'Scenario information did not collapse');button(d,'ⓘ Show scenario information').click();
    const dialog=d.querySelector('#preferences-dialog');dialog.showModal();dialog.querySelectorAll('details').forEach(n=>n.open=true);
    const size=d.querySelector('#text-size');size.value='largest';size.dispatchEvent(new frame.contentWindow.Event('change',{bubbles:true}));
    const spacing=d.querySelector('#reading-spacing');if(!spacing.checked)spacing.click();
@@ -80,18 +90,19 @@ export async function benchmarkJourney({test,tools,includeModel}){
    const preparation=d.querySelector('#anticipation-enabled');if(preparation.checked)preparation.click();
    await wait(()=>d.querySelector('#preferences-status').textContent.includes('saved'),'reading preference save');
    await new Promise(r=>setTimeout(r,150));check((await get('background-preparation'))===false,'Background preference not saved');
-   frame.style.width='320px';await new Promise(r=>setTimeout(r,100));check(d.documentElement.scrollWidth<=d.documentElement.clientWidth+2&&dialog.scrollWidth<=dialog.clientWidth+2,'Reading controls overflow at 320px / 150% size');
+   frame.style.width='320px';await d.fonts.ready;await new Promise(r=>setTimeout(r,100));check(d.documentElement.scrollWidth<=d.documentElement.clientWidth+2&&dialog.scrollWidth<=dialog.clientWidth+2,'Reading controls overflow at 320px / 150% size · '+JSON.stringify({page:[d.documentElement.scrollWidth,d.documentElement.clientWidth],dialog:[dialog.scrollWidth,dialog.clientWidth],elements:[...dialog.querySelectorAll('*')].filter(n=>n.clientWidth>0&&n.scrollWidth>n.clientWidth+2).map(n=>({tag:n.tagName,id:n.id,width:n.clientWidth,scroll:n.scrollWidth})).slice(0,12)}));
    dialog.close();frame.style.width='1000px';
    frame.src=`/Experiment/?resume=${Date.now()}#session=${records[0].session.session_id}`;await wait(()=>frame.contentDocument?.body?.dataset.flow==='debrief'&&frame.contentDocument.querySelector('#busy-status')?.hidden,'stage one debrief');
    for(const [i,choice]of ['independent','explanation'].entries()){
     d=frame.contentDocument;const select=d.querySelector('#next-evidence-choice');check(select,'Missing next-stage choice');select.value=choice;select.dispatchEvent(new frame.contentWindow.Event('change',{bubbles:true}));
+    const displayedStage=records[i].session.scenario.journey;check(displayedStage.available.every(c=>[...select.options].some(o=>o.value===c.id&&o.textContent.includes(formatBudget(displayedStage,c.cost))&&o.textContent.includes(formatBudget(displayedStage,c.remaining)))),'Stage costs or balances differ from the current stage · '+JSON.stringify({stage:displayedStage.stage,remaining:displayedStage.remaining,expected:displayedStage.available.map(c=>({id:c.id,cost:formatBudget(displayedStage,c.cost),balance:formatBudget(displayedStage,c.remaining)})),displayed:[...select.options].map(o=>({id:o.value,text:o.textContent}))}));
     button(d,'Choose evidence and read the next stage').click();await wait(()=>frame.contentWindow.location.hash==='#session='+records[i+1].session.session_id&&frame.contentDocument.body.dataset.flow==='debrief'&&frame.contentDocument.querySelector('#busy-status')?.hidden,'existing stage '+(i+2));
    }
    d=frame.contentDocument;check(d.querySelector('#scenario-flow').textContent.includes('Across my three stages'),'Final debrief has no cumulative history');
    const learning=d.querySelector('.learning-checkpoint');check(learning.querySelectorAll('textarea').length===6,'Comprehensive reflection prompts missing');check(learning.querySelector('.peer-discussion')?.textContent.includes('private reflections')&&learning.querySelector('.peer-discussion')?.textContent.includes('on my own'),'Voluntary peer/solo and selective-sharing guidance missing');
-   check([...learning.querySelectorAll('textarea')].filter(n=>!n.closest('section[hidden]')).length===2,'Reflection is not divided into small groups');
+   check([...learning.querySelectorAll('textarea')].filter(n=>!n.closest('section[hidden]')).length===1,'Reflection is not divided into small groups');
    frame.style.width='320px';await new Promise(r=>setTimeout(r,100));check(d.documentElement.scrollWidth<=d.documentElement.clientWidth+2,'Learning flow overflows at 320 CSS pixels');
-   return 'Actual briefing, editable tutorial draft, collapse control, existing stage navigation, six prompts in three groups, reading/spacing controls, background opt-out and 320 CSS pixel reflow at 150% text exercised. Assistive-technology usability remains a separate evaluation.';
+   return 'Actual briefing, editable tutorial draft, collapse control, existing stage navigation, six prompts in six groups, reading/spacing controls, background opt-out and 320 CSS pixel reflow at 150% text exercised. Assistive-technology usability remains a separate evaluation.';
   }finally{frame.remove();for(const [key,value]of [['scenario-collapsed',collapse],['preferences',preferences],['background-preparation',background]])if(value!==undefined)await put(key,value);else await remove(key);}
  });
  await test('Audio UI · preferences, reviewed transcript and cancellation without microphone capture',async()=>{

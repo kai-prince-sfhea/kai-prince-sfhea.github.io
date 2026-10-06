@@ -14,9 +14,9 @@ export function deriveScenarioLearning(scenario={}){
  return freeze({
   objective:typeof scenario.goal==='string'?scenario.goal:'Explain a connection and check its limits.',
   prerequisites:[
-   {term:'Observation',meaning:'A statement supplied in this exercise. It is a starting assumption, not a discovery I made.'},
-   {term:'Connecting rule',meaning:'A stated relationship that lets me move from its conditions to a conclusion. If it requires several conditions, I must account for all of them.'},
-   {term:'Conclusion and limit',meaning:'What follows under those conditions, and what the exercise does not establish.'}
+   {term:'Observation',meaning:'A statement supplied in this exercise. It is a starting assumption, not a discovery I made. Separate example: a reading-room booking is recorded.'},
+   {term:'Connecting rule',meaning:'A stated relationship that lets me move from its conditions to a conclusion. If it requires several conditions, I must account for all of them. Separate example: a valid pass and a booking together permit a visit.'},
+   {term:'Conclusion and limit',meaning:'What follows under those conditions, and what the exercise does not establish. Separate example: permission to visit does not establish that a building is open.'}
   ],
   rules,
   recall:'After reading one connection, I can hide it and explain in my own words: what must hold, why the rule connects it to a conclusion, and what would change if a condition were missing.'
@@ -29,7 +29,7 @@ export function renderScenarioLearning(scenario,{view='prose',ruleIndex=0,onView
  basics.append(el('p','I can revisit these ideas at any difficulty. They are supports, not an entry test.'));
  const definitions=el('dl');for(const item of data.prerequisites)definitions.append(el('dt',item.term),el('dd',item.meaning));basics.append(definitions);root.append(basics);
  if(data.rules.length){
-  const panel=el('details');panel.append(el('summary',`Connecting rules · ${data.rules.length} · choose a view`),el('p','These are the supplied relationships, not a completed argument. Looking at them adds no verified step.'));
+  const panel=el('details');panel.append(el('summary','Connecting rules'),el('p','These are the supplied relationships, not a completed argument. Looking at them adds no verified step.'));
   const ruleLabel=el('label','Choose one connection'),ruleSelect=el('select');ruleSelect.id='learning-rule';ruleLabel.htmlFor=ruleSelect.id;ruleLabel.className='field-label';
   data.rules.forEach((rule,index)=>{const label=rule.conclusion.text;const option=el('option',`Rule ${index+1} · ${label.length>85?label.slice(0,82)+'…':label}`);option.value=String(index);ruleSelect.append(option);});
   ruleSelect.value=String(Math.max(0,Math.min(Number.isInteger(ruleIndex)?ruleIndex:0,data.rules.length-1)));

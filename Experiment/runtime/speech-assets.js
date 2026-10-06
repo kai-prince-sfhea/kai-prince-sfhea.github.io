@@ -87,5 +87,5 @@ export async function installSpeech({consent=false,signal,onProgress=()=>{}}={})
  try{
   if(navigator.locks?.request)return await navigator.locks.request('thread-speech-install-cdc6a147cc:'+SPEECH_BASE.pathname,{ifAvailable:true},lock=>{if(!lock)throw Error('An speech download is running in another tab.');return run();});
   throw Error('Web Locks are required to coordinate optional speech installation across tabs.');
- }finally{installing=false;}
+ }finally{navigator.serviceWorker?.controller?.postMessage({type:'end-optional-download',kind:'speech'});installing=false;}
 }

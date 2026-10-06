@@ -1,3 +1,4 @@
+import {groundedSteps} from './grounded-fixtures.js';
 // Independent feature-test oracles. These never interpret or submit learner text.
 const check=(condition,message)=>{if(!condition)throw Error(message);};
 export const challengeLiteral=id=>({id,positive:true});
@@ -53,7 +54,7 @@ export function challengeRoutes(scenario){
   check(route,'No honest compact support route');return challengeClaim([decision],{id:'c'+(i+1),premises:route.premises});
  });
  compact.push(challengeClaim(requirements.filter(r=>!/^d[12]_/.test(r.id)).map(r=>r.any_of.find(id=>known.has(id))),{id:'c3'}));
- return {explicit,compact,dispositions};
+ return {explicit,compact,dispositions,grounded:groundedSteps(scenario,requirements.map(r=>r.any_of.find(id=>known.has(id))))};
 }
 
 export function matchesChallengeMeaning(claim,expected){

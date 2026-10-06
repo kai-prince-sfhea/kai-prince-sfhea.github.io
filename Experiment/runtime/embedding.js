@@ -1,4 +1,5 @@
 import {embeddingStatus,EMBEDDING_BASE,EMBEDDING_MODEL} from './embedding-assets.js';
+import {measure} from './telemetry.js';
 export {EMBEDDING_MODEL,embeddingStatus,installEmbeddings} from './embedding-assets.js';
 let worker,pending,sequence=0,idleTimer,releaseLease,busy=false,epoch=0;
 const ownership=typeof BroadcastChannel==='undefined'?null:new BroadcastChannel('thread-embedding-ownership:'+EMBEDDING_BASE.pathname);
@@ -24,7 +25,13 @@ async function acquire(version){
  }
  try{checkVersion(version);worker=new Worker(new URL('./embedding-worker.js',import.meta.url),{type:'module'});}catch(e){clearWorker();throw e;}
 }
-export async function embedTexts(texts,{signal,role='similarity',roles}={}){
+export async function embedTexts(texts,options={}){
+ const started=performance.now();let result,outcome='error';
+ try{result=await encodeTexts(texts,options);outcome='success';return result;}
+ catch(error){if(options?.signal?.aborted)outcome='cancelled';throw error;}
+ finally{measure('embedding',{outcome,seconds:(performance.now()-started)/1000,batchSize:Array.isArray(texts)&&texts.length<=16?texts.length:null,cold:typeof result?.metrics?.cold==='boolean'?result.metrics.cold:null,loadSeconds:Number.isFinite(result?.metrics?.loadSeconds)?result.metrics.loadSeconds:null,encodeSeconds:Number.isFinite(result?.metrics?.encodeSeconds)?result.metrics.encodeSeconds:null});}
+}
+async function encodeTexts(texts,{signal,role='similarity',roles}={}){
  if(busy)throw Error('The embedding model is busy. Use the full interpretation.');
  if(!Array.isArray(texts)||texts.length<1||texts.length>16||texts.some(t=>typeof t!=='string'||!t.trim()||t.length>8192)||texts.reduce((n,t)=>n+t.length,0)>32768)throw Error('Embedding needs1–16 bounded text strings.');
  const tasks=roles??texts.map(()=>role);

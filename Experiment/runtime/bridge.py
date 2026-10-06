@@ -4,6 +4,7 @@ stub=types.ModuleType('litert_runtime');stub.MODEL='Gemma 4 E2B web';stub.LocalM
 sys.modules['litert_runtime']=stub
 import logic
 from logic import core as C, solution as G, theory as T
+from logic import learner
 import scenario_library as S, nlp, pacing
 import challenge_generator
 from case_review import split_cases
@@ -35,8 +36,11 @@ def parse(raw,s,accepted):
 def compile_step(c,accepted,s):
     c=parse(c,s,accepted)
     if s.get('domain')=='theory':
-        pl,ids=T.prolog_source(c,s);thy,_=T.hol_source(c,s)
-        return dict(claim=c,prolog=pl,isabelle=thy,coq=[],scope='Conditional proof over the inspected finite scenario rules; problem-only HOL source is reference, not executed in the browser.',graph=dict(kind='named-proposition graph',candidate=c,nodes=[n for p,n in s['nodes'].items() if p in ids.values()],rules=[r for r in s['rules'] if r['conclusion'] in ids.values()],accepted=accepted,prolog_atom_map=ids))
+        context=learner.context(c,accepted,s)
+        pl,ids=T.prolog_source(c,context['scenario']);thy,_=T.hol_source(c,context['scenario'])
+        world,_=T.prolog_source(c,s)
+        epistemic={k:v for k,v in context.items() if k!='scenario'}
+        return dict(claim=c,prolog=pl,world_prolog=world,isabelle=thy,coq=[],scope='Proof from my stated premises and cited established steps. Conditional premises stay hypothetical. Problem-only HOL source is a reference, not executed in the browser.',graph=dict(kind='named-proposition graph',candidate=c,epistemic=epistemic,nodes=[n for p,n in s['nodes'].items() if p in ids.values()],rules=[r for r in s['rules'] if r['conclusion'] in ids.values()],accepted=accepted,prolog_atom_map=ids))
     claim=C._claim(c);deps=C._dependencies(claim,accepted)
     sentences=[]
     for i,x in enumerate([*deps,claim]): sentences+=theorem('step_'+str(i),C._theorem(x))
@@ -46,7 +50,10 @@ def compile_step(c,accepted,s):
     thy,_=C._isabelle_source(claim,deps)
     return dict(claim=c,prolog=C._prolog_source(claim,deps),isabelle=thy,coq=sentences,scope='Exhaustive Boolean Two Guards semantics, including non-vacuous assumptions.',graph=dict(kind='Boolean argument graph',candidate=c,accepted=accepted,effective_theorem=C._theorem(claim).json()))
 
-def named_certificate(c,s,result):
+def named_certificate(c,s,result,accepted=None,scope=None):
+    if result.get('status')!='verified' or len(result.get('trace',[]))!=len(c['conclusions']):
+        raise ValueError('The proof trace does not cover every requested conclusion.')
+    s=scope if scope is not None else learner.context(c,accepted or [],s)['scenario']
     nodes=list(s['nodes']);ids={p:'a'+str(i) for i,p in enumerate(nodes)};wanted=T.relevant_projection(c,s)
     sentences=['Section Scenario.','Variables '+' '.join(ids[p] for p in nodes if p in wanted)+' : Prop.']
     for p,n in s['nodes'].items():
@@ -61,9 +68,11 @@ def named_certificate(c,s,result):
             q=terms[term[7:]]
             sentences+=['Hypothesis negative_'+ids[p]+' : '+ids[p]+' -> ~ '+ids[q]+'.','Hypothesis negative_'+ids[q]+' : '+ids[q]+' -> ~ '+ids[p]+'.']
     def proof(t):
-        if t['kind']=='fact': return 'f_'+t['atom'][4:-1]
+        if t['kind']=='fact': return ('f_neg_' if t['atom'].startswith('neg(') else 'f_')+t['atom'][4:-1]
         return '('+t['rule']+' '+ ' '.join(proof(x) for x in t['premises'])+')'
-    for i,(lit,tree) in enumerate(zip(c['assumptions']+c['conclusions'],result['trace'])):
+    for p in s.get('_negative_roots',[]):sentences.append('Hypothesis f_neg_'+ids[p]+' : ~ '+ids[p]+'.')
+    for i,(lit,tree) in enumerate(zip(c['conclusions'],result['trace'])):
+        if tree.get('atom') != ('pos' if lit['positive'] else 'neg')+'('+ids[lit['id']]+')':raise ValueError('Proof trace conclusion mismatch.')
         sentences+=['Theorem derived_'+str(i)+' : '+('' if lit['positive'] else '~ ')+ids[lit['id']]+'.','Proof.','exact '+proof(tree)+'.','Qed.']
     sentences+=['End Scenario.']
     return sentences
@@ -72,7 +81,7 @@ def prepare_goal(accepted,s):
     if s.get('domain')=='theory':
         learned,missing,targets=T.goal_progress(accepted,s)
         if missing: return dict(status='not_discovered',detail='I have not yet established every part of the scenario goal.',theorem=s['goal'],graph=dict(targets=s['targets'],learned=sorted(learned),missing=missing))
-        c=dict(id='goal',text='Scenario goal',conclusions=[dict(id=p,positive=True) for p in targets],assumptions=[],depends_on=[])
+        c=dict(id='goal',text='Scenario goal',conclusions=[dict(id=p,positive=True) for p in targets],assumptions=[],depends_on=[c['id'] for c in accepted if learner.context(c,accepted[:accepted.index(c)],s)['grounded']])
         return dict(status='candidate',compiled=compile_step(c,accepted,s),witness=dict(conclusions=[s['nodes'][p]['label'] for p in targets],supporting_claims=[c['id'] for c in accepted]))
     claims,questions=G._prepare(accepted)
     return dict(status='search',prolog=G._prolog_source(claims,questions),theorem=G.THEOREM)
@@ -83,7 +92,7 @@ def finish_goal(accepted,result):
     q=questions[result['candidate']];no=result['on_no'];yes=result['on_yes']
     r=C.Expr('atom','observed'); safe=C.Expr('atom','safe')
     choose=C.Expr('or',children=(C.Expr('and',children=(r,C.Expr('const',yes))),C.Expr('and',children=(C.Expr('not',children=(r,)),C.Expr('const',no)))))
-    graph=C._and(tuple(G._replace(C._theorem(c),q,r) for c in claims))
+    graph=C._and(tuple(G._replace(G._knowledge(c),q,r) for c in claims))
     coverage=[]
     for answer,chosen in [(False,no),(True,yes)]:
         premises=C.Expr('const',False)
@@ -108,8 +117,14 @@ def finish_goal(accepted,result):
 class NeedModel(Exception):
     def __init__(self,body): self.body=body
 class BrowserGemma(nlp.Gemma):
-    def __init__(self,responses): self.responses=iter(responses)
+    def __init__(self,responses,architecture='baseline',proposal=None):
+        self.responses=iter(responses);self.architecture=architecture;self.proposal=proposal;self.requests=0
     def request(self,body):
+        self.requests+=1
+        if self.requests==1 and self.architecture in ('compact','encoder-refine'):
+            from response_architecture import compact_request
+            body,metadata=compact_request(body,self.proposal if self.architecture=='encoder-refine' else None)
+            body['architecture_metadata']=metadata
         try: value=next(self.responses)
         except StopIteration: raise NeedModel(body)
         if 'has_choice' in body.get('format', {}).get('properties', {}):
@@ -126,7 +141,40 @@ class BrowserGemma(nlp.Gemma):
 def dispatch(x):
     op=x['op'];s=x.get('scenario',DEFAULT);a=x.get('accepted',[])
     if op=='compile': return compile_step(x['claim'],a,s)
-    if op=='named_certificate': return named_certificate(x['claim'],s,x['result'])
+    if op=='named_certificate': return named_certificate(x['claim'],s,x['result'],a)
+    if op=='scopes':
+        if s.get('domain')!='theory':
+            result=[]
+            for ident,label in [('scenario','Entire Boolean scenario and recognised dependencies'),('learner','Confirmed learner graph and recognised dependencies'),('explicit','My explicitly stated dependencies')]:
+                c=dict(x['claim'])
+                if ident!='explicit':c['depends_on']=[p['id'] for p in a]
+                built=compile_step(c,a,s)
+                result.append(dict(id=ident,label=label,prolog=built['prolog'],coq=built['coq'],isabelle=built['isabelle'],inferred_dependencies=c['depends_on'] if ident!='explicit' else [],hypothetical=bool(c.get('assumptions'))))
+            goal=prepare_goal(a,s)
+            result.append(dict(id='completion',label='Learner graph and goal coverage',prolog=goal['prolog'],kind='goal',hypothetical=False))
+            return result
+        result=[]
+        for scope in learner.verification_scopes(x['claim'],a,s):
+            pl,ids=T.prolog_source(scope['claim'],scope['scenario'])
+            result.append({**scope,'prolog':pl,'atom_map':ids})
+        return result
+    if op=='world_state':
+        from logic.worlds import state
+        return state(s,a) if s.get('domain')=='theory' else dict(representation='four Boolean guard worlds',worlds=[dict(safe=safe,truthful=t) for safe in (False,True) for t in (False,True)],accepted=a)
+    if op=='modal_query':
+        from logic.worlds import query
+        if s.get('domain')!='theory':raise ValueError('Use a named Boolean scenario for a symbolic modal query.')
+        return query(s,x['expression'],a,x.get('scope','scenario'))
+    if op=='temporal-inspect':
+        from logic.temporal import inspect_scenario
+        return inspect_scenario(s,x['query_id'])
+    if op=='scope_certificate':
+        if s.get('domain')!='theory':
+            if x['scope_id']=='completion':return finish_goal(a,x['result'])['coq']
+            c=dict(x['claim']);c['depends_on']=[p['id'] for p in a]
+            return compile_step(c,a,s)['coq']
+        scope=next(p for p in learner.verification_scopes(x['claim'],a,s) if p['id']==x['scope_id'])
+        return named_certificate(scope['claim'],s,x['result'],a,scope['scenario'])
     if op=='goal': return prepare_goal(a,s)
     if op=='goal_finish': return finish_goal(a,x['result'])
     if op=='view': return view(x['claim'],s)
@@ -134,7 +182,13 @@ def dispatch(x):
     if op=='split': return split_cases(x['text'], x.get('grouping','auto'))
     if op=='import': return S.import_theory(x['source'],DEFAULT)
     if op=='generate_challenge': return S.parse_custom(challenge_generator.generate(x['config'])['source'])
+    if op=='generate_task':
+        import learning_tasks
+        return S.parse_custom(learning_tasks.generate(x['config'])['source'])
     if op=='generate_journey':
+        if x['spec'].get('task_config'):
+            import learning_tasks
+            return S.parse_custom(learning_tasks.generate(x['spec']['task_config'],x['spec']['choices'])['source'])
         import journey_generator
         return S.parse_custom(journey_generator.generate(x['spec'])['source'])
     if op=='tutorial':
@@ -144,7 +198,7 @@ def dispatch(x):
     if op=='predict': return list(pacing.predictions(a,s))
     if op=='key': return pacing.formal_key(x['claim'],a,s)
     if op=='interpret':
-        try: return dict(result=BrowserGemma(x.get('responses',[])).interpret(x['text'],a,s,case_review=x.get('case_review',False)))
+        try: return dict(result=BrowserGemma(x.get('responses',[]),x.get('architecture','baseline'),x.get('encoder_proposal')).interpret(x['text'],a,s,case_review=x.get('case_review',False)))
         except NeedModel as e: return dict(request=e.body)
     raise ValueError('Unknown compiler operation')
 

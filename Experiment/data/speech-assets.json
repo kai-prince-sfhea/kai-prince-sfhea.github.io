@@ -145,8 +145,8 @@
       "name": "vendor/speech/kokoro.js",
       "path": "vendor/speech/kokoro.js",
       "url": null,
-      "bytes": 10535,
-      "sha256": "785a89b796d37a39796f816b48b846ed685124d6bce6cd5fe46ced77ba858fde"
+      "bytes": 10533,
+      "sha256": "34531bb73be990937f14abbcb7124b49dbea6710bb4492738077043fb561c20d"
     },
     {
       "name": "vendor/speech/phonemizer.js",
@@ -156,5 +156,5 @@
       "sha256": "193481f474f7c1ea81df3195d18b45df8ef7254dbdccb3f193d60215c4897bec"
     }
   ],
-  "bytes": 161982252
+  "bytes": 161982250
 }

@@ -1,0 +1,15 @@
+// A solo exchange over supplied fictional testimony. Buttons offer drafts;
+// only the ordinary interpretation and proof flow can establish a reply.
+export function selectedDebateExchange(debate,learned){for(const id of learned){const exchange=(debate?.exchanges||[]).find(item=>item.objection===id);if(exchange)return exchange;}return null;}
+export function debateExchange(scenario){
+ const debate=scenario.learning_task?.debate;if(!debate)return null;
+ const box=document.createElement('section');box.className='debate-exchange';box.setAttribute('aria-label','Solo argument exchange');
+ const el=(tag,text)=>{const n=document.createElement(tag);n.textContent=text;return n;};
+ const heading=el('h4','Opposing reviewer · stage '+debate.stage),testimony=el('blockquote',debate.opponent),status=el('p','1 of 3 · Read the testimony. What supports this claim?');status.setAttribute('role','status');
+ const criterion=el('p','Supplied criterion: '+debate.criterion);criterion.hidden=true;
+ const press=el('button','Ask what supports this testimony');press.type='button';press.onclick=()=>{criterion.hidden=false;status.textContent='2 of 3 · Review the criterion. My objection must explain the unsupported connection.';press.disabled=true;};
+ const draft=el('button','Draft an objection');draft.type='button';draft.onclick=()=>{const thought=document.querySelector('#thought');if(!thought)return;if(thought.value.trim()){status.textContent='My existing draft is kept. I can add an objection in the thinking box.';}else{thought.value='The opposing reviewer claims '+debate.opponent.toLowerCase()+'. The supplied criterion says '+debate.criterion.toLowerCase()+'. I think the testimony claims more than its stated evidence supports because ';thought.dispatchEvent(new Event('input',{bubbles:true}));}thought.focus();};
+ const reply=el('p','');reply.hidden=true;box.append(heading,testimony,status,press,criterion,draft,reply);
+ box.update=learned=>{const exchange=selectedDebateExchange(debate,learned);if(learned.has(debate.reply)){status.textContent='3 of 3 · My objection and bounded reply are established.';reply.hidden=false;reply.textContent='Opposing reviewer: '+(exchange?'That reply addresses the stated '+exchange.objection.replace('debate_objection_','').replaceAll('_',' ')+' gap. ':'')+'I accept the limits in the justified report. I still cannot infer intent or certainty beyond the supplied evidence.';}else if(learned.has(debate.objection)||exchange){status.textContent='3 of 3 · My objection is established. Connect it to my stage report for a bounded reply.';reply.hidden=false;reply.textContent='Opposing reviewer: '+(exchange?exchange.response+' '+exchange.next_prompt:'The objection identifies the gap. What follows from the observations I actually collected?');}else{reply.hidden=true;reply.textContent='';status.textContent=criterion.hidden?'1 of 3 · Read the testimony. What supports this claim?':'2 of 3 · Review the criterion. My objection must explain the unsupported connection.';}};
+ return box;
+}

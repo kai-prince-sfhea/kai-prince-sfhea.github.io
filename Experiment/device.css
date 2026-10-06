@@ -12,3 +12,5 @@
 .device-page th,.device-page td{min-width:0;word-break:normal}.device-page pre{padding:10px;scroll-padding:10px}.device-page pre:focus-visible{outline-offset:-3px}
 #benchmark-results,#benchmark-summary{min-width:0;max-width:100%}.device-page .file-button{white-space:normal}
 @media(max-width:600px){.device-page table{font-size:.875rem}.device-page button{max-width:100%;white-space:normal}.device-page section{padding:16px 12px}.device-page th,.device-page td{padding:8px 4px}}
+
+.device-page { overflow-anchor: none; }

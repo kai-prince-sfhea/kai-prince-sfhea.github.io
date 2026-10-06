@@ -1,5 +1,5 @@
 {
-  "build": "418cde207b5d498911a118bd114c80588e9c0c6b080e8c2266aafacfce4dd177",
+  "build": "57ca0657b1c9fcd4bbe7bbe563c25c4634d4c1e18e3e4253d08f342afefca67c",
   "target": "static-pages",
   "base": "/Experiment/",
   "modelSource": "https://huggingface.co/litert-community/gemma-4-E2B-it-litert-lm/resolve/b3ca0d2f076785a8f4b2219ddbd2bdb99954eae1/gemma-4-E2B-it-web.litertlm"

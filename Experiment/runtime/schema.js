@@ -7,7 +7,13 @@ export function validateOutput(value,schema,dependencies=[]){
   if(s.$ref){if(!s.$ref.startsWith('#/'))return fail('unsupported schema reference');let target=root;for(const part of s.$ref.slice(2).split('/'))target=target?.[part];return target?check(value,target,path,depth+1):fail('unknown schema reference');}
   if(s.oneOf){const branches=s.oneOf.filter(x=>!check(value,x,path,depth+1));return branches.length===1?null:fail('expected exactly one allowed shape');}
   if('const'in s&&value!==s.const)return fail('unexpected literal');
-  if(s.enum&&!s.enum.includes(value))return fail('not an allowed value');
+  if(s.enum&&!s.enum.includes(value)){
+   const error=fail('not an allowed value');
+   // Diagnostics expose bounded schema identifiers, never rejected output or
+   // arbitrary text. They can guide the existing format retry without editing it.
+   if(s.enum.length<=128&&s.enum.every(x=>typeof x==='string'&&/^[A-Za-z0-9_-]{1,80}$/.test(x)))error.allowedValues=[...s.enum];
+   return error;
+  }
   const kind=value===null?'null':Array.isArray(value)?'array':typeof value;
   if(s.type&&kind!==s.type)return fail('expected '+s.type);
   if(kind==='object'){

@@ -1,7 +1,8 @@
 // Bounded, local diagnostic measurements; never store prompts or model output.
 let sequence=0;const events=[];
-export function measure(category,data){const event={id:++sequence,at:new Date().toISOString(),category,...data};events.push(event);if(events.length>1000)events.shift();return event;}
+export function measure(category,data){const event={id:++sequence,at:new Date().toISOString(),category,...data};events.push(event);if(events.length>10000)events.shift();return event;}
 export const measurementCursor=()=>sequence;
+export const measurementCoverage=id=>({afterId:id,firstRetainedId:events.find(e=>e.id>id)?.id??null,droppedEvents:Math.max(0,(events.find(e=>e.id>id)?.id??(sequence+1))-id-1)});
 export const measurementsSince=id=>events.filter(e=>e.id>id).map(e=>structuredClone(e));
 if(typeof document!=='undefined')document.addEventListener('visibilitychange',()=>measure('visibility',{outcome:document.visibilityState,seconds:0}));
 export function distribution(values){const x=values.filter(Number.isFinite).sort((a,b)=>a-b);return {count:x.length,totalSeconds:x.reduce((a,b)=>a+b,0),medianSeconds:x.length?x[Math.floor((x.length-1)*.5)]:null,p95Seconds:x.length?x[Math.ceil(x.length*.95)-1]:null};}

@@ -66,7 +66,7 @@ export async function restoreAttempt(raw,onStatus=()=>{}){
    await put('session:'+session.id,session);
    const workspace=i===prepared.length-1?raw:record.workspace||{};
    await put('workspace:'+session.id,{draft:text(workspace.draft),reflection:text(workspace.reflection)});
-   if(record.reflection)await put('learning:'+session.id,{scenario:scenario.id,...Object.fromEntries(['why','alternative','revision','influence','transfer','plan'].map(k=>[k,text(record.reflection[k])])),assessment:'self-reflection; not independently assessed'});
+   if(record.reflection)await put('learning:'+session.id,{scenario:scenario.id,...Object.fromEntries(['description','feelings','evaluation','why','alternative','revision','influence','transfer','plan'].map(k=>[k,text(record.reflection[k])])),assessment:'self-reflection; not independently assessed'});
   }
   return created.at(-1);
  }catch(e){for(const id of created)for(const prefix of ['session:','workspace:','learning:'])await remove(prefix+id);throw e;}
